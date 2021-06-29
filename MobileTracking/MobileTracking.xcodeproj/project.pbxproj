@@ -1,0 +1,1074 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		2A81721C18DAECA100E0EFEC /* MobileTracking */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 2A81721D18DAECA100E0EFEC /* Build configuration list for PBXAggregateTarget "MobileTracking" */;
+			buildPhases = (
+				2A81722018DAECC400E0EFEC /* Run Script */,
+			);
+			dependencies = (
+			);
+			name = MobileTracking;
+			productName = MobileTracking;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		18D1E98819D188A500F4ABCD /* mma_sign.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D1E98719D188A500F4ABCD /* mma_sign.a */; };
+		18D1E98919D188A500F4ABCD /* mma_sign.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D1E98719D188A500F4ABCD /* mma_sign.a */; };
+		18D1E98A19D188A500F4ABCD /* mma_sign.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D1E98719D188A500F4ABCD /* mma_sign.a */; };
+		2A632A1C18CEB10B00BE2533 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A632A1B18CEB10B00BE2533 /* Foundation.framework */; };
+		2A632A2118CEB10B00BE2533 /* MobileTracking.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A632A2018CEB10B00BE2533 /* MobileTracking.h */; };
+		2A632A2318CEB10B00BE2533 /* MobileTracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A632A2218CEB10B00BE2533 /* MobileTracking.m */; };
+		2A632A2A18CEB10B00BE2533 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A632A2918CEB10B00BE2533 /* XCTest.framework */; };
+		2A632A2B18CEB10B00BE2533 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A632A1B18CEB10B00BE2533 /* Foundation.framework */; };
+		2A632A3018CEB10B00BE2533 /* libMobileTrackingDevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A632A1818CEB10B00BE2533 /* libMobileTrackingDevice.a */; };
+		2A632A3618CEB10B00BE2533 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A632A3418CEB10B00BE2533 /* InfoPlist.strings */; };
+		2A632A3818CEB10B00BE2533 /* MobileTrackingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A632A3718CEB10B00BE2533 /* MobileTrackingTests.m */; };
+		2A79BC1F18D2DC2900FC62C1 /* TrackingInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A79BC1E18D2DC2900FC62C1 /* TrackingInfoService.m */; };
+		2A8171BE18DA91C700E0EFEC /* SSNetworkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A8171BD18DA91C700E0EFEC /* SSNetworkInfo.m */; };
+		2A81720118DAEB3A00E0EFEC /* MobileTracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A632A2218CEB10B00BE2533 /* MobileTracking.m */; };
+		2A81720218DAEB3A00E0EFEC /* TrackingInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A79BC1E18D2DC2900FC62C1 /* TrackingInfoService.m */; };
+		2A81720318DAEB3A00E0EFEC /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE23A18CF0427007BD457 /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2A81720418DAEB3A00E0EFEC /* MMA_XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE28E18CF25A1007BD457 /* MMA_XMLReader.m */; };
+		2A81720518DAEB3A00E0EFEC /* MMA_Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2EE18D1B1A2007BD457 /* MMA_Helper.m */; };
+		2A81720618DAEB3A00E0EFEC /* MMA_Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2A618D06E79007BD457 /* MMA_Task.m */; };
+		2A81720718DAEB3A00E0EFEC /* MMA_Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2A318D0581A007BD457 /* MMA_Log.m */; };
+		2A81720818DAEB3A00E0EFEC /* SSNetworkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A8171BD18DA91C700E0EFEC /* SSNetworkInfo.m */; };
+		2A81720918DAEB3A00E0EFEC /* MMA_Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE1FB18CED086007BD457 /* MMA_Reachability.m */; };
+		2A81720A18DAEB3A00E0EFEC /* MMA_OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE1F718CED085007BD457 /* MMA_OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2A81720B18DAEB3A00E0EFEC /* MMA_SDKConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE28B18CF1EA5007BD457 /* MMA_SDKConfig.m */; };
+		2A81720C18DAEB3A00E0EFEC /* MMA_TaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2B018D07126007BD457 /* MMA_TaskQueue.m */; };
+		2A81720D18DAEB3A00E0EFEC /* GTMNSString+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2A018D02ED2007BD457 /* GTMNSString+URLArguments.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2A81720E18DAEB3A00E0EFEC /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE29B18CFF9EF007BD457 /* LocationService.m */; };
+		2A81720F18DAEB3A00E0EFEC /* RequestQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE1FE18CED086007BD457 /* RequestQueue.m */; };
+		2A81721118DAEB3A00E0EFEC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABFE29718CF2B5F007BD457 /* CoreLocation.framework */; };
+		2A81721218DAEB3A00E0EFEC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABFE28118CF1778007BD457 /* UIKit.framework */; };
+		2A81721318DAEB3A00E0EFEC /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABFE27F18CF176D007BD457 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		2A81721518DAEB3A00E0EFEC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A632A1B18CEB10B00BE2533 /* Foundation.framework */; };
+		2A81721718DAEB3A00E0EFEC /* MobileTracking.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A632A2018CEB10B00BE2533 /* MobileTracking.h */; };
+		2ABFE22318CED086007BD457 /* MMA_OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE1F718CED085007BD457 /* MMA_OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2ABFE22418CED086007BD457 /* MMA_Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE1FB18CED086007BD457 /* MMA_Reachability.m */; };
+		2ABFE22518CED086007BD457 /* RequestQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE1FE18CED086007BD457 /* RequestQueue.m */; };
+		2ABFE23B18CF0427007BD457 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE23A18CF0427007BD457 /* GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2ABFE28018CF176D007BD457 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABFE27F18CF176D007BD457 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		2ABFE28218CF1778007BD457 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABFE28118CF1778007BD457 /* UIKit.framework */; };
+		2ABFE28C18CF1EA5007BD457 /* MMA_SDKConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE28B18CF1EA5007BD457 /* MMA_SDKConfig.m */; };
+		2ABFE28F18CF25A1007BD457 /* MMA_XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE28E18CF25A1007BD457 /* MMA_XMLReader.m */; };
+		2ABFE29818CF2B5F007BD457 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABFE29718CF2B5F007BD457 /* CoreLocation.framework */; };
+		2ABFE29C18CFF9EF007BD457 /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE29B18CFF9EF007BD457 /* LocationService.m */; };
+		2ABFE2A118D02ED2007BD457 /* GTMNSString+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2A018D02ED2007BD457 /* GTMNSString+URLArguments.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2ABFE2A418D0581A007BD457 /* MMA_Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2A318D0581A007BD457 /* MMA_Log.m */; };
+		2ABFE2A718D06E79007BD457 /* MMA_Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2A618D06E79007BD457 /* MMA_Task.m */; };
+		2ABFE2B118D07126007BD457 /* MMA_TaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2B018D07126007BD457 /* MMA_TaskQueue.m */; };
+		2ABFE2EF18D1B1A2007BD457 /* MMA_Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2EE18D1B1A2007BD457 /* MMA_Helper.m */; };
+		AF1AAE921EF61EF300E9C276 /* AdHeper.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE791EF61EF300E9C276 /* AdHeper.m */; };
+		AF1AAE931EF61EF300E9C276 /* AdHeper.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE791EF61EF300E9C276 /* AdHeper.m */; };
+		AF1AAE941EF61EF300E9C276 /* NSDate+VASDK.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE7B1EF61EF300E9C276 /* NSDate+VASDK.m */; };
+		AF1AAE951EF61EF300E9C276 /* NSDate+VASDK.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE7B1EF61EF300E9C276 /* NSDate+VASDK.m */; };
+		AF1AAE961EF61EF300E9C276 /* UIView+Monitor.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE7D1EF61EF300E9C276 /* UIView+Monitor.m */; };
+		AF1AAE971EF61EF300E9C276 /* UIView+Monitor.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE7D1EF61EF300E9C276 /* UIView+Monitor.m */; };
+		AF1AAE981EF61EF300E9C276 /* VAMaros.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE7F1EF61EF300E9C276 /* VAMaros.m */; };
+		AF1AAE991EF61EF300E9C276 /* VAMaros.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE7F1EF61EF300E9C276 /* VAMaros.m */; };
+		AF1AAE9A1EF61EF300E9C276 /* VAMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE811EF61EF300E9C276 /* VAMonitor.m */; };
+		AF1AAE9B1EF61EF300E9C276 /* VAMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE811EF61EF300E9C276 /* VAMonitor.m */; };
+		AF1AAE9C1EF61EF300E9C276 /* VAMonitorConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE831EF61EF300E9C276 /* VAMonitorConfig.m */; };
+		AF1AAE9D1EF61EF300E9C276 /* VAMonitorConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE831EF61EF300E9C276 /* VAMonitorConfig.m */; };
+		AF1AAE9E1EF61EF300E9C276 /* VAMonitorFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE851EF61EF300E9C276 /* VAMonitorFrame.m */; };
+		AF1AAE9F1EF61EF300E9C276 /* VAMonitorFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE851EF61EF300E9C276 /* VAMonitorFrame.m */; };
+		AF1AAEA01EF61EF300E9C276 /* VAMonitorTimeline.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE871EF61EF300E9C276 /* VAMonitorTimeline.m */; };
+		AF1AAEA11EF61EF300E9C276 /* VAMonitorTimeline.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE871EF61EF300E9C276 /* VAMonitorTimeline.m */; };
+		AF1AAEA61EF61EF300E9C276 /* VAViewMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE8D1EF61EF300E9C276 /* VAViewMonitor.m */; };
+		AF1AAEA71EF61EF300E9C276 /* VAViewMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE8D1EF61EF300E9C276 /* VAViewMonitor.m */; };
+		AF1AAEA81EF61EF300E9C276 /* VAViewTools.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE8F1EF61EF300E9C276 /* VAViewTools.m */; };
+		AF1AAEA91EF61EF300E9C276 /* VAViewTools.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE8F1EF61EF300E9C276 /* VAViewTools.m */; };
+		AF1AAEAA1EF61EF300E9C276 /* ViewabilityService.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE911EF61EF300E9C276 /* ViewabilityService.m */; };
+		AF1AAEAB1EF61EF300E9C276 /* ViewabilityService.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE911EF61EF300E9C276 /* ViewabilityService.m */; };
+		AF89EC731EFA0CB400A2AF21 /* Viewability_iOS.md in Sources */ = {isa = PBXBuildFile; fileRef = AF89EC721EFA0CB400A2AF21 /* Viewability_iOS.md */; };
+		AF89EC741EFA0CB400A2AF21 /* Viewability_iOS.md in Sources */ = {isa = PBXBuildFile; fileRef = AF89EC721EFA0CB400A2AF21 /* Viewability_iOS.md */; };
+		AFB3716B1F3854770092930F /* VACacheWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB3715A1F3854770092930F /* VACacheWebView.m */; };
+		AFB3716C1F3854770092930F /* VACacheWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB3715A1F3854770092930F /* VACacheWebView.m */; };
+		AFB3716D1F3854770092930F /* VACompanyRun.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB3715C1F3854770092930F /* VACompanyRun.m */; };
+		AFB3716E1F3854770092930F /* VACompanyRun.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB3715C1F3854770092930F /* VACompanyRun.m */; };
+		AFB3716F1F3854770092930F /* VADeviceMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB3715E1F3854770092930F /* VADeviceMessage.m */; };
+		AFB371701F3854770092930F /* VADeviceMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB3715E1F3854770092930F /* VADeviceMessage.m */; };
+		AFB371711F3854770092930F /* VAJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB371601F3854770092930F /* VAJavascriptBridge.m */; };
+		AFB371721F3854770092930F /* VAJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB371601F3854770092930F /* VAJavascriptBridge.m */; };
+		AFB371731F3854770092930F /* VAJavascriptParse.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB371621F3854770092930F /* VAJavascriptParse.m */; };
+		AFB371741F3854770092930F /* VAJavascriptParse.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB371621F3854770092930F /* VAJavascriptParse.m */; };
+		AFB371751F3854770092930F /* VAJSMaros.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB371641F3854770092930F /* VAJSMaros.m */; };
+		AFB371761F3854770092930F /* VAJSMaros.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB371641F3854770092930F /* VAJSMaros.m */; };
+		AFB371771F3854770092930F /* VAJSViewabilityData.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB371661F3854770092930F /* VAJSViewabilityData.m */; };
+		AFB371781F3854770092930F /* VAJSViewabilityData.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB371661F3854770092930F /* VAJSViewabilityData.m */; };
+		AFB371791F3854770092930F /* VAViewCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB371681F3854770092930F /* VAViewCapture.m */; };
+		AFB3717A1F3854770092930F /* VAViewCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB371681F3854770092930F /* VAViewCapture.m */; };
+		AFB3717B1F3854770092930F /* ViewabilityJSService.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB3716A1F3854770092930F /* ViewabilityJSService.m */; };
+		AFB3717C1F3854770092930F /* ViewabilityJSService.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB3716A1F3854770092930F /* ViewabilityJSService.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2A632A2E18CEB10B00BE2533 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A632A1018CEB10B00BE2533 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A632A1718CEB10B00BE2533;
+			remoteInfo = MobileTracking;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2A632A1618CEB10B00BE2533 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				2A632A2118CEB10B00BE2533 /* MobileTracking.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A81721618DAEB3A00E0EFEC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				2A81721718DAEB3A00E0EFEC /* MobileTracking.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		18D1E98619D188A500F4ABCD /* MMA_EncryptModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_EncryptModule.h; sourceTree = "<group>"; };
+		18D1E98719D188A500F4ABCD /* mma_sign.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = mma_sign.a; sourceTree = "<group>"; };
+		2A632A1818CEB10B00BE2533 /* libMobileTrackingDevice.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMobileTrackingDevice.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A632A1B18CEB10B00BE2533 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2A632A1F18CEB10B00BE2533 /* MobileTracking-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MobileTracking-Prefix.pch"; sourceTree = "<group>"; };
+		2A632A2018CEB10B00BE2533 /* MobileTracking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MobileTracking.h; sourceTree = "<group>"; };
+		2A632A2218CEB10B00BE2533 /* MobileTracking.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MobileTracking.m; sourceTree = "<group>"; };
+		2A632A2818CEB10B00BE2533 /* MobileTrackingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobileTrackingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A632A2918CEB10B00BE2533 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		2A632A3318CEB10B00BE2533 /* MobileTrackingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MobileTrackingTests-Info.plist"; sourceTree = "<group>"; };
+		2A632A3518CEB10B00BE2533 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2A632A3718CEB10B00BE2533 /* MobileTrackingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MobileTrackingTests.m; sourceTree = "<group>"; };
+		2A79BC1D18D2DC2900FC62C1 /* TrackingInfoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingInfoService.h; sourceTree = "<group>"; };
+		2A79BC1E18D2DC2900FC62C1 /* TrackingInfoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingInfoService.m; sourceTree = "<group>"; };
+		2A8171BC18DA91C700E0EFEC /* SSNetworkInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSNetworkInfo.h; sourceTree = "<group>"; };
+		2A8171BD18DA91C700E0EFEC /* SSNetworkInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSNetworkInfo.m; sourceTree = "<group>"; };
+		2A8171BF18DA979E00E0EFEC /* SystemServicesConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemServicesConstants.h; sourceTree = "<group>"; };
+		2A81721B18DAEB3A00E0EFEC /* libMobileTrackingSimulator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMobileTrackingSimulator.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2ABFE1F618CED085007BD457 /* MMA_OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_OpenUDID.h; sourceTree = "<group>"; };
+		2ABFE1F718CED085007BD457 /* MMA_OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_OpenUDID.m; sourceTree = "<group>"; };
+		2ABFE1F818CED085007BD457 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		2ABFE1FA18CED086007BD457 /* MMA_Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_Reachability.h; sourceTree = "<group>"; };
+		2ABFE1FB18CED086007BD457 /* MMA_Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_Reachability.m; sourceTree = "<group>"; };
+		2ABFE1FD18CED086007BD457 /* RequestQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestQueue.h; sourceTree = "<group>"; };
+		2ABFE1FE18CED086007BD457 /* RequestQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestQueue.m; sourceTree = "<group>"; };
+		2ABFE23918CF0427007BD457 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
+		2ABFE23A18CF0427007BD457 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
+		2ABFE27F18CF176D007BD457 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		2ABFE28118CF1778007BD457 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2ABFE28A18CF1EA5007BD457 /* MMA_SDKConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_SDKConfig.h; sourceTree = "<group>"; };
+		2ABFE28B18CF1EA5007BD457 /* MMA_SDKConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_SDKConfig.m; sourceTree = "<group>"; };
+		2ABFE28D18CF25A1007BD457 /* MMA_XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_XMLReader.h; sourceTree = "<group>"; };
+		2ABFE28E18CF25A1007BD457 /* MMA_XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_XMLReader.m; sourceTree = "<group>"; };
+		2ABFE29718CF2B5F007BD457 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		2ABFE29A18CFF9EF007BD457 /* LocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
+		2ABFE29B18CFF9EF007BD457 /* LocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
+		2ABFE29D18CFFA57007BD457 /* MMA_Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_Macro.h; sourceTree = "<group>"; };
+		2ABFE29F18D02ED2007BD457 /* GTMNSString+URLArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+URLArguments.h"; sourceTree = "<group>"; };
+		2ABFE2A018D02ED2007BD457 /* GTMNSString+URLArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+URLArguments.m"; sourceTree = "<group>"; };
+		2ABFE2A218D0581A007BD457 /* MMA_Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_Log.h; sourceTree = "<group>"; };
+		2ABFE2A318D0581A007BD457 /* MMA_Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_Log.m; sourceTree = "<group>"; };
+		2ABFE2A518D06E79007BD457 /* MMA_Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_Task.h; sourceTree = "<group>"; };
+		2ABFE2A618D06E79007BD457 /* MMA_Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_Task.m; sourceTree = "<group>"; };
+		2ABFE2AF18D07126007BD457 /* MMA_TaskQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_TaskQueue.h; sourceTree = "<group>"; };
+		2ABFE2B018D07126007BD457 /* MMA_TaskQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_TaskQueue.m; sourceTree = "<group>"; };
+		2ABFE2ED18D1B1A2007BD457 /* MMA_Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_Helper.h; sourceTree = "<group>"; };
+		2ABFE2EE18D1B1A2007BD457 /* MMA_Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_Helper.m; sourceTree = "<group>"; };
+		AF1AAE781EF61EF300E9C276 /* AdHeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdHeper.h; sourceTree = "<group>"; };
+		AF1AAE791EF61EF300E9C276 /* AdHeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdHeper.m; sourceTree = "<group>"; };
+		AF1AAE7A1EF61EF300E9C276 /* NSDate+VASDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+VASDK.h"; sourceTree = "<group>"; };
+		AF1AAE7B1EF61EF300E9C276 /* NSDate+VASDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+VASDK.m"; sourceTree = "<group>"; };
+		AF1AAE7C1EF61EF300E9C276 /* UIView+Monitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Monitor.h"; sourceTree = "<group>"; };
+		AF1AAE7D1EF61EF300E9C276 /* UIView+Monitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Monitor.m"; sourceTree = "<group>"; };
+		AF1AAE7E1EF61EF300E9C276 /* VAMaros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAMaros.h; sourceTree = "<group>"; };
+		AF1AAE7F1EF61EF300E9C276 /* VAMaros.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAMaros.m; sourceTree = "<group>"; };
+		AF1AAE801EF61EF300E9C276 /* VAMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAMonitor.h; sourceTree = "<group>"; };
+		AF1AAE811EF61EF300E9C276 /* VAMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAMonitor.m; sourceTree = "<group>"; };
+		AF1AAE821EF61EF300E9C276 /* VAMonitorConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAMonitorConfig.h; sourceTree = "<group>"; };
+		AF1AAE831EF61EF300E9C276 /* VAMonitorConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAMonitorConfig.m; sourceTree = "<group>"; };
+		AF1AAE841EF61EF300E9C276 /* VAMonitorFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAMonitorFrame.h; sourceTree = "<group>"; };
+		AF1AAE851EF61EF300E9C276 /* VAMonitorFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAMonitorFrame.m; sourceTree = "<group>"; };
+		AF1AAE861EF61EF300E9C276 /* VAMonitorTimeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAMonitorTimeline.h; sourceTree = "<group>"; };
+		AF1AAE871EF61EF300E9C276 /* VAMonitorTimeline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAMonitorTimeline.m; sourceTree = "<group>"; };
+		AF1AAE8C1EF61EF300E9C276 /* VAViewMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAViewMonitor.h; sourceTree = "<group>"; };
+		AF1AAE8D1EF61EF300E9C276 /* VAViewMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAViewMonitor.m; sourceTree = "<group>"; };
+		AF1AAE8E1EF61EF300E9C276 /* VAViewTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAViewTools.h; sourceTree = "<group>"; };
+		AF1AAE8F1EF61EF300E9C276 /* VAViewTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAViewTools.m; sourceTree = "<group>"; };
+		AF1AAE901EF61EF300E9C276 /* ViewabilityService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewabilityService.h; sourceTree = "<group>"; };
+		AF1AAE911EF61EF300E9C276 /* ViewabilityService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewabilityService.m; sourceTree = "<group>"; };
+		AF89EC721EFA0CB400A2AF21 /* Viewability_iOS.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Viewability_iOS.md; sourceTree = "<group>"; };
+		AFB371591F3854770092930F /* VACacheWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VACacheWebView.h; sourceTree = "<group>"; };
+		AFB3715A1F3854770092930F /* VACacheWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VACacheWebView.m; sourceTree = "<group>"; };
+		AFB3715B1F3854770092930F /* VACompanyRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VACompanyRun.h; sourceTree = "<group>"; };
+		AFB3715C1F3854770092930F /* VACompanyRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VACompanyRun.m; sourceTree = "<group>"; };
+		AFB3715D1F3854770092930F /* VADeviceMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VADeviceMessage.h; sourceTree = "<group>"; };
+		AFB3715E1F3854770092930F /* VADeviceMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VADeviceMessage.m; sourceTree = "<group>"; };
+		AFB3715F1F3854770092930F /* VAJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAJavascriptBridge.h; sourceTree = "<group>"; };
+		AFB371601F3854770092930F /* VAJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAJavascriptBridge.m; sourceTree = "<group>"; };
+		AFB371611F3854770092930F /* VAJavascriptParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAJavascriptParse.h; sourceTree = "<group>"; };
+		AFB371621F3854770092930F /* VAJavascriptParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAJavascriptParse.m; sourceTree = "<group>"; };
+		AFB371631F3854770092930F /* VAJSMaros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAJSMaros.h; sourceTree = "<group>"; };
+		AFB371641F3854770092930F /* VAJSMaros.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAJSMaros.m; sourceTree = "<group>"; };
+		AFB371651F3854770092930F /* VAJSViewabilityData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAJSViewabilityData.h; sourceTree = "<group>"; };
+		AFB371661F3854770092930F /* VAJSViewabilityData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAJSViewabilityData.m; sourceTree = "<group>"; };
+		AFB371671F3854770092930F /* VAViewCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAViewCapture.h; sourceTree = "<group>"; };
+		AFB371681F3854770092930F /* VAViewCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAViewCapture.m; sourceTree = "<group>"; };
+		AFB371691F3854770092930F /* ViewabilityJSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewabilityJSService.h; sourceTree = "<group>"; };
+		AFB3716A1F3854770092930F /* ViewabilityJSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewabilityJSService.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2A632A1518CEB10B00BE2533 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18D1E98819D188A500F4ABCD /* mma_sign.a in Frameworks */,
+				2ABFE29818CF2B5F007BD457 /* CoreLocation.framework in Frameworks */,
+				2ABFE28218CF1778007BD457 /* UIKit.framework in Frameworks */,
+				2ABFE28018CF176D007BD457 /* AdSupport.framework in Frameworks */,
+				2A632A1C18CEB10B00BE2533 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A632A2518CEB10B00BE2533 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18D1E98919D188A500F4ABCD /* mma_sign.a in Frameworks */,
+				2A632A3018CEB10B00BE2533 /* libMobileTrackingDevice.a in Frameworks */,
+				2A632A2A18CEB10B00BE2533 /* XCTest.framework in Frameworks */,
+				2A632A2B18CEB10B00BE2533 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A81721018DAEB3A00E0EFEC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18D1E98A19D188A500F4ABCD /* mma_sign.a in Frameworks */,
+				2A81721118DAEB3A00E0EFEC /* CoreLocation.framework in Frameworks */,
+				2A81721218DAEB3A00E0EFEC /* UIKit.framework in Frameworks */,
+				2A81721318DAEB3A00E0EFEC /* AdSupport.framework in Frameworks */,
+				2A81721518DAEB3A00E0EFEC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2A632A0F18CEB10B00BE2533 = {
+			isa = PBXGroup;
+			children = (
+				AFB371581F3854770092930F /* JSViewAbility */,
+				AF1AAE771EF61EF300E9C276 /* Viewability */,
+				2A632A1D18CEB10B00BE2533 /* MobileTracking */,
+				2A632A3118CEB10B00BE2533 /* MobileTrackingTests */,
+				2A632A1A18CEB10B00BE2533 /* Frameworks */,
+				2A632A1918CEB10B00BE2533 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2A632A1918CEB10B00BE2533 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2A632A1818CEB10B00BE2533 /* libMobileTrackingDevice.a */,
+				2A632A2818CEB10B00BE2533 /* MobileTrackingTests.xctest */,
+				2A81721B18DAEB3A00E0EFEC /* libMobileTrackingSimulator.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2A632A1A18CEB10B00BE2533 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2ABFE29718CF2B5F007BD457 /* CoreLocation.framework */,
+				2ABFE28118CF1778007BD457 /* UIKit.framework */,
+				2ABFE27F18CF176D007BD457 /* AdSupport.framework */,
+				2A632A1B18CEB10B00BE2533 /* Foundation.framework */,
+				2A632A2918CEB10B00BE2533 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2A632A1D18CEB10B00BE2533 /* MobileTracking */ = {
+			isa = PBXGroup;
+			children = (
+				2ABFE29D18CFFA57007BD457 /* MMA_Macro.h */,
+				2A632A2018CEB10B00BE2533 /* MobileTracking.h */,
+				2A632A2218CEB10B00BE2533 /* MobileTracking.m */,
+				2ABFE28918CF1E92007BD457 /* Config */,
+				2ABFE28418CF1A86007BD457 /* Helper */,
+				2ABFE28518CF1A86007BD457 /* TaskQueue */,
+				2ABFE29918CFF9EF007BD457 /* Service */,
+				2ABFE1F118CED085007BD457 /* EncryptModule */,
+				2ABFE1F418CED085007BD457 /* Vendor */,
+				2A632A1E18CEB10B00BE2533 /* Supporting Files */,
+			);
+			path = MobileTracking;
+			sourceTree = "<group>";
+		};
+		2A632A1E18CEB10B00BE2533 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AF89EC721EFA0CB400A2AF21 /* Viewability_iOS.md */,
+				2A632A1F18CEB10B00BE2533 /* MobileTracking-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2A632A3118CEB10B00BE2533 /* MobileTrackingTests */ = {
+			isa = PBXGroup;
+			children = (
+				2A632A3718CEB10B00BE2533 /* MobileTrackingTests.m */,
+				2A632A3218CEB10B00BE2533 /* Supporting Files */,
+			);
+			path = MobileTrackingTests;
+			sourceTree = "<group>";
+		};
+		2A632A3218CEB10B00BE2533 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2A632A3318CEB10B00BE2533 /* MobileTrackingTests-Info.plist */,
+				2A632A3418CEB10B00BE2533 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2ABFE1F118CED085007BD457 /* EncryptModule */ = {
+			isa = PBXGroup;
+			children = (
+				18D1E98619D188A500F4ABCD /* MMA_EncryptModule.h */,
+				18D1E98719D188A500F4ABCD /* mma_sign.a */,
+			);
+			path = EncryptModule;
+			sourceTree = "<group>";
+		};
+		2ABFE1F418CED085007BD457 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				2ABFE29E18D02ED2007BD457 /* GTMNSString */,
+				2ABFE24C18CF1756007BD457 /* SystemService */,
+				2ABFE23818CF0427007BD457 /* GDataXMLNode */,
+				2ABFE1F518CED085007BD457 /* OpenUDID */,
+				2ABFE1F918CED086007BD457 /* Reachability */,
+				2ABFE1FC18CED086007BD457 /* RequestQueue */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		2ABFE1F518CED085007BD457 /* OpenUDID */ = {
+			isa = PBXGroup;
+			children = (
+				2ABFE1F618CED085007BD457 /* MMA_OpenUDID.h */,
+				2ABFE1F718CED085007BD457 /* MMA_OpenUDID.m */,
+				2ABFE1F818CED085007BD457 /* README.md */,
+			);
+			path = OpenUDID;
+			sourceTree = "<group>";
+		};
+		2ABFE1F918CED086007BD457 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				2ABFE1FA18CED086007BD457 /* MMA_Reachability.h */,
+				2ABFE1FB18CED086007BD457 /* MMA_Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		2ABFE1FC18CED086007BD457 /* RequestQueue */ = {
+			isa = PBXGroup;
+			children = (
+				2ABFE1FD18CED086007BD457 /* RequestQueue.h */,
+				2ABFE1FE18CED086007BD457 /* RequestQueue.m */,
+			);
+			path = RequestQueue;
+			sourceTree = "<group>";
+		};
+		2ABFE23818CF0427007BD457 /* GDataXMLNode */ = {
+			isa = PBXGroup;
+			children = (
+				2ABFE23918CF0427007BD457 /* GDataXMLNode.h */,
+				2ABFE23A18CF0427007BD457 /* GDataXMLNode.m */,
+			);
+			path = GDataXMLNode;
+			sourceTree = "<group>";
+		};
+		2ABFE24C18CF1756007BD457 /* SystemService */ = {
+			isa = PBXGroup;
+			children = (
+				2A8171BF18DA979E00E0EFEC /* SystemServicesConstants.h */,
+				2A8171BC18DA91C700E0EFEC /* SSNetworkInfo.h */,
+				2A8171BD18DA91C700E0EFEC /* SSNetworkInfo.m */,
+			);
+			path = SystemService;
+			sourceTree = "<group>";
+		};
+		2ABFE28418CF1A86007BD457 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				2ABFE2A218D0581A007BD457 /* MMA_Log.h */,
+				2ABFE2A318D0581A007BD457 /* MMA_Log.m */,
+				2ABFE2ED18D1B1A2007BD457 /* MMA_Helper.h */,
+				2ABFE2EE18D1B1A2007BD457 /* MMA_Helper.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		2ABFE28518CF1A86007BD457 /* TaskQueue */ = {
+			isa = PBXGroup;
+			children = (
+				2ABFE2A518D06E79007BD457 /* MMA_Task.h */,
+				2ABFE2A618D06E79007BD457 /* MMA_Task.m */,
+				2ABFE2AF18D07126007BD457 /* MMA_TaskQueue.h */,
+				2ABFE2B018D07126007BD457 /* MMA_TaskQueue.m */,
+			);
+			path = TaskQueue;
+			sourceTree = "<group>";
+		};
+		2ABFE28918CF1E92007BD457 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				2ABFE28A18CF1EA5007BD457 /* MMA_SDKConfig.h */,
+				2ABFE28B18CF1EA5007BD457 /* MMA_SDKConfig.m */,
+				2ABFE28D18CF25A1007BD457 /* MMA_XMLReader.h */,
+				2ABFE28E18CF25A1007BD457 /* MMA_XMLReader.m */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		2ABFE29918CFF9EF007BD457 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2ABFE29A18CFF9EF007BD457 /* LocationService.h */,
+				2ABFE29B18CFF9EF007BD457 /* LocationService.m */,
+				2A79BC1D18D2DC2900FC62C1 /* TrackingInfoService.h */,
+				2A79BC1E18D2DC2900FC62C1 /* TrackingInfoService.m */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		2ABFE29E18D02ED2007BD457 /* GTMNSString */ = {
+			isa = PBXGroup;
+			children = (
+				2ABFE29F18D02ED2007BD457 /* GTMNSString+URLArguments.h */,
+				2ABFE2A018D02ED2007BD457 /* GTMNSString+URLArguments.m */,
+			);
+			path = GTMNSString;
+			sourceTree = "<group>";
+		};
+		AF1AAE771EF61EF300E9C276 /* Viewability */ = {
+			isa = PBXGroup;
+			children = (
+				AF1AAE901EF61EF300E9C276 /* ViewabilityService.h */,
+				AF1AAE911EF61EF300E9C276 /* ViewabilityService.m */,
+				AF1AAE821EF61EF300E9C276 /* VAMonitorConfig.h */,
+				AF1AAE831EF61EF300E9C276 /* VAMonitorConfig.m */,
+				AF1AAE801EF61EF300E9C276 /* VAMonitor.h */,
+				AF1AAE811EF61EF300E9C276 /* VAMonitor.m */,
+				AF1AAE8C1EF61EF300E9C276 /* VAViewMonitor.h */,
+				AF1AAE8D1EF61EF300E9C276 /* VAViewMonitor.m */,
+				AF1AAE861EF61EF300E9C276 /* VAMonitorTimeline.h */,
+				AF1AAE871EF61EF300E9C276 /* VAMonitorTimeline.m */,
+				AF1AAE841EF61EF300E9C276 /* VAMonitorFrame.h */,
+				AF1AAE851EF61EF300E9C276 /* VAMonitorFrame.m */,
+				AF1AAE8E1EF61EF300E9C276 /* VAViewTools.h */,
+				AF1AAE8F1EF61EF300E9C276 /* VAViewTools.m */,
+				AF1AAE781EF61EF300E9C276 /* AdHeper.h */,
+				AF1AAE791EF61EF300E9C276 /* AdHeper.m */,
+				AF1AAE7A1EF61EF300E9C276 /* NSDate+VASDK.h */,
+				AF1AAE7B1EF61EF300E9C276 /* NSDate+VASDK.m */,
+				AF1AAE7C1EF61EF300E9C276 /* UIView+Monitor.h */,
+				AF1AAE7D1EF61EF300E9C276 /* UIView+Monitor.m */,
+				AF1AAE7E1EF61EF300E9C276 /* VAMaros.h */,
+				AF1AAE7F1EF61EF300E9C276 /* VAMaros.m */,
+			);
+			path = Viewability;
+			sourceTree = "<group>";
+		};
+		AFB371581F3854770092930F /* JSViewAbility */ = {
+			isa = PBXGroup;
+			children = (
+				AFB371591F3854770092930F /* VACacheWebView.h */,
+				AFB3715A1F3854770092930F /* VACacheWebView.m */,
+				AFB3715B1F3854770092930F /* VACompanyRun.h */,
+				AFB3715C1F3854770092930F /* VACompanyRun.m */,
+				AFB3715D1F3854770092930F /* VADeviceMessage.h */,
+				AFB3715E1F3854770092930F /* VADeviceMessage.m */,
+				AFB3715F1F3854770092930F /* VAJavascriptBridge.h */,
+				AFB371601F3854770092930F /* VAJavascriptBridge.m */,
+				AFB371611F3854770092930F /* VAJavascriptParse.h */,
+				AFB371621F3854770092930F /* VAJavascriptParse.m */,
+				AFB371631F3854770092930F /* VAJSMaros.h */,
+				AFB371641F3854770092930F /* VAJSMaros.m */,
+				AFB371651F3854770092930F /* VAJSViewabilityData.h */,
+				AFB371661F3854770092930F /* VAJSViewabilityData.m */,
+				AFB371671F3854770092930F /* VAViewCapture.h */,
+				AFB371681F3854770092930F /* VAViewCapture.m */,
+				AFB371691F3854770092930F /* ViewabilityJSService.h */,
+				AFB3716A1F3854770092930F /* ViewabilityJSService.m */,
+			);
+			path = JSViewAbility;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2A632A1718CEB10B00BE2533 /* MobileTrackingDevice */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A632A3B18CEB10B00BE2533 /* Build configuration list for PBXNativeTarget "MobileTrackingDevice" */;
+			buildPhases = (
+				2A632A1418CEB10B00BE2533 /* Sources */,
+				2A632A1518CEB10B00BE2533 /* Frameworks */,
+				2A632A1618CEB10B00BE2533 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MobileTrackingDevice;
+			productName = MobileTracking;
+			productReference = 2A632A1818CEB10B00BE2533 /* libMobileTrackingDevice.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		2A632A2718CEB10B00BE2533 /* MobileTrackingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A632A3E18CEB10B00BE2533 /* Build configuration list for PBXNativeTarget "MobileTrackingTests" */;
+			buildPhases = (
+				2A632A2418CEB10B00BE2533 /* Sources */,
+				2A632A2518CEB10B00BE2533 /* Frameworks */,
+				2A632A2618CEB10B00BE2533 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A632A2F18CEB10B00BE2533 /* PBXTargetDependency */,
+			);
+			name = MobileTrackingTests;
+			productName = MobileTrackingTests;
+			productReference = 2A632A2818CEB10B00BE2533 /* MobileTrackingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2A8171FF18DAEB3A00E0EFEC /* MobileTrackingSimulator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A81721818DAEB3A00E0EFEC /* Build configuration list for PBXNativeTarget "MobileTrackingSimulator" */;
+			buildPhases = (
+				2A81720018DAEB3A00E0EFEC /* Sources */,
+				2A81721018DAEB3A00E0EFEC /* Frameworks */,
+				2A81721618DAEB3A00E0EFEC /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MobileTrackingSimulator;
+			productName = MobileTracking;
+			productReference = 2A81721B18DAEB3A00E0EFEC /* libMobileTrackingSimulator.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2A632A1018CEB10B00BE2533 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Admaster;
+			};
+			buildConfigurationList = 2A632A1318CEB10B00BE2533 /* Build configuration list for PBXProject "MobileTracking" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 2A632A0F18CEB10B00BE2533;
+			productRefGroup = 2A632A1918CEB10B00BE2533 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2A632A1718CEB10B00BE2533 /* MobileTrackingDevice */,
+				2A632A2718CEB10B00BE2533 /* MobileTrackingTests */,
+				2A8171FF18DAEB3A00E0EFEC /* MobileTrackingSimulator */,
+				2A81721C18DAECA100E0EFEC /* MobileTracking */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2A632A2618CEB10B00BE2533 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A632A3618CEB10B00BE2533 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2A81722018DAECC400E0EFEC /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "rm -rf ${BUILT_PRODUCTS_DIR}/libMobileTracking.a\n\nlipo -create \"${BUILT_PRODUCTS_DIR}/../Release-iphonesimulator/libMobileTrackingSimulator.a\" \\\n\"${BUILT_PRODUCTS_DIR}/libMobileTrackingDevice.a\" -output \\\n\"${SRCROOT}/../OutputRelease/libMobileTracking.a\"\n\nrm -f \"${SRCROOT}/../OutputRelease/*\"\n\ncp \"${BUILT_PRODUCTS_DIR}/include/MobileTrackingDevice/MobileTracking.h\" \"${SRCROOT}/../OutputRelease/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2A632A1418CEB10B00BE2533 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A632A2318CEB10B00BE2533 /* MobileTracking.m in Sources */,
+				AFB3716D1F3854770092930F /* VACompanyRun.m in Sources */,
+				AF1AAEA01EF61EF300E9C276 /* VAMonitorTimeline.m in Sources */,
+				AFB371791F3854770092930F /* VAViewCapture.m in Sources */,
+				AFB371771F3854770092930F /* VAJSViewabilityData.m in Sources */,
+				2A79BC1F18D2DC2900FC62C1 /* TrackingInfoService.m in Sources */,
+				2ABFE23B18CF0427007BD457 /* GDataXMLNode.m in Sources */,
+				AF1AAE9E1EF61EF300E9C276 /* VAMonitorFrame.m in Sources */,
+				AF1AAE981EF61EF300E9C276 /* VAMaros.m in Sources */,
+				AF1AAEA81EF61EF300E9C276 /* VAViewTools.m in Sources */,
+				AF89EC731EFA0CB400A2AF21 /* Viewability_iOS.md in Sources */,
+				AF1AAE941EF61EF300E9C276 /* NSDate+VASDK.m in Sources */,
+				AF1AAE9A1EF61EF300E9C276 /* VAMonitor.m in Sources */,
+				2ABFE28F18CF25A1007BD457 /* MMA_XMLReader.m in Sources */,
+				AFB3716F1F3854770092930F /* VADeviceMessage.m in Sources */,
+				2ABFE2EF18D1B1A2007BD457 /* MMA_Helper.m in Sources */,
+				AFB371751F3854770092930F /* VAJSMaros.m in Sources */,
+				2ABFE2A718D06E79007BD457 /* MMA_Task.m in Sources */,
+				AF1AAEAA1EF61EF300E9C276 /* ViewabilityService.m in Sources */,
+				2ABFE2A418D0581A007BD457 /* MMA_Log.m in Sources */,
+				2A8171BE18DA91C700E0EFEC /* SSNetworkInfo.m in Sources */,
+				2ABFE22418CED086007BD457 /* MMA_Reachability.m in Sources */,
+				2ABFE22318CED086007BD457 /* MMA_OpenUDID.m in Sources */,
+				AF1AAE961EF61EF300E9C276 /* UIView+Monitor.m in Sources */,
+				2ABFE28C18CF1EA5007BD457 /* MMA_SDKConfig.m in Sources */,
+				2ABFE2B118D07126007BD457 /* MMA_TaskQueue.m in Sources */,
+				AFB371731F3854770092930F /* VAJavascriptParse.m in Sources */,
+				AFB371711F3854770092930F /* VAJavascriptBridge.m in Sources */,
+				2ABFE2A118D02ED2007BD457 /* GTMNSString+URLArguments.m in Sources */,
+				AF1AAE921EF61EF300E9C276 /* AdHeper.m in Sources */,
+				AF1AAE9C1EF61EF300E9C276 /* VAMonitorConfig.m in Sources */,
+				2ABFE29C18CFF9EF007BD457 /* LocationService.m in Sources */,
+				AFB3717B1F3854770092930F /* ViewabilityJSService.m in Sources */,
+				AF1AAEA61EF61EF300E9C276 /* VAViewMonitor.m in Sources */,
+				2ABFE22518CED086007BD457 /* RequestQueue.m in Sources */,
+				AFB3716B1F3854770092930F /* VACacheWebView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A632A2418CEB10B00BE2533 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A632A3818CEB10B00BE2533 /* MobileTrackingTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A81720018DAEB3A00E0EFEC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A81720118DAEB3A00E0EFEC /* MobileTracking.m in Sources */,
+				AFB3716E1F3854770092930F /* VACompanyRun.m in Sources */,
+				AF1AAEA11EF61EF300E9C276 /* VAMonitorTimeline.m in Sources */,
+				AFB3717A1F3854770092930F /* VAViewCapture.m in Sources */,
+				AFB371781F3854770092930F /* VAJSViewabilityData.m in Sources */,
+				2A81720218DAEB3A00E0EFEC /* TrackingInfoService.m in Sources */,
+				2A81720318DAEB3A00E0EFEC /* GDataXMLNode.m in Sources */,
+				AF1AAE9F1EF61EF300E9C276 /* VAMonitorFrame.m in Sources */,
+				AF1AAE991EF61EF300E9C276 /* VAMaros.m in Sources */,
+				AF1AAEA91EF61EF300E9C276 /* VAViewTools.m in Sources */,
+				AF89EC741EFA0CB400A2AF21 /* Viewability_iOS.md in Sources */,
+				AF1AAE951EF61EF300E9C276 /* NSDate+VASDK.m in Sources */,
+				AF1AAE9B1EF61EF300E9C276 /* VAMonitor.m in Sources */,
+				2A81720418DAEB3A00E0EFEC /* MMA_XMLReader.m in Sources */,
+				AFB371701F3854770092930F /* VADeviceMessage.m in Sources */,
+				2A81720518DAEB3A00E0EFEC /* MMA_Helper.m in Sources */,
+				AFB371761F3854770092930F /* VAJSMaros.m in Sources */,
+				2A81720618DAEB3A00E0EFEC /* MMA_Task.m in Sources */,
+				AF1AAEAB1EF61EF300E9C276 /* ViewabilityService.m in Sources */,
+				2A81720718DAEB3A00E0EFEC /* MMA_Log.m in Sources */,
+				2A81720818DAEB3A00E0EFEC /* SSNetworkInfo.m in Sources */,
+				2A81720918DAEB3A00E0EFEC /* MMA_Reachability.m in Sources */,
+				2A81720A18DAEB3A00E0EFEC /* MMA_OpenUDID.m in Sources */,
+				AF1AAE971EF61EF300E9C276 /* UIView+Monitor.m in Sources */,
+				2A81720B18DAEB3A00E0EFEC /* MMA_SDKConfig.m in Sources */,
+				2A81720C18DAEB3A00E0EFEC /* MMA_TaskQueue.m in Sources */,
+				AFB371741F3854770092930F /* VAJavascriptParse.m in Sources */,
+				AFB371721F3854770092930F /* VAJavascriptBridge.m in Sources */,
+				2A81720D18DAEB3A00E0EFEC /* GTMNSString+URLArguments.m in Sources */,
+				AF1AAE931EF61EF300E9C276 /* AdHeper.m in Sources */,
+				AF1AAE9D1EF61EF300E9C276 /* VAMonitorConfig.m in Sources */,
+				2A81720E18DAEB3A00E0EFEC /* LocationService.m in Sources */,
+				AFB3717C1F3854770092930F /* ViewabilityJSService.m in Sources */,
+				AF1AAEA71EF61EF300E9C276 /* VAViewMonitor.m in Sources */,
+				2A81720F18DAEB3A00E0EFEC /* RequestQueue.m in Sources */,
+				AFB3716C1F3854770092930F /* VACacheWebView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2A632A2F18CEB10B00BE2533 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A632A1718CEB10B00BE2533 /* MobileTrackingDevice */;
+			targetProxy = 2A632A2E18CEB10B00BE2533 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2A632A3418CEB10B00BE2533 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A632A3518CEB10B00BE2533 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2A632A3918CEB10B00BE2533 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					"armv7s,arm64",
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/include/libxml2,
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_LDFLAGS = "-lxml2";
+				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv7s arm64";
+			};
+			name = Debug;
+		};
+		2A632A3A18CEB10B00BE2533 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					"armv7s,arm64",
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/usr/include/libxml2,
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_LDFLAGS = "-lxml2";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s arm64";
+			};
+			name = Release;
+		};
+		2A632A3C18CEB10B00BE2533 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
+				DSTROOT = /tmp/MobileTracking.dst;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/wenqi/Project/MMA_iOS_SDK/MobileTracking/MobileTracking/EncryptModule,
+					"$(PROJECT_DIR)/MobileTracking/EncryptModule",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s arm64 x86_64 i386";
+			};
+			name = Debug;
+		};
+		2A632A3D18CEB10B00BE2533 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
+				DSTROOT = /tmp/MobileTracking.dst;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/wenqi/Project/MMA_iOS_SDK/MobileTracking/MobileTracking/EncryptModule,
+					"$(PROJECT_DIR)/MobileTracking/EncryptModule",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s arm64 x86_64 i386";
+			};
+			name = Release;
+		};
+		2A632A3F18CEB10B00BE2533 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "MobileTrackingTests/MobileTrackingTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MobileTracking/EncryptModule",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		2A632A4018CEB10B00BE2533 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
+				INFOPLIST_FILE = "MobileTrackingTests/MobileTrackingTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/MobileTracking/EncryptModule",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		2A81721918DAEB3A00E0EFEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
+				DSTROOT = /tmp/MobileTracking.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/wenqi/Project/MMA_iOS_SDK/MobileTracking/MobileTracking/EncryptModule,
+					"$(PROJECT_DIR)/MobileTracking/EncryptModule",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = MobileTrackingSimulator;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s arm64";
+			};
+			name = Debug;
+		};
+		2A81721A18DAEB3A00E0EFEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
+				DSTROOT = /tmp/MobileTracking.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/wenqi/Project/MMA_iOS_SDK/MobileTracking/MobileTracking/EncryptModule,
+					"$(PROJECT_DIR)/MobileTracking/EncryptModule",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = MobileTrackingSimulator;
+				SKIP_INSTALL = YES;
+				VALID_ARCHS = "armv7 armv7s arm64";
+			};
+			name = Release;
+		};
+		2A81721E18DAECA100E0EFEC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					"armv7s,arm64",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s armv64";
+			};
+			name = Debug;
+		};
+		2A81721F18DAECA100E0EFEC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					"armv7s,arm64",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s armv64";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2A632A1318CEB10B00BE2533 /* Build configuration list for PBXProject "MobileTracking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A632A3918CEB10B00BE2533 /* Debug */,
+				2A632A3A18CEB10B00BE2533 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A632A3B18CEB10B00BE2533 /* Build configuration list for PBXNativeTarget "MobileTrackingDevice" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A632A3C18CEB10B00BE2533 /* Debug */,
+				2A632A3D18CEB10B00BE2533 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A632A3E18CEB10B00BE2533 /* Build configuration list for PBXNativeTarget "MobileTrackingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A632A3F18CEB10B00BE2533 /* Debug */,
+				2A632A4018CEB10B00BE2533 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A81721818DAEB3A00E0EFEC /* Build configuration list for PBXNativeTarget "MobileTrackingSimulator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A81721918DAEB3A00E0EFEC /* Debug */,
+				2A81721A18DAEB3A00E0EFEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A81721D18DAECA100E0EFEC /* Build configuration list for PBXAggregateTarget "MobileTracking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A81721E18DAECA100E0EFEC /* Debug */,
+				2A81721F18DAECA100E0EFEC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2A632A1018CEB10B00BE2533 /* Project object */;
+}
