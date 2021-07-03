@@ -1,15 +1,16 @@
-##Admaster iOS SDK 部署指南
-###步骤1：添加 Admaster iOS SDK 到工程中
+## Admaster iOS SDK 部署指南
+
+### 步骤1：添加 Admaster iOS SDK 到工程中
 
 1. 将SDK发布文件中，release目录下的**MobileTracking.h** 、**libMobileTracking.a**、**sdkconfig.xml** 三个文件拷贝到项目工程中，将 **sdkconfig.xml** 上传到 web 服务器，使其可以通过 web 方式访问，假设其地址为 **http://xxxxxx.com/sdkconfig.xml**（其后会用到）。
 2. 在项目工程 App 的 Target Build Settings 中的 **Other Linker Flags** 选项里添加 **-lxml2** **-all_load** 或 **-lxml2** **-force_load** 静态库的绝对路径
 
-###步骤2:配置文件sdkconfig.xml的使用方法
+### 步骤2:配置文件sdkconfig.xml的使用方法
 在使用的文件中引用 **#import "MobileTracking.h"**.
 
 使用说明:
 
-####1、初始化方法
+#### 1、初始化方法
 
 在进行监测之前，必须进行初始化，通过以上的代码进行初始化操作
 
@@ -18,7 +19,7 @@
 
 ```
 
-####2、配置远程配置文件地址方法
+#### 2、配置远程配置文件地址方法
 
 SDK 会自动下载远程的配置文件，使用最新的配置文件进行参数的组装。
 
@@ -26,7 +27,7 @@ SDK 会自动下载远程的配置文件，使用最新的配置文件进行参�
 [[MobileTracking sharedInstance] configFromUrl:@“http://xxxxxx.com/sdkconfig.xml”];
 ```
 
-####3、曝光的监测
+#### 3、曝光的监测
 
 通过调用以下的代码进行曝光的监测，
 
@@ -66,14 +67,14 @@ SDK 会自动下载远程的配置文件，使用最新的配置文件进行参�
 
 ```
 
-####4、点击监测
+#### 4、点击监测
 通过调用以下的代码进行点击的监测，参数为第三方公司的监测地址
 
 ```
 [[MobileTracking sharedInstance] click:@"http://vxyz.admaster.com.cn/v/a17298,b81949763,c3194,i0,m201"];
 ```
 
-####5、进入后台时调用
+#### 5、进入后台时调用
 主要用于保存当前监测数据，不被丢失。建议放在AppDelegate的applicationDidEnterBackground方法中
 
 ```
@@ -81,7 +82,7 @@ SDK 会自动下载远程的配置文件，使用最新的配置文件进行参�
 ```
 
 
-####6、回到前台时调用
+#### 6、回到前台时调用
 重新读取缓存数据，主要用于保证当前监测数据，及时上报,建议放在AppDelegate的applicationWillEnterForeground方法中
 
 ```
@@ -89,21 +90,21 @@ SDK 会自动下载远程的配置文件，使用最新的配置文件进行参�
 ```
 
 
-####7、应用结束时调用
+#### 7、应用结束时调用
 主要用于保存当前监测数据，不被丢失。
 
 ```
 [[MobileTracking sharedInstance] willTerminate];
 ```
 
-####7、开启调试日志
+#### 7、开启调试日志
 建议在测试时候打开
 
 ```
 [[MobileTracking sharedInstance] enableLog:YES];
 ```
 
-###步骤3：验证和调试
+### 步骤3：验证和调试
 
 SDK 的测试有两个方面：
 
@@ -114,5 +115,4 @@ SDK 的测试有两个方面：
 
 针对第二点，建议使用第三方监测系统的正式环境进行测试，主要对比媒体自身广告系统监测数据和第三方监测数据数量上的差异。
 
-##Admaster iOS SDK 部署指南
 
