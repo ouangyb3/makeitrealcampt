@@ -508,10 +508,12 @@
 		AFB371581F3854770092930F /* JSViewAbility */ = {
 			isa = PBXGroup;
 			children = (
-				AFB371591F3854770092930F /* VACacheWebView.h */,
-				AFB3715A1F3854770092930F /* VACacheWebView.m */,
+				AFB371691F3854770092930F /* ViewabilityJSService.h */,
+				AFB3716A1F3854770092930F /* ViewabilityJSService.m */,
 				AFB3715B1F3854770092930F /* VACompanyRun.h */,
 				AFB3715C1F3854770092930F /* VACompanyRun.m */,
+				AFB371591F3854770092930F /* VACacheWebView.h */,
+				AFB3715A1F3854770092930F /* VACacheWebView.m */,
 				AFB3715D1F3854770092930F /* VADeviceMessage.h */,
 				AFB3715E1F3854770092930F /* VADeviceMessage.m */,
 				AFB3715F1F3854770092930F /* VAJavascriptBridge.h */,
@@ -524,8 +526,6 @@
 				AFB371661F3854770092930F /* VAJSViewabilityData.m */,
 				AFB371671F3854770092930F /* VAViewCapture.h */,
 				AFB371681F3854770092930F /* VAViewCapture.m */,
-				AFB371691F3854770092930F /* ViewabilityJSService.h */,
-				AFB3716A1F3854770092930F /* ViewabilityJSService.m */,
 			);
 			path = JSViewAbility;
 			sourceTree = "<group>";

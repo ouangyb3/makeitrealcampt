@@ -12,8 +12,8 @@
 #import "MMA_Macro.h"
 
 #define VAJS_MAX_SURVIVAL 3 * 24 * 60 * 60
-//#define NSLog(format,...)
-//#define printf(format,...)
+#define NSLog(format,...)
+#define printf(format,...)
 
 
 @interface VAJSMaros : NSObject

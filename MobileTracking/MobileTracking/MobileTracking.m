@@ -683,7 +683,7 @@
         NSMutableString *trackURL = [NSMutableString stringWithString:url];
         
         [monitorData enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString * obj, BOOL * _Nonnull stop) {
-            [trackURL appendFormat:@",%@%@%@",key,company.equalizer,[MMA_Helper URLEncoded:obj]];
+            [trackURL appendFormat:@"%@%@%@%@",company.separator,key,company.equalizer,[MMA_Helper URLEncoded:obj]];
         }];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_VB object:nil];

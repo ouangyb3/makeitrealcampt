@@ -502,7 +502,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: HengYu Wang (5S6RZP63Y5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 4E89P63KS8;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
@@ -517,9 +517,10 @@
 					"-lxml2",
 					"-all_load",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.block.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7988267b-b298-4476-b7de-4062d6861605";
-				PROVISIONING_PROFILE_SPECIFIER = SDK_Developer;
+				PROVISIONING_PROFILE = "3dcd2ea9-4eaa-4d8c-b71b-8827918e7eca";
+				PROVISIONING_PROFILE_SPECIFIER = com.block.test;
 				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -531,7 +532,8 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: HengYu Wang (5S6RZP63Y5)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 4E89P63KS8;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -545,8 +547,10 @@
 					"-lxml2",
 					"-all_load",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.block.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3dcd2ea9-4eaa-4d8c-b71b-8827918e7eca";
+				PROVISIONING_PROFILE_SPECIFIER = com.block.test;
 				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
 			};

@@ -137,7 +137,7 @@
                                      AD_VB_FRAME : VAStringFromSize(obj.frame.size), // 广告原始尺寸
                                      AD_VB_POINT : VAStringFromPoint(obj.windowFrame.origin), // 广告可视的原点位置
                                      AD_VB_ALPHA : [NSString stringWithFormat:@"%.2f",obj.alpha], // 透明度
-                                     AD_VB_HIDE : [NSString stringWithFormat:@"%d",!obj.hidden],  // 隐藏
+                                     AD_VB_HIDE : [NSString stringWithFormat:@"%d",obj.hidden],  // 隐藏
                                      AD_VB_COVER_RATE : [NSString stringWithFormat:@"%.2f",obj.coverRate], // 覆盖比例
                                      AD_VB_SHOWFRAME : VAStringFromSize(obj.showFrame.size), // 广告可视尺寸
                                      AD_VB_FORGROUND : [NSString stringWithFormat:@"%d",obj.isForground]  // 是否前台
