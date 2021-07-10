@@ -45,7 +45,8 @@
         _timeline = [[VAMonitorTimeline alloc] initWithMonitor:self];
         _isValid = NO;
         _keyValueAccess = keyValueAccess;
-      
+        _mzMidOver = NO;
+        _mzEndOver = NO;
         self.status = VAMonitorStatusRuning;
     }
     return self;
@@ -92,6 +93,12 @@
 - (void)verifyExpose {
     //曝光有效间隔和最大时长达标,等待上报
     
+    //mzcommit-满足条件进行中点监测，否则把mzEndOver置成true，走普通的数据上报流程
+    if (self.isVideo && self.videoDuration > 0) {
+        [self mzMidPointVerifyUpload];
+    } else {
+        _mzEndOver = YES;
+    }
     
     //  条件1: 达到曝光最大时长并且当前广告未正在进行曝光
     if(self.timeline.monitorDuration >= _config.maxDuration && self.timeline.exposeDuration < 0.001) {
@@ -102,11 +109,18 @@
     }
     
     // 条件2: 当前曝光时长已经满足曝光上报条件阈值
-    CGFloat exposeVaildDuration = _isVideo ? _config.videoExposeValidDuration : _config.exposeValidDuration;
-    if(self.timeline.exposeDuration >= exposeVaildDuration) {
+    if (_isMZURL && _validExposeDuration > 0) {
+        _exposeVaildDuration = _validExposeDuration;
+    } else {
+        _exposeVaildDuration = _isVideo ? _config.videoExposeValidDuration : _config.exposeValidDuration;
+    }
+    if(self.timeline.exposeDuration >= _exposeVaildDuration && !_isValid) {
         NSLog(@"ID:%@满足曝光条件进行上报等待,广告位监测帧数:%ld",self.impressionID,[self.timeline count]);
         _isValid = YES;
-        self.status = VAMonitorStatusWaitingUpload;
+        if(_mzEndOver) {
+            //中点监测结束，才停止定时器
+            self.status = VAMonitorStatusWaitingUpload;
+        }
         [self generateUpload];
         return;
     }
@@ -136,12 +150,25 @@
 
 - (NSString *)generateUpload {
 
-    NSDictionary *parmaters = @{
-                                IMPRESSIONID : _impressionID,
-                                AD_VB_EVENTS : [self.timeline generateUploadEvents],  // 9字段
-                                AD_VB : [NSString stringWithFormat:@"%d",_isValid],
-                                AD_MEASURABILITY : @"1"    // 是否可测量
-                                };
+    NSMutableDictionary *parmaters;
+    if (self.isMZURL) {
+        parmaters = [[NSMutableDictionary alloc] initWithObjectsAndKeys:_impressionID,IMPRESSIONID,
+                                                                        [NSString stringWithFormat:@"%d",_isValid?1:4],MZ_VIEWABILITY,
+                                                                        [NSString stringWithFormat:@"%d",(int)_exposeVaildDuration],MZ_VIEWABILITY_THRESHOLD,
+                                                                        nil];
+        if (self.isNeedRecord) {
+            [parmaters setValue:[self.timeline generateUploadEvents] forKey:AD_VB_EVENTS];
+        }
+        if (self.isVideo) {
+            [parmaters setValue:[NSString stringWithFormat:@"%d", _videoPlayType] forKey:MZ_VIEWABILITY_VIDEO_PLAYTYPE];
+        }
+    } else {
+        parmaters = [[NSMutableDictionary alloc] initWithObjectsAndKeys:_impressionID,IMPRESSIONID,
+                                                                        [self.timeline generateUploadEvents],AD_VB_EVENTS,
+                                                                        [NSString stringWithFormat:@"%d",_isValid],AD_VB,
+                                                                        @"1",AD_MEASURABILITY,
+                                                                        nil];
+    }
     
     
     NSMutableDictionary *accessDictionary = [NSMutableDictionary dictionary];
@@ -155,9 +182,48 @@
         [_delegate monitor:self didReceiveData:accessDictionary];
     }
     
-    self.status = VAMonitorStatusUploaded;
+    if(!(_isValid && !_mzEndOver)) {
+        //可见但中点监测没结束，先不停定时器
+        self.status = VAMonitorStatusUploaded;
+    }
     
     return @"";
+}
+
+- (void)mzMidPointVerifyUpload {
+    if (_mzEndOver) {
+        return;
+    }
+    
+    if (!_mzMidOver && self.timeline.monitorDuration >= _videoDuration/2) {
+        _mzMidOver = YES;
+        NSMutableDictionary *accessDictionary = [NSMutableDictionary dictionary];
+        if ([self canRecord:IMPRESSIONID]) {
+            accessDictionary[[self keyQuery:IMPRESSIONID]] = _impressionID;
+        }
+        accessDictionary[self.mzVideoMidPoint] = @"mid";
+        if(self.delegate && [self.delegate respondsToSelector:@selector(monitor:didReceiveData:)]) {
+            [_delegate monitor:self didReceiveData:accessDictionary];
+        }
+    }
+    
+    if (!_mzEndOver && self.timeline.monitorDuration >= _videoDuration) {
+        _mzEndOver = YES;
+        if(_isValid) {
+            self.status = VAMonitorStatusWaitingUpload;
+        }
+        NSMutableDictionary *accessDictionary = [NSMutableDictionary dictionary];
+        if ([self canRecord:IMPRESSIONID]) {
+            accessDictionary[[self keyQuery:IMPRESSIONID]] = _impressionID;
+        }
+        accessDictionary[self.mzVideoMidPoint] = @"end";
+        if(self.delegate && [self.delegate respondsToSelector:@selector(monitor:didReceiveData:)]) {
+            [_delegate monitor:self didReceiveData:accessDictionary];
+        }
+        if(_isValid) {
+            self.status = VAMonitorStatusUploaded;
+        }
+    }
 }
 
 - (void)dealloc {

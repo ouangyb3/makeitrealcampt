@@ -421,6 +421,12 @@
             }
         }
         
+        //mzcommit-秒针自己的过滤函数
+        if ([company.name isEqualToString:MZ_COMPANY_NAME]) {
+            [self mzCanOpenViewabilityService:[trackURL mutableCopy] result:res company:company];
+            return res;
+        }
+        
         NSString *noRedirectURL = [NSString stringWithString:trackURL];
         NSMutableString *exposeURL = [[NSMutableString alloc] initWithString:trackURL];
         NSMutableString *viewabilityURL = [[NSMutableString alloc] initWithString:trackURL];
@@ -494,6 +500,37 @@
     
 }
 
+//mzcommit-有vx配置就进行可见监测，删除请求中的可见参数
+- (VBOpenResult *)mzCanOpenViewabilityService:(NSMutableString *)url result:(VBOpenResult *)res company:(MMA_Company *)company{
+    NSString *separator = company.separator;
+    NSString *equalizer = company.equalizer;
+    
+    
+    for (MMA_Argument *argument in [company.config.viewabilityarguments objectEnumerator]) {
+        NSString *key = argument.key;
+        if (key && key.length) {
+            NSString *value = [(MMA_Argument *)[company.config.viewabilityarguments objectForKey:argument.key] value];
+            if (value && value.length) {
+                if ([key isEqualToString:MZ_VIEWABILITY_RECORD]) {
+                    continue;
+                } else if ([key isEqualToString:MZ_VIEWABILITY_VIDEO_DURATION]) {
+                    continue;
+                } else if ([key isEqualToString:MZ_VIEWABILITY_CONFIG_AREA]) {
+                    continue;
+                } else if ([key isEqualToString:MZ_VIEWABILITY_CONFIG_THRESHOLD]) {
+                    continue;
+                }else if ([key isEqualToString:MZ_VIEWABILITY]) {
+                    res.canOpen = YES;
+                }
+                
+                [url replaceOccurrencesOfString:[NSString stringWithFormat:@"%@%@%@[^%@]*", separator, value, equalizer, separator] withString:@"" options:NSRegularExpressionSearch range:NSMakeRange(0, url.length)];
+            }
+        }
+    }
+    res.exposeURL = [[NSMutableString alloc] initWithString:url];
+    res.viewabilityURL = [[NSMutableString alloc] initWithString:url];
+    return res;
+}
 
 - (void)click:(NSString *)url
 {
@@ -533,8 +570,13 @@
 
 // 视频Viewaility曝光请求: 视频曝光判断是否含有相关AdViewabilityEvents字段决定是否开启viewability
 - (void)viewVideo:(NSString *)url ad:(UIView *)adView {
+    [self viewVideo:url ad:adView videoPlayType:0];
+}
+
+// 视频Viewaility曝光请求: 视频曝光判断是否含有相关AdViewabilityEvents字段决定是否开启viewability
+- (void)viewVideo:(NSString *)url ad:(UIView *)adView videoPlayType:(NSInteger)type {
     VBOpenResult *result = [self canOpenViewabilityService:url];
-    [self view:url ad:adView isVideo:YES handleResult:result];
+    [self view:url ad:adView isVideo:YES handleResult:result videoPlayType:type];
 }
 
 // 广告Viewability曝光请求: 同视频Viewability曝光逻辑
@@ -545,6 +587,10 @@
 
 //
 - (void)view:(NSString *)url ad:(UIView *)adView isVideo:(BOOL)isVideo handleResult:(VBOpenResult *)result {
+    [self view:url ad:adView isVideo:isVideo handleResult:result videoPlayType:0];
+}
+
+- (void)view:(NSString *)url ad:(UIView *)adView isVideo:(BOOL)isVideo handleResult:(VBOpenResult *)result videoPlayType:(NSInteger)type {
     @try {
         /**
          *  获取是否含有使用viewability字段
@@ -577,6 +623,20 @@
         NSString *impressID  = [MMA_Helper md5HexDigest:compString];
         _impressionDictionary[impressKey] = impressID;
         
+        //mzcommit-秒针view非空即进行可见监测，可见监测发的普通曝光要加vx=0
+        if ([company.name isEqualToString:MZ_COMPANY_NAME]) {
+            if (useViewabilityService && adView && [adView isKindOfClass:[UIView class]]) {
+                NSMutableString *tempURL = [NSMutableString stringWithString:result.exposeURL];
+                MMA_Argument *mzViewability = [company.config.viewabilityarguments valueForKey:MZ_VIEWABILITY];
+                if(mzViewability.value) {
+                    [tempURL appendFormat:@"%@%@%@%@",company.separator,mzViewability.value,company.equalizer,@"0"];
+                    result.exposeURL = tempURL;
+                }
+            } else if (!adView || ![adView isKindOfClass:[UIView class]]) {
+                useViewabilityService = NO;
+            }
+        }
+
         /**
          *  发送正常的url 监测使用去噪impressionID曝光url
          */
@@ -616,6 +676,19 @@
                 [self filterURL:url];
             } else {
                 VAMonitor *monitor = [VAMonitor monitorWithView:adView isVideo:isVideo url:result.viewabilityURL redirectURL:result.redirectURL impressionID:impressID adID:adID keyValueAccess:[keyvalueAccess copy]];
+                if ([company.name isEqualToString:MZ_COMPANY_NAME]) {
+                    monitor.isMZURL = YES;
+                    monitor.isNeedRecord = [self isNeedRecordWithUrl:result.viewabilityURL withCompany:company];
+                    monitor.validExposeDuration = [self getValueFromUrl:result.viewabilityURL withCompany:company withTag:MZ_VIEWABILITY_CONFIG_THRESHOLD];
+                    monitor.vaildExposeShowRate = [self getValueFromUrl:result.viewabilityURL withCompany:company withTag:MZ_VIEWABILITY_CONFIG_AREA];
+                    if (isVideo) {
+                        monitor.videoPlayType = (int)type;
+                        monitor.mzVideoMidPoint = [self getConfigTagNameWithCompany:company withTag:MZ_VIEWABILITY_VIDEO_PROGRESS];
+                        if (monitor.mzVideoMidPoint) {
+                            monitor.videoDuration = [self getValueFromUrl:result.viewabilityURL withCompany:company withTag:MZ_VIEWABILITY_VIDEO_DURATION];
+                        }
+                    }
+                }
                 monitor.delegate = self;
                 [_viewabilityService addVAMonitor:monitor];
             }
@@ -862,6 +935,9 @@
         } else if ([argument.key isEqualToString:TRACKING_KEY_SDKVS]) {
             
             [trackURL appendFormat:@"%@%@%@%@", company.separator, queryArgsKey, company.equalizer, MMA_SDK_VERSION];
+        } else if ([argument.key isEqualToString:TRACKING_KEY_NETWORKTYPE]) {
+            NSInteger type = [self.trackingInfoService getCurrentNetTypeMZ];
+            [trackURL appendFormat:@"%@%@%@%d", company.separator, queryArgsKey, company.equalizer, (int)type];
         }
     }
     
@@ -878,5 +954,58 @@
     
     return trackURL;
     
+}
+
+- (BOOL)isNeedRecordWithUrl:(NSString *)url withCompany:(MMA_Company *)company
+{
+    if (!company) {
+        return NO;
+    }
+    
+    NSString *viewabilityRecordName = [self getConfigTagNameWithCompany:company withTag:MZ_VIEWABILITY_RECORD];
+    NSString *separator = company.separator;
+    NSString *equalizer = company.equalizer;
+    NSString *substr = [NSString stringWithFormat:@"%@%@%@%@", separator, viewabilityRecordName, equalizer, @"1"];
+    
+    return viewabilityRecordName && viewabilityRecordName.length && [url containsString:substr];
+}
+
+- (float)getValueFromUrl:(NSString *)url withCompany:(MMA_Company *)company withTag:(NSString *)tag
+{
+    NSString *key = [self getConfigTagNameWithCompany:company withTag:tag];
+    if (!key || !key.length) {
+        return 0;
+    }
+    
+    NSString *separator = company.separator;
+    NSString *equalizer = company.equalizer;
+    NSArray *arr = [url componentsSeparatedByString:separator];
+    NSString *prefix= [NSString stringWithFormat:@"%@%@",key,equalizer];
+    for (int i=1;i<[arr count];i++) {
+        NSString *str = [arr objectAtIndex:i];
+        if ([str hasPrefix:prefix]) {
+            NSScanner *scanner = [NSScanner scannerWithString:str];
+            [scanner scanUpToCharactersFromSet:[NSCharacterSet decimalDigitCharacterSet] intoString:nil];
+            float value;
+            [scanner scanFloat:&value];
+            return value;
+        }
+    }
+    return 0;
+}
+
+- (NSString *) getConfigTagNameWithCompany:(MMA_Company *)company withTag:(NSString *)tag
+{
+    for (MMA_Argument *argument in [company.config.viewabilityarguments objectEnumerator]) {
+        NSString *key = argument.key;
+        if (key && key.length && [key isEqualToString:tag]) {
+            NSString *value = [(MMA_Argument *)[company.config.viewabilityarguments objectForKey:argument.key] value];
+            if (value && value.length) {
+                return value;
+            }
+        }
+    }
+    
+    return nil;
 }
 @end

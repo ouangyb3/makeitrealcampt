@@ -12,13 +12,13 @@
     
     <viewability>
         <!--viewability监测的时间间隔（ms）-->
-        <intervalTime>200</intervalTime>
+        <intervalTime>100</intervalTime>
         <!--满足viewability可见区域占总区域的百分比-->
         <viewabilityFrame>50</viewabilityFrame>
         <!--满足viewability总时长（s）-->
-        <viewabilityTime>2</viewabilityTime>
+        <viewabilityTime>1</viewabilityTime>
         <!--满足视频viewability总时长（s）-->
-        <viewabilityVideoTime>1</viewabilityVideoTime>
+        <viewabilityVideoTime>2</viewabilityVideoTime>
         <!--当前广告位最大监测时长（s）-->
         <maxExpirationSecs>120</maxExpirationSecs>
         <!--当前广告位最大上报数量-->
@@ -276,6 +276,281 @@
             <separator>,</separator>
             <!--<separator>&amp;</separator>-->
             <equalizer></equalizer>
+            <!--如果设置true   timeStamper使用秒-->
+            <timeStampUseSecond>true</timeStampUseSecond>
+        </company>
+        <company>
+            <name>miaozhen</name>
+            <domain>
+                <!-- 此处需修改为第三方检测公司监测代码的 host 部分 -->
+                <url>.miaozhen.com</url>
+            </domain>
+            <signature>
+                <publicKey>DbXiUlEVN</publicKey>
+                <paramKey>mf</paramKey>
+            </signature>
+            <switch>
+                <isTrackLocation>true</isTrackLocation>
+                <!-- 失效时间，单位秒 -->
+                <offlineCacheExpiration>604800</offlineCacheExpiration>
+                <encrypt>
+                    <MAC>raw</MAC>
+                    <IDA>raw</IDA>
+                    <IMEI>raw</IMEI>
+                    <ANDROIDID>raw</ANDROIDID>
+                </encrypt>
+            </switch>
+            <config>
+                <arguments>
+                    <!--argument的必选和常用可选参数 key需确定-->
+                    <!--必选函数-->
+                    <argument>
+                        <key>OS</key>
+                        <value>mo</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    
+                    <argument>
+                        <key>TS</key>
+                        <value>mt</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    
+                    <argument>
+                        <key>MAC</key>
+                        <value>m7</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    
+                    <argument>
+                        <key>IDFA</key>
+                        <value>m5</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>IMEI</key>
+                        <value>m3</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    
+                    <argument>
+                        <key>ANDROIDID</key>
+                        <value>m1</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    
+                    <argument>
+                        <key>NETWORKTYPE</key>
+                        <value>mw</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    
+                    <argument>
+                        <key>AKEY</key>
+                        <value>mp</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    
+                    <argument>
+                        <key>ANAME</key>
+                        <value>mn</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <!--可选函数-->
+                    <argument>
+                        <key>SCWH</key>
+                        <value>mh</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    
+                    <argument>
+                        <key>OPENUDID</key>
+                        <value>m0</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>TERM</key>
+                        <value>md</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    
+                    <argument>
+                        <key>OSVS</key>
+                        <value>me</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    
+                    <argument>
+                        <key>LBS</key>
+                        <value>mm</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>SDKVS</key>
+                        <value>mv</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>REDIRECTURL</key>
+                        <value>o</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                </arguments>
+                <events>
+                    <event>
+                        <!--<name>m1</name>-->
+                        <key>start</key>
+                        <value>mb=start</value>
+                        <urlEncode>true</urlEncode>
+                    </event>
+                    <event>
+                        <!--<name>e1</name>-->
+                        <key>end</key>
+                        <value>mb=end</value>
+                        <urlEncode>true</urlEncode>
+                    </event>
+                </events>
+                <Adplacement>
+                    <argument>
+                        <key>Adplacement</key>
+                        <value>p</value>
+                        <urlEncode>false</urlEncode>
+                        <isRequired>false</isRequired>
+                    </argument>
+                    
+                </Adplacement>
+                
+                <viewabilityarguments>
+                    <argument>
+                        <key>ImpressionID</key>
+                        <value>vf</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>AdviewabilityEvents</key>
+                        <value>vd</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>AdviewabilityTime</key>
+                        <value>1</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>AdviewabilityFrame</key>
+                        <value>2</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>AdviewabilityPoint</key>
+                        <value>3</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>AdviewabilityAlpha</key>
+                        <value>4</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>AdviewabilityHide</key>
+                        <value>5</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>AdviewabilityCoverRate</key>
+                        <value>6</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>AdviewabilityShowFrame</key>
+                        <value>7</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>AdviewabilityForground</key>
+                        <value>8</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>MZviewabilityThreshold</key>
+                        <value>ve</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>MZviewabilityVideoPlayType</key>
+                        <value>vg</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>MZviewabilityVideoProgress</key>
+                        <value>vc</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>MZviewabilityVideoDuration</key>
+                        <value>vb</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>MZviewabilityRecord</key>
+                        <value>va</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>MZviewability</key>
+                        <value>vx</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>MZviewabilityConfigArea</key>
+                        <value>vh</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>MZviewabilityConfigThreshold</key>
+                        <value>vi</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    
+                </viewabilityarguments>
+            </config>
+            <separator>&amp;</separator>
+            <!--<separator>&amp;</separator>-->
+            <equalizer>=</equalizer>
             <!--如果设置true   timeStamper使用秒-->
             <timeStampUseSecond>true</timeStampUseSecond>
         </company>

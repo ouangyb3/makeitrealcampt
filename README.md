@@ -1,6 +1,6 @@
-## Admaster iOS SDK 部署指南
+## MMA iOS SDK 部署指南
 
-### 步骤1：添加 Admaster iOS SDK 到工程中
+### 步骤1：添加 MMA iOS SDK 到工程中
 
 1. 将SDK发布文件中，release目录下的**MobileTracking.h** 、**libMobileTracking.a**、**sdkconfig.xml** 三个文件拷贝到项目工程中，将 **sdkconfig.xml** 上传到 web 服务器，使其可以通过 web 方式访问，假设其地址为 **http://xxxxxx.com/sdkconfig.xml**（其后会用到）。
 2. 在项目工程 App 的 Target Build Settings 中的 **Other Linker Flags** 选项里添加 **-lxml2** **-all_load** 或 **-lxml2** **-force_load** 静态库的绝对路径
@@ -33,37 +33,42 @@ SDK 会自动下载远程的配置文件，使用最新的配置文件进行参�
 
  * 第一个参数为第三方公司的监测地址
  * 第二个参数为当前广告视图对象（**可视化广告监测为必传字段，普通广告监测默认缺省。**）
+ * 第三个参数为当前视频广告的播放类型（**视频可视化广告监测为可选字段，1-自动播放，2-手动播放，0-无法识别。**）
 
 普通广告监测
 
 ```
-[[MobileTracking sharedInstance] view:@"http://vxyz.admaster.com.cn/v/a17298,b81949763,c3194,i0,m201”];
+[[MobileTracking sharedInstance] view:@"http://example.com/xxxxxx”];
 
 ```
 可见性广告监测
 
 ```
-[[MobileTracking sharedInstance] view:@"http://vxyz.admaster.com.cn/v/a17298,b81949763,c3194,i0,m201” ad:adview];
+[[MobileTracking sharedInstance] view:@"http://example.com/xxxxxx” ad:adview];
 
 ```
 
 视频可见性广告监测
 
 ```
-[[MobileTracking sharedInstance] viewVideo:@"http://vxyz.admaster.com.cn/v/a17298,b81949763,c3194,i0,m201” ad:adview];
+[[MobileTracking sharedInstance] viewVideo:@"http://example.com/xxxxxx” ad:adview];
+
+```
+```
+[[MobileTracking sharedInstance] viewVideo:@"http://example.com/xxxxxx” ad:adview videoPlayType:type];
 
 ```
 可见性广告JS监测
 
 ```
-[[MobileTracking sharedInstance] jsView:@"http://vxyz.admaster.com.cn/v/a17298,b81949763,c3194,i0,m201” ad:adview];
+[[MobileTracking sharedInstance] jsView:@"http://example.com/xxxxxx” ad:adview];
 
 ```
 
 视频可见性广告JS监测
 
 ```
-[[MobileTracking sharedInstance] jsViewVideo:@"http://vxyz.admaster.com.cn/v/a17298,b81949763,c3194,i0,m201” ad:adview];
+[[MobileTracking sharedInstance] jsViewVideo:@"http://example.com/xxxxxx” ad:adview];
 
 ```
 
@@ -71,7 +76,7 @@ SDK 会自动下载远程的配置文件，使用最新的配置文件进行参�
 通过调用以下的代码进行点击的监测，参数为第三方公司的监测地址
 
 ```
-[[MobileTracking sharedInstance] click:@"http://vxyz.admaster.com.cn/v/a17298,b81949763,c3194,i0,m201"];
+[[MobileTracking sharedInstance] click:@"http://example.com/xxxxxx"];
 ```
 
 #### 5、进入后台时调用
@@ -111,8 +116,5 @@ SDK 的测试有两个方面：
 1. 参数是否齐全，URL 拼接方式是否正确
 2. 请求次数和第三方监测平台是否能对应上
 
-针对第一点，使用 Admaster SDK 测试平台进行测试和验证，登入 http://developer.admaster.com.cn/, 根据页面上的提示进行调用， 页面会实时显示出服务器接收到的信息，如果和本地的设备相关信息一致，则表示测试通过。
-
-针对第二点，建议使用第三方监测系统的正式环境进行测试，主要对比媒体自身广告系统监测数据和第三方监测数据数量上的差异。
-
+请联系第三方监测平台完成测试
 

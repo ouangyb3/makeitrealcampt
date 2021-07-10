@@ -92,7 +92,11 @@ AD_VB_POINT, \
 AD_VB_FRAME, \
 AD_VB_TIME, \
 AD_VB_EVENTS, \
-IMPRESSIONID \
+IMPRESSIONID, \
+MZ_VIEWABILITY_THRESHOLD, \
+MZ_VIEWABILITY_VIDEO_PLAYTYPE, \
+MZ_VIEWABILITY_VIDEO_PROGRESS, \
+MZ_VIEWABILITY \
 ]
 
 #define VIEW_ABILITY_MAIN_KEY @[  \
@@ -114,5 +118,17 @@ IMPRESSIONID \
 #define IOS7 7.0
 
 #define IOS6 6.0
+
+#define MZ_COMPANY_NAME @"miaozhen"
+#define MZ_COMPANY_DOMAIN @".miaozhen.com"
+#define TRACKING_KEY_NETWORKTYPE @"NETWORKTYPE" //mw
+#define MZ_VIEWABILITY_THRESHOLD @"MZviewabilityThreshold"          //ve
+#define MZ_VIEWABILITY_VIDEO_PLAYTYPE @"MZviewabilityVideoPlayType" //vg
+#define MZ_VIEWABILITY_VIDEO_PROGRESS @"MZviewabilityVideoProgress" //vc
+#define MZ_VIEWABILITY_VIDEO_DURATION @"MZviewabilityVideoDuration" //vb
+#define MZ_VIEWABILITY @"MZviewability"                             //vx
+#define MZ_VIEWABILITY_RECORD @"MZviewabilityRecord"                //va
+#define MZ_VIEWABILITY_CONFIG_THRESHOLD @"MZviewabilityConfigThreshold"    //vi
+#define MZ_VIEWABILITY_CONFIG_AREA @"MZviewabilityConfigArea"              //vh
 
 #endif

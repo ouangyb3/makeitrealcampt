@@ -49,8 +49,16 @@ typedef NS_ENUM(NSUInteger, VAMonitorStatus) {
 @property (nonatomic, strong,readonly) VAMonitorConfig *config;
 @property (nonatomic, readonly) BOOL isValid;
 @property (nonatomic, readonly) BOOL isVideo;
-
-
+@property (nonatomic) CGFloat validExposeDuration;
+@property (nonatomic) CGFloat vaildExposeShowRate;
+@property (nonatomic) CGFloat exposeVaildDuration;
+@property (nonatomic) int videoPlayType;
+@property (nonatomic) NSString *mzVideoMidPoint;
+@property (nonatomic) int videoDuration;
+@property (nonatomic) BOOL isMZURL;
+@property (nonatomic) BOOL isNeedRecord;
+@property (nonatomic) BOOL mzMidOver;
+@property (nonatomic) BOOL mzEndOver;
 @property (nonatomic, weak) id<VAMonitorDataProtocol> delegate;
 
 

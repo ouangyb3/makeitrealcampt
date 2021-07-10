@@ -33,6 +33,7 @@
 
 // 视频可视化监测曝光
 - (void)viewVideo:(NSString *)url ad:(UIView *)adView;
+- (void)viewVideo:(NSString *)url ad:(UIView *)adView videoPlayType:(NSInteger)type;//type:视频播放类型，1-自动播放，2-手动播放，0-无法识别
 
 // 普通曝光
 - (void)jsView:(NSString *)url ad:(UIView *)adView;

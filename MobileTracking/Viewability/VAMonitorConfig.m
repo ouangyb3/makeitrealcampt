@@ -17,9 +17,9 @@
 - (instancetype)init {
     self = [super init];
     _maxDuration = 120;  // 默认监测时长
-    _exposeValidDuration = 2; //  普通曝光达标时长(秒)
-    _videoExposeValidDuration = 1; // 视频曝光达标时长(秒)
-    _monitorInterval = 0.2;  // 监测事件间隔(秒)
+    _exposeValidDuration = 1; //  普通曝光达标时长(秒)
+    _videoExposeValidDuration = 2; // 视频曝光达标时长(秒)
+    _monitorInterval = 0.1;  // 监测事件间隔(秒)
     _cacheInterval = 1; // 缓存事件间隔(秒)
     _vaildExposeShowRate = 0.5; // 有效曝光比例
     _maxUploadCount = 10; //最大可上传监测节点数量
