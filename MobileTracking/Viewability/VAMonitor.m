@@ -99,6 +99,13 @@
     } else {
         _mzEndOver = YES;
     }
+    //mzcommit-如果已经上报过可见数据了，则只进行中点监测，不再重复上报数据，等超时或view释放停止监测
+    if (_isValid) {
+        if (self.timeline.monitorDuration >= _config.maxDuration || !_adView) {
+            self.status = VAMonitorStatusUploaded;
+        }
+        return;
+    }
     
     //  条件1: 达到曝光最大时长并且当前广告未正在进行曝光
     if(self.timeline.monitorDuration >= _config.maxDuration && self.timeline.exposeDuration < 0.001) {

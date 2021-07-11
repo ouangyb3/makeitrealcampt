@@ -480,10 +480,10 @@
 			isa = PBXGroup;
 			children = (
 				AF1AAE901EF61EF300E9C276 /* ViewabilityService.h */,
-				AF1AAE911EF61EF300E9C276 /* ViewabilityService.m */,
 				AF1AAE821EF61EF300E9C276 /* VAMonitorConfig.h */,
 				AF1AAE831EF61EF300E9C276 /* VAMonitorConfig.m */,
 				AF1AAE801EF61EF300E9C276 /* VAMonitor.h */,
+				AF1AAE911EF61EF300E9C276 /* ViewabilityService.m */,
 				AF1AAE811EF61EF300E9C276 /* VAMonitor.m */,
 				AF1AAE8C1EF61EF300E9C276 /* VAViewMonitor.h */,
 				AF1AAE8D1EF61EF300E9C276 /* VAViewMonitor.m */,
