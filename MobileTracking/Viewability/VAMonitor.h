@@ -29,6 +29,11 @@ typedef NS_ENUM(NSUInteger, VAMonitorStatus) {
     
 };
 
+typedef NS_ENUM(NSUInteger, VAProgressStatus) {
+    VAProgressStatusRuning = 0,              // 正常工作
+    VAProgressStatusEnd = 3              // 上传完成
+};
+
 
 @interface VAMonitor : NSObject <NSCoding>
 {
@@ -46,25 +51,19 @@ typedef NS_ENUM(NSUInteger, VAMonitorStatus) {
 
 @property (nonatomic, strong, readonly) VAMonitorTimeline *timeline;
 @property (nonatomic) VAMonitorStatus status;
+@property (nonatomic) VAProgressStatus progressStatus;
+
 @property (nonatomic, strong,readonly) VAMonitorConfig *config;
 @property (nonatomic, readonly) BOOL isValid;
 @property (nonatomic, readonly) BOOL isVideo;
-@property (nonatomic) CGFloat validExposeDuration;
-@property (nonatomic) CGFloat vaildExposeShowRate;
-@property (nonatomic) CGFloat exposeVaildDuration;
-@property (nonatomic) int videoPlayType;
-@property (nonatomic) NSString *mzVideoMidPoint;
-@property (nonatomic) int videoDuration;
-@property (nonatomic) BOOL isMZURL;
-@property (nonatomic) BOOL isNeedRecord;
-@property (nonatomic) BOOL mzMidOver;
-@property (nonatomic) BOOL mzEndOver;
+
+
 @property (nonatomic, weak) id<VAMonitorDataProtocol> delegate;
 
 
-+ (VAMonitor *)monitorWithView:(UIView *)view isVideo:(BOOL)isVideo url:(NSString *)url redirectURL:(NSString *)redirectURL impressionID:(NSString *)impID adID:(NSString *)adID keyValueAccess:(NSDictionary *)keyValueAccess;
++ (VAMonitor *)monitorWithView:(UIView *)view isVideo:(BOOL)isVideo url:(NSString *)url redirectURL:(NSString *)redirectURL impressionID:(NSString *)impID adID:(NSString *)adID keyValueAccess:(NSDictionary *)keyValueAccess config:(VAMonitorConfig *)config;
 
-- (void)setConfig:(VAMonitorConfig *)config;
+//- (void)setConfig:(VAMonitorConfig *)config;
 
 - (void)captureAdStatusAndVerify;
 

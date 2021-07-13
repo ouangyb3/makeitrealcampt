@@ -19,6 +19,7 @@
 @property (nonatomic, strong) VAMonitorFrame *visibleStart;
 @property (nonatomic, strong) VAMonitorFrame *end;
 @property (nonatomic, strong) NSMutableArray <VAMonitorFrame *> *frames;
+
 @end
 
 
@@ -29,8 +30,6 @@
         self.frames = [NSMutableArray array];
         _exposeDuration = 0;
         _monitorDuration = 0;
-        _isVisibleSlice = NO;
-        _prevIsVisibleSlice = NO;
         _monitor = monitor;
     }
     return self;
@@ -46,36 +45,11 @@
     }
     
     /**
-     *  计算曝光时长
-     */
-    CGFloat monitorCoverRate;
-    if(self.monitor.isMZURL && self.monitor.vaildExposeShowRate > 0 && self.monitor.vaildExposeShowRate < 1) {
-        monitorCoverRate = self.monitor.vaildExposeShowRate;
-    } else {
-        monitorCoverRate = self.monitor.config.vaildExposeShowRate;
-    }
-    if([frame isVisible] && (1 - frame.coverRate) >= monitorCoverRate) { // 当前帧可见 累计曝光时间.
-        _isVisibleSlice = YES;
-        if(!_visibleStart) {
-            _visibleStart = frame;
-        }
-        _exposeDuration = [frame.captureDate timeIntervalSinceDate:_visibleStart.captureDate];
-        
-    } else {  // 当前帧不可见 曝光时间重置
-        _isVisibleSlice = NO;
-        _visibleStart = nil;
-        _exposeDuration = 0;
-    }
-    
-    _monitorDuration = [_end.captureDate timeIntervalSinceDate:_start.captureDate];
-    NSLog(@"ID:%p 持续监测时长:%f 曝光时长:%f",self,_monitorDuration,_exposeDuration);
-    
-    /**
      *  第一个添加为首 然后判断是否需要记录与end 相比较相同则放弃,end 换为当前帧
      */
     if(!_frames.count ) {
         NSLog(@"start 帧保存成功");
-        
+
         _start = frame;
     }
     
@@ -86,11 +60,29 @@
             [_frames removeObjectAtIndex:0];
         }
         NSLog(@"当前帧发生变更记录%@",frame.captureDate);
-        _prevIsVisibleSlice = _isVisibleSlice;
+
     }
     
     _end = frame;
+
     
+    /**
+     *  计算曝光时长
+     */
+    if([frame isVisible] && (1 - frame.coverRate) >= self.monitor.config.vaildExposeShowRate) { // 当前帧可见 累计曝光时间.
+        if(!_visibleStart) {
+            _visibleStart = frame;
+        }
+        _exposeDuration = [frame.captureDate timeIntervalSinceDate:_visibleStart.captureDate];
+        
+    } else {  // 当前帧不可见 曝光时间重置
+        _visibleStart = nil;
+        _exposeDuration = 0;
+    }
+    
+    _monitorDuration = [_end.captureDate timeIntervalSinceDate:_start.captureDate];
+    NSLog(@"ID:%p 持续监测时长:%f 曝光时长:%f 监测时间片:%d",self,_monitorDuration,_exposeDuration,self.frames.count);
+
 }
 
 - (BOOL)needRecord:(VAMonitorFrame *)frame {
@@ -98,17 +90,20 @@
     if (!_end) {
         return YES;
     }
-    
-    if (self.monitor.isMZURL) {
-        return _prevIsVisibleSlice != _isVisibleSlice;
+    if(self.monitor.config.trackPolicy == VATrackPolicyVisibleChanged) {
+        BOOL endReach = [_end isVisible] && (1 - _end.coverRate) >= self.monitor.config.vaildExposeShowRate;
+        BOOL currReach = [frame isVisible] && (1 - frame.coverRate) >= self.monitor.config.vaildExposeShowRate;
+        DLOG(@"end可见:%d,当前可见:%d",endReach,currReach);
+        return endReach != currReach;
     } else {
         // 与end 相同 不记录
         if([_end isEqualFrame:frame]) {
             return NO;
+        } else {
+            return YES;
         }
     }
     
-    return YES;
 }
 
 - (NSArray<VAMonitorFrame *> *)generateOutputFrames {
@@ -148,19 +143,16 @@
                                      AD_VB_TIME : obj.captureDate.mtimestamp,          // 监测时间戳毫秒秒
                                      AD_VB_FRAME : VAStringFromSize(obj.frame.size), // 广告原始尺寸
                                      AD_VB_POINT : VAStringFromPoint(obj.windowFrame.origin), // 广告可视的原点位置
-                                     AD_VB_ALPHA : [NSString stringWithFormat:@"%.2f",obj.alpha], // 透明度
+                                     AD_VB_ALPHA : [NSString stringWithFormat:@"%g",obj.alpha], // 透明度
                                      AD_VB_HIDE : [NSString stringWithFormat:@"%d",obj.hidden],  // 隐藏
-                                     AD_VB_COVER_RATE : [NSString stringWithFormat:@"%.2f",obj.coverRate], // 覆盖比例
+                                     AD_VB_COVER_RATE : [NSString stringWithFormat:@"%g",obj.coverRate], // 覆盖比例
                                      AD_VB_SHOWFRAME : VAStringFromSize(obj.showFrame.size), // 广告可视尺寸
                                      AD_VB_FORGROUND : [NSString stringWithFormat:@"%d",obj.isForground]  // 是否前台
                                      };
-
+        
         NSMutableDictionary *accessDictionary = [NSMutableDictionary dictionary];
         [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString *key,NSString  *obj, BOOL * _Nonnull stop) {
             if([self.monitor canRecord:key]) {
-                if (self.monitor.isMZURL && [key isEqualToString:AD_VB_HIDE]) {
-                    obj = [obj isEqualToString:@"1"]?@"0":@"1";
-                }
                 accessDictionary[[self.monitor keyQuery:key]] = obj;
             }
         }];

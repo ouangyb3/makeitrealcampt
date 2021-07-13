@@ -12,8 +12,8 @@
 @implementation VAViewMonitor
 
 - (void)captureAdStatus {
-    VAMonitorFrame *frame = [[VAMonitorFrame alloc] initWithView:self.adView isMZURL:self.isMZURL];
-    NSLog(@"ID:%@ 捕获数据中:%@",self.impressionID,frame);
+    VAMonitorFrame *frame = [[VAMonitorFrame alloc] initWithView:self.adView];
+//    NSLog(@"ID:%@ 捕获数据中:%@",self.impressionID,frame);
     [self.timeline enqueueFrame:frame];
 }
 @end

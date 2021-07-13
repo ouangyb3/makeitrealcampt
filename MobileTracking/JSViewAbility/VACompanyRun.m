@@ -40,7 +40,7 @@ static const char *data_send_queue = "adview.jsmonitor.dataSend.queue";
         
         NSString *jsPath = [VAJSMaros jsPathWithCompany:company];
         if(!jsPath || !jsPath.length) {
-            [MMA_Log log:@"%@ JS 加载失败" withParameters:company.name];
+            [MMA_Log log:@"%@ JS 加载失败",company.name];
             return nil;
         }
         NSString *str = [[NSString alloc] initWithData:[NSData dataWithContentsOfFile:jsPath] encoding:NSUTF8StringEncoding];

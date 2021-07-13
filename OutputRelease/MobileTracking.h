@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 Admaster. All rights reserved.
 //
 
-//#define MMA_SDK_VERSION @"V2.0.0"
+//#define MMA_SDK_VERSION @"1.3.4"
 
 #import <UIKit/UIKit.h>
 
@@ -28,18 +28,11 @@
 // 普通曝光
 - (void)view:(NSString *)url;
 
-// 可视化监测曝光
-- (void)view:(NSString *)url ad:(UIView *)adView;
-
 // 视频可视化监测曝光
 - (void)viewVideo:(NSString *)url ad:(UIView *)adView;
-- (void)viewVideo:(NSString *)url ad:(UIView *)adView videoPlayType:(NSInteger)type;//type:视频播放类型，1-自动播放，2-手动播放，0-无法识别
 
-// 普通曝光
-- (void)jsView:(NSString *)url ad:(UIView *)adView;
-
-// 视频可视化监测曝光
-- (void)jsViewVideo:(NSString *)url ad:(UIView *)adView;
+// 可视化监测曝光
+- (void)view:(NSString *)url ad:(UIView *)adView;
 
 // 清空待发送任务队列和发送失败任务队列
 - (BOOL)clearAll;

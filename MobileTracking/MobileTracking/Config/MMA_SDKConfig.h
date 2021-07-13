@@ -60,7 +60,7 @@
 @end
 /*--------------公司开关设置--------------*/
 @interface MMA_Switch : NSObject
-
+@property (nonatomic, assign) NSInteger viewabilityTrackPolicy;
 @property (nonatomic, assign) Boolean isTrackLocation;
 @property (nonatomic, assign) NSInteger offlineCacheExpiration;
 @property (nonatomic, strong) NSMutableDictionary *encrypt;

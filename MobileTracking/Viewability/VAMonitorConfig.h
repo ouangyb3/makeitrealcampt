@@ -8,21 +8,42 @@
 
 #import <UIKit/UIKit.h>
 
-@interface VAMonitorConfig : NSObject
+typedef NS_OPTIONS(NSUInteger, VAVideoProgressTrackType) {
+    VAVideoProgressTrackTypeNone = 0,
+    VAVideoProgressTrackType1_4 = 1 << 0,
+    VAVideoProgressTrackType2_4 = 1 << 1,
+    VAVideoProgressTrackType3_4 = 1 << 2,
+    VAVideoProgressTrackType4_4 = 1 << 3,
 
-@property (nonatomic) CGFloat maxDuration;
-@property (nonatomic) CGFloat exposeValidDuration;
-@property (nonatomic) CGFloat videoExposeValidDuration;
+};
+
+typedef NS_ENUM(NSUInteger, VATrackPolicy) {
+    VATrackPolicyPositionChanged,
+    VATrackPolicyVisibleChanged
+};
+
+@interface VAMonitorConfig : NSObject <NSCopying>
+
 
 @property (nonatomic) CGFloat monitorInterval;
 @property (nonatomic) CGFloat maxUploadCount;
 @property (nonatomic) CGFloat vaildExposeShowRate;
-
 @property (nonatomic) CGFloat cacheInterval;
+@property (nonatomic) CGFloat maxDuration;
 
-@property (nonatomic) NSDictionary *keyValueConfig;
+@property (nonatomic) CGFloat exposeValidDuration;
+@property (nonatomic) BOOL needRecordData;
+@property (nonatomic) CGFloat videoExposeValidDuration;
+@property (nonatomic) CGFloat videoDuration;
+@property (nonatomic) VAVideoProgressTrackType trackProgressPointsTypes;
+
+@property (nonatomic) BOOL needRecordProgress;
+@property (nonatomic) NSInteger videoPlayType;
+@property (nonatomic) VATrackPolicy trackPolicy;
 
 
 + (instancetype)defaultConfig;
+- (BOOL)canTrackProgress;
+- (NSString *)progressTrackConfigString;
 
 @end

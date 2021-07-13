@@ -121,23 +121,4 @@
     }
 }
 
-- (NSInteger)getCurrentNetTypeMZ
-{
-    NSInteger type = [self networkCondition];
-    switch (type) {
-        case NETWORK_STATUS_NO:
-            return 0;
-            break;
-        case NETWORK_STATUS_WIFI:
-            return 1;
-            break;
-        case NETWORK_STATUS_3G:
-            return 2;
-            break;
-        default:
-            return 0;
-            break;
-    }
-}
-
 @end

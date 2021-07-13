@@ -12,6 +12,6 @@
 
 + (void)setDebug:(BOOL)debug;
 
-+ (void)log:(NSString *)format withParameters:(id)parameter, ...;
++ (void)log:(NSString *)format, ...;
 
 @end

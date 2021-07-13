@@ -27,6 +27,5 @@
 @property (nonatomic, strong, readonly) NSString *location;
 @property (nonatomic, strong, readonly) NSString *term;
 @property (nonatomic, assign, readonly) NSInteger networkCondition;
-@property (nonatomic, assign, readonly) NSInteger getCurrentNetTypeMZ;
 
 @end

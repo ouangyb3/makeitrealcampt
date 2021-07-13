@@ -12,8 +12,10 @@
 
 #define VAStringFromSize(x) [VAMaros sizeToString:x]
 #define VAStringFromPoint(x) [VAMaros pointToString:x]
-//#define NSLog(format,...) MMPrint(format,...)
-#define NSLog(format,...)
+#define DLOG(FORMAT, ...) //printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#define NSLog(FORMAT, ...) //printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+
+//#define NSLog(format,...)
 
 @interface VAMaros : NSObject
 

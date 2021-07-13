@@ -73,6 +73,24 @@
 #define AD_VB_EVENTS @"AdviewabilityEvents"
 #define IMPRESSIONID @"ImpressionID"
 
+//#define AD_VB_ENABLE @"AdviewabilityEnable" //是否开启 ViewAbility 监测
+
+//配置读取占位符
+#define AD_VB_AREA @"AdviewabilityConfigArea" //满足条件可见比例%
+#define AD_VB_THRESHOLD @"AdviewabilityConfigThreshold" //满足可视时长(s)
+#define AD_VB_VIDEODURATION @"AdviewabilityVideoDuration" //可视视频播放时长 (s)
+#define AD_VB_VIDEOPOINT @"AdviewabilityVideoProgressPoint" // 配置监测点 1111 全部监测 1100 监测1/4 1/2
+#define AD_VB_RECORD @"AdviewabilityRecord" //可视轨迹数据是否上报
+
+#define AD_VB_VIDEOPLAYTYPE @"AdviewabilityVideoPlayType" //可视监测传入的视频播放类型
+#define AD_VB_VIDEOPROGRESS @"AdviewabilityVideoProgress" //可视视频播放进度监测事件类型字段 (string)播放 1/4：25 播放 1/2：50播放 3/4：75 播放完成：100
+
+
+//switch
+#define AD_VB_POLICY @"viewabilityTrackPolicy"  //可视化监测采集策略
+
+
+//FOR JS
 #define AD_VBJS_ID @"AdviewabilityID"
 #define AD_VBJS_TYPE @"AdviewabilityType"
 
@@ -93,10 +111,17 @@ AD_VB_FRAME, \
 AD_VB_TIME, \
 AD_VB_EVENTS, \
 IMPRESSIONID, \
-MZ_VIEWABILITY_THRESHOLD, \
-MZ_VIEWABILITY_VIDEO_PLAYTYPE, \
-MZ_VIEWABILITY_VIDEO_PROGRESS, \
-MZ_VIEWABILITY \
+AD_VB_VIDEOPLAYTYPE, \
+AD_VB_VIDEOPROGRESS \
+]
+//AD_VB_AREA, \
+//AD_VB_THRESHOLD, \
+//AD_VB_ENABLE, \
+//AD_VB_VIDEODURATION, \
+//AD_VB_VIDEOPROGRESS, \
+//AD_VB_VIDEOPOINT, \
+//AD_VB_RECORD, \
+//AD_VB_VIDEOPLAYTYPE, \
 ]
 
 #define VIEW_ABILITY_MAIN_KEY @[  \
@@ -118,17 +143,5 @@ IMPRESSIONID \
 #define IOS7 7.0
 
 #define IOS6 6.0
-
-#define MZ_COMPANY_NAME @"miaozhen"
-#define MZ_COMPANY_DOMAIN @".miaozhen.com"
-#define TRACKING_KEY_NETWORKTYPE @"NETWORKTYPE" //mw
-#define MZ_VIEWABILITY_THRESHOLD @"MZviewabilityThreshold"          //ve
-#define MZ_VIEWABILITY_VIDEO_PLAYTYPE @"MZviewabilityVideoPlayType" //vg
-#define MZ_VIEWABILITY_VIDEO_PROGRESS @"MZviewabilityVideoProgress" //vc
-#define MZ_VIEWABILITY_VIDEO_DURATION @"MZviewabilityVideoDuration" //vb
-#define MZ_VIEWABILITY @"MZviewability"                             //vx
-#define MZ_VIEWABILITY_RECORD @"MZviewabilityRecord"                //va
-#define MZ_VIEWABILITY_CONFIG_THRESHOLD @"MZviewabilityConfigThreshold"    //vi
-#define MZ_VIEWABILITY_CONFIG_AREA @"MZviewabilityConfigArea"              //vh
 
 #endif

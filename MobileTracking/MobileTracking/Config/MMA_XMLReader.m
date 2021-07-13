@@ -144,6 +144,10 @@
         GDataXMLElement *offlineCacheExpiration = [[element elementsForName:@"switch"] firstObject];
         company.MMASwitch.offlineCacheExpiration = [self stringToIntergetFromElement:offlineCacheExpiration name:@"offlineCacheExpiration"];
         
+        GDataXMLElement *viewabilityTrackPolicy = [[element elementsForName:@"switch"] firstObject];
+        company.MMASwitch.viewabilityTrackPolicy = [self stringToIntergetFromElement:viewabilityTrackPolicy name:@"viewabilityTrackPolicy"];
+
+        
         
         GDataXMLElement *encryptElement = [[element nodesForXPath:@"switch/encrypt" error:nil] firstObject];
         company.MMASwitch.encrypt = [NSMutableDictionary dictionary];

@@ -62,14 +62,19 @@ static const char *view_capture_queue = "adview.capture.queue";
     [_monitors enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, VAMonitor * _Nonnull obj, BOOL * _Nonnull stop) {
         
         __block VAMonitorStatus tempStatus;
+        __block VAProgressStatus tempProgressStatus;
+
         dispatch_barrier_sync(_captureQueue, ^{
             tempStatus = obj.status;
+            tempProgressStatus = obj.progressStatus;
         });
         
-        if(tempStatus == VAMonitorStatusUploaded) {
+        //进度监测或可视化监测有一个没有结束则不移除
+        if(tempStatus == VAMonitorStatusUploaded && tempProgressStatus == VAProgressStatusEnd) {
             [invalidMonitors addObject:obj.adID];
             NSLog(@"ID:%@视图上传完成停止监测",obj.adID);
-        } else if(tempStatus == VAMonitorStatusRuning) {
+            //可视化监测和进度监测如果有一个没有结束,则继续监测.
+        } else if(tempStatus == VAMonitorStatusRuning || tempProgressStatus == VAProgressStatusRuning) {
             dispatch_async(_captureQueue, ^{
                 [obj captureAdStatusAndVerify];
                 NSLog(@"ID:%@视图捕获状态",obj.adID);
@@ -91,7 +96,6 @@ static const char *view_capture_queue = "adview.capture.queue";
     }
     dispatch_async(_monitorQueue, ^{
         // 设置monitor 的配置
-        [monitor setConfig:_config];
         if(!monitor.adID || !monitor.adID.length) {
             NSLog(@"adID 不存在");
             return;
@@ -134,7 +138,10 @@ static const char *view_capture_queue = "adview.capture.queue";
             NSLog(@"读取%lu条缓存数据",(unsigned long)[[cacheMonitors allKeys] count]);
             [cacheMonitors enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, VAMonitor * _Nonnull obj, BOOL * _Nonnull stop) {
                 obj.delegate = delegate;
-                [obj stopAndUpload];
+                // 如果已经上传过监测数据,则不再上传
+                if(obj.status != VAMonitorStatusUploaded) {
+                    [obj stopAndUpload];
+                }
             }];
             [[NSFileManager defaultManager] removeItemAtPath:VA_MONITOR_SAVE_PATH error:nil];
         }

@@ -26,7 +26,7 @@
 
 @property (nonatomic,readonly) CGFloat coverRate;  // 被覆盖比例
 
-- (instancetype)initWithView:(UIView *)view isMZURL:(BOOL)isMZURL;
+- (instancetype)initWithView:(UIView *)view;
 
 - (BOOL)isVisible;
 

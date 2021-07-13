@@ -13,17 +13,16 @@
 
 #import "VAMaros.h"
 @interface VAMonitor () {
-    VAMonitorConfig *_config;
-    
 }
 @property (nonatomic, strong) NSDictionary *keyValueAccess;
+@property (nonatomic) VAVideoProgressTrackType progressTypeNeedTrack;
 
 @end
 
 
 @implementation VAMonitor
 
-- (instancetype)initWithView:(UIView *)view isVideo:(BOOL)isVideo url:(NSString *)url redirectURL:(NSString *)redirectURL impressionID:(NSString *)impID adID:(NSString *)adID  keyValueAccess:(NSDictionary *)keyValueAccess{
+- (instancetype)initWithView:(UIView *)view isVideo:(BOOL)isVideo url:(NSString *)url redirectURL:(NSString *)redirectURL impressionID:(NSString *)impID adID:(NSString *)adID  keyValueAccess:(NSDictionary *)keyValueAccess config:(VAMonitorConfig *)config {
     if(!view) {
         NSLog(@"view 视图为空,未开始监测");
         return nil;
@@ -45,29 +44,22 @@
         _timeline = [[VAMonitorTimeline alloc] initWithMonitor:self];
         _isValid = NO;
         _keyValueAccess = keyValueAccess;
-        _mzMidOver = NO;
-        _mzEndOver = NO;
+        _config = config;
+      
         self.status = VAMonitorStatusRuning;
+        self.progressStatus = VAProgressStatusRuning;
+        if(![_config canTrackProgress] || !self.isVideo) {
+            self.progressStatus = VAProgressStatusEnd;
+        }
+        self.progressTypeNeedTrack = self.config.trackProgressPointsTypes;
     }
     return self;
 }
 
 
-- (void)setConfig:(VAMonitorConfig *)config {
-    _config = config;
-}
-
-- (VAMonitorConfig *)config {
-    if(!_config) {
-        _config = [VAMonitorConfig defaultConfig];
-    }
-    return _config;
-}
-
-
-+ (VAMonitor *)monitorWithView:(UIView *)view isVideo:(BOOL)isVideo  url:(NSString *)url redirectURL:(NSString *)redirectURL impressionID:(NSString *)impID adID:(NSString *)adID keyValueAccess:(NSDictionary *)keyValueAccess {
++ (VAMonitor *)monitorWithView:(UIView *)view isVideo:(BOOL)isVideo  url:(NSString *)url redirectURL:(NSString *)redirectURL impressionID:(NSString *)impID adID:(NSString *)adID keyValueAccess:(NSDictionary *)keyValueAccess config:(VAMonitorConfig *)config  {
     VAMonitor *monitor;
-    monitor = [[VAViewMonitor alloc] initWithView:view isVideo:(BOOL)isVideo url:url redirectURL:redirectURL impressionID:impID adID:adID keyValueAccess:keyValueAccess];
+    monitor = [[VAViewMonitor alloc] initWithView:view isVideo:(BOOL)isVideo url:url redirectURL:redirectURL impressionID:impID adID:adID keyValueAccess:keyValueAccess config:config];
     return monitor;
 }
 
@@ -75,6 +67,9 @@
 - (void)captureAdStatusAndVerify {
     if(_adView) {
         [self captureAdStatus];
+    }
+    if(_isVideo) {
+        [self verifyProgress];
     }
     [self verifyExpose];
 }
@@ -89,21 +84,65 @@
     // reimplement by subclass
 }
 
+// 验证进度监测配置
+- (void)verifyProgress {
+    if(self.progressStatus == VAProgressStatusEnd) {
+        return;
+    }
+    if(![self.config canTrackProgress]) {
+        self.progressStatus = VAProgressStatusEnd;
+        return;
+    }
+    
+//    CGFloat progressTime = 0;option & (~MyOption4)
+    NSString *uploadPar = @"";
+    
+    if((VAVideoProgressTrackType1_4 & self.progressTypeNeedTrack) && self.timeline.monitorDuration >= self.config.videoDuration / 4) {
+        uploadPar = @"25";
+        self.progressTypeNeedTrack = self.progressTypeNeedTrack & (~VAVideoProgressTrackType1_4);
+        DLOG(@"VB 1/4 监测,持续时长%f,总时长:%f",self.timeline.monitorDuration,self.config.videoDuration);
+    } else if((VAVideoProgressTrackType2_4 & self.progressTypeNeedTrack) && self.timeline.monitorDuration >= self.config.videoDuration / 4 * 2) {
+        uploadPar = @"50";
+        self.progressTypeNeedTrack = self.progressTypeNeedTrack & (~VAVideoProgressTrackType2_4);
+        DLOG(@"VB 2/4 监测,持续时长%f,总时长:%f",self.timeline.monitorDuration,self.config.videoDuration);
+
+    } else if((VAVideoProgressTrackType3_4 & self.progressTypeNeedTrack) && self.timeline.monitorDuration >= self.config.videoDuration / 4 * 3) {
+        uploadPar = @"75";
+        self.progressTypeNeedTrack = self.progressTypeNeedTrack & (~VAVideoProgressTrackType3_4);
+        DLOG(@"VB 3/4 监测,持续时长%f,总时长:%f",self.timeline.monitorDuration,self.config.videoDuration);
+
+    } else if((VAVideoProgressTrackType4_4 & self.progressTypeNeedTrack) && self.timeline.monitorDuration >= self.config.videoDuration) {
+        uploadPar = @"100";
+        self.progressTypeNeedTrack = self.progressTypeNeedTrack & (~VAVideoProgressTrackType4_4);
+        DLOG(@"VB 4/4 监测,持续时长%f,总时长:%f",self.timeline.monitorDuration,self.config.videoDuration);
+    }
+    //回传进度数据给MMASDK
+    if(uploadPar.length > 0) {
+        NSMutableDictionary *accessDictionary = [NSMutableDictionary dictionary];
+        if ([self canRecord:IMPRESSIONID]) {
+            accessDictionary[[self keyQuery:IMPRESSIONID]] = _impressionID;
+        }
+        if ([self canRecord:AD_VB_VIDEOPROGRESS]) {
+            accessDictionary[[self keyQuery:AD_VB_VIDEOPROGRESS]] = uploadPar;
+        }
+        if(self.delegate && [self.delegate respondsToSelector:@selector(monitor:didReceiveData:)]) {
+            [_delegate monitor:self didReceiveData:accessDictionary];
+        }
+    }
+    
+    //adView 消失 或track点全部监测完成
+    if(!((self.progressTypeNeedTrack & VAVideoProgressTrackType1_4) || (self.progressTypeNeedTrack & VAVideoProgressTrackType2_4) || (self.progressTypeNeedTrack & VAVideoProgressTrackType3_4) || (self.progressTypeNeedTrack & VAVideoProgressTrackType4_4)) || !_adView) {
+        self.progressTypeNeedTrack = VAVideoProgressTrackTypeNone;
+        self.progressStatus = VAProgressStatusEnd;
+    }
+    
+}
+
 // 验证是否可上报
 - (void)verifyExpose {
     //曝光有效间隔和最大时长达标,等待上报
     
-    //mzcommit-满足条件进行中点监测，否则把mzEndOver置成true，走普通的数据上报流程
-    if (self.isVideo && self.videoDuration > 0) {
-        [self mzMidPointVerifyUpload];
-    } else {
-        _mzEndOver = YES;
-    }
-    //mzcommit-如果已经上报过可见数据了，则只进行中点监测，不再重复上报数据，等超时或view释放停止监测
-    if (_isValid) {
-        if (self.timeline.monitorDuration >= _config.maxDuration || !_adView) {
-            self.status = VAMonitorStatusUploaded;
-        }
+    if(self.status != VAMonitorStatusRuning) {
         return;
     }
     
@@ -116,25 +155,18 @@
     }
     
     // 条件2: 当前曝光时长已经满足曝光上报条件阈值
-    if (_isMZURL && _validExposeDuration > 0) {
-        _exposeVaildDuration = _validExposeDuration;
-    } else {
-        _exposeVaildDuration = _isVideo ? _config.videoExposeValidDuration : _config.exposeValidDuration;
-    }
-    if(self.timeline.exposeDuration >= _exposeVaildDuration && !_isValid) {
-        NSLog(@"ID:%@满足曝光条件进行上报等待,广告位监测帧数:%ld",self.impressionID,[self.timeline count]);
+    CGFloat exposeVaildDuration = _isVideo ? _config.videoExposeValidDuration : _config.exposeValidDuration;
+    if(self.timeline.exposeDuration >= exposeVaildDuration) {
+        NSLog(@"ID:%@满足曝光条件进行上报等待,广告位监测帧数:%ld",self.impressionID,(long)(long)[self.timeline count]);
         _isValid = YES;
-        if(_mzEndOver) {
-            //中点监测结束，才停止定时器
-            self.status = VAMonitorStatusWaitingUpload;
-        }
+        self.status = VAMonitorStatusWaitingUpload;
         [self generateUpload];
         return;
     }
     
     // 条件3: AdView 释放满足上报条件
     if(!_adView) {
-        NSLog(@"ID:%@ AdView 消失,准备上报等待,广告位监测帧数:%ld",self.impressionID,[self.timeline count]);
+        NSLog(@"ID:%@ AdView 消失,准备上报等待,广告位监测帧数:%ld",self.impressionID,(long)(long)[self.timeline count]);
         self.status = VAMonitorStatusWaitingUpload;
         [self generateUpload];
         return;
@@ -156,27 +188,21 @@
 }
 
 - (NSString *)generateUpload {
-
-    NSMutableDictionary *parmaters;
-    if (self.isMZURL) {
-        parmaters = [[NSMutableDictionary alloc] initWithObjectsAndKeys:_impressionID,IMPRESSIONID,
-                                                                        [NSString stringWithFormat:@"%d",_isValid?1:4],MZ_VIEWABILITY,
-                                                                        [NSString stringWithFormat:@"%d",(int)_exposeVaildDuration],MZ_VIEWABILITY_THRESHOLD,
-                                                                        nil];
-        if (self.isNeedRecord) {
-            [parmaters setValue:[self.timeline generateUploadEvents] forKey:AD_VB_EVENTS];
-        }
-        if (self.isVideo) {
-            [parmaters setValue:[NSString stringWithFormat:@"%d", _videoPlayType] forKey:MZ_VIEWABILITY_VIDEO_PLAYTYPE];
-        }
-    } else {
-        parmaters = [[NSMutableDictionary alloc] initWithObjectsAndKeys:_impressionID,IMPRESSIONID,
-                                                                        [self.timeline generateUploadEvents],AD_VB_EVENTS,
-                                                                        [NSString stringWithFormat:@"%d",_isValid],AD_VB,
-                                                                        @"1",AD_MEASURABILITY,
-                                                                        nil];
+    NSMutableDictionary *parmaters = [NSMutableDictionary dictionaryWithDictionary:@{
+                                                                                     IMPRESSIONID : _impressionID,
+                                                                                     //                                AD_VB_EVENTS : [self.timeline generateUploadEvents],  // 9字段
+                                                                                     AD_VB : [NSString stringWithFormat:@"%d",_isValid],
+                                                                                     AD_MEASURABILITY : @"1"    // 是否可测量
+                                                                                     }];
+    // 是否需要传入记录的数据
+    if(self.config.needRecordData) {
+        parmaters[AD_VB_EVENTS] = [self.timeline generateUploadEvents];
     }
     
+    // 视频类型传入
+    if (self.isVideo) {
+        [parmaters setValue:[NSString stringWithFormat:@"%ld", (long)self.config.videoPlayType] forKey:AD_VB_VIDEOPLAYTYPE];
+    }
     
     NSMutableDictionary *accessDictionary = [NSMutableDictionary dictionary];
     [parmaters enumerateKeysAndObjectsUsingBlock:^(NSString * key, id obj, BOOL * _Nonnull stop) {
@@ -189,48 +215,9 @@
         [_delegate monitor:self didReceiveData:accessDictionary];
     }
     
-    if(!(_isValid && !_mzEndOver)) {
-        //可见但中点监测没结束，先不停定时器
-        self.status = VAMonitorStatusUploaded;
-    }
+    self.status = VAMonitorStatusUploaded;
     
     return @"";
-}
-
-- (void)mzMidPointVerifyUpload {
-    if (_mzEndOver) {
-        return;
-    }
-    
-    if (!_mzMidOver && self.timeline.monitorDuration >= _videoDuration/2) {
-        _mzMidOver = YES;
-        NSMutableDictionary *accessDictionary = [NSMutableDictionary dictionary];
-        if ([self canRecord:IMPRESSIONID]) {
-            accessDictionary[[self keyQuery:IMPRESSIONID]] = _impressionID;
-        }
-        accessDictionary[self.mzVideoMidPoint] = @"mid";
-        if(self.delegate && [self.delegate respondsToSelector:@selector(monitor:didReceiveData:)]) {
-            [_delegate monitor:self didReceiveData:accessDictionary];
-        }
-    }
-    
-    if (!_mzEndOver && self.timeline.monitorDuration >= _videoDuration) {
-        _mzEndOver = YES;
-        if(_isValid) {
-            self.status = VAMonitorStatusWaitingUpload;
-        }
-        NSMutableDictionary *accessDictionary = [NSMutableDictionary dictionary];
-        if ([self canRecord:IMPRESSIONID]) {
-            accessDictionary[[self keyQuery:IMPRESSIONID]] = _impressionID;
-        }
-        accessDictionary[self.mzVideoMidPoint] = @"end";
-        if(self.delegate && [self.delegate respondsToSelector:@selector(monitor:didReceiveData:)]) {
-            [_delegate monitor:self didReceiveData:accessDictionary];
-        }
-        if(_isValid) {
-            self.status = VAMonitorStatusUploaded;
-        }
-    }
 }
 
 - (void)dealloc {
@@ -243,8 +230,9 @@
     if (self =[super init]) {
         _url = [aDecoder decodeObjectForKey:@"url"];
         _impressionID = [aDecoder decodeObjectForKey:@"impressionID"];
-        
         _timeline = [aDecoder decodeObjectOfClass:[VAMonitorTimeline class] forKey:@"timeline"];
+        _config = [aDecoder decodeObjectOfClass:[VAMonitorConfig class] forKey:@"config"];
+        _progressStatus = [aDecoder decodeIntegerForKey:@"progressStatus"];
         _status = [aDecoder decodeIntegerForKey:@"status"];
         _isValid = [aDecoder decodeBoolForKey:@"isValid"];
         _keyValueAccess = [aDecoder decodeObjectForKey:@"keyValueAccess"];
@@ -260,6 +248,9 @@
     [aCoder encodeObject:_impressionID forKey:@"impressionID"];
     
     [aCoder encodeObject:_timeline forKey:@"timeline"];
+    [aCoder encodeObject:_config forKey:@"config"];
+    [aCoder encodeInteger:_progressStatus forKey:@"progressStatus"];
+
     [aCoder encodeInteger:_status forKey:@"status"];
     [aCoder encodeBool:_isValid forKey:@"isValid"];
     [aCoder encodeObject:_keyValueAccess forKey:@"keyValueAccess"];

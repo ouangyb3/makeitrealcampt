@@ -13,8 +13,6 @@
 @property (nonatomic) CGFloat exposeDuration;
 @property (nonatomic) CGFloat monitorDuration;
 @property (nonatomic, weak) VAMonitor *monitor;
-@property (nonatomic) BOOL prevIsVisibleSlice;
-@property (nonatomic) BOOL isVisibleSlice;
 
 - (instancetype)initWithMonitor:(VAMonitor *)monitor;
 

@@ -12,6 +12,9 @@
 #import "UIView+Monitor.h"
 @implementation UIView (Monitor)
 
+//- (CGRect)extracted:(const CGRect *)realRect superview:(UIView *)superview {
+//    return [self intersectionRectOnWindow:*realRect with:superview];
+//}
 
 - (CGRect)showOnKeyWindow {
     // 可视尺寸
