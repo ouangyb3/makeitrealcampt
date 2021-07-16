@@ -22,7 +22,7 @@
     _monitorInterval = 0.2;  // 监测事件间隔(秒)
     _cacheInterval = 1; // 缓存事件间隔(秒)
     _vaildExposeShowRate = 0.5; // 有效曝光比例
-    _maxUploadCount = 10; //最大可上传监测节点数量
+    _maxUploadCount = 20; //最大可上传监测节点数量
     _needRecordData = YES;
     _videoDuration = 0;
     _trackProgressPointsTypes = VAVideoProgressTrackTypeNone;

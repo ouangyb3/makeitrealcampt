@@ -22,7 +22,7 @@
         <!--当前广告位最大监测时长（s）-->
         <maxExpirationSecs>120</maxExpirationSecs>
         <!--当前广告位最大上报数量-->
-        <maxAmount>10</maxAmount>
+        <maxAmount>20</maxAmount>
     </viewability>
 
     <companies>
