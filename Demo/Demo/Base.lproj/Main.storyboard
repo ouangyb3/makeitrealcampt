@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="DAy-nm-NfE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="uyq-Mj-njI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,7 +26,7 @@
                                 <rect key="frame" x="38" y="157" width="321" height="490"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NLA-CM-Dcf">
-                                        <rect key="frame" x="40" y="1" width="240" height="128"/>
+                                        <rect key="frame" x="40" y="0.0" width="240" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.97647058819999999" green="0.8980392157" blue="0.91372549020000005" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
@@ -41,13 +41,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="A9o-9a-3xM" firstAttribute="top" secondItem="XqA-er-nZ7" secondAttribute="bottom" constant="93" id="9Q9-nY-8Wg"/>
                             <constraint firstAttribute="bottom" secondItem="A9o-9a-3xM" secondAttribute="bottom" constant="20" symbolic="YES" id="FGw-Fx-LJL"/>
                             <constraint firstItem="A9o-9a-3xM" firstAttribute="leading" secondItem="02w-ed-YEZ" secondAttribute="leadingMargin" constant="22" id="XwL-G9-tDj"/>
+                            <constraint firstItem="A9o-9a-3xM" firstAttribute="top" secondItem="XqA-er-nZ7" secondAttribute="bottom" constant="93" id="oos-PU-dPc"/>
                             <constraint firstItem="A9o-9a-3xM" firstAttribute="trailing" secondItem="02w-ed-YEZ" secondAttribute="trailingMargin" id="rl2-i7-gCE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="iez-MY-trc"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="adView" destination="NLA-CM-Dcf" id="9pR-cg-zUO"/>
                     </connections>
@@ -61,7 +62,7 @@
             <objects>
                 <navigationController id="DAy-nm-NfE" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="w4D-tb-DZM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -110,9 +111,4 @@
             <point key="canvasLocation" x="544" y="158"/>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
-    </simulatedMetricsContainer>
 </document>

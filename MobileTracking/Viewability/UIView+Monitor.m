@@ -28,11 +28,7 @@
         superview = superview.superview;
     }
     
-    if(!superview) {
-        if(self.window.clipsToBounds == YES) {
-            realRect = [self intersectionRectOnWindow:realRect with:superview];
-        }
-    }
+    realRect = [window intersectionRectOnWindow:realRect with:window];
     
     return realRect;
 }
