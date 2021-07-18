@@ -65,7 +65,7 @@
 #define AD_VB_LIGHT @"AdviewabilityLight" //当前屏幕是否点亮，1代表完全点亮，0代表完全暗
 #define AD_VB_SHOWFRAME @"AdviewabilityShowFrame"  //当前广告实际在屏幕中的显示尺寸
 #define AD_VB_COVER_RATE  @"AdviewabilityCoverRate" //当前广告实际在屏幕中的覆盖率
-#define AD_VB_HIDE @"AdviewabilityHide"
+#define AD_VB_SHOWN @"AdviewabilityShown"
 #define AD_VB_ALPHA @"AdviewabilityAlpha"
 #define AD_VB_POINT @"AdviewabilityPoint"
 #define AD_VB_FRAME @"AdviewabilityFrame"  // 广告原始frame
@@ -104,7 +104,7 @@ AD_VB_FORGROUND, \
 AD_VB_LIGHT, \
 AD_VB_SHOWFRAME, \
 AD_VB_COVER_RATE, \
-AD_VB_HIDE, \
+AD_VB_SHOWN, \
 AD_VB_ALPHA, \
 AD_VB_POINT, \
 AD_VB_FRAME, \

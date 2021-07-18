@@ -244,7 +244,7 @@
                     </argument>
                     <!-- 可视视图是否被隐藏 -->
                     <argument>
-                        <key>AdviewabilityHide</key>
+                        <key>AdviewabilityShown</key>
                         <value>2m</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
@@ -556,7 +556,7 @@
                         <isRequired>true</isRequired>
                     </argument>
                     <argument>
-                        <key>AdviewabilityHide</key>
+                        <key>AdviewabilityShown</key>
                         <value>5</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
