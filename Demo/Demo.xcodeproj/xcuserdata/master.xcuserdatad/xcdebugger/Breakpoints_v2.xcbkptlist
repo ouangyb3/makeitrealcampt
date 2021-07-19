@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../MobileTracking/MobileTracking/MobileTracking.m"
-            timestampString = "531305836.231165"
+            timestampString = "531646826.187432"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "959"
-            endingLineNumber = "959"
+            startingLineNumber = "963"
+            endingLineNumber = "963"
             landmarkName = "-generateTrackingURL:"
             landmarkType = "7">
          </BreakpointContent>
@@ -74,7 +74,7 @@
                   moduleName = "Demo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/master/Documents/Pr/AdMaster%20SDK-Production/MMAViewability_NEW/MobileTracking/JSViewAbility/VACompanyRun.m"
-                  timestampString = "531374806.119895"
+                  timestampString = "531646826.264954"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "146"
@@ -89,7 +89,7 @@
                   moduleName = "Demo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/master/Documents/Pr/AdMaster%20SDK-Production/MMAViewability_NEW/MobileTracking/JSViewAbility/VACompanyRun.m"
-                  timestampString = "531374806.129578"
+                  timestampString = "531646826.270343"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "146"
@@ -122,7 +122,7 @@
                   moduleName = "Demo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/master/Documents/Pr/AdMaster%20SDK-Production/MMAViewability_NEW/MobileTracking/JSViewAbility/VACompanyRun.m"
-                  timestampString = "531374806.1414"
+                  timestampString = "531646826.281468"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "155"
@@ -137,7 +137,7 @@
                   moduleName = "Demo"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/master/Documents/Pr/AdMaster%20SDK-Production/MMAViewability_NEW/MobileTracking/JSViewAbility/VACompanyRun.m"
-                  timestampString = "531374806.144546"
+                  timestampString = "531646826.284118"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "155"
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../MobileTracking/MobileTracking/MobileTracking.m"
-            timestampString = "531305836.233756"
+            timestampString = "531646826.187815"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "786"
-            endingLineNumber = "786"
+            startingLineNumber = "790"
+            endingLineNumber = "790"
             landmarkName = "-monitorHandleWithURL:data:redirectURL:"
             landmarkType = "7">
          </BreakpointContent>
@@ -218,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../MobileTracking/MobileTracking/MobileTracking.m"
-            timestampString = "531305836.235242"
+            timestampString = "531646826.187931"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "393"
@@ -244,7 +244,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../MobileTracking/MobileTracking/MobileTracking.m"
-            timestampString = "531305836.236603"
+            timestampString = "531646826.188018"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "425"
@@ -260,11 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../MobileTracking/MobileTracking/MobileTracking.m"
-            timestampString = "531305836.23783"
+            timestampString = "531646826.188098"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "810"
-            endingLineNumber = "810"
+            startingLineNumber = "814"
+            endingLineNumber = "814"
             landmarkName = "-getValueFromUrl:withCompany:withArgumentKey:"
             landmarkType = "7">
          </BreakpointContent>
@@ -276,11 +276,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../MobileTracking/Viewability/VAMonitor.m"
-            timestampString = "531305836.239092"
+            timestampString = "531646826.188159"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "-verifyProgress"
             landmarkType = "7">
          </BreakpointContent>
@@ -292,11 +292,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../MobileTracking/Viewability/VAMonitor.m"
-            timestampString = "531305836.239583"
+            timestampString = "531646826.188223"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "-verifyProgress"
             landmarkType = "7">
          </BreakpointContent>
@@ -308,11 +308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../MobileTracking/Viewability/VAMonitor.m"
-            timestampString = "531305836.23973"
+            timestampString = "531646826.18828"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "-verifyProgress"
             landmarkType = "7">
          </BreakpointContent>
@@ -324,11 +324,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../MobileTracking/Viewability/VAMonitor.m"
-            timestampString = "531305836.239823"
+            timestampString = "531646826.188342"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "-verifyProgress"
             landmarkType = "7">
          </BreakpointContent>
@@ -340,11 +340,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../MobileTracking/Viewability/VAMonitor.m"
-            timestampString = "531305836.239911"
+            timestampString = "531646826.188388"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "-verifyProgress"
             landmarkType = "7">
          </BreakpointContent>
@@ -372,11 +372,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../MobileTracking/Viewability/VAMonitor.m"
-            timestampString = "531305836.240284"
+            timestampString = "531646826.188467"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "-verifyProgress"
             landmarkType = "7">
          </BreakpointContent>
@@ -403,28 +403,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Demo/ScrollViewController.m"
-            timestampString = "531374806.025829"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "../MobileTracking/Viewability/VAMonitor.m"
-            timestampString = "531305836.241506"
+            timestampString = "531646826.188538"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "-verifyExpose"
             landmarkType = "7">
          </BreakpointContent>
@@ -436,12 +420,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../MobileTracking/MobileTracking/MobileTracking.m"
-            timestampString = "531305836.241646"
+            timestampString = "531646826.188588"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "742"
-            endingLineNumber = "742"
+            startingLineNumber = "746"
+            endingLineNumber = "746"
             landmarkName = "-monitor:didReceiveData:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../MobileTracking/Viewability/ViewabilityService.m"
+            timestampString = "531646826.188646"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "-addVAMonitor:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

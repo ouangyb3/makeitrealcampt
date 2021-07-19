@@ -47,6 +47,7 @@ typedef NS_ENUM(NSUInteger, VAProgressStatus) {
 
 @property (nonatomic, copy, readonly) NSString *impressionID;
 @property (nonatomic, copy, readonly) NSString *adID;
+@property (nonatomic, copy, readonly) NSString *domain;
 
 
 @property (nonatomic, strong, readonly) VAMonitorTimeline *timeline;
@@ -61,7 +62,7 @@ typedef NS_ENUM(NSUInteger, VAProgressStatus) {
 @property (nonatomic, weak) id<VAMonitorDataProtocol> delegate;
 
 
-+ (VAMonitor *)monitorWithView:(UIView *)view isVideo:(BOOL)isVideo url:(NSString *)url redirectURL:(NSString *)redirectURL impressionID:(NSString *)impID adID:(NSString *)adID keyValueAccess:(NSDictionary *)keyValueAccess config:(VAMonitorConfig *)config;
++ (VAMonitor *)monitorWithView:(UIView *)view isVideo:(BOOL)isVideo url:(NSString *)url redirectURL:(NSString *)redirectURL impressionID:(NSString *)impID adID:(NSString *)adID keyValueAccess:(NSDictionary *)keyValueAccess config:(VAMonitorConfig *)config domain:(NSString *)domain;
 
 //- (void)setConfig:(VAMonitorConfig *)config;
 

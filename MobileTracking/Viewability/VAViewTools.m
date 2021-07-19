@@ -1,6 +1,3 @@
-
-
-
 //
 //  VAViewTools.m
 //  ViewbilitySDK

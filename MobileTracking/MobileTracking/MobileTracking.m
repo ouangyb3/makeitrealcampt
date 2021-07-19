@@ -644,10 +644,14 @@
             return;
         }
         
+        NSString *domain = company.domain[0];
+        if(!domain || !domain.length) {
+            domain = @"";
+        }
         /**
          *  拼接impressionID
          */
-        NSString *impressKey = [NSString stringWithFormat:@"%@-%@",company.domain[0],adID];
+        NSString *impressKey = [NSString stringWithFormat:@"%@-%@",domain,adID];
         
         //iOS:MD5(idfa+idfv+广告位ID+时间戳（ms））
         NSString * timestamp = [NSString stringWithFormat:@"%.0f",[[NSDate date] timeIntervalSince1970] * 1000];
@@ -695,7 +699,7 @@
                 NSString *url = [self monitorHandleWithURL:result.url data:accessDictionary redirectURL:result.redirectURL];
                 [self filterURL:url];
             } else {
-                VAMonitor *monitor = [VAMonitor monitorWithView:adView isVideo:isVideo url:result.url redirectURL:result.redirectURL impressionID:impressID adID:adID keyValueAccess:[keyvalueAccess copy] config:result.config];
+                VAMonitor *monitor = [VAMonitor monitorWithView:adView isVideo:isVideo url:result.url redirectURL:result.redirectURL impressionID:impressID adID:adID keyValueAccess:[keyvalueAccess copy] config:result.config domain:domain];
                 monitor.delegate = self;
                 [_viewabilityService addVAMonitor:monitor];
             }

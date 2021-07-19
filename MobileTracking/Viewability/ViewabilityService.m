@@ -71,7 +71,8 @@ static const char *view_capture_queue = "adview.capture.queue";
         
         //进度监测或可视化监测有一个没有结束则不移除
         if(tempStatus == VAMonitorStatusUploaded && tempProgressStatus == VAProgressStatusEnd) {
-            [invalidMonitors addObject:obj.adID];
+            NSString *monitorKey = [NSString stringWithFormat:@"%@-%@",obj.domain,obj.adID];
+            [invalidMonitors addObject:monitorKey];
             NSLog(@"ID:%@视图上传完成停止监测",obj.adID);
             //可视化监测和进度监测如果有一个没有结束,则继续监测.
         } else if(tempStatus == VAMonitorStatusRuning || tempProgressStatus == VAProgressStatusRuning) {
@@ -102,16 +103,17 @@ static const char *view_capture_queue = "adview.capture.queue";
         }
         NSLog(@"ID:%@添加监测视图",monitor.adID);
         
+        NSString *monitorKey = [NSString stringWithFormat:@"%@-%@",monitor.domain,monitor.adID];
         // 已存在 停止并上报 使用新的监测覆盖
-        VAMonitor *exitMonitor = _monitors[monitor.adID];
+        VAMonitor *exitMonitor = _monitors[monitorKey];
         if(exitMonitor) {
-            NSLog(@"ID:%@ 已存在相同广告位监测强制停止上一次监测",monitor.adID);
+            NSLog(@"ID:%@ domain:%@ 已存在相同广告位监测强制停止上一次监测",monitor.adID,monitor.domain);
             dispatch_async(_captureQueue, ^{
                 [exitMonitor stopAndUpload];
             });
-            [_monitors removeObjectForKey:exitMonitor.adID];
+            [_monitors removeObjectForKey:monitorKey];
         }
-        _monitors[monitor.adID] = monitor;
+        _monitors[monitorKey] = monitor;
         
     });
 }

@@ -22,7 +22,7 @@
 
 @implementation VAMonitor
 
-- (instancetype)initWithView:(UIView *)view isVideo:(BOOL)isVideo url:(NSString *)url redirectURL:(NSString *)redirectURL impressionID:(NSString *)impID adID:(NSString *)adID  keyValueAccess:(NSDictionary *)keyValueAccess config:(VAMonitorConfig *)config {
+- (instancetype)initWithView:(UIView *)view isVideo:(BOOL)isVideo url:(NSString *)url redirectURL:(NSString *)redirectURL impressionID:(NSString *)impID adID:(NSString *)adID  keyValueAccess:(NSDictionary *)keyValueAccess config:(VAMonitorConfig *)config domain:(NSString *)domain{
     if(!view) {
         NSLog(@"view 视图为空,未开始监测");
         return nil;
@@ -45,6 +45,7 @@
         _isValid = NO;
         _keyValueAccess = keyValueAccess;
         _config = config;
+        _domain = domain;
       
         self.status = VAMonitorStatusRuning;
         self.progressStatus = VAProgressStatusRuning;
@@ -57,9 +58,9 @@
 }
 
 
-+ (VAMonitor *)monitorWithView:(UIView *)view isVideo:(BOOL)isVideo  url:(NSString *)url redirectURL:(NSString *)redirectURL impressionID:(NSString *)impID adID:(NSString *)adID keyValueAccess:(NSDictionary *)keyValueAccess config:(VAMonitorConfig *)config  {
++ (VAMonitor *)monitorWithView:(UIView *)view isVideo:(BOOL)isVideo  url:(NSString *)url redirectURL:(NSString *)redirectURL impressionID:(NSString *)impID adID:(NSString *)adID keyValueAccess:(NSDictionary *)keyValueAccess config:(VAMonitorConfig *)config  domain:(NSString *)domain{
     VAMonitor *monitor;
-    monitor = [[VAViewMonitor alloc] initWithView:view isVideo:(BOOL)isVideo url:url redirectURL:redirectURL impressionID:impID adID:adID keyValueAccess:keyValueAccess config:config];
+    monitor = [[VAViewMonitor alloc] initWithView:view isVideo:(BOOL)isVideo url:url redirectURL:redirectURL impressionID:impID adID:adID keyValueAccess:keyValueAccess config:config domain:domain];
     return monitor;
 }
 
