@@ -27,8 +27,8 @@
     /* 去噪测试
      以下参数不覆盖原值: AdviewabilityEnable AdviewabilityConfigArea AdviewabilityConfigThreshold AdviewabilityVideoDuration AdviewabilityVideoProgressPoint AdviewabilityRecord
      */
-    NSString *url = @"http://v.admaster.com.cn/i/a90981,b1899467,c2,i0,m202,8a2,8b2,h,2p,2jtt,2w15,2x1101,2d1234,va1,2g0101";
-//    NSString *url2 = @"http://v.miaozhen.com/i/a90981,p1899467,c2,i0,m202,8a2,8b2,h,2p,2jtt,2w15,2x1101,2d1234,va1,2g0101";
+    NSString *url = @"http://v.admaster.com.cn/i/a90981,b1899467,c2,i0,m202,8a2,8b2,h,2p,2jtt,2w15,2x1101,2d1234,va1,2g0101,uhttp://www.baidu.com";
+    //    NSString *url2 = @"http://v.miaozhen.com/i/a90981,p1899467,c2,i0,m202,8a2,8b2,h,2p,2jtt,2w15,2x1101,2d1234,va1,2g0101";
     NSString *url2 = @"http://v.admaster.com.cn/i/a90981,b1899467,c2,i0,m202,8a2,8b2,h,2p,2jtt,2w15,2x1101,2d1234,va1,2g0101";
 
 
@@ -39,7 +39,7 @@
 //    if(vb = !vb) {
         printf("\n-----------------------viewability曝光链接\n");
         [[MobileTracking sharedInstance] view:url ad:_adView];
-        [[MobileTracking sharedInstance] view:url2 ad:_adView];
+//        [[MobileTracking sharedInstance] view:url2 ad:_adView];
 
         
        

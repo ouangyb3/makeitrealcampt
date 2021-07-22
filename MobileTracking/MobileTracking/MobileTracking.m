@@ -411,7 +411,7 @@
         MMA_Argument *argument = [company.config.arguments objectForKey:TRACKING_KEY_REDIRECTURL];
         NSString *queryArgsKey = [argument value];
         if([argument.key isEqualToString:TRACKING_KEY_REDIRECTURL]&&argument.isRequired){
-            NSString *redirect_key = [NSString stringWithFormat:@"%@%@",company.separator,queryArgsKey];
+            NSString *redirect_key = [NSString stringWithFormat:@"%@%@%@",company.separator,queryArgsKey,company.equalizer];
             NSRange ff = [trackURL rangeOfString:redirect_key];
             if (ff.location !=NSNotFound ) {
                 NSRange u_range = [trackURL rangeOfString:redirect_key];
@@ -463,7 +463,7 @@
                                 continue;
 
                             } else {
-                                reWriteString = [NSString stringWithFormat:@"%@%@%g",separator,value,res.config.vaildExposeShowRate * 100];
+                                reWriteString = [NSString stringWithFormat:@"%@%@%@%g",separator,value,equalizer,res.config.vaildExposeShowRate * 100];
                             }
                         } else if([key isEqualToString:AD_VB_THRESHOLD]) { //2u
                             NSString *parValue = [self getValueFromUrl:filterURL withCompany:company withArgumentKey:value];
@@ -477,7 +477,7 @@
                                 continue;
 
                             } else {
-                                reWriteString = [NSString stringWithFormat:@"%@%@%g",separator,value,isVideo ? res.config.videoExposeValidDuration : res.config.exposeValidDuration];
+                                reWriteString = [NSString stringWithFormat:@"%@%@%@%g",separator,value,equalizer,isVideo ? res.config.videoExposeValidDuration : res.config.exposeValidDuration];
 
                             }
                             
@@ -603,7 +603,7 @@
 - (void)viewVideo:(NSString *)url ad:(UIView *)adView videoPlayType:(NSInteger)type{
     BOOL viewability = YES;
     VBOpenResult *result = [self vbFilterURL:url isForViewability:viewability isVideo:YES];
-    result.redirectURL = @""; // viewability 不使用redirectURL
+    
     [self view:url ad:adView isVideo:YES videoPlayType:type handleResult:result];
 }
 
@@ -611,7 +611,7 @@
 - (void)view:(NSString *)url ad:(UIView *)adView {
     BOOL viewability = YES;
     VBOpenResult *result = [self vbFilterURL:url isForViewability:viewability isVideo:NO];
-    result.redirectURL = @""; // viewability 不使用redirectURL
+
     [self view:url ad:adView isVideo:NO videoPlayType:0 handleResult:result];
 }
 
@@ -685,9 +685,7 @@
                                              AD_VB_EVENTS : @"[]",
                                              AD_VB : @"0",
                                              IMPRESSIONID : impressID,
-                                             AD_MEASURABILITY : @"0",
-                                             AD_VB_AREA : [NSString stringWithFormat:@"%g",result.config.vaildExposeShowRate * 100],
-                                             AD_VB_THRESHOLD : [NSString stringWithFormat:@"%g",isVideo? result.config.videoExposeValidDuration : result.config.exposeValidDuration],
+                                             AD_MEASURABILITY : @"0"
                                              };
                 NSMutableDictionary *accessDictionary = [NSMutableDictionary dictionary];
                 [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString * key, id obj, BOOL * _Nonnull stop) {
@@ -696,10 +694,10 @@
                         accessDictionary[accessKey] = obj;
                     }
                 }];
-                NSString *url = [self monitorHandleWithURL:result.url data:accessDictionary redirectURL:result.redirectURL];
+                NSString *url = [self monitorHandleWithURL:result.url data:accessDictionary redirectURL:@""];
                 [self filterURL:url];
             } else {
-                VAMonitor *monitor = [VAMonitor monitorWithView:adView isVideo:isVideo url:result.url redirectURL:result.redirectURL impressionID:impressID adID:adID keyValueAccess:[keyvalueAccess copy] config:result.config domain:domain];
+                VAMonitor *monitor = [VAMonitor monitorWithView:adView isVideo:isVideo url:result.url redirectURL:@"" impressionID:impressID adID:adID keyValueAccess:[keyvalueAccess copy] config:result.config domain:domain];
                 monitor.delegate = self;
                 [_viewabilityService addVAMonitor:monitor];
             }
@@ -882,7 +880,7 @@
     for (MMA_Argument *argument in [company.config.arguments objectEnumerator]) {
         NSString *queryArgsKey = [(MMA_Argument *)[company.config.arguments objectForKey:argument.key] value];
         if([argument.key isEqualToString:TRACKING_KEY_REDIRECTURL]&&argument.isRequired){
-            NSString *redirect_key = [NSString stringWithFormat:@"%@%@",company.separator,queryArgsKey];
+            NSString *redirect_key = [NSString stringWithFormat:@"%@%@%@",company.separator,queryArgsKey,company.equalizer];
             NSRange ff = [trackURL rangeOfString:redirect_key];
             if (ff.location !=NSNotFound ) {
                 NSRange u_range = [trackURL rangeOfString:redirect_key];
