@@ -39,6 +39,8 @@
 //    if(vb = !vb) {
         printf("\n-----------------------viewability曝光链接\n");
         [[MobileTracking sharedInstance] view:url ad:_adView];
+//    [[MobileTracking sharedInstance] viewVideo:@"http://test.m.cn.miaozhen.com/x/k=test1234&p=test5678&va=1&vb=15&vj=1111&vi=5&vh=80&o=www.baidu.com" ad:_adView videoPlayType:2];
+
 //        [[MobileTracking sharedInstance] view:url2 ad:_adView];
 
         

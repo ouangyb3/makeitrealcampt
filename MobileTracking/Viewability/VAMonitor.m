@@ -193,6 +193,7 @@
                                                                                      IMPRESSIONID : _impressionID,
                                                                                      //                                AD_VB_EVENTS : [self.timeline generateUploadEvents],  // 9字段
                                                                                      AD_VB : [NSString stringWithFormat:@"%d",_isValid],
+                                                                                     AD_VB_RESULT : [NSString stringWithFormat:@"%d",_isValid ? 1:4],
                                                                                      AD_MEASURABILITY : @"1"    // 是否可测量
                                                                                      }];
     // 是否需要传入记录的数据

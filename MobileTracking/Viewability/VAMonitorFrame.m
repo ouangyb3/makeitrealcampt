@@ -25,7 +25,7 @@
         _alpha = view.alpha;
         _hidden = view.hidden;
         
-        _isForground = !([UIApplication sharedApplication].applicationState==UIApplicationStateBackground);
+        _isForground = ([UIApplication sharedApplication].applicationState==UIApplicationStateActive);
         _captureDate = [NSDate date];
         _coverRate = 1 - (_showFrame.size.width * _showFrame.size.height) / (_frame.size.width * _frame.size.height);
     }

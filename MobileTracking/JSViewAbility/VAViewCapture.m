@@ -38,7 +38,7 @@
 - (NSDictionary *)captureStatus {
     
     NSDate *captureDate = [NSDate date];
-    BOOL isForground = !([UIApplication sharedApplication].applicationState==UIApplicationStateBackground);
+    BOOL isForground = ([UIApplication sharedApplication].applicationState==UIApplicationStateActive);
 
     if(!_monitorView || ![_monitorView isKindOfClass:[UIView class]]) {
         return @{

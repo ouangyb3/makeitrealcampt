@@ -435,7 +435,7 @@
                         <isRequired>true</isRequired>
                     </argument>
                     <argument>
-                        <key>NETWORKTYPE</key>
+                        <key>WIFI</key>
                         <value>mw</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
@@ -526,6 +526,12 @@
                         <isRequired>true</isRequired>
                     </argument>
                     <argument>
+                        <key>AdviewabilityRecord</key>
+                        <value>va</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
                         <key>AdviewabilityEvents</key>
                         <value>vd</value>
                         <urlEncode>true</urlEncode>
@@ -550,7 +556,7 @@
                         <isRequired>true</isRequired>
                     </argument>
                     <argument>
-                        <key>AdviewabilityOpaque</key>
+                        <key>AdviewabilityAlpha</key>
                         <value>4</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
@@ -562,55 +568,25 @@
                         <isRequired>true</isRequired>
                     </argument>
                     <argument>
-                        <key>AdviewabilityRate</key>
+                        <key>AdviewabilityCoverRate</key>
                         <value>6</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
                     <argument>
-                        <key>AdviewabilityCoverFrame</key>
+                        <key>AdviewabilityShowFrame</key>
                         <value>7</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
                     <argument>
-                        <key>AdviewabilityLight</key>
+                        <key>AdviewabilityForground</key>
                         <value>8</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
                     <argument>
-                        <key>AdviewabilityThreshold</key>
-                        <value>ve</value>
-                        <urlEncode>true</urlEncode>
-                        <isRequired>true</isRequired>
-                    </argument>
-                    <argument>
-                        <key>AdviewabilityVideoPlayType</key>
-                        <value>vg</value>
-                        <urlEncode>true</urlEncode>
-                        <isRequired>true</isRequired>
-                    </argument>
-                    <argument>
-                        <key>AdviewabilityVideoProgress</key>
-                        <value>vc</value>
-                        <urlEncode>true</urlEncode>
-                        <isRequired>true</isRequired>
-                    </argument>
-                    <argument>
-                        <key>AdviewabilityVideoDuration</key>
-                        <value>vb</value>
-                        <urlEncode>true</urlEncode>
-                        <isRequired>true</isRequired>
-                    </argument>
-                    <argument>
-                        <key>AdviewabilityRecord</key>
-                        <value>va</value>
-                        <urlEncode>true</urlEncode>
-                        <isRequired>true</isRequired>
-                    </argument>
-                    <argument>
-                        <key>Adviewability</key>
+                        <key>AdviewabilityResult</key>
                         <value>vx</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
@@ -628,8 +604,26 @@
                         <isRequired>true</isRequired>
                     </argument>
                     <argument>
+                        <key>AdviewabilityVideoDuration</key>
+                        <value>vb</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>AdviewabilityVideoProgress</key>
+                        <value>vc</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>AdviewabilityVideoPlayType</key>
+                        <value>vg</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
                         <key>AdviewabilityVideoProgressPoint</key>
-                        <value>2x</value>
+                        <value>vj</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>

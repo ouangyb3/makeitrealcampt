@@ -61,6 +61,7 @@
 
 #define AD_MEASURABILITY @"AdMeasurability" //当前广告是否可测量：0 为广告可测量，1 为广告不可测量
 #define AD_VB @"Adviewability" // 	当前广告是否可见：0 为广告不可见，1 为广告可见
+#define AD_VB_RESULT @"AdviewabilityResult" // 当前广告监测结果类型：0 进行了可见监测 1 结果可见 2 不可测量 4 结果不可见
 #define AD_VB_FORGROUND @"AdviewabilityForground"
 #define AD_VB_LIGHT @"AdviewabilityLight" //当前屏幕是否点亮，1代表完全点亮，0代表完全暗
 #define AD_VB_SHOWFRAME @"AdviewabilityShowFrame"  //当前广告实际在屏幕中的显示尺寸
@@ -100,6 +101,7 @@
 #define VIEW_ABILITY_KEY @[  \
 AD_MEASURABILITY,  \
 AD_VB, \
+AD_VB_RESULT, \
 AD_VB_FORGROUND, \
 AD_VB_LIGHT, \
 AD_VB_SHOWFRAME, \
@@ -127,6 +129,7 @@ AD_VB_VIDEOPROGRESS \
 #define VIEW_ABILITY_MAIN_KEY @[  \
 AD_MEASURABILITY,  \
 AD_VB, \
+AD_VB_RESULT, \
 AD_VB_EVENTS, \
 IMPRESSIONID \
 ]

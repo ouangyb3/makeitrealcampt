@@ -429,6 +429,7 @@
         
 //        NSArray *viewabilityKeys = @[AD_MEASURABILITY,
 //                                     AD_VB,
+//                                     AD_VB_RESULT,
 //                                     AD_VB_EVENTS,
 //                                     IMPRESSIONID];
         
@@ -581,7 +582,7 @@
     /**
      *  拼接u参数和impressID
      */
-    url = [self handleImpressURL:url impression:impressID redirectURL:result.redirectURL additionKey:nil];
+    url = [self handleImpressURL:url impression:impressID redirectURL:result.redirectURL additionKey:NO];
     
     [self filterURL:url];
 }
@@ -660,9 +661,9 @@
         _impressionDictionary[impressKey] = impressID;
         
         /**
-         *  发送正常的url 监测使用去噪impressionID曝光url,拼接AD_VB (2f)
+         *  发送正常的url 监测使用去噪impressionID曝光url,拼接AD_VB (2f),AD_VB_RESULT(vx)
          */
-        [self filterURL:[self handleImpressURL:result.url impression:impressID redirectURL:result.redirectURL additionKey:AD_VB]];
+        [self filterURL:[self handleImpressURL:result.url impression:impressID redirectURL:result.redirectURL additionKey:YES]];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_EXPOSE object:nil];
         
         /**
@@ -684,6 +685,7 @@
                 NSDictionary *dictionary = @{
                                              AD_VB_EVENTS : @"[]",
                                              AD_VB : @"0",
+                                             AD_VB_RESULT : @"2",
                                              IMPRESSIONID : impressID,
                                              AD_MEASURABILITY : @"0"
                                              };
@@ -745,7 +747,7 @@
     [self filterURL:url];
 }
 
-- (NSString *)handleImpressURL:(NSString *)url impression:(NSString *)impressionID redirectURL:(NSString *)redirectURL additionKey:(NSString *)additionKey {
+- (NSString *)handleImpressURL:(NSString *)url impression:(NSString *)impressionID redirectURL:(NSString *)redirectURL additionKey:(BOOL)additionKey {
     MMA_Company *company = [self confirmCompany:url];
     NSMutableString *trackURL = [NSMutableString stringWithString:url];
     MMA_Argument *impressionArgument = [company.config.viewabilityarguments valueForKey:IMPRESSIONID];
@@ -754,9 +756,16 @@
         [trackURL appendFormat:@"%@%@%@%@",company.separator,impressionArgument.value,company.equalizer,impressionID];
     }
     
-    MMA_Argument *additionArgument = [company.config.viewabilityarguments valueForKey:additionKey];
-    if(additionArgument.value && additionKey && additionKey.length) {
-        [trackURL appendFormat:@"%@%@",company.separator,additionArgument.value];
+    if(additionKey) {
+        MMA_Argument *adViewability = [company.config.viewabilityarguments valueForKey:AD_VB];
+        if(adViewability.value && adViewability.value.length) {
+            [trackURL appendFormat:@"%@%@",company.separator,adViewability.value];
+        }
+        
+        MMA_Argument *adViewabilityResult = [company.config.viewabilityarguments valueForKey:AD_VB_RESULT];
+        if(adViewabilityResult.value && adViewabilityResult.value.length) {
+            [trackURL appendFormat:@"%@%@%@%@",company.separator,adViewabilityResult.value,company.equalizer,@"0"];
+        }
     }
     
     
