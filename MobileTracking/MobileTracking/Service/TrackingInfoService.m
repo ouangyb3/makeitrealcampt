@@ -77,6 +77,9 @@
 - (NSString *)location
 {
     CLLocation *currentLocation = [[LocationService sharedInstance] getCurrentLocation];
+    if(currentLocation==nil) {
+        return @"";
+    }
     double latitude = [((CLLocation *) currentLocation) coordinate].latitude;
     double longitude = [((CLLocation *) currentLocation) coordinate].longitude;
     double horizontalAccuracy =  ((CLLocation *) currentLocation).horizontalAccuracy;
