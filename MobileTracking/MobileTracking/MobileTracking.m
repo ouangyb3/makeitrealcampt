@@ -275,7 +275,7 @@
 - (void)didEnterForeground
 {
     [self initSdkConfig];
-    [self initQueue];
+//    [self initQueue];
     [self initTimer];
     [self openLBS];
 }
