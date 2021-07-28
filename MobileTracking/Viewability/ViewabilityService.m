@@ -108,14 +108,30 @@ static const char *view_capture_queue = "adview.capture.queue";
         VAMonitor *exitMonitor = _monitors[monitorKey];
         if(exitMonitor) {
             NSLog(@"ID:%@ domain:%@ 已存在相同广告位监测强制停止上一次监测",monitor.adID,monitor.domain);
+
             dispatch_async(_captureQueue, ^{
                 [exitMonitor stopAndUpload];
             });
             [_monitors removeObjectForKey:monitorKey];
         }
         _monitors[monitorKey] = monitor;
-        
+
     });
+}
+
+- (void)stopVAMonitor:(NSString *)monitorKey {
+    VAMonitor *exitMonitor = _monitors[monitorKey];
+    if(exitMonitor) {
+        NSLog(@"Key:%@ 广告存在停止监测",monitorKey);
+        
+        exitMonitor.status = VAMonitorStatusWaitingUpload;
+        exitMonitor.progressStatus = VAProgressStatusEnd;
+        
+        dispatch_async(_captureQueue, ^{
+            [exitMonitor stopAndUpload];
+        });
+        [_monitors removeObjectForKey:monitorKey];
+    }
 }
 
 - (void)saveMonitors {

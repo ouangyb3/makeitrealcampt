@@ -71,6 +71,12 @@ SDK 会自动下载远程的配置文件，使用最新的配置文件进行参�
 [[MobileTracking sharedInstance] jsViewVideo:@"http://example.com/xxxxxx” ad:adview];
 
 ```
+可见性广告监测停止，广告播放结束时调用
+
+```
+[[MobileTracking sharedInstance] stop:@"http://example.com/xxxxxx”];
+
+```
 
 #### 4、点击监测
 通过调用以下的代码进行点击的监测，参数为第三方公司的监测地址

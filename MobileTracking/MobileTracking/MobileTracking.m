@@ -616,6 +616,30 @@
     [self view:url ad:adView isVideo:NO videoPlayType:0 handleResult:result];
 }
 
+// 停止可见监测
+- (void)stop:(NSString *)url {
+    @try {
+        NSString *adID = [self getAdIDForURL:url];
+        if(!adID || !adID.length) {
+            [MMA_Log log:@"adplacement get failed: %@" ,@"no adplacement"];
+            return;
+        }
+        
+        MMA_Company *company = [self confirmCompany:url];
+        NSString *domain = company.domain[0];
+        if(!domain || !domain.length) {
+            domain = @"";
+        }
+
+        NSString *monitorKey = [NSString stringWithFormat:@"%@-%@",domain,adID];
+
+        [_viewabilityService stopVAMonitor:monitorKey];
+    } @catch (NSException *exception) {
+        [MMA_Log log:@"##stop: exception:%@" ,exception];
+    }
+}
+
+
 // viewability曝光不需要redirectURL已在前面剔除,普通曝光需要redirectURL
 - (void)view:(NSString *)url ad:(UIView *)adView isVideo:(BOOL)isVideo videoPlayType:(NSInteger)type handleResult:(VBOpenResult *)result {
     @try {
