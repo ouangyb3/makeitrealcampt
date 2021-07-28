@@ -38,6 +38,9 @@
  */
 - (void)viewVideo:(NSString *)url ad:(UIView *)adView videoPlayType:(NSInteger)type;
 
+//停止可见监测
+- (void)stop:(NSString *)url;
+
 // 普通曝光
 - (void)jsView:(NSString *)url ad:(UIView *)adView;
 
