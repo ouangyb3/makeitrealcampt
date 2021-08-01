@@ -50,6 +50,7 @@
 #define TRACKING_KEY_OSVS       @"OSVS"
 #define TRACKING_KEY_TERM       @"TERM"
 #define TRACKING_KEY_WIFI       @"WIFI"
+#define TRACKING_KEY_WIFISSID   @"WIFISSID"
 #define TRACKING_KEY_SCWH       @"SCWH"
 #define TRACKING_KEY_ADWH       @"ADWH"
 #define TRACKING_KEY_AKEY       @"AKEY"

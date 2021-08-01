@@ -999,6 +999,11 @@
             NSInteger netStatus = [self.trackingInfoService networkCondition];
             [trackURL appendFormat:@"%@%@%@%d", company.separator, queryArgsKey, company.equalizer,(int)netStatus];
             
+        } else if ([argument.key isEqualToString:TRACKING_KEY_WIFISSID]) {
+            
+            NSString *ssid = [self.trackingInfoService wifiSSID];
+            [trackURL appendFormat:@"%@%@%@%@", company.separator, queryArgsKey, company.equalizer,ssid];
+            
         } else if ([argument.key isEqualToString:TRACKING_KEY_SCWH]) {
             
             NSString *scwh = [self.trackingInfoService scwh];

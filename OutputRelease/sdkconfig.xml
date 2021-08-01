@@ -460,6 +460,12 @@
                         <isRequired>true</isRequired>
                     </argument>
                     <argument>
+                        <key>WIFISSID</key>
+                        <value>mj</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
                         <key>OPENUDID</key>
                         <value>m0</value>
                         <urlEncode>true</urlEncode>

@@ -13,6 +13,7 @@
 #import "LocationService.h"
 #import "MMA_Reachability.h"
 #import "MMA_Macro.h"
+#import <SystemConfiguration/CaptiveNetwork.h>
 
 @implementation TrackingInfoService
 
@@ -124,4 +125,17 @@
     }
 }
 
+- (NSString *)wifiSSID {
+    NSArray *ifs = (__bridge_transfer id)CNCopySupportedInterfaces();
+    id info = nil;
+    for ( NSString *ifname in ifs ) {
+        info = (__bridge_transfer id)CNCopyCurrentNetworkInfo((__bridge CFStringRef)ifname);
+        if ( info && [info count] ) break;
+    }
+    NSString *ssid = [(NSDictionary *)info objectForKey:@"SSID"];
+    if(ssid==nil) {
+        return @"";
+    }
+    return ssid;
+}
 @end
