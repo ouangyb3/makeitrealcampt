@@ -43,9 +43,14 @@
     [[MobileTracking sharedInstance] viewVideo:url ad:_adView videoPlayType:2];
     
     //5秒后停止监测
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0*NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSLog(@"url stop:");
-        [[MobileTracking sharedInstance] stop:url];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0*NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSLog(@"url stop concurrent:");
+        for(int i =0; i< 10;i++) {
+            dispatch_async(dispatch_get_global_queue(0, 0), ^{
+                [[MobileTracking sharedInstance] stop:url];
+            });
+
+        }
     });
 //        [[MobileTracking sharedInstance] view:url2 ad:_adView];
 

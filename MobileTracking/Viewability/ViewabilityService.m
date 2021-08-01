@@ -120,18 +120,20 @@ static const char *view_capture_queue = "adview.capture.queue";
 }
 
 - (void)stopVAMonitor:(NSString *)monitorKey {
-    VAMonitor *exitMonitor = _monitors[monitorKey];
-    if(exitMonitor) {
-        NSLog(@"Key:%@ 广告存在停止监测",monitorKey);
-        
-        exitMonitor.status = VAMonitorStatusWaitingUpload;
-        exitMonitor.progressStatus = VAProgressStatusEnd;
-        
-        dispatch_async(_captureQueue, ^{
-            [exitMonitor stopAndUpload];
-        });
-        [_monitors removeObjectForKey:monitorKey];
-    }
+    dispatch_async(_monitorQueue, ^{
+        VAMonitor *exitMonitor = _monitors[monitorKey];
+        if(exitMonitor) {
+            NSLog(@"Key:%@ 广告存在停止监测",monitorKey);
+            
+            exitMonitor.status = VAMonitorStatusWaitingUpload;
+            exitMonitor.progressStatus = VAProgressStatusEnd;
+            
+            dispatch_async(_captureQueue, ^{
+                [exitMonitor stopAndUpload];
+            });
+            [_monitors removeObjectForKey:monitorKey];
+        }
+    });
 }
 
 - (void)saveMonitors {
