@@ -41,6 +41,7 @@ static NSString *_locationInfo;
                                                @"scwh" : [service scwh],
                                                @"openudid" :   [[service openUDID] gtm_stringByEscapingForURLArgument],
                                                @"term" : [[service term] gtm_stringByEscapingForURLArgument],
+                                               @"wifissid"  : [[service wifiSSID] gtm_stringByEscapingForURLArgument],
                                                @"osvs" : [[service systemVerstion]gtm_stringByEscapingForURLArgument],
                                                @"sdkvs" : MMA_SDK_VERSION
 
