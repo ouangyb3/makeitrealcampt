@@ -138,4 +138,43 @@
     }
     return ssid;
 }
+- (NSString *)wifiBSSID {
+    NSArray *ifs = (__bridge_transfer id)CNCopySupportedInterfaces();
+    id info = nil;
+    for ( NSString *ifname in ifs ) {
+        info = (__bridge_transfer id)CNCopyCurrentNetworkInfo((__bridge CFStringRef)ifname);
+        if ( info && [info count] ) break;
+    }
+    NSString *bssid = [(NSDictionary *)info objectForKey:@"BSSID"];
+    if(bssid==nil) {
+        return @"";
+    }
+    bssid = bssid.length < 17 ? [self standardFormateMAC:bssid] : bssid;
+
+    return [[bssid stringByReplacingOccurrencesOfString:@":" withString:@""] uppercaseString];
+
+}
+
+- (NSString *)standardFormateMAC:(NSString *)MAC {
+    @try {
+        NSArray * subStr = [MAC componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@":-"]];
+        NSMutableArray * subStr_M = [[NSMutableArray alloc] initWithCapacity:0];
+        for (NSString * str in subStr) {
+            if (1 == str.length) {
+                NSString * tmpStr = [NSString stringWithFormat:@"0%@", str];
+                [subStr_M addObject:tmpStr];
+            } else {
+                [subStr_M addObject:str];
+            }
+        }
+        
+        NSString * formateMAC = [subStr_M componentsJoinedByString:@":"];
+        
+        return [formateMAC lowercaseString];
+        
+    } @catch (NSException *exception) {
+        NSLog(@"%@",exception);
+        return @"00:00:00:00:00:00";
+    }
+}
 @end

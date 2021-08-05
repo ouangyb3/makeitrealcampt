@@ -30,7 +30,9 @@
 //    NSString *url = @"http://v.admaster.com.cn/i/a90981,b1899467,c2,i0,m202,8a2,8b2,h,2p,2jtt,2w15,2x1101,2d1234,va1,2g0101,uhttp://www.baidu.com";
 ////        NSString *url2 = @"http://v.miaozhen.com/i/a90981,p1899467,c2,i0,m202,8a2,8b2,h,2p,2jtt,2w15,2x1101,2d1234,va1,2g0101";
 //    NSString *url2 = @"http://v.admaster.com.cn/i/a90981,b1899467,c2,i0,m202,8a2,8b2,h,2p,2jtt,2w15,2x1101,2d1234,va1,2g0101";
-    NSString *url = @"http://test.m.cn.miaozhen.com/x/k=test1234&p=test5678&va=1&vb=15&vj=1111&vi=10&vh=80&o=www.baidu.com";
+//    NSString *url = @"http://test.m.cn.miaozhen.com/x/k=test1234&p=test5678&va=1&vb=15&vj=1111&vi=10&vh=80&o=www.baidu.com";
+    NSString *url = @"http://v.admaster.com.cn/i/a90981,b1899467,c2,i0,m202,8a2,8b2,h,2p,2jtt,2w15,2x1101,2d1234,va1,2g0101,uhttp://www.baidu.com";
+
 //    NSLog(@"普通曝光链接");
 //    [[MobileTracking sharedInstance] view:url];
     

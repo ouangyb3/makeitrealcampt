@@ -28,5 +28,5 @@
 @property (nonatomic, strong, readonly) NSString *term;
 @property (nonatomic, assign, readonly) NSInteger networkCondition;
 @property (nonatomic, strong, readonly) NSString *wifiSSID;
-
+@property (nonatomic, strong, readonly) NSString *wifiBSSID;
 @end
