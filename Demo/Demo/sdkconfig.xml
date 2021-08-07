@@ -160,13 +160,6 @@
                     </argument>
                     
                     <argument>
-                        <key>MUDS</key>
-                        <value>0i</value>
-                        <urlEncode>true</urlEncode>
-                        <isRequired>true</isRequired>
-                    </argument>
-                    
-                    <argument>
                         <key>OPENUDID</key>
                         <value>o</value>
                         <urlEncode>true</urlEncode>

@@ -1006,8 +1006,8 @@
             
         } else if ([argument.key isEqualToString:TRACKING_KEY_WIFIBSSID]) {
             
-            NSString *ssid = [self.trackingInfoService wifiBSSID];
-            [trackURL appendFormat:@"%@%@%@%@", company.separator, queryArgsKey, company.equalizer,ssid];
+            NSString *bssid = [self.trackingInfoService wifiBSSID];
+            [trackURL appendFormat:@"%@%@%@%@", company.separator, queryArgsKey, company.equalizer,[MMA_Helper md5HexDigest:bssid]];
             
         } else if ([argument.key isEqualToString:TRACKING_KEY_SCWH]) {
             
