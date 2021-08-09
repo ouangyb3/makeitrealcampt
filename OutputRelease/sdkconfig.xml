@@ -9,7 +9,7 @@
         <!--发送超时时间-->
         <timeout>60</timeout>
     </offlineCache>
-
+    
     <viewability>
         <!--viewability监测的时间间隔（ms）-->
         <intervalTime>100</intervalTime>
@@ -24,15 +24,16 @@
         <!--当前广告位最大上报数量-->
         <maxAmount>20</maxAmount>
     </viewability>
-
+    
     <companies>
         <company>
-
+            
             <name>admaster</name>
-            <!-- JS监测在线更新地址 http://developer.admaster.com.cn/docs/mma-sdk.min.js -->
+            <!-- Viewability Js方式监测 Js在线更新地址 e.g. http://xxxx.com.cn/docs/mma-sdk.js -->
             <jsurl></jsurl>
+            <!-- Viewability Js方式监测 离线js文件名称-->
             <jsname></jsname>
-
+            
             <domain>
                 <!-- 此处需修改为第三方检测公司监测代码的 host 部分 -->
                 <url>admaster.com.cn</url>
@@ -53,6 +54,14 @@
                     <IMEI>md5</IMEI>
                     <ANDROIDID>raw</ANDROIDID>
                 </encrypt>
+                
+                <applist>
+                    <!-- applist上报地址 e.g. https:xxxx.com.cn/track/applist -->
+                    <uploadUrl></uploadUrl>
+                    <!-- applist上报时间间隔，单位为小时,配置为0时，不上报-->
+                    <uploadTime>0</uploadTime>
+                </applist>
+                
             </switch>
             <config>
                 <arguments>
@@ -113,7 +122,22 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
+                    <!-- WiFi Name-->
+                    <argument>
+                        <key>WIFISSID</key>
+                        <value>1p</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <!-- WiFi MAC-->
+                    <argument>
+                        <key>WIFIBSSID</key>
+                        <value>1q</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    
                     <argument>
                         <key>AKEY</key>
                         <value>x</value>
@@ -242,7 +266,7 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-                    <!-- 可视视图是否被隐藏 -->
+                    <!-- 可视视图是否显示 -->
                     <argument>
                         <key>AdviewabilityShown</key>
                         <value>2m</value>
@@ -370,8 +394,9 @@
         </company>
         <company>
             <name>miaozhen</name>
-            <!-- JS监测在线更新地址 -->
+            <!-- Viewability Js方式监测 Js在线更新地址 e.g. http://xxxx.com.cn/docs/mma-sdk.js -->
             <jsurl></jsurl>
+            <!-- Viewability Js方式监测 离线js文件名称-->
             <jsname></jsname>
             <domain>
                 <!-- 此处需修改为第三方检测公司监测代码的 host 部分 -->
@@ -393,6 +418,12 @@
                     <IMEI>raw</IMEI>
                     <ANDROIDID>raw</ANDROIDID>
                 </encrypt>
+                <applist>
+                    <!-- applist上报地址 e.g. https:xxxx.com.cn/track/applist -->
+                    <uploadUrl></uploadUrl>
+                    <!-- applist上报时间间隔，单位为小时,配置为0时，不上报-->
+                    <uploadTime>0</uploadTime>
+                </applist>
             </switch>
             <config>
                 <arguments>
@@ -459,9 +490,17 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
+                    <!-- WiFi Name-->
                     <argument>
                         <key>WIFISSID</key>
                         <value>mj</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <!-- WiFi MAC-->
+                    <argument>
+                        <key>WIFIBSSID</key>
+                        <value>1q</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
@@ -643,3 +682,4 @@
         </company>
     </companies>
 </config>
+

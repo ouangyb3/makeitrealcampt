@@ -158,14 +158,7 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-                    
-                    <argument>
-                        <key>MUDS</key>
-                        <value>0i</value>
-                        <urlEncode>true</urlEncode>
-                        <isRequired>true</isRequired>
-                    </argument>
-                    
+
                     <argument>
                         <key>OPENUDID</key>
                         <value>o</value>
@@ -401,8 +394,9 @@
         </company>
         <company>
             <name>miaozhen</name>
-            <!-- JS监测在线更新地址 -->
+            <!-- Viewability Js方式监测 Js在线更新地址 e.g. http://xxxx.com.cn/docs/mma-sdk.js -->
             <jsurl></jsurl>
+            <!-- Viewability Js方式监测 离线js文件名称-->
             <jsname></jsname>
             <domain>
                 <!-- 此处需修改为第三方检测公司监测代码的 host 部分 -->
@@ -424,6 +418,12 @@
                     <IMEI>raw</IMEI>
                     <ANDROIDID>raw</ANDROIDID>
                 </encrypt>
+                <applist>
+                    <!-- applist上报地址 e.g. https:xxxx.com.cn/track/applist -->
+                    <uploadUrl></uploadUrl>
+                    <!-- applist上报时间间隔，单位为小时,配置为0时，不上报-->
+                    <uploadTime>0</uploadTime>
+                </applist>
             </switch>
             <config>
                 <arguments>
@@ -490,9 +490,17 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
+                    <!-- WiFi Name-->
                     <argument>
                         <key>WIFISSID</key>
                         <value>mj</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <!-- WiFi MAC-->
+                    <argument>
+                        <key>WIFIBSSID</key>
+                        <value>1q</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
