@@ -500,7 +500,7 @@
                     <!-- WiFi MAC-->
                     <argument>
                         <key>WIFIBSSID</key>
-                        <value>1q</value>
+                        <value>ml</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
