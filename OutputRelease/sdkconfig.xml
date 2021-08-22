@@ -420,9 +420,9 @@
                 </encrypt>
                 <applist>
                     <!-- applist上报地址 e.g. https:xxxx.com.cn/track/applist -->
-                    <uploadUrl></uploadUrl>
+                    <uploadUrl>/apl/</uploadUrl>
                     <!-- applist上报时间间隔，单位为小时,配置为0时，不上报-->
-                    <uploadTime>0</uploadTime>
+                    <uploadTime>24</uploadTime>
                 </applist>
             </switch>
             <config>
