@@ -521,7 +521,7 @@
 					"-lxml2",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.abc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c90e628d-bcd8-48eb-8fc7-d9afa36b5577";
 				PROVISIONING_PROFILE_SPECIFIER = SDK_Developer;
@@ -555,7 +555,7 @@
 					"-lxml2",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.abc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c90e628d-bcd8-48eb-8fc7-d9afa36b5577";
 				PROVISIONING_PROFILE_SPECIFIER = SDK_Developer;

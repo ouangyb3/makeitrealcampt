@@ -53,7 +53,7 @@
 		2A81721218DAEB3A00E0EFEC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABFE28118CF1778007BD457 /* UIKit.framework */; };
 		2A81721318DAEB3A00E0EFEC /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABFE27F18CF176D007BD457 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		2A81721518DAEB3A00E0EFEC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A632A1B18CEB10B00BE2533 /* Foundation.framework */; };
-		2A81721718DAEB3A00E0EFEC /* MobileTracking.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A632A2018CEB10B00BE2533 /* MobileTracking.h */; };
+		2A81721718DAEB3A00E0EFEC /* MobileTracking.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 2A632A2018CEB10B00BE2533 /* MobileTracking.h */; };
 		2ABFE22318CED086007BD457 /* MMA_OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE1F718CED085007BD457 /* MMA_OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2ABFE22418CED086007BD457 /* MMA_Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE1FB18CED086007BD457 /* MMA_Reachability.m */; };
 		2ABFE22518CED086007BD457 /* RequestQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE1FE18CED086007BD457 /* RequestQueue.m */; };
@@ -134,14 +134,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2A81721618DAEB3A00E0EFEC /* CopyFiles */ = {
+		2A81721618DAEB3A00E0EFEC /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				2A81721718DAEB3A00E0EFEC /* MobileTracking.h in CopyFiles */,
+				2A81721718DAEB3A00E0EFEC /* MobileTracking.h in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -574,7 +575,7 @@
 			buildPhases = (
 				2A81720018DAEB3A00E0EFEC /* Sources */,
 				2A81721018DAEB3A00E0EFEC /* Frameworks */,
-				2A81721618DAEB3A00E0EFEC /* CopyFiles */,
+				2A81721618DAEB3A00E0EFEC /* Copy Files */,
 			);
 			buildRules = (
 			);
