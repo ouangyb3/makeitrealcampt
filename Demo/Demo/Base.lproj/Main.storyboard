@@ -76,7 +76,7 @@
         <!--View Controller-->
         <scene sceneID="k91-sC-41A">
             <objects>
-                <viewController id="47d-lZ-hcI" sceneMemberID="viewController">
+                <viewController id="47d-lZ-hcI" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TNJ-bA-Be4"/>
                         <viewControllerLayoutGuide type="bottom" id="ZUi-gj-gdy"/>
@@ -94,7 +94,7 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="uyq-Mj-njI" kind="push" id="eMD-Xm-elO"/>
+                                    <action selector="click:" destination="47d-lZ-hcI" eventType="touchUpInside" id="0kV-NH-7Ri"/>
                                 </connections>
                             </button>
                         </subviews>

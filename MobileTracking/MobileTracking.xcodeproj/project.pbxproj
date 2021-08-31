@@ -21,9 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		18D1E98819D188A500F4ABCD /* mma_sign.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D1E98719D188A500F4ABCD /* mma_sign.a */; };
-		18D1E98919D188A500F4ABCD /* mma_sign.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D1E98719D188A500F4ABCD /* mma_sign.a */; };
-		18D1E98A19D188A500F4ABCD /* mma_sign.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D1E98719D188A500F4ABCD /* mma_sign.a */; };
 		2A632A1C18CEB10B00BE2533 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A632A1B18CEB10B00BE2533 /* Foundation.framework */; };
 		2A632A2118CEB10B00BE2533 /* MobileTracking.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A632A2018CEB10B00BE2533 /* MobileTracking.h */; };
 		2A632A2318CEB10B00BE2533 /* MobileTracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A632A2218CEB10B00BE2533 /* MobileTracking.m */; };
@@ -69,6 +66,8 @@
 		2ABFE2A718D06E79007BD457 /* MMA_Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2A618D06E79007BD457 /* MMA_Task.m */; };
 		2ABFE2B118D07126007BD457 /* MMA_TaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2B018D07126007BD457 /* MMA_TaskQueue.m */; };
 		2ABFE2EF18D1B1A2007BD457 /* MMA_Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2EE18D1B1A2007BD457 /* MMA_Helper.m */; };
+		AF0F01A11FF49FD40095BE0C /* libMMASign.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF0F019F1FF49BCC0095BE0C /* libMMASign.a */; };
+		AF0F01A21FF49FD50095BE0C /* libMMASign.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF0F019F1FF49BCC0095BE0C /* libMMASign.a */; };
 		AF1AAE921EF61EF300E9C276 /* AdHeper.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE791EF61EF300E9C276 /* AdHeper.m */; };
 		AF1AAE931EF61EF300E9C276 /* AdHeper.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE791EF61EF300E9C276 /* AdHeper.m */; };
 		AF1AAE941EF61EF300E9C276 /* NSDate+VASDK.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE7B1EF61EF300E9C276 /* NSDate+VASDK.m */; };
@@ -148,8 +147,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		18D1E98619D188A500F4ABCD /* MMA_EncryptModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_EncryptModule.h; sourceTree = "<group>"; };
-		18D1E98719D188A500F4ABCD /* mma_sign.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = mma_sign.a; sourceTree = "<group>"; };
 		2A632A1818CEB10B00BE2533 /* libMobileTrackingDevice.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMobileTrackingDevice.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A632A1B18CEB10B00BE2533 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2A632A1F18CEB10B00BE2533 /* MobileTracking-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MobileTracking-Prefix.pch"; sourceTree = "<group>"; };
@@ -195,6 +192,8 @@
 		2ABFE2B018D07126007BD457 /* MMA_TaskQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_TaskQueue.m; sourceTree = "<group>"; };
 		2ABFE2ED18D1B1A2007BD457 /* MMA_Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_Helper.h; sourceTree = "<group>"; };
 		2ABFE2EE18D1B1A2007BD457 /* MMA_Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_Helper.m; sourceTree = "<group>"; };
+		AF0F019F1FF49BCC0095BE0C /* libMMASign.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMMASign.a; sourceTree = "<group>"; };
+		AF0F01A01FF49BCC0095BE0C /* MMASign.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMASign.h; sourceTree = "<group>"; };
 		AF1AAE781EF61EF300E9C276 /* AdHeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdHeper.h; sourceTree = "<group>"; };
 		AF1AAE791EF61EF300E9C276 /* AdHeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdHeper.m; sourceTree = "<group>"; };
 		AF1AAE7A1EF61EF300E9C276 /* NSDate+VASDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+VASDK.h"; sourceTree = "<group>"; };
@@ -243,9 +242,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18D1E98819D188A500F4ABCD /* mma_sign.a in Frameworks */,
 				2ABFE29818CF2B5F007BD457 /* CoreLocation.framework in Frameworks */,
 				2ABFE28218CF1778007BD457 /* UIKit.framework in Frameworks */,
+				AF0F01A21FF49FD50095BE0C /* libMMASign.a in Frameworks */,
 				2ABFE28018CF176D007BD457 /* AdSupport.framework in Frameworks */,
 				2A632A1C18CEB10B00BE2533 /* Foundation.framework in Frameworks */,
 			);
@@ -255,7 +254,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18D1E98919D188A500F4ABCD /* mma_sign.a in Frameworks */,
 				2A632A3018CEB10B00BE2533 /* libMobileTrackingDevice.a in Frameworks */,
 				2A632A2A18CEB10B00BE2533 /* XCTest.framework in Frameworks */,
 				2A632A2B18CEB10B00BE2533 /* Foundation.framework in Frameworks */,
@@ -266,9 +264,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18D1E98A19D188A500F4ABCD /* mma_sign.a in Frameworks */,
 				2A81721118DAEB3A00E0EFEC /* CoreLocation.framework in Frameworks */,
 				2A81721218DAEB3A00E0EFEC /* UIKit.framework in Frameworks */,
+				AF0F01A11FF49FD40095BE0C /* libMMASign.a in Frameworks */,
 				2A81721318DAEB3A00E0EFEC /* AdSupport.framework in Frameworks */,
 				2A81721518DAEB3A00E0EFEC /* Foundation.framework in Frameworks */,
 			);
@@ -358,8 +356,8 @@
 		2ABFE1F118CED085007BD457 /* EncryptModule */ = {
 			isa = PBXGroup;
 			children = (
-				18D1E98619D188A500F4ABCD /* MMA_EncryptModule.h */,
-				18D1E98719D188A500F4ABCD /* mma_sign.a */,
+				AF0F019F1FF49BCC0095BE0C /* libMMASign.a */,
+				AF0F01A01FF49BCC0095BE0C /* MMASign.h */,
 			);
 			path = EncryptModule;
 			sourceTree = "<group>";
