@@ -40,7 +40,7 @@
             </domain>
             <signature>
                 <publicKey>Z83476Hel</publicKey>
-                <paramKey>sign</paramKey>
+                <paramKey>0b</paramKey>
             </signature>
             <switch>
                 <isTrackLocation>false</isTrackLocation>
