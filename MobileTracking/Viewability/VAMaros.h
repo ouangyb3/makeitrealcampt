@@ -12,8 +12,11 @@
 
 #define VAStringFromSize(x) [VAMaros sizeToString:x]
 #define VAStringFromPoint(x) [VAMaros pointToString:x]
-#define DLOG(FORMAT, ...) printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
-#define NSLog(FORMAT, ...) printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#define VAPixelStringFromSize(x) [VAMaros sizeToPixelString:x]
+#define VAPixelStringFromPoint(x) [VAMaros pointToPixelString:x]
+
+//#define DLOG(FORMAT, ...) printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+//#define NSLog(FORMAT, ...) printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 
 //#define NSLog(format,...)
 
@@ -21,5 +24,7 @@
 
 + (NSString *)sizeToString:(CGSize)size;
 + (NSString *)pointToString:(CGPoint)point;
++ (NSString *)sizeToPixelString:(CGSize)size;
++ (NSString *)pointToPixelString:(CGPoint)point;
 
 @end

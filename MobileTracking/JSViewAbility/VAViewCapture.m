@@ -60,12 +60,12 @@
     return @{
              AD_VBJS_TYPE : [NSString stringWithFormat:@"%d",_isVideo],
              AD_VB_TIME : captureDate.mtimestamp,          // 监测时间戳毫秒秒
-             AD_VB_FRAME : VAStringFromSize(frame.size), // 广告原始尺寸
-             AD_VB_POINT : VAStringFromPoint(windowFrame.origin), // 广告可视的原点位置
+             AD_VB_FRAME : VAPixelStringFromSize(frame.size), // 广告原始尺寸
+             AD_VB_POINT : VAPixelStringFromPoint(windowFrame.origin), // 广告可视的原点位置
              AD_VB_ALPHA : [NSString stringWithFormat:@"%.2f",alpha], // 透明度
              AD_VB_SHOWN : [NSString stringWithFormat:@"%d",!hidden],  // 隐藏
              AD_VB_COVER_RATE : [NSString stringWithFormat:@"%.2f",coverRate], // 覆盖比例
-             AD_VB_SHOWFRAME : VAStringFromSize(showFrame.size), // 广告可视尺寸
+             AD_VB_SHOWFRAME : VAPixelStringFromSize(showFrame.size), // 广告可视尺寸
              AD_VB_FORGROUND : [NSString stringWithFormat:@"%d",isForground]  // 是否前台
                  };
 }

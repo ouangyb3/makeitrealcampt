@@ -101,31 +101,33 @@
 
 - (void)initSdkConfig
 {
-    /**
-     *  Old (NSUserDefaults) ----> New(File)
-     */
-    NSString *SDK_CONFIG_DATA_KEY = @"SDK_CONFIG_DATA_KEY";
-    
-    NSData *old_sdkData = [[NSUserDefaults standardUserDefaults]  dataForKey:SDK_CONFIG_DATA_KEY];
-    
-    if(old_sdkData) {
-        [old_sdkData writeToFile:SDK_CONFIG_DATA_PATH atomically:YES];
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:SDK_CONFIG_DATA_KEY];
+    @try {
+        /**
+         *  Old (NSUserDefaults) ----> New(File)
+         */
+        NSString *SDK_CONFIG_DATA_KEY = @"SDK_CONFIG_DATA_KEY";
+        
+        NSData *old_sdkData = [[NSUserDefaults standardUserDefaults]  dataForKey:SDK_CONFIG_DATA_KEY];
+        
+        if(old_sdkData) {
+            [old_sdkData writeToFile:SDK_CONFIG_DATA_PATH atomically:YES];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:SDK_CONFIG_DATA_KEY];
+        }
+        /*  Old (NSUserDefaults) ----> New(File) */
+        
+        
+        NSData *sdkData = [NSData dataWithContentsOfFile:SDK_CONFIG_DATA_PATH];
+        if (sdkData) {
+            _sdkConfig = [MMA_XMLReader sdkConfigWithData:sdkData];
+        } else {
+            NSString *localSdkFilePath = [[NSBundle mainBundle] pathForResource:SDK_CONFIG_FILE_NAME ofType:SDK_CONFIG_FILE_EXT];
+            NSData *localSdkData = [[NSData alloc] initWithContentsOfFile:localSdkFilePath];
+            _sdkConfig = [MMA_XMLReader sdkConfigWithData:localSdkData];
+        }
     }
-    /*  Old (NSUserDefaults) ----> New(File) */
-    
-    
-    NSData *sdkData = [NSData dataWithContentsOfFile:SDK_CONFIG_DATA_PATH];
-    if (sdkData) {
-        _sdkConfig = [MMA_XMLReader sdkConfigWithData:sdkData];
-    } else {
-        NSString *localSdkFilePath = [[NSBundle mainBundle] pathForResource:SDK_CONFIG_FILE_NAME ofType:SDK_CONFIG_FILE_EXT];
-        NSData *localSdkData = [[NSData alloc] initWithContentsOfFile:localSdkFilePath];
-        _sdkConfig = [MMA_XMLReader sdkConfigWithData:localSdkData];
+    @catch (NSException *exception) {
+        [MMA_Log log:@"MMA_SDK Init SDK Config Exception: %@",exception];
     }
-    
-    
-    
 }
 
 - (void)initViewabilityService {

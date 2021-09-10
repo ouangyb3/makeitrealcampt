@@ -95,6 +95,7 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="click:" destination="47d-lZ-hcI" eventType="touchUpInside" id="0kV-NH-7Ri"/>
+                                    <segue destination="uyq-Mj-njI" kind="push" id="i77-7q-CtZ"/>
                                 </connections>
                             </button>
                         </subviews>
