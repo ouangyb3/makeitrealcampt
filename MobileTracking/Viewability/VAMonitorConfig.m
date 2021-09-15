@@ -88,7 +88,6 @@
         _videoDuration = [aDecoder decodeFloatForKey:@"videoDuration"];
         _trackProgressPointsTypes = [aDecoder decodeIntegerForKey:@"trackProgressPointsTypes"];
         
-        _needRecordData = [aDecoder decodeBoolForKey:@"needRecordData"];
         _videoPlayType = [aDecoder decodeIntegerForKey:@"videoPlayType"];
         _trackPolicy = [aDecoder decodeIntegerForKey:@"trackPolicy"];
         
@@ -111,7 +110,6 @@
    [aCoder encodeFloat:_videoDuration forKey:@"videoDuration"];
    [aCoder encodeInteger:_trackProgressPointsTypes forKey:@"trackProgressPointsTypes"];
     
-   [aCoder encodeBool:_needRecordData forKey:@"needRecordData"];
    [aCoder encodeInteger:_videoPlayType forKey:@"videoPlayType"];
     [aCoder encodeInteger:_trackPolicy forKey:@"trackPolicy"];
 }
