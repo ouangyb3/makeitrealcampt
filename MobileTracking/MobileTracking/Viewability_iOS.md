@@ -3,7 +3,12 @@
 
 1. 将SDK发布文件中，release目录下的**MobileTracking.h** 、**libMobileTracking.a**、**sdkconfig.xml** 三个文件拷贝到项目工程中，将 **sdkconfig.xml** 上传到 web 服务器，使其可以通过 web 方式访问，假设其地址为 **http://xxxxxx.com/sdkconfig.xml**（其后会用到）。
 2. 在项目工程 App 的 Target Build Settings 中的 **Other Linker Flags** 选项里添加 **-lxml2** **-all_load** 或 **-lxml2** **-force_load** 静态库的绝对路径
-
+3. 如果不想开启定位服务，需要在sdkconfig内将所有Company标签内的<isTrackLocation>设置为false,使用定位服务请添加隐私权限访问描述,例如
+```
+// 在使用期间访问位置
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>是否允许App通过您的地理位置信息获取您周边的相关数据</string>
+```
 ###步骤2:配置文件sdkconfig.xml的使用方法
 在使用的文件中引用 **#import "MobileTracking.h"**.
 

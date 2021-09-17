@@ -2,15 +2,13 @@
 //  LocationService.h
 //  MobileTracking
 //
-//  Created by Wenqi on 14-3-11.
-//  Copyright (c) 2014年 Admaster. All rights reserved.
+//  Created by master on 2018/3/8.
+//  Copyright © 2018年 Admaster. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
-
 @interface LocationService : NSObject
-
 
 + (LocationService *)sharedInstance;
 

@@ -1,12 +1,13 @@
 //
 //  LocationService.m
-//  MobileTracking
+//  MobileTrackingDevice
 //
-//  Created by Wenqi on 14-3-11.
-//  Copyright (c) 2014年 Admaster. All rights reserved.
+//  Created by master on 2018/3/8.
+//  Copyright © 2018年 Admaster. All rights reserved.
 //
 
 #import "LocationService.h"
+#import "MMA_Macro.h"
 
 @interface LocationService() <CLLocationManagerDelegate>
 
@@ -15,9 +16,9 @@
 @property (nonatomic, assign) BOOL isStart;
 
 @end
+#define LOGGG(FORMAT, ...) //printf("----------%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 
 @implementation LocationService
-
 + (LocationService *)sharedInstance {
     static LocationService *_sharedInstance = nil;
     static dispatch_once_t onceToken;
@@ -27,34 +28,93 @@
     return _sharedInstance;
 }
 
-
 - (instancetype)init {
     if (self = [super init]) {
         _currentLocation = [[CLLocation alloc] init];
-        _locationManager = [[CLLocationManager alloc] init];
-        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        _locationManager.delegate = self;
         [self start];
     }
     return self;
 }
 
+- (CLLocationManager *)locationManager {
+    if (!_locationManager) {
+        _locationManager = [[CLLocationManager alloc] init];
+        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            [_locationManager requestWhenInUseAuthorization];
+        }
+        [_locationManager setDelegate:self];
+        [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+        [_locationManager setDistanceFilter:kCLDistanceFilterNone];
+    }
+    return _locationManager;
+}
 - (void)start {
-    [self.locationManager startUpdatingLocation];
-    if(!self.isStart)
-        [NSTimer scheduledTimerWithTimeInterval:10
-                                         target:self
-                                       selector:@selector(stop)
-                                       userInfo:nil
-                                        repeats:NO];
-    self.isStart = YES;
+    LOGGG(@"开始定位");
+    //判断用户定位服务是否开启
+    if ([CLLocationManager locationServicesEnabled] && [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied) {
+        if([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+            [self.locationManager requestWhenInUseAuthorization];
+        }
+        [self.locationManager startUpdatingLocation];
+        if(!self.isStart) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(20 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [self stop];
+            });
+            self.isStart = YES;
+        }
+        return;
+    }
+    LOGGG(@"停止stop定位");
+
+    [self stop];
 }
 
-- (void)stop {
+#pragma mark - <CLLocationManagerDelegate>
+//
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    LOGGG(@"定位更新1");
+
+    CLLocation *location = [locations lastObject];
+    LOGGG(@"定位更新%f",[location.timestamp timeIntervalSinceNow]);
+    if (fabs([location.timestamp timeIntervalSinceNow]) <= LOCATION_UPDATE_INTERVAL) {
+        self.currentLocation = location;
+        [self stop];
+    } else {
+        self.currentLocation = location;
+        [self start];
+    }
+}
+
+//
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation {
+    LOGGG(@"定位更新2");
+    if (fabs([newLocation.timestamp timeIntervalSinceNow]) <= LOCATION_UPDATE_INTERVAL) {
+        self.currentLocation = newLocation;
+        [self stop];
+    } else {
+        self.currentLocation = newLocation;
+        [self start];
+    }
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    LOGGG(@"定位失败");
+    [self stop];
+}
+
+
+/**
+ * 停止定位
+ */
+-(void)stop {
+    LOGGG(@"停止定位");
     self.isStart = NO;
-    [self.locationManager stopUpdatingLocation];
+    [_locationManager stopUpdatingLocation];
+    _locationManager = nil; //这句话必须加上，否则可能会出现调用多次的情况
 }
-
 - (BOOL)locationKnown {
     if (round(self.currentLocation.coordinate.latitude) != 0 && round(self.currentLocation.coordinate.longitude) != 0) {
         return YES;
@@ -62,37 +122,22 @@
         return NO;
     }
 }
-
 - (CLLocation *)getCurrentLocation{
     if (self.locationKnown == YES) {
-        if (abs([self.currentLocation.timestamp timeIntervalSinceNow]) > 120) {
+        if (fabs([self.currentLocation.timestamp timeIntervalSinceNow]) >= LOCATION_UPDATE_INTERVAL) {
+            LOGGG(@"%f超过%d",fabs([self.currentLocation.timestamp timeIntervalSinceNow]),LOCATION_UPDATE_INTERVAL);
             [self start];
         }
         return self.currentLocation;
     } else {
+        LOGGG(@"没有位置信息");
         [self start];
         return nil;
     }
 }
 
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation {
-    
-    if ( abs([newLocation.timestamp timeIntervalSinceNow]) < 120) {
-        self.currentLocation = newLocation;
-        [self stop];
-    } else {
-        
-        
-        [self start];
-    }
-}
-
-- (void)locationManager:(CLLocationManager *)manager
-       didFailWithError:(NSError *)error {
-    [self stop];
-}
-
 
 @end
+
+
+
