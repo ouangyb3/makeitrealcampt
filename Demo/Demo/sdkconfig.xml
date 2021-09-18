@@ -56,7 +56,7 @@
 
             <switch>
                 <!-- 是否发送地理位置信息 -->
-                <isTrackLocation>false</isTrackLocation>
+                <isTrackLocation>true</isTrackLocation>
                 <!-- 离线数据缓存时间，单位秒 -->
                 <offlineCacheExpiration>259200</offlineCacheExpiration>
                 <!-- 可视化监测采集策略 0 = TrackPositionChanged 位置改变时记录,1 = TrackVisibleChanged 可视改变时记录 -->
