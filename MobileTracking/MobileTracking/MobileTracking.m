@@ -988,8 +988,13 @@
             [trackURL appendFormat:@"%@%@%@%@", company.separator, queryArgsKey, company.equalizer, timestamp];
             
         } else if ([argument.key isEqualToString:TRACKING_KEY_LBS] && self.isTrackLocation) {
+            /*
+             2018.04.22修改
+             开启位置捕获则添加
+             不开启则拼接",l="
+             */
             NSString *location = [self.trackingInfoService location];
-            [trackURL appendFormat:@"%@%@%@%@", company.separator, queryArgsKey, company.equalizer, location];
+            [trackURL appendFormat:@"%@%@%@%@", company.separator, queryArgsKey, company.equalizer, company.MMASwitch.isTrackLocation ? location : @""];
             
         } else if ([argument.key isEqualToString:TRACKING_KEY_OSVS]) {
             
