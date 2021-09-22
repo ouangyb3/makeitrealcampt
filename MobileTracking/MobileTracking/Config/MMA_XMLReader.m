@@ -7,7 +7,7 @@
 //
 
 #import "MMA_XMLReader.h"
-#import "GDataXMLNode.h"
+#import "MMA_GDataXMLNode.h"
 
 @interface MMA_XMLReader()
 

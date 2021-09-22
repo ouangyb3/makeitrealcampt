@@ -11,10 +11,10 @@ iphonesimulator_path=${UNIVERSAL_OUTPUTFOLDER}/${CONFIGURATION}-iphonesimulator
 
 ${$targetName:?"mush set targetName"}
 xcodebuild -target $targetName clean     # clean project
-xcodebuild -target $targetName -sdk iphoneos11.0 # build iphoneos
+xcodebuild -target $targetName -sdk iphoneos12.0 # build iphoneos
 
 #build iphonesimulator
-xcodebuild -target $targetName -configuration ${CONFIGURATION} -sdk iphonesimulator11.0  -arch x86_64 -arch i386
+xcodebuild -target $targetName -configuration ${CONFIGURATION} -sdk iphonesimulator12.0  -arch x86_64 -arch i386
 
 if [ ! -d "$universal_path" ]; then   #判断文件是否存在 不存在创建 中括号两边要空格
   mkdir "$universal_path"

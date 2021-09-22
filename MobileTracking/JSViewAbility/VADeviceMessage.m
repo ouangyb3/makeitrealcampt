@@ -11,8 +11,8 @@
 
 #import "VADeviceMessage.h"
 #import "MMA_Macro.h"
-#import "TrackingInfoService.h"
-#import "GTMNSString+URLArguments.h"
+#import "MMA_TrackingInfoService.h"
+#import "MMA_GTMNSString+URLArguments.h"
 #import "MMA_Helper.h"
 
 static NSDictionary *_device;
@@ -30,7 +30,7 @@ static NSString *_locationInfo;
 + (NSDictionary *)deviceMessage:(BOOL)trackLocation {
     NSMutableDictionary *deviceMessage = [NSMutableDictionary dictionary];
     
-    TrackingInfoService *service = [TrackingInfoService sharedInstance];
+    MMA_TrackingInfoService *service = [MMA_TrackingInfoService sharedInstance];
     
     if(!_device || !_device.count) {
         NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];

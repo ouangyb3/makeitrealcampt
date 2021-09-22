@@ -16,11 +16,11 @@
 #import "MMA_TaskQueue.h"
 #import "MMA_Helper.h"
 
-#import "LocationService.h"
-#import "TrackingInfoService.h"
+#import "MMA_LocationService.h"
+#import "MMA_TrackingInfoService.h"
 #import "MMASign.h"
-#import "RequestQueue.h"
-#import "GTMNSString+URLArguments.h"
+#import "MMA_RequestQueue.h"
+#import "MMA_GTMNSString+URLArguments.h"
 #import "ViewabilityService.h"
 #import "VAMonitor.h"
 #import "VAMonitorConfig.h"
@@ -33,7 +33,7 @@
 @property (nonatomic, strong) NSString *sdkConfigURL;
 @property (nonatomic, strong) MMA_TaskQueue *sendQueue;
 @property (nonatomic, strong) MMA_TaskQueue *failedQueue;
-@property (nonatomic, strong) TrackingInfoService *trackingInfoService;
+@property (nonatomic, strong) MMA_TrackingInfoService *trackingInfoService;
 @property (nonatomic, strong) NSTimer *failedQueueTimer;
 @property (nonatomic, strong) NSTimer *sendQueueTimer;
 @property (nonatomic, assign) BOOL isTrackLocation;
@@ -84,7 +84,7 @@
 {
     if (self = [super init]) {
         
-        _trackingInfoService = [TrackingInfoService sharedInstance];
+        _trackingInfoService = [MMA_TrackingInfoService sharedInstance];
         _impressionDictionary = [NSMutableDictionary dictionary];
         _isTrackLocation = false;
         
@@ -214,7 +214,7 @@
                     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_SUCCEED object:nil];
                 }
             };
-            [[RequestQueue mainQueue] addOperation:operation];
+            [[MMA_RequestQueue mainQueue] addOperation:operation];
         }
     }
     @catch (NSException *exception) {
@@ -247,7 +247,7 @@
                     
                 }
             };
-            [[RequestQueue mainQueue] addOperation:operation];
+            [[MMA_RequestQueue mainQueue] addOperation:operation];
         }
     }
 }
@@ -347,7 +347,7 @@
     [self.sdkConfig.companies enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         MMA_Company *company = (MMA_Company *)obj;
         if (company.MMASwitch.isTrackLocation) {
-            [LocationService sharedInstance];
+            [MMA_LocationService sharedInstance];
             self.isTrackLocation = true;
         }
     }];
