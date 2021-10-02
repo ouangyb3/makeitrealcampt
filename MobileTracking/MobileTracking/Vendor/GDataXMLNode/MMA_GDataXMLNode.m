@@ -17,7 +17,7 @@
 #import "MMA_GDataXMLNode.h"
 
 @class NSArray, NSDictionary, NSError, NSString, NSURL;
-@class GDataXMLElement, GDataXMLDocument;
+@class MMA_GDataXMLElement, MMA_GDataXMLDocument;
 
 
 static const int kGDataXMLParseOptions = (XML_PARSE_NOCDATA | XML_PARSE_NOBLANKS);
@@ -136,7 +136,7 @@ static xmlChar *SplitQNameReverse(const xmlChar *qname, xmlChar **prefix) {
 
 @end
 
-@interface GDataXMLElement (PrivateMethods)
+@interface MMA_GDataXMLElement (PrivateMethods)
 
 + (void)fixUpNamespacesForNode:(xmlNodePtr)nodeToFix
             graftingToTreeNode:(xmlNodePtr)graftPointNode;
@@ -158,7 +158,7 @@ static xmlChar *SplitQNameReverse(const xmlChar *qname, xmlChar **prefix) {
 // the namespace prefix and replace it with a proper ns
 // pointer.
 
-+ (GDataXMLElement *)elementWithName:(NSString *)name {
++ (MMA_GDataXMLElement *)elementWithName:(NSString *)name {
 
   xmlNodePtr theNewNode = xmlNewNode(NULL, // namespace
                                      GDataGetXMLString(name));
@@ -169,7 +169,7 @@ static xmlChar *SplitQNameReverse(const xmlChar *qname, xmlChar **prefix) {
   return nil;
 }
 
-+ (GDataXMLElement *)elementWithName:(NSString *)name stringValue:(NSString *)value {
++ (MMA_GDataXMLElement *)elementWithName:(NSString *)name stringValue:(NSString *)value {
 
   xmlNodePtr theNewNode = xmlNewNode(NULL, // namespace
                                      GDataGetXMLString(name));
@@ -191,7 +191,7 @@ static xmlChar *SplitQNameReverse(const xmlChar *qname, xmlChar **prefix) {
   return nil;
 }
 
-+ (GDataXMLElement *)elementWithName:(NSString *)name URI:(NSString *)theURI {
++ (MMA_GDataXMLElement *)elementWithName:(NSString *)name URI:(NSString *)theURI {
 
   // since we don't know a prefix yet, shove in the whole URI; we'll look for
   // a proper namespace ptr later when addChild calls fixUpNamespacesForNode
@@ -272,7 +272,7 @@ static xmlChar *SplitQNameReverse(const xmlChar *qname, xmlChar **prefix) {
   Class theClass;
 
   if (theXMLNode->type == XML_ELEMENT_NODE) {
-    theClass = [GDataXMLElement class];
+    theClass = [MMA_GDataXMLElement class];
   } else {
     theClass = [MMA_GDataXMLNode class];
   }
@@ -291,7 +291,7 @@ static xmlChar *SplitQNameReverse(const xmlChar *qname, xmlChar **prefix) {
 + (id)nodeBorrowingXMLNode:(xmlNodePtr)theXMLNode {
   Class theClass;
   if (theXMLNode->type == XML_ELEMENT_NODE) {
-    theClass = [GDataXMLElement class];
+    theClass = [MMA_GDataXMLElement class];
   } else {
     theClass = [MMA_GDataXMLNode class];
   }
@@ -656,30 +656,30 @@ static xmlChar *SplitQNameReverse(const xmlChar *qname, xmlChar **prefix) {
   if (xmlNode_ != NULL) {
     xmlElementType nodeType = xmlNode_->type;
     switch (nodeType) {
-      case XML_ELEMENT_NODE:         return GDataXMLElementKind;
-      case XML_ATTRIBUTE_NODE:       return GDataXMLAttributeKind;
-      case XML_TEXT_NODE:            return GDataXMLTextKind;
-      case XML_CDATA_SECTION_NODE:   return GDataXMLTextKind;
-      case XML_ENTITY_REF_NODE:      return GDataXMLEntityDeclarationKind;
-      case XML_ENTITY_NODE:          return GDataXMLEntityDeclarationKind;
-      case XML_PI_NODE:              return GDataXMLProcessingInstructionKind;
-      case XML_COMMENT_NODE:         return GDataXMLCommentKind;
-      case XML_DOCUMENT_NODE:        return GDataXMLDocumentKind;
-      case XML_DOCUMENT_TYPE_NODE:   return GDataXMLDocumentKind;
-      case XML_DOCUMENT_FRAG_NODE:   return GDataXMLDocumentKind;
-      case XML_NOTATION_NODE:        return GDataXMLNotationDeclarationKind;
-      case XML_HTML_DOCUMENT_NODE:   return GDataXMLDocumentKind;
-      case XML_DTD_NODE:             return GDataXMLDTDKind;
-      case XML_ELEMENT_DECL:         return GDataXMLElementDeclarationKind;
-      case XML_ATTRIBUTE_DECL:       return GDataXMLAttributeDeclarationKind;
-      case XML_ENTITY_DECL:          return GDataXMLEntityDeclarationKind;
-      case XML_NAMESPACE_DECL:       return GDataXMLNamespaceKind;
-      case XML_XINCLUDE_START:       return GDataXMLProcessingInstructionKind;
-      case XML_XINCLUDE_END:         return GDataXMLProcessingInstructionKind;
-      case XML_DOCB_DOCUMENT_NODE:   return GDataXMLDocumentKind;
+      case XML_ELEMENT_NODE:         return MMA_GDataXMLElementKind;
+      case XML_ATTRIBUTE_NODE:       return MMA_GDataXMLAttributeKind;
+      case XML_TEXT_NODE:            return MMA_GDataXMLTextKind;
+      case XML_CDATA_SECTION_NODE:   return MMA_GDataXMLTextKind;
+      case XML_ENTITY_REF_NODE:      return MMA_GDataXMLEntityDeclarationKind;
+      case XML_ENTITY_NODE:          return MMA_GDataXMLEntityDeclarationKind;
+      case XML_PI_NODE:              return MMA_GDataXMLProcessingInstructionKind;
+      case XML_COMMENT_NODE:         return MMA_GDataXMLCommentKind;
+      case XML_DOCUMENT_NODE:        return MMA_GDataXMLDocumentKind;
+      case XML_DOCUMENT_TYPE_NODE:   return MMA_GDataXMLDocumentKind;
+      case XML_DOCUMENT_FRAG_NODE:   return MMA_GDataXMLDocumentKind;
+      case XML_NOTATION_NODE:        return MMA_GDataXMLNotationDeclarationKind;
+      case XML_HTML_DOCUMENT_NODE:   return MMA_GDataXMLDocumentKind;
+      case XML_DTD_NODE:             return MMA_GDataXMLDTDKind;
+      case XML_ELEMENT_DECL:         return MMA_GDataXMLElementDeclarationKind;
+      case XML_ATTRIBUTE_DECL:       return MMA_GDataXMLAttributeDeclarationKind;
+      case XML_ENTITY_DECL:          return MMA_GDataXMLEntityDeclarationKind;
+      case XML_NAMESPACE_DECL:       return MMA_GDataXMLNamespaceKind;
+      case XML_XINCLUDE_START:       return MMA_GDataXMLProcessingInstructionKind;
+      case XML_XINCLUDE_END:         return MMA_GDataXMLProcessingInstructionKind;
+      case XML_DOCB_DOCUMENT_NODE:   return MMA_GDataXMLDocumentKind;
     }
   }
-  return GDataXMLInvalidKind;
+  return MMA_GDataXMLInvalidKind;
 }
 
 - (NSArray *)nodesForXPath:(NSString *)xpath error:(NSError **)error {
@@ -697,9 +697,9 @@ static xmlChar *SplitQNameReverse(const xmlChar *qname, xmlChar **prefix) {
   NSDictionary *errorInfo = nil;
 
   // xmlXPathNewContext requires a doc for its context, but if our elements
-  // are created from GDataXMLElement's initWithXMLString there may not be
+  // are created from MMA_GDataXMLElement's initWithXMLString there may not be
   // a document. (We may later decide that we want to stuff the doc used
-  // there into a GDataXMLDocument and retain it, but we don't do that now.)
+  // there into a MMA_GDataXMLDocument and retain it, but we don't do that now.)
   //
   // We'll temporarily make a document to use for the xpath context.
 
@@ -899,7 +899,7 @@ static xmlChar *SplitQNameReverse(const xmlChar *qname, xmlChar **prefix) {
 
 
 
-@implementation GDataXMLElement
+@implementation MMA_GDataXMLElement
 
 - (id)initWithXMLString:(NSString *)str error:(NSError **)error {
   self = [super init];
@@ -1014,7 +1014,7 @@ static xmlChar *SplitQNameReverse(const xmlChar *qname, xmlChar **prefix) {
 }
 
 - (void)addChild:(MMA_GDataXMLNode *)child {
-  if ([child kind] == GDataXMLAttributeKind) {
+  if ([child kind] == MMA_GDataXMLAttributeKind) {
     [self addAttribute:child];
     return;
   }
@@ -1596,16 +1596,16 @@ static xmlChar *SplitQNameReverse(const xmlChar *qname, xmlChar **prefix) {
 @end
 
 
-@interface GDataXMLDocument (PrivateMethods)
+@interface MMA_GDataXMLDocument (PrivateMethods)
 - (void)addStringsCacheToDoc;
 @end
 
-@implementation GDataXMLDocument
+@implementation MMA_GDataXMLDocument
 
 - (id)initWithXMLString:(NSString *)str options:(unsigned int)mask error:(NSError **)error {
 
   NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
-  GDataXMLDocument *doc = [self initWithData:data options:mask error:error];
+  MMA_GDataXMLDocument *doc = [self initWithData:data options:mask error:error];
   return doc;
 }
 
@@ -1639,7 +1639,7 @@ static xmlChar *SplitQNameReverse(const xmlChar *qname, xmlChar **prefix) {
   return self;
 }
 
-- (id)initWithRootElement:(GDataXMLElement *)element {
+- (id)initWithRootElement:(MMA_GDataXMLElement *)element {
 
   self = [super init];
   if (self) {
@@ -1659,7 +1659,7 @@ static xmlChar *SplitQNameReverse(const xmlChar *qname, xmlChar **prefix) {
 
 #if DEBUG
   NSCAssert(xmlDoc_ != NULL && xmlDoc_->_private == NULL,
-            @"GDataXMLDocument cache creation problem");
+            @"MMA_GDataXMLDocument cache creation problem");
 #endif
 
   // add a strings cache as private data for the document
@@ -1706,13 +1706,13 @@ static xmlChar *SplitQNameReverse(const xmlChar *qname, xmlChar **prefix) {
 
 #pragma mark -
 
-- (GDataXMLElement *)rootElement {
-  GDataXMLElement *element = nil;
+- (MMA_GDataXMLElement *)rootElement {
+  MMA_GDataXMLElement *element = nil;
 
   if (xmlDoc_ != NULL) {
     xmlNodePtr rootNode = xmlDocGetRootElement(xmlDoc_);
     if (rootNode) {
-      element = [GDataXMLElement nodeBorrowingXMLNode:rootNode];
+      element = [MMA_GDataXMLElement nodeBorrowingXMLNode:rootNode];
     }
   }
   return element;
@@ -1774,7 +1774,7 @@ static xmlChar *SplitQNameReverse(const xmlChar *qname, xmlChar **prefix) {
                 namespaces:(NSDictionary *)namespaces
                      error:(NSError **)error {
   if (xmlDoc_ != NULL) {
-    MMA_GDataXMLNode *docNode = [GDataXMLElement nodeBorrowingXMLNode:(xmlNodePtr)xmlDoc_];
+    MMA_GDataXMLNode *docNode = [MMA_GDataXMLElement nodeBorrowingXMLNode:(xmlNodePtr)xmlDoc_];
     NSArray *array = [docNode nodesForXPath:xpath
                                  namespaces:namespaces
                                       error:error];

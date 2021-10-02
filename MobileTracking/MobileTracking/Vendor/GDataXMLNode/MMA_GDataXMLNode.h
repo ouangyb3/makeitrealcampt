@@ -74,22 +74,22 @@ _EXTERN const char* kMMAGDataXMLXPathDefaultNamespacePrefix _INITIALIZE_AS("_def
 //  + (id)nodeConsumingXMLNode:(xmlNodePtr)theXMLNode;
 
 @class NSArray, NSDictionary, NSError, NSString, NSURL;
-@class GDataXMLElement, GDataXMLDocument;
+@class MMA_GDataXMLElement, MMA_GDataXMLDocument;
 
 enum {
-  GDataXMLInvalidKind = 0,
-  GDataXMLDocumentKind,
-  GDataXMLElementKind,
-  GDataXMLAttributeKind,
-  GDataXMLNamespaceKind,
-  GDataXMLProcessingInstructionKind,
-  GDataXMLCommentKind,
-  GDataXMLTextKind,
-  GDataXMLDTDKind,
-  GDataXMLEntityDeclarationKind,
-  GDataXMLAttributeDeclarationKind,
-  GDataXMLElementDeclarationKind,
-  GDataXMLNotationDeclarationKind
+  MMA_GDataXMLInvalidKind = 0,
+  MMA_GDataXMLDocumentKind,
+  MMA_GDataXMLElementKind,
+  MMA_GDataXMLAttributeKind,
+  MMA_GDataXMLNamespaceKind,
+  MMA_GDataXMLProcessingInstructionKind,
+  MMA_GDataXMLCommentKind,
+  MMA_GDataXMLTextKind,
+  MMA_GDataXMLDTDKind,
+  MMA_GDataXMLEntityDeclarationKind,
+  MMA_GDataXMLAttributeDeclarationKind,
+  MMA_GDataXMLElementDeclarationKind,
+  MMA_GDataXMLNotationDeclarationKind
 };
 
 typedef NSUInteger MMA_GDataXMLNodeKind;
@@ -117,9 +117,9 @@ typedef NSUInteger MMA_GDataXMLNodeKind;
   NSArray *cachedAttributes_;
 }
 
-+ (GDataXMLElement *)elementWithName:(NSString *)name;
-+ (GDataXMLElement *)elementWithName:(NSString *)name stringValue:(NSString *)value;
-+ (GDataXMLElement *)elementWithName:(NSString *)name URI:(NSString *)value;
++ (MMA_GDataXMLElement *)elementWithName:(NSString *)name;
++ (MMA_GDataXMLElement *)elementWithName:(NSString *)name stringValue:(NSString *)value;
++ (MMA_GDataXMLElement *)elementWithName:(NSString *)name URI:(NSString *)value;
 
 + (id)attributeWithName:(NSString *)name stringValue:(NSString *)value;
 + (id)attributeWithName:(NSString *)name URI:(NSString *)attributeURI stringValue:(NSString *)value;
@@ -165,7 +165,7 @@ typedef NSUInteger MMA_GDataXMLNodeKind;
 @end
 
 
-@interface GDataXMLElement : MMA_GDataXMLNode
+@interface MMA_GDataXMLElement : MMA_GDataXMLNode
 
 - (id)initWithXMLString:(NSString *)str error:(NSError **)error;
 
@@ -189,7 +189,7 @@ typedef NSUInteger MMA_GDataXMLNodeKind;
 
 @end
 
-@interface GDataXMLDocument : NSObject {
+@interface MMA_GDataXMLDocument : NSObject {
 @protected
   xmlDoc* xmlDoc_; // strong; always free'd in dealloc
 }
@@ -198,9 +198,9 @@ typedef NSUInteger MMA_GDataXMLNodeKind;
 - (id)initWithData:(NSData *)data options:(unsigned int)mask error:(NSError **)error;
 
 // initWithRootElement uses a copy of the argument as the new document's root
-- (id)initWithRootElement:(GDataXMLElement *)element;
+- (id)initWithRootElement:(MMA_GDataXMLElement *)element;
 
-- (GDataXMLElement *)rootElement;
+- (MMA_GDataXMLElement *)rootElement;
 
 - (NSData *)XMLData;
 
