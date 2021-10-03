@@ -88,6 +88,7 @@
 		AF0F01A41FF4A0430095BE0C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		AF16D1961F026C4000A2B28B /* ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewController.h; sourceTree = "<group>"; };
 		AF16D1971F026C4000A2B28B /* ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollViewController.m; sourceTree = "<group>"; };
+		AF2DFF4021955F0300B10C3F /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		AF353ED91CFC24E400969035 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AF353EDE1CFC24FB00969035 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		AF353EE01CFC251C00969035 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -145,6 +146,7 @@
 		2A0C4E1C18D6D18700200F18 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AF2DFF4021955F0300B10C3F /* libxml2.tbd */,
 				AF353EE01CFC251C00969035 /* SystemConfiguration.framework */,
 				AF353EDE1CFC24FB00969035 /* AdSupport.framework */,
 				AF353ED91CFC24E400969035 /* CoreLocation.framework */,
