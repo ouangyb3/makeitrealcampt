@@ -689,7 +689,7 @@
         /**
          *  发送正常的url 监测使用去噪impressionID曝光url,拼接AD_VB (2f),AD_VB_RESULT(vx)
          */
-        [self filterURL:[self handleImpressURL:result.url impression:impressID redirectURL:result.redirectURL additionKey:YES]];
+        [self filterURL:[self handleImpressURL:result.url impression:impressID redirectURL:result.redirectURL additionKey:useViewabilityService]];
         [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_EXPOSE object:nil];
         
         /**
