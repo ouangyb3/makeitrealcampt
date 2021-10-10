@@ -265,7 +265,7 @@
 				ORGANIZATIONNAME = Admaster;
 				TargetAttributes = {
 					2A0C4E1918D6D18700200F18 = {
-						DevelopmentTeam = 4E89P63KS8;
+						DevelopmentTeam = 44PQ7EUSW9;
 					};
 					2A0C4E3A18D6D18700200F18 = {
 						DevelopmentTeam = 4E89P63KS8;
@@ -503,9 +503,9 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: HengYu Wang (5S6RZP63Y5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: HengYu Wang (5S6RZP63Y5)";
-				DEVELOPMENT_TEAM = 4E89P63KS8;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jian Wu (G946Z272GF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jian Wu (G946Z272GF)";
+				DEVELOPMENT_TEAM = 44PQ7EUSW9;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -526,7 +526,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "97e98d37-8685-4f3a-96ce-cd9d04f6286a";
-				PROVISIONING_PROFILE_SPECIFIER = SDK_Developer;
+				PROVISIONING_PROFILE_SPECIFIER = Develop;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
@@ -538,9 +538,9 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: HengYu Wang (5S6RZP63Y5)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: HengYu Wang (5S6RZP63Y5)";
-				DEVELOPMENT_TEAM = 4E89P63KS8;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jian Wu (G946Z272GF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jian Wu (G946Z272GF)";
+				DEVELOPMENT_TEAM = 44PQ7EUSW9;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -561,7 +561,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "97e98d37-8685-4f3a-96ce-cd9d04f6286a";
-				PROVISIONING_PROFILE_SPECIFIER = SDK_Developer;
+				PROVISIONING_PROFILE_SPECIFIER = Develop;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
