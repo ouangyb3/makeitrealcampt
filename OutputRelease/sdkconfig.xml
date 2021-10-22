@@ -443,7 +443,7 @@
                 <!-- 可视化监测采集策略 0 = TrackPositionChanged 位置改变时记录,1 = TrackVisibleChanged 可视改变时记录-->
                 <viewabilityTrackPolicy>1</viewabilityTrackPolicy>
                 <encrypt>
-                    <MAC>raw</MAC>
+                    <MAC>md5</MAC>
                     <IDA>raw</IDA>
                     <IMEI>md5</IMEI>
                     <ANDROIDID>raw</ANDROIDID>
@@ -474,7 +474,7 @@
                     </argument>
                     <argument>
                         <key>MAC</key>
-                        <value>m7</value>
+                        <value>m6a</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
