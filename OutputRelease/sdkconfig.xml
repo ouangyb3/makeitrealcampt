@@ -446,7 +446,7 @@
                     <MAC>md5</MAC>
                     <IDA>raw</IDA>
                     <IMEI>md5</IMEI>
-                    <ANDROIDID>raw</ANDROIDID>
+                    <ANDROIDID>md5</ANDROIDID>
                 </encrypt>
                 <applist>
                     <!-- applist上报地址 e.g. https:xxxx.com.cn/track/applist -->
@@ -498,7 +498,7 @@
                     </argument>
                     <argument>
                         <key>ANDROIDID</key>
-                        <value>m1</value>
+                        <value>m1a</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
