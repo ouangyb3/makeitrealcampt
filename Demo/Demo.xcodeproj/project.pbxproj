@@ -267,6 +267,11 @@
 					2A0C4E1918D6D18700200F18 = {
 						DevelopmentTeam = 44PQ7EUSW9;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.AccessWiFi = {
+								enabled = 0;
+							};
+						};
 					};
 					2A0C4E3A18D6D18700200F18 = {
 						DevelopmentTeam = 4E89P63KS8;
@@ -279,6 +284,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -528,7 +534,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "97e98d37-8685-4f3a-96ce-cd9d04f6286a";
-				PROVISIONING_PROFILE_SPECIFIER = sur_developer;
+				PROVISIONING_PROFILE_SPECIFIER = Develop;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
