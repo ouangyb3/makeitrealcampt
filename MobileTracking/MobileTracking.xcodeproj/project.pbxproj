@@ -22,7 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		2A632A1C18CEB10B00BE2533 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A632A1B18CEB10B00BE2533 /* Foundation.framework */; };
-		2A632A2118CEB10B00BE2533 /* MobileTracking.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2A632A2018CEB10B00BE2533 /* MobileTracking.h */; };
+		2A632A2118CEB10B00BE2533 /* MobileTracking.h in Copy Files (2 items) */ = {isa = PBXBuildFile; fileRef = 2A632A2018CEB10B00BE2533 /* MobileTracking.h */; };
 		2A632A2318CEB10B00BE2533 /* MobileTracking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A632A2218CEB10B00BE2533 /* MobileTracking.m */; };
 		2A632A2A18CEB10B00BE2533 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A632A2918CEB10B00BE2533 /* XCTest.framework */; };
 		2A632A2B18CEB10B00BE2533 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A632A1B18CEB10B00BE2533 /* Foundation.framework */; };
@@ -64,12 +64,18 @@
 		2ABFE2A718D06E79007BD457 /* MMA_Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2A618D06E79007BD457 /* MMA_Task.m */; };
 		2ABFE2B118D07126007BD457 /* MMA_TaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2B018D07126007BD457 /* MMA_TaskQueue.m */; };
 		2ABFE2EF18D1B1A2007BD457 /* MMA_Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2EE18D1B1A2007BD457 /* MMA_Helper.m */; };
-		AF1AAE921EF61EF300E9C276 /* AdHeper.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE791EF61EF300E9C276 /* AdHeper.m */; };
-		AF1AAE931EF61EF300E9C276 /* AdHeper.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE791EF61EF300E9C276 /* AdHeper.m */; };
+		7791985F229FB9C10090A788 /* MMA_AdViewMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7791985A229FB9BF0090A788 /* MMA_AdViewMonitor.m */; };
+		77919860229FB9C10090A788 /* MMA_AdViewResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 7791985B229FB9C00090A788 /* MMA_AdViewResult.m */; };
+		77919861229FB9C10090A788 /* MMA_AdCalSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 7791985C229FB9C00090A788 /* MMA_AdCalSize.m */; };
+		77919862229FB9C10090A788 /* MMA_AdHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7791985D229FB9C00090A788 /* MMA_AdHelper.m */; };
+		77919863229FBDDD0090A788 /* MMA_AdCalSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 7791985C229FB9C00090A788 /* MMA_AdCalSize.m */; };
+		77919864229FBDE00090A788 /* MMA_AdHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7791985D229FB9C00090A788 /* MMA_AdHelper.m */; };
+		77919865229FBDE50090A788 /* MMA_AdViewResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 7791985B229FB9C00090A788 /* MMA_AdViewResult.m */; };
+		77919866229FBDE80090A788 /* MMA_AdViewMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7791985A229FB9BF0090A788 /* MMA_AdViewMonitor.m */; };
 		AF1AAE941EF61EF300E9C276 /* NSDate+VASDK.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE7B1EF61EF300E9C276 /* NSDate+VASDK.m */; };
 		AF1AAE951EF61EF300E9C276 /* NSDate+VASDK.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE7B1EF61EF300E9C276 /* NSDate+VASDK.m */; };
-		AF1AAE961EF61EF300E9C276 /* UIView+Monitor.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE7D1EF61EF300E9C276 /* UIView+Monitor.m */; };
-		AF1AAE971EF61EF300E9C276 /* UIView+Monitor.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE7D1EF61EF300E9C276 /* UIView+Monitor.m */; };
+		AF1AAE961EF61EF300E9C276 /* UIView+MMA_Monitor.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE7D1EF61EF300E9C276 /* UIView+MMA_Monitor.m */; };
+		AF1AAE971EF61EF300E9C276 /* UIView+MMA_Monitor.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE7D1EF61EF300E9C276 /* UIView+MMA_Monitor.m */; };
 		AF1AAE981EF61EF300E9C276 /* VAMaros.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE7F1EF61EF300E9C276 /* VAMaros.m */; };
 		AF1AAE991EF61EF300E9C276 /* VAMaros.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE7F1EF61EF300E9C276 /* VAMaros.m */; };
 		AF1AAE9A1EF61EF300E9C276 /* VAMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE811EF61EF300E9C276 /* VAMonitor.m */; };
@@ -123,14 +129,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2A632A1618CEB10B00BE2533 /* CopyFiles */ = {
+		2A632A1618CEB10B00BE2533 /* Copy Files (2 items) */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				2A632A2118CEB10B00BE2533 /* MobileTracking.h in CopyFiles */,
+				2A632A2118CEB10B00BE2533 /* MobileTracking.h in Copy Files (2 items) */,
 			);
+			name = "Copy Files (2 items)";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2A81721618DAEB3A00E0EFEC /* Copy Files */ = {
@@ -190,13 +197,19 @@
 		2ABFE2B018D07126007BD457 /* MMA_TaskQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_TaskQueue.m; sourceTree = "<group>"; };
 		2ABFE2ED18D1B1A2007BD457 /* MMA_Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_Helper.h; sourceTree = "<group>"; };
 		2ABFE2EE18D1B1A2007BD457 /* MMA_Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_Helper.m; sourceTree = "<group>"; };
+		77919857229FB9BF0090A788 /* MMA_AdHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_AdHelper.h; sourceTree = "<group>"; };
+		77919858229FB9BF0090A788 /* MMA_AdViewResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_AdViewResult.h; sourceTree = "<group>"; };
+		77919859229FB9BF0090A788 /* MMA_AdViewMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_AdViewMonitor.h; sourceTree = "<group>"; };
+		7791985A229FB9BF0090A788 /* MMA_AdViewMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_AdViewMonitor.m; sourceTree = "<group>"; };
+		7791985B229FB9C00090A788 /* MMA_AdViewResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_AdViewResult.m; sourceTree = "<group>"; };
+		7791985C229FB9C00090A788 /* MMA_AdCalSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_AdCalSize.m; sourceTree = "<group>"; };
+		7791985D229FB9C00090A788 /* MMA_AdHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_AdHelper.m; sourceTree = "<group>"; };
+		7791985E229FB9C00090A788 /* MMA_AdCalSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_AdCalSize.h; sourceTree = "<group>"; };
 		AF0F01A01FF49BCC0095BE0C /* MMASign.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMASign.h; sourceTree = "<group>"; };
-		AF1AAE781EF61EF300E9C276 /* AdHeper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdHeper.h; sourceTree = "<group>"; };
-		AF1AAE791EF61EF300E9C276 /* AdHeper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdHeper.m; sourceTree = "<group>"; };
 		AF1AAE7A1EF61EF300E9C276 /* NSDate+VASDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+VASDK.h"; sourceTree = "<group>"; };
 		AF1AAE7B1EF61EF300E9C276 /* NSDate+VASDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+VASDK.m"; sourceTree = "<group>"; };
-		AF1AAE7C1EF61EF300E9C276 /* UIView+Monitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Monitor.h"; sourceTree = "<group>"; };
-		AF1AAE7D1EF61EF300E9C276 /* UIView+Monitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Monitor.m"; sourceTree = "<group>"; };
+		AF1AAE7C1EF61EF300E9C276 /* UIView+MMA_Monitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MMA_Monitor.h"; sourceTree = "<group>"; };
+		AF1AAE7D1EF61EF300E9C276 /* UIView+MMA_Monitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MMA_Monitor.m"; sourceTree = "<group>"; };
 		AF1AAE7E1EF61EF300E9C276 /* VAMaros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAMaros.h; sourceTree = "<group>"; };
 		AF1AAE7F1EF61EF300E9C276 /* VAMaros.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAMaros.m; sourceTree = "<group>"; };
 		AF1AAE801EF61EF300E9C276 /* VAMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VAMonitor.h; sourceTree = "<group>"; };
@@ -281,7 +294,6 @@
 				AFB371581F3854770092930F /* JSViewAbility */,
 				AF1AAE771EF61EF300E9C276 /* Viewability */,
 				2A632A1D18CEB10B00BE2533 /* MobileTracking */,
-				2A632A3118CEB10B00BE2533 /* MobileTrackingTests */,
 				2A632A1A18CEB10B00BE2533 /* Frameworks */,
 				2A632A1918CEB10B00BE2533 /* Products */,
 			);
@@ -356,6 +368,7 @@
 		2ABFE1F118CED085007BD457 /* EncryptModule */ = {
 			isa = PBXGroup;
 			children = (
+				2A632A3118CEB10B00BE2533 /* MobileTrackingTests */,
 				AFB87D322004BA9E00A02E0C /* libMMASign.a */,
 				AF0F01A01FF49BCC0095BE0C /* MMASign.h */,
 			);
@@ -492,14 +505,20 @@
 				AF1AAE851EF61EF300E9C276 /* VAMonitorFrame.m */,
 				AF1AAE8E1EF61EF300E9C276 /* VAViewTools.h */,
 				AF1AAE8F1EF61EF300E9C276 /* VAViewTools.m */,
-				AF1AAE781EF61EF300E9C276 /* AdHeper.h */,
-				AF1AAE791EF61EF300E9C276 /* AdHeper.m */,
 				AF1AAE7A1EF61EF300E9C276 /* NSDate+VASDK.h */,
 				AF1AAE7B1EF61EF300E9C276 /* NSDate+VASDK.m */,
-				AF1AAE7C1EF61EF300E9C276 /* UIView+Monitor.h */,
-				AF1AAE7D1EF61EF300E9C276 /* UIView+Monitor.m */,
+				AF1AAE7C1EF61EF300E9C276 /* UIView+MMA_Monitor.h */,
+				AF1AAE7D1EF61EF300E9C276 /* UIView+MMA_Monitor.m */,
+				7791985E229FB9C00090A788 /* MMA_AdCalSize.h */,
+				7791985C229FB9C00090A788 /* MMA_AdCalSize.m */,
+				77919857229FB9BF0090A788 /* MMA_AdHelper.h */,
+				7791985D229FB9C00090A788 /* MMA_AdHelper.m */,
 				AF1AAE7E1EF61EF300E9C276 /* VAMaros.h */,
 				AF1AAE7F1EF61EF300E9C276 /* VAMaros.m */,
+				77919859229FB9BF0090A788 /* MMA_AdViewMonitor.h */,
+				7791985A229FB9BF0090A788 /* MMA_AdViewMonitor.m */,
+				77919858229FB9BF0090A788 /* MMA_AdViewResult.h */,
+				7791985B229FB9C00090A788 /* MMA_AdViewResult.m */,
 			);
 			path = Viewability;
 			sourceTree = "<group>";
@@ -538,7 +557,7 @@
 			buildPhases = (
 				2A632A1418CEB10B00BE2533 /* Sources */,
 				2A632A1518CEB10B00BE2533 /* Frameworks */,
-				2A632A1618CEB10B00BE2533 /* CopyFiles */,
+				2A632A1618CEB10B00BE2533 /* Copy Files (2 items) */,
 			);
 			buildRules = (
 			);
@@ -598,6 +617,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 2A632A0F18CEB10B00BE2533;
@@ -637,7 +657,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "rm -rf ${BUILT_PRODUCTS_DIR}/libMobileTracking.a\n\nlipo -create \"${BUILT_PRODUCTS_DIR}/../Release-iphonesimulator/libMobileTrackingSimulator.a\" \\\n\"${BUILT_PRODUCTS_DIR}/libMobileTrackingDevice.a\" -output \\\n\"${SRCROOT}/../OutputRelease/libMobileTracking.a\"\n\nrm -f \"${SRCROOT}/../OutputRelease/*\"\n\ncp \"${BUILT_PRODUCTS_DIR}/include/MobileTrackingDevice/MobileTracking.h\" \"${SRCROOT}/../OutputRelease/\"";
+			shellScript = "rm -rf ${BUILT_PRODUCTS_DIR}/libMobileTracking.a\n\nlipo -create \"${BUILT_PRODUCTS_DIR}/../Release-iphonesimulator/libMobileTrackingSimulator.a\" \\\n\"${BUILT_PRODUCTS_DIR}/libMobileTrackingDevice.a\" -output \\\n\"${SRCROOT}/../OutputRelease/libMobileTracking.a\"\n\nrm -f \"${SRCROOT}/../OutputRelease/*\"\n\ncp \"${BUILT_PRODUCTS_DIR}/include/MobileTrackingDevice/MobileTracking.h\" \"${SRCROOT}/../OutputRelease/\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -654,28 +674,31 @@
 				2A79BC1F18D2DC2900FC62C1 /* MMA_TrackingInfoService.m in Sources */,
 				2ABFE23B18CF0427007BD457 /* MMA_GDataXMLNode.m in Sources */,
 				AF1AAE9E1EF61EF300E9C276 /* VAMonitorFrame.m in Sources */,
+				77919862229FB9C10090A788 /* MMA_AdHelper.m in Sources */,
 				AF1AAE981EF61EF300E9C276 /* VAMaros.m in Sources */,
 				AF1AAEA81EF61EF300E9C276 /* VAViewTools.m in Sources */,
 				AF89EC731EFA0CB400A2AF21 /* Viewability_iOS.md in Sources */,
 				AF1AAE941EF61EF300E9C276 /* NSDate+VASDK.m in Sources */,
+				77919860229FB9C10090A788 /* MMA_AdViewResult.m in Sources */,
 				AF1AAE9A1EF61EF300E9C276 /* VAMonitor.m in Sources */,
 				2ABFE28F18CF25A1007BD457 /* MMA_XMLReader.m in Sources */,
 				AFB3716F1F3854770092930F /* VADeviceMessage.m in Sources */,
 				2ABFE2EF18D1B1A2007BD457 /* MMA_Helper.m in Sources */,
 				AFB371751F3854770092930F /* VAJSMaros.m in Sources */,
 				2ABFE2A718D06E79007BD457 /* MMA_Task.m in Sources */,
+				77919861229FB9C10090A788 /* MMA_AdCalSize.m in Sources */,
 				AF1AAEAA1EF61EF300E9C276 /* ViewabilityService.m in Sources */,
 				2ABFE2A418D0581A007BD457 /* MMA_Log.m in Sources */,
 				2A8171BE18DA91C700E0EFEC /* MMA_SSNetworkInfo.m in Sources */,
 				2ABFE22418CED086007BD457 /* MMA_Reachability.m in Sources */,
 				2ABFE22318CED086007BD457 /* MMA_OpenUDID.m in Sources */,
-				AF1AAE961EF61EF300E9C276 /* UIView+Monitor.m in Sources */,
+				AF1AAE961EF61EF300E9C276 /* UIView+MMA_Monitor.m in Sources */,
 				2ABFE28C18CF1EA5007BD457 /* MMA_SDKConfig.m in Sources */,
 				2ABFE2B118D07126007BD457 /* MMA_TaskQueue.m in Sources */,
 				AFB371731F3854770092930F /* VAJavascriptParse.m in Sources */,
 				AFB371711F3854770092930F /* VAJavascriptBridge.m in Sources */,
 				2ABFE2A118D02ED2007BD457 /* MMA_GTMNSString+URLArguments.m in Sources */,
-				AF1AAE921EF61EF300E9C276 /* AdHeper.m in Sources */,
+				7791985F229FB9C10090A788 /* MMA_AdViewMonitor.m in Sources */,
 				AF1AAE9C1EF61EF300E9C276 /* VAMonitorConfig.m in Sources */,
 				AFB3717B1F3854770092930F /* ViewabilityJSService.m in Sources */,
 				AF1AAEA61EF61EF300E9C276 /* VAViewMonitor.m in Sources */,
@@ -701,17 +724,21 @@
 				AFB3716E1F3854770092930F /* VACompanyRun.m in Sources */,
 				AF1AAEA11EF61EF300E9C276 /* VAMonitorTimeline.m in Sources */,
 				AFB3717A1F3854770092930F /* VAViewCapture.m in Sources */,
+				77919863229FBDDD0090A788 /* MMA_AdCalSize.m in Sources */,
 				AFB371781F3854770092930F /* VAJSViewabilityData.m in Sources */,
 				2A81720218DAEB3A00E0EFEC /* MMA_TrackingInfoService.m in Sources */,
 				2A81720318DAEB3A00E0EFEC /* MMA_GDataXMLNode.m in Sources */,
+				77919866229FBDE80090A788 /* MMA_AdViewMonitor.m in Sources */,
 				AF1AAE9F1EF61EF300E9C276 /* VAMonitorFrame.m in Sources */,
 				AF1AAE991EF61EF300E9C276 /* VAMaros.m in Sources */,
 				AF1AAEA91EF61EF300E9C276 /* VAViewTools.m in Sources */,
 				AF89EC741EFA0CB400A2AF21 /* Viewability_iOS.md in Sources */,
+				77919865229FBDE50090A788 /* MMA_AdViewResult.m in Sources */,
 				AF1AAE951EF61EF300E9C276 /* NSDate+VASDK.m in Sources */,
 				AF1AAE9B1EF61EF300E9C276 /* VAMonitor.m in Sources */,
 				2A81720418DAEB3A00E0EFEC /* MMA_XMLReader.m in Sources */,
 				AFB371701F3854770092930F /* VADeviceMessage.m in Sources */,
+				77919864229FBDE00090A788 /* MMA_AdHelper.m in Sources */,
 				2A81720518DAEB3A00E0EFEC /* MMA_Helper.m in Sources */,
 				AFB371761F3854770092930F /* VAJSMaros.m in Sources */,
 				2A81720618DAEB3A00E0EFEC /* MMA_Task.m in Sources */,
@@ -721,13 +748,12 @@
 				2A81720918DAEB3A00E0EFEC /* MMA_Reachability.m in Sources */,
 				AF59E977205116C400994BCF /* MMA_LocationService.m in Sources */,
 				2A81720A18DAEB3A00E0EFEC /* MMA_OpenUDID.m in Sources */,
-				AF1AAE971EF61EF300E9C276 /* UIView+Monitor.m in Sources */,
+				AF1AAE971EF61EF300E9C276 /* UIView+MMA_Monitor.m in Sources */,
 				2A81720B18DAEB3A00E0EFEC /* MMA_SDKConfig.m in Sources */,
 				2A81720C18DAEB3A00E0EFEC /* MMA_TaskQueue.m in Sources */,
 				AFB371741F3854770092930F /* VAJavascriptParse.m in Sources */,
 				AFB371721F3854770092930F /* VAJavascriptBridge.m in Sources */,
 				2A81720D18DAEB3A00E0EFEC /* MMA_GTMNSString+URLArguments.m in Sources */,
-				AF1AAE931EF61EF300E9C276 /* AdHeper.m in Sources */,
 				AF1AAE9D1EF61EF300E9C276 /* VAMonitorConfig.m in Sources */,
 				AFB3717C1F3854770092930F /* ViewabilityJSService.m in Sources */,
 				AF1AAEA71EF61EF300E9C276 /* VAViewMonitor.m in Sources */,
@@ -779,6 +805,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -827,6 +854,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -857,6 +885,7 @@
 					armv7s,
 				);
 				DSTROOT = /tmp/MobileTracking.dst;
+				ENABLE_BITCODE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
@@ -882,6 +911,7 @@
 					armv7s,
 				);
 				DSTROOT = /tmp/MobileTracking.dst;
+				ENABLE_BITCODE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
@@ -951,6 +981,7 @@
 					armv7s,
 				);
 				DSTROOT = /tmp/MobileTracking.dst;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
 				LIBRARY_SEARCH_PATHS = (
@@ -975,6 +1006,7 @@
 					armv7s,
 				);
 				DSTROOT = /tmp/MobileTracking.dst;
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
 				LIBRARY_SEARCH_PATHS = (
@@ -998,6 +1030,7 @@
 					"$(ARCHS_STANDARD)",
 					"armv7s,arm64",
 				);
+				ENABLE_BITCODE = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-fembed-bitcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1012,6 +1045,7 @@
 					"$(ARCHS_STANDARD)",
 					"armv7s,arm64",
 				);
+				ENABLE_BITCODE = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-fembed-bitcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";

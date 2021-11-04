@@ -31,7 +31,7 @@
 //
 
 #import "MMA_RequestQueue.h"
-
+#import <UIKit/UIKit.h>
 
 #import <Availability.h>
 #if !__has_feature(objc_arc)
@@ -42,7 +42,7 @@
 NSString *const MMAHTTPResponseErrorDomain = @"MMAHTTPResponseErrorDomain";
 
 
-@interface RQOperation () <NSURLConnectionDataDelegate>
+@interface RQOperation () <NSURLConnectionDataDelegate, NSURLSessionDelegate, NSURLSessionDataDelegate, NSURLSessionTaskDelegate>
 {
     BOOL _executing;
     BOOL _finished;
@@ -51,12 +51,15 @@ NSString *const MMAHTTPResponseErrorDomain = @"MMAHTTPResponseErrorDomain";
     BOOL _isRedirect;
 }
 @property (nonatomic, strong) NSURLConnection *connection;
+
+@property (nonatomic, strong) NSURLSession *connectionSession;
+@property (nonatomic, strong) NSURLSessionDataTask *sessionDataTask;
+
 @property (nonatomic, strong) NSURLResponse *responseReceived;
 @property (nonatomic, strong) NSMutableData *accumulatedData;
 @property (nonatomic, getter = isExecuting) BOOL executing;
 @property (nonatomic, getter = isFinished) BOOL finished;
 @property (nonatomic, getter = isCancelled) BOOL cancelled;
-
 
 @end
 
@@ -74,7 +77,15 @@ NSString *const MMAHTTPResponseErrorDomain = @"MMAHTTPResponseErrorDomain";
     {
         _request = request;
         _autoRetryDelay = 5.0;
-        _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
+       
+        if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) {
+            _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
+        } else {
+//            新增NSURLSession请求。2019年05月
+            _connectionSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:nil];
+            _sessionDataTask = [_connectionSession dataTaskWithRequest:request];
+        }
+        
     }
     return self;
 }
@@ -92,8 +103,14 @@ NSString *const MMAHTTPResponseErrorDomain = @"MMAHTTPResponseErrorDomain";
         {
             [self willChangeValueForKey:@"isExecuting"];
             _executing = YES;
-            [_connection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
-            [_connection start];
+            
+            if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) {
+                [_connection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+                [_connection start];
+            }else {
+                [_sessionDataTask resume];
+            }
+            
             [self didChangeValueForKey:@"isExecuting"];
         }
     }
@@ -107,12 +124,22 @@ NSString *const MMAHTTPResponseErrorDomain = @"MMAHTTPResponseErrorDomain";
         {
             [self willChangeValueForKey:@"isCancelled"];
             _cancelled = YES;
-            [_connection cancel];
+            
+            
             [self didChangeValueForKey:@"isCancelled"];
             
             //call callback
             NSError *error = [NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCancelled userInfo:nil];
-            [self connection:_connection didFailWithError:error];
+            
+            if ([[[UIDevice currentDevice] systemVersion] floatValue] < 7.0) {
+                [_connection cancel];
+                [self connection:_connection didFailWithError:error];
+            }else {
+                [_sessionDataTask cancel];
+                [self URLSession:_connectionSession task:_sessionDataTask didCompleteWithError:error];
+
+            }
+            
         }
     }
 }
@@ -154,8 +181,68 @@ NSString *const MMAHTTPResponseErrorDomain = @"MMAHTTPResponseErrorDomain";
     return _autoRetryErrorCodes;
 }
 
-#pragma mark NSURLConnectionDelegate
+#pragma mark NSURLSessionDelegate
+- (void) URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+    
+    if (error) {
+        if (_autoRetry && [self.autoRetryErrorCodes containsObject:@(error.code)])
+        {
+            _connection = [[NSURLConnection alloc] initWithRequest:_request delegate:self startImmediately:NO];
+            [_connection performSelector:@selector(start) withObject:nil afterDelay:_autoRetryDelay];
+        }
+        else
+        {
+            [self finish];
+            if (_completionHandler) _completionHandler(_responseReceived, _accumulatedData, error);
+        }
+    } else {
+        [self finish];
+        
+        NSError *error = nil;
+        if ([_responseReceived respondsToSelector:@selector(statusCode)])
+        {
+            
+            //treat status codes >= 400 as an error
+            NSInteger statusCode = [(NSHTTPURLResponse *)_responseReceived statusCode];
+            if (statusCode / 100 >= 4&& !_isRedirect)
+            {
+                NSString *message = [NSString stringWithFormat:NSLocalizedString(@"The server returned a %i error", @"MMA_RequestQueue HTTPResponse error message format"), statusCode];
+                NSDictionary *infoDict = @{NSLocalizedDescriptionKey: message};
+                error = [NSError errorWithDomain:MMAHTTPResponseErrorDomain
+                                            code:statusCode
+                                        userInfo:infoDict];
+            }
+        }
+        
+        if (_completionHandler) _completionHandler(_responseReceived, _accumulatedData, error);
+    }
+  
+}
+- (void) URLSession:(NSURLSession *)session dataTask:(nonnull NSURLSessionDataTask *)dataTask didReceiveData:(nonnull NSData *)data {
+    
+    if (_accumulatedData == nil)
+    {
+        _accumulatedData = [[NSMutableData alloc] initWithCapacity:MAX(0, (int)_responseReceived.expectedContentLength)];
+    }
+    [_accumulatedData appendData:data];
+    
+}
+- (void) URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
+    _responseReceived = response;
 
+    completionHandler(NSURLSessionResponseAllow);
+
+}
+
+- (void) URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task willPerformHTTPRedirection:(NSHTTPURLResponse *)response newRequest:(NSURLRequest *)request completionHandler:(void (^)(NSURLRequest * _Nullable))completionHandler {
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+    if (httpResponse.statusCode==301||httpResponse.statusCode==302) {
+        _isRedirect = YES;
+    }
+    completionHandler(request);
+}
+
+#pragma mark - NSURLConnectionDelegate
 - (void)connection:(__unused NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     if (_autoRetry && [self.autoRetryErrorCodes containsObject:@(error.code)])
@@ -184,18 +271,9 @@ NSString *const MMAHTTPResponseErrorDomain = @"MMAHTTPResponseErrorDomain";
 
 - (void)connection:(__unused NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
+    
     _responseReceived = response;
 }
-
-- (void)connection:(__unused NSURLConnection *)connection didSendBodyData:(__unused NSInteger)bytesWritten totalBytesWritten:(NSInteger)totalBytesWritten totalBytesExpectedToWrite:(NSInteger)totalBytesExpectedToWrite
-{
-    if (_uploadProgressHandler)
-    {
-        float progress = (float)totalBytesWritten / (float)totalBytesExpectedToWrite;
-        _uploadProgressHandler(progress, totalBytesWritten, totalBytesExpectedToWrite);
-    }
-}
-
 
 /*****************只判断2次跳转是否成功*************/
 - (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response{
@@ -214,7 +292,7 @@ NSString *const MMAHTTPResponseErrorDomain = @"MMAHTTPResponseErrorDomain";
 {
     if (_accumulatedData == nil)
     {
-        _accumulatedData = [[NSMutableData alloc] initWithCapacity:MAX(0, _responseReceived.expectedContentLength)];
+        _accumulatedData = [[NSMutableData alloc] initWithCapacity:MAX(0,(int) _responseReceived.expectedContentLength)];
     }
     [_accumulatedData appendData:data];
     if (_downloadProgressHandler)

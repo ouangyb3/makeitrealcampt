@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 Admaster. All rights reserved.
 //
 
-//#define MMA_SDK_VERSION @"V2.0.2"
+//#define MMA_SDK_VERSION @"V2.1.0"
 
 #import <UIKit/UIKit.h>
 
@@ -23,8 +23,12 @@
 // 点击
 - (void)click:(NSString *)url;
 
-// 普通曝光
-- (void)view:(NSString *)url;
+/* 普通曝光
+ url:监测的链接
+ adView:监测的广告视图对象
+ impressionType:曝光类型。Tracked Ads:0；曝光：1
+ */
+- (void)view:(NSString *)url ad:(UIView *)adView impressionType:(NSInteger)type;
 
 // 可视化监测曝光
 - (void)view:(NSString *)url ad:(UIView *)adView;

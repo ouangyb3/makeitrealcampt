@@ -9,7 +9,7 @@
 #ifndef MobileTracking_Macro_h
 #define MobileTracking_Macro_h
 
-#define MMA_SDK_VERSION @"V2.0.3"
+#define MMA_SDK_VERSION @"V2.1.0"
 
 #define NOTIFICATION_VB @"viewability_notification"
 #define NOTIFICATION_EXPOSE @"expose_notification"
@@ -76,6 +76,8 @@
 #define AD_VB_TIME  @"AdviewabilityTime"
 #define AD_VB_EVENTS @"AdviewabilityEvents"
 #define IMPRESSIONID @"ImpressionID"
+#define IMPRESSIONTYPE @"ImpressionType"  //普通曝光的类型
+#define AD_VB_INTERACT @"AdviewabilityStrongInteract"
 
 //#define AD_VB_ENABLE @"AdviewabilityEnable" //是否开启 ViewAbility 监测
 
@@ -117,7 +119,8 @@ AD_VB_TIME, \
 AD_VB_EVENTS, \
 IMPRESSIONID, \
 AD_VB_VIDEOPLAYTYPE, \
-AD_VB_VIDEOPROGRESS \
+AD_VB_VIDEOPROGRESS, \
+AD_VB_INTERACT \
 ]
 //AD_VB_AREA, \
 //AD_VB_THRESHOLD, \

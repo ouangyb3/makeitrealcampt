@@ -8,15 +8,52 @@
 
 #import "AppDelegate.h"
 #import "MobileTracking.h"
+//#import "ViewController.h"
+//#import "TabCoverViewController.h"
+//#import "PageViewController.h"
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    NSLog(@"%@",NSHomeDirectory());
-    // Override point for customization after application launch.
+
     [[MobileTracking sharedInstance] enableLog:YES];
-//    [[MobileTracking sharedInstance] view:@"http://vxyz.admaster.com.cn/v/a17298,b81949763,c3194,i0,m201"];
+
+//    ViewController *vc1 = [[ViewController alloc] init];
+//    UINavigationController *navCtrl1 = [[UINavigationController alloc] initWithRootViewController:vc1];
+//    vc1.view.backgroundColor = [UIColor whiteColor];
+//    vc1.title = @"首页";
+//    vc1.tabBarItem.image = [UIImage imageNamed:@"xihuan.png"];
+//
+//
+//    TabCoverViewController *vc2 = [[TabCoverViewController alloc] init];
+//    UINavigationController *navCtrl2 = [[UINavigationController alloc] initWithRootViewController:vc2];
+//    vc2.view.backgroundColor = [UIColor whiteColor];
+//    vc2.title = @"Tab";
+//    vc2.tabBarItem.image = [UIImage imageNamed:@"liwu.png"];
+//
+//    PageViewController *vc3 = [[PageViewController alloc] init];
+//    UINavigationController *navCtrl3 = [[UINavigationController alloc] initWithRootViewController:vc3];
+//    vc3.view.backgroundColor = [UIColor whiteColor];
+//    vc3.title = @"Page";
+//    vc3.tabBarItem.image = [UIImage imageNamed:@"wode.png"];
+//
+//    UITabBarController *tabBarCtrl = [[UITabBarController alloc] init];
+//    tabBarCtrl.view.backgroundColor = [UIColor whiteColor];
+//    tabBarCtrl.viewControllers = @[navCtrl1, navCtrl2, navCtrl3];
+//
+//    // 设置窗口的跟视图控制器为分栏控制器
+//    self.window.rootViewController = tabBarCtrl;
+//
+//    UITabBar *tabBar = tabBarCtrl.tabBar;
+//    tabBar.barStyle = UIBarStyleDefault;
+//    tabBar.translucent = NO;
+//    tabBar.barTintColor = [UIColor whiteColor];
+//    tabBar.tintColor = [UIColor blackColor];
+//
+//    //    tabBar.selectionIndicatorImage = [UIImage imageNamed:@"left-circle.png"];
+//    [self.window makeKeyAndVisible];
     return YES;
 }
 							
@@ -29,7 +66,7 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     [[MobileTracking sharedInstance] didEnterBackground];
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
@@ -48,6 +85,7 @@
 {
     [[MobileTracking sharedInstance] willTerminate];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+
 }
 
 @end

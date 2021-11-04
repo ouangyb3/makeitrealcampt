@@ -2,17 +2,17 @@
 
 <!--媒体平台相关配置-->
 <config xsi:noNamespaceSchemaLocation="SDKSchema.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
-
+    
     <!--缓存队列 配置-->
     <offlineCache>
-      <!-- 缓存队列长度 Android SDK 中不生效，iOS SDK 中生效-->
+        <!-- 缓存队列长度 Android SDK 中不生效，iOS SDK 中生效-->
         <length>0</length>
         <!--缓存队列中发送重试时间间隔 单位 秒-->
         <queueExpirationSecs>60</queueExpirationSecs>
         <!--发送超时时间 单位 秒,Android SDK 不生效 -->
         <timeout>60</timeout>
     </offlineCache>
-
+    
     <!--viewability监测参数配置-->
     <viewability>
         <!-- viewability监测的轮询时间间隔 单位 毫秒）-->
@@ -28,23 +28,23 @@
         <!-- 当前广告位上报的最大viewability时间片数量 -->
         <maxAmount>20</maxAmount>
     </viewability>
-
+    
     <!--以下为各家第三方的具体配置，注释说明参考 AdMaster 的内容-->
     <companies>
         <company>
             <!-- 第三方公司名称-->
             <name>admaster</name>
-
+            
             <!-- viewability Js方式监测 Js在线更新地址 e.g. http://xxxx.com.cn/docs/mma-sdk.js -->
             <jsurl></jsurl>
             <!-- viewability Js方式监测 离线js文件名称 e.g. mma_sdk.js-->
             <jsname></jsname>
-
+            
             <domain>
                 <!-- 第三方监测公司监测代码的HOST  -->
                 <url>admaster.com.cn</url>
             </domain>
-
+            
             <!-- 签名串信息-->
             <signature>
                 <!-- 各家第三方配置一个值即可,目前暂未使用-->
@@ -52,8 +52,8 @@
                 <!-- 签名串信息回传的字段-->
                 <paramKey>0b</paramKey>
             </signature>
-
-
+            
+            
             <switch>
                 <!-- 是否发送地理位置信息 -->
                 <isTrackLocation>true</isTrackLocation>
@@ -61,7 +61,7 @@
                 <offlineCacheExpiration>259200</offlineCacheExpiration>
                 <!-- 可视化监测采集策略 0 = TrackPositionChanged 位置改变时记录,1 = TrackVisibleChanged 可视改变时记录 -->
                 <viewabilityTrackPolicy>0</viewabilityTrackPolicy>
-
+                
                 <!--属性加密配置-->
                 <encrypt>
                     <!-- MAC 值需要做 md5 -->
@@ -73,18 +73,18 @@
                     <!-- ANDROIDID 值需要做 md5 -->
                     <ANDROIDID>md5</ANDROIDID>
                 </encrypt>
-
+                
                 <!--APPLIST上报配置-->
-                <!--<applist>-->
-                <!--&lt;!&ndash; applist上报地址 e.g. https:xxxx.com.cn/track/applist &ndash;&gt;-->
-                <!--<uploadUrl>https://p.attri.mobi/a</uploadUrl>-->
-                <!--&lt;!&ndash; applist上报时间间隔，单位为小时,配置为0时，不上报 &ndash;&gt;-->
-                <!--<uploadTime>24</uploadTime>-->
-                <!--&lt;!&ndash; applist上报是否使用gzip,缺省为true &ndash;&gt;-->
-                <!--<usegzip>true</usegzip>-->
-                <!--</applist>-->
+                <applist>
+                    <!-- applist上报地址 e.g. https:xxxx.com.cn/track/applist -->
+                    <uploadUrl>https://p.attri.mobi/a</uploadUrl>
+                    <!-- applist上报时间间隔，单位为小时,配置为0时，不上报 -->
+                    <uploadTime>24</uploadTime>
+                    <!-- applist上报是否使用gzip,缺省为true -->
+                    <usegzip>true</usegzip>
+                </applist>
             </switch>
-
+            
             <!--上报字段配置-->
             <config>
                 <!--必选和常用可选参数(key需确定)-->
@@ -176,7 +176,7 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <!--可选参数-->
                     <!-- 设备的屏幕分辨率 -->
                     <argument>
@@ -228,7 +228,7 @@
                         <isRequired>true</isRequired>
                     </argument>
                 </arguments>
-
+                
                 <!--事件监测配置(暂时没有使用)-->
                 <events>
                     <event>
@@ -244,8 +244,8 @@
                         <urlEncode>true</urlEncode>
                     </event>
                 </events>
-
-
+                
+                
                 <!-- 监测代码中广告位标识符 -->
                 <Adplacement>
                     <argument>
@@ -255,10 +255,10 @@
                         <isRequired>false</isRequired>
                     </argument>
                 </Adplacement>
-
+                
                 <!--viewability监测字段配置-->
                 <viewabilityarguments>
-
+                    
                     <!-- 可视化监测识别ID -->
                     <argument>
                         <key>ImpressionID</key>
@@ -266,7 +266,7 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <!-- 采集属性 start -->
                     <!-- 可视化监测中采集的时间片信息 -->
                     <argument>
@@ -353,7 +353,7 @@
                         <isRequired>true</isRequired>
                     </argument>
                     <!-- 采集属性 end -->
-
+                    
                     <!-- 配置属性 start -->
                     <!-- 满足可视条件时的覆盖率 -->
                     <argument>
@@ -398,7 +398,7 @@
                         <isRequired>true</isRequired>
                     </argument>
                     <!-- 配置属性 end -->
-
+                    
                     <!-- 控制属性 start -->
                     <!-- 可视轨迹数据是否上报 -->
                     <!--
@@ -410,10 +410,10 @@
                      </argument>
                      -->
                     <!-- 控制属性 end -->
-
+                    
                 </viewabilityarguments>
             </config>
-
+            
             <!-- 监测代码中各个字段之间的分隔符 -->
             <separator>,</separator>
             <!-- 监测代码中 key 和 value 之间的连接符 -->
@@ -421,7 +421,7 @@
             <!-- 监测代码请求发生的时间戳是否使用秒为单位 (false=毫秒) -->
             <timeStampUseSecond>true</timeStampUseSecond>
         </company>
-
+        
         <company>
             <name>miaozhen</name>
             <!-- Viewability Js方式监测 Js在线更新地址 e.g. http://xxxx.com.cn/docs/mma-sdk.js -->
@@ -448,13 +448,13 @@
                     <IMEI>md5</IMEI>
                     <ANDROIDID>md5</ANDROIDID>
                 </encrypt>
-                <!--<applist>-->
-                <!--&lt;!&ndash; applist上报地址 e.g. https:xxxx.com.cn/track/applist &ndash;&gt;-->
-                <!--<uploadUrl>/apl/</uploadUrl>-->
-                <!--&lt;!&ndash; applist上报时间间隔，单位为小时,配置为0时，不上报&ndash;&gt;-->
-                <!--<uploadTime>24</uploadTime>-->
-                <!--<usegzip>false</usegzip>-->
-                <!--</applist>-->
+                <applist>
+                    <!-- applist上报地址 e.g. https:xxxx.com.cn/track/applist -->
+                    <uploadUrl>/apl/</uploadUrl>
+                    <!-- applist上报时间间隔，单位为小时,配置为0时，不上报-->
+                    <uploadTime>24</uploadTime>
+                    <usegzip>false</usegzip>
+                </applist>
             </switch>
             <config>
                 <arguments>
@@ -627,6 +627,13 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
+                    <!-- 是否Tracked ads曝光 -->
+                    <argument>
+                        <key>ImpressionType</key>
+                        <value>br</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
                     <!-- 可视轨迹数据是否上报 -->
                     <argument>
                         <key>AdviewabilityRecord</key>
@@ -746,6 +753,13 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
+                    <!-- Strong interaction exposure -->
+                    <argument>
+                        <key>AdviewabilityStrongInteract</key>
+                        <value>vk</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
                 </viewabilityarguments>
             </config>
             <separator>&amp;</separator>
@@ -754,7 +768,7 @@
             <!--如果设置true   timeStamper使用秒-->
             <timeStampUseSecond>true</timeStampUseSecond>
         </company>
-
+        
         <company>
             <name>girdsum</name>
             <jsurl></jsurl>
@@ -792,63 +806,63 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>TS</key>
                         <value>ts</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>MAC</key>
                         <value>m</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>IDFA</key>
                         <value>if</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>IMEI</key>
                         <value>im</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>ANDROIDID</key>
                         <value>aid</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>WIFI</key>
                         <value>wifi</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>AKEY</key>
                         <value>ak</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>ANAME</key>
                         <value>an</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <!--可选函数-->
                     <argument>
                         <key>SCWH</key>
@@ -856,56 +870,56 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>OPENUDID</key>
                         <value>oid</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>ODIN</key>
                         <value>odin</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>TERM</key>
                         <value>term</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>OSVS</key>
                         <value>osvs</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>LBS</key>
                         <value>lbs</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>MUID</key>
                         <value>mid</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>MUDS</key>
                         <value>muds</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>REDIRECTURL</key>
                         <value>u</value>
@@ -933,7 +947,7 @@
                         <urlEncode>true</urlEncode>
                     </event>
                 </events>
-
+                
                 <!-- 广告位标识符 -->
                 <Adplacement>
                     <argument>
@@ -943,7 +957,7 @@
                         <isRequired>false</isRequired>
                     </argument>
                 </Adplacement>
-
+                
                 <viewabilityarguments>
                     <!-- 可视监测识别ID -->
                     <argument>
@@ -1038,7 +1052,7 @@
                         <isRequired>true</isRequired>
                     </argument>
                     <!-- 采集属性 end -->
-
+                    
                     <!-- 配置属性 start -->
                     <!-- 满足可视覆盖率 -->
                     <argument>
@@ -1090,8 +1104,8 @@
             <!--如果设置true   timeStamper使用秒-->
             <timeStampUseSecond>true</timeStampUseSecond>
         </company>
-
-
+        
+        
         <company>
             <name>adbug</name>
             <!-- JS监测在线更新地址 -->
@@ -1126,28 +1140,28 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>TS</key>
                         <value>t</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>MAC</key>
                         <value>n</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>IDFA</key>
                         <value>z</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>IDFAMD5</key>
                         <value>0j</value>
@@ -1160,21 +1174,21 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>WIFI</key>
                         <value>w</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>AKEY</key>
                         <value>x</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>ANAME</key>
                         <value>y</value>
@@ -1188,7 +1202,7 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>OPENUDID</key>
                         <value>o</value>
@@ -1201,14 +1215,14 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>OSVS</key>
                         <value>q</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>LBS</key>
                         <value>l</value>
@@ -1249,9 +1263,9 @@
                         <urlEncode>false</urlEncode>
                         <isRequired>false</isRequired>
                     </argument>
-
+                    
                 </Adplacement>
-
+                
                 <viewabilityarguments>
                     <argument>
                         <key>ImpressionID</key>
@@ -1259,7 +1273,7 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                     <argument>
                         <key>AdviewabilityEvents</key>
                         <value>2j</value>
@@ -1332,7 +1346,7 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-
+                    
                 </viewabilityarguments>
             </config>
             <!-- <separator>,</separator> -->
@@ -1341,8 +1355,8 @@
             <!--如果设置true   timeStamper使用秒-->
             <timeStampUseSecond>true</timeStampUseSecond>
         </company>
-
-
+        
+        
         <company>
             <name>rtbasia</name>
             <!-- Viewability Js方式监测 Js在线更新地址 e.g. http://xxxx.com.cn/docs/mma-sdk.js -->
@@ -1369,14 +1383,12 @@
                     <IMEI>raw</IMEI>
                     <ANDROIDID>raw</ANDROIDID>
                 </encrypt>
-                <!--
                 <applist>
-                    applist上报地址 e.g. https:xxxx.com.cn/track/applist
+                    <!-- applist上报地址 e.g. https:xxxx.com.cn/track/applist -->
                     <uploadUrl>/apl/</uploadUrl>
-                    applist上报时间间隔，单位为小时,配置为0时，不上报
+                    <!-- applist上报时间间隔，单位为小时,配置为0时，不上报-->
                     <uploadTime>0</uploadTime>
                 </applist>
-                 -->
             </switch>
             <config>
                 <arguments>
@@ -1633,6 +1645,6 @@
             <!--如果设置true   timeStamper使用秒-->
             <timeStampUseSecond>true</timeStampUseSecond>
         </company>
-
+        
     </companies>
 </config>

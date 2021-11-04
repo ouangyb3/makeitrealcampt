@@ -10,10 +10,11 @@
 
 #import "VAViewCapture.h"
 #import "NSDate+VASDK.h"
-#import "UIView+Monitor.h"
+#import "UIView+MMA_Monitor.h"
 #import "VAMaros.h"
 #import "VAJSMaros.h"
 #import "MMA_Helper.h"
+#import "MMA_AdViewMonitor.h"
 @interface VAViewCapture ()
 
 @property (nonatomic, weak) UIView *monitorView;
@@ -49,12 +50,15 @@
     }
     
     CGRect frame = _monitorView.frame;
-    CGRect windowFrame = _monitorView.frameOnKeyWindow;
-    CGRect showFrame = _monitorView.showOnKeyWindow;
+    CGRect windowFrame = _monitorView.mma_frameOnKeyWindow;
+    CGRect showFrame = _monitorView.mma_showOnKeyWindow;
     CGFloat alpha = _monitorView.alpha;
     BOOL hidden = _monitorView.hidden;
     
-    CGFloat coverRate = 1 - (showFrame.size.width * showFrame.size.height) / (frame.size.width * frame.size.height);
+//    CGFloat coverRate = 1 - (showFrame.size.width * showFrame.size.height) / (frame.size.width * frame.size.height);
+    MMA_AdViewMonitor *monitor = [[MMA_AdViewMonitor alloc] init];
+    MMA_AdViewResult *result = [monitor monitorWithAdView:_monitorView];
+    CGFloat coverRate = result.cover_rate;
 
 //    NSLog(@"capture time %@",captureDate.mtimestamp);
     return @{

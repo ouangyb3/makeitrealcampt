@@ -43,6 +43,7 @@
         _adID = adID;
         _timeline = [[VAMonitorTimeline alloc] initWithMonitor:self];
         _isValid = NO;
+        _clickToValid = NO;
         _keyValueAccess = keyValueAccess;
         _config = config;
         _domain = domain;
@@ -196,6 +197,10 @@
                                                                                      AD_VB_RESULT : [NSString stringWithFormat:@"%d",_isValid ? 1:4],
                                                                                      AD_MEASURABILITY : @"1"    // 是否可测量
                                                                                      }];
+    
+    if (_clickToValid) {
+        parmaters[AD_VB_INTERACT] = @"1";
+    }
     // 是否需要传入记录的数据
     if(self.config.needRecordData) {
         parmaters[AD_VB_EVENTS] = [self.timeline generateUploadEvents];
@@ -220,6 +225,11 @@
     self.status = VAMonitorStatusUploaded;
     
     return @"";
+}
+
+- (void)setValidExpose {
+    _clickToValid = YES;
+    _isValid = YES;
 }
 
 - (void)dealloc {

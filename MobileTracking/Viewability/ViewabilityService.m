@@ -136,6 +136,21 @@ static const char *view_capture_queue = "adview.capture.queue";
     });
 }
 
+- (void)setVAMonitorVisible:(NSString *)monitorKey {
+    dispatch_async(_monitorQueue, ^{
+        VAMonitor *exitMonitor = _monitors[monitorKey];
+        if (exitMonitor) {
+            NSLog(@"Key:%@ 广告存在停止监测",monitorKey);
+            [exitMonitor setValidExpose];
+            exitMonitor.status = VAMonitorStatusWaitingUpload;
+            exitMonitor.progressStatus = VAProgressStatusEnd;
+            dispatch_async(_captureQueue, ^{
+                [exitMonitor stopAndUpload];
+            });
+        }
+    });
+}
+
 - (void)saveMonitors {
     @try {
         dispatch_barrier_sync(_captureQueue, ^{

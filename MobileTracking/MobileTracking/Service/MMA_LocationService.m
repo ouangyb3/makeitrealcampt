@@ -39,9 +39,10 @@
 - (CLLocationManager *)locationManager {
     if (!_locationManager) {
         _locationManager = [[CLLocationManager alloc] init];
-        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-            [_locationManager requestWhenInUseAuthorization];
-        }
+//        不主动弹出弹窗，需要在允许的时候获取
+//        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+//            [_locationManager requestWhenInUseAuthorization];
+//        }
         [_locationManager setDelegate:self];
         [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
         [_locationManager setDistanceFilter:kCLDistanceFilterNone];
@@ -52,9 +53,10 @@
     LOGGG(@"开始定位");
     //判断用户定位服务是否开启
     if ([CLLocationManager locationServicesEnabled] && [CLLocationManager authorizationStatus] != kCLAuthorizationStatusDenied) {
-        if([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
-            [self.locationManager requestWhenInUseAuthorization];
-        }
+//        不主动弹出弹窗，需要在允许的时候获取
+//        if([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+//            [self.locationManager requestWhenInUseAuthorization];
+//        }
         [self.locationManager startUpdatingLocation];
         if(!self.isStart) {
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(20 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
