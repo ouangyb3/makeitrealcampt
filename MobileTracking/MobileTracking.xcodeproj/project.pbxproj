@@ -885,7 +885,7 @@
 					armv7s,
 				);
 				DSTROOT = /tmp/MobileTracking.dst;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
@@ -911,7 +911,7 @@
 					armv7s,
 				);
 				DSTROOT = /tmp/MobileTracking.dst;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
@@ -981,7 +981,7 @@
 					armv7s,
 				);
 				DSTROOT = /tmp/MobileTracking.dst;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
 				LIBRARY_SEARCH_PATHS = (
@@ -1006,7 +1006,7 @@
 					armv7s,
 				);
 				DSTROOT = /tmp/MobileTracking.dst;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
 				LIBRARY_SEARCH_PATHS = (
