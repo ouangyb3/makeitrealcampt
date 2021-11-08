@@ -16,6 +16,7 @@
 - (instancetype)initWithCompany:(MMA_Company *)company;
 
 - (void)addViewCapture:(VAViewCapture *)capture;
+
 - (void)run;
 
 - (BOOL)canRun;
