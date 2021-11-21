@@ -598,6 +598,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 2A632A0F18CEB10B00BE2533;
@@ -779,6 +780,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_BITCODE = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -827,6 +829,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
+				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -857,6 +860,7 @@
 					armv7s,
 				);
 				DSTROOT = /tmp/MobileTracking.dst;
+				ENABLE_BITCODE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
@@ -882,6 +886,7 @@
 					armv7s,
 				);
 				DSTROOT = /tmp/MobileTracking.dst;
+				ENABLE_BITCODE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
@@ -951,6 +956,7 @@
 					armv7s,
 				);
 				DSTROOT = /tmp/MobileTracking.dst;
+				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
 				LIBRARY_SEARCH_PATHS = (
@@ -975,6 +981,7 @@
 					armv7s,
 				);
 				DSTROOT = /tmp/MobileTracking.dst;
+				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
 				LIBRARY_SEARCH_PATHS = (
@@ -998,6 +1005,7 @@
 					"$(ARCHS_STANDARD)",
 					"armv7s,arm64",
 				);
+				ENABLE_BITCODE = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-fembed-bitcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1012,6 +1020,7 @@
 					"$(ARCHS_STANDARD)",
 					"armv7s,arm64",
 				);
+				ENABLE_BITCODE = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-fembed-bitcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";

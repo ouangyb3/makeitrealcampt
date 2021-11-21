@@ -514,6 +514,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jian Wu (G946Z272GF)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 44PQ7EUSW9;
+				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -550,6 +551,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jian Wu (G946Z272GF)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 44PQ7EUSW9;
+				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
