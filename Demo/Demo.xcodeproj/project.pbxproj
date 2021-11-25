@@ -293,7 +293,7 @@
 				ORGANIZATIONNAME = Admaster;
 				TargetAttributes = {
 					2A0C4E1918D6D18700200F18 = {
-						DevelopmentTeam = 4E89P63KS8;
+						DevelopmentTeam = 44PQ7EUSW9;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.AccessWiFi = {
@@ -546,10 +546,10 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Admaster Digital Consulting";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Admaster Digital Consulting";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jian Wu (G946Z272GF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jian Wu (G946Z272GF)";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 4E89P63KS8;
+				DEVELOPMENT_TEAM = 44PQ7EUSW9;
 				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
@@ -571,7 +571,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "97e98d37-8685-4f3a-96ce-cd9d04f6286a";
-				PROVISIONING_PROFILE_SPECIFIER = "com_*";
+				PROVISIONING_PROFILE_SPECIFIER = Develop;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
@@ -583,10 +583,10 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Admaster Digital Consulting";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Admaster Digital Consulting";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jian Wu (G946Z272GF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jian Wu (G946Z272GF)";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 4E89P63KS8;
+				DEVELOPMENT_TEAM = 44PQ7EUSW9;
 				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
@@ -608,7 +608,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "97e98d37-8685-4f3a-96ce-cd9d04f6286a";
-				PROVISIONING_PROFILE_SPECIFIER = "com_*";
+				PROVISIONING_PROFILE_SPECIFIER = Develop;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
