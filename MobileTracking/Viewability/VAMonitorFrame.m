@@ -27,7 +27,12 @@
         
         _isForground = ([UIApplication sharedApplication].applicationState==UIApplicationStateActive);
         _captureDate = [NSDate date];
-        _coverRate = 1 - (_showFrame.size.width * _showFrame.size.height) / (_frame.size.width * _frame.size.height);
+        if(_frame.size.width * _frame.size.height == 0) {
+            _coverRate = 1;
+        } else {
+            _coverRate = 1 - (_showFrame.size.width * _showFrame.size.height) / (_frame.size.width * _frame.size.height);
+        }
+        
     }
     return self;
 }

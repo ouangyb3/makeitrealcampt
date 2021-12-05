@@ -18,7 +18,7 @@
 
 #import "LocationService.h"
 #import "TrackingInfoService.h"
-#import "MMA_EncryptModule.h"
+#import "MMASign.h"
 #import "RequestQueue.h"
 #import "GTMNSString+URLArguments.h"
 #import "ViewabilityService.h"
@@ -947,7 +947,7 @@
         }
     }
     /********************************************/
-    
+    NSString *ts = @"";
     for (MMA_Argument *argument in [company.config.arguments objectEnumerator]) {
         NSString *queryArgsKey = [(MMA_Argument *)[company.config.arguments objectForKey:argument.key] value];
         if ([argument.key isEqualToString:TRACKING_KEY_OS]) {
@@ -972,12 +972,17 @@
             
         } else if ([argument.key isEqualToString:TRACKING_KEY_TS]) {
             /*增加了根据配置文件选择客户端传输的时间精度为妙或者毫秒*/
-            NSString *timestamp = [NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970] * 1000];
+            NSDate *date = [NSDate date];
+            NSString *timestamp = [NSString stringWithFormat:@"%.0f", [date timeIntervalSince1970] * 1000];
+            /**
+             Modify Date: 2017年12月28日18:24:17
+             timestamp添加逻辑去秒级的时间戳不进行四舍五入向下取整(floor函数),与Android进行统一,进行sign用毫秒取出秒级时间戳
+             */
             if (company.timeStampUseSecond) {//使用秒级
-                timestamp = [NSString stringWithFormat:@"%.0f",[[NSDate date] timeIntervalSince1970]];
+                timestamp = [NSString stringWithFormat:@"%.0f",floor([date timeIntervalSince1970])];
             }
+            ts = [NSString stringWithFormat:@"%.0f",floor([date timeIntervalSince1970])];
             /**/
-            
             [trackURL appendFormat:@"%@%@%@%@", company.separator, queryArgsKey, company.equalizer, timestamp];
             
         } else if ([argument.key isEqualToString:TRACKING_KEY_LBS] && self.isTrackLocation) {
@@ -1032,7 +1037,7 @@
     }
     
     // 添加签名加密模块
-    NSString *signString = [[MMA_EncryptModule sharedEncryptModule] signUrl:trackURL];
+    NSString *signString = [MMASign sign:trackURL ts:ts sdkv:MMA_SDK_VERSION];
     [MMA_Log log:@"signString: %@"  ,signString];
     [trackURL appendFormat:@"%@%@%@%@", company.separator, company.signature.paramKey, company.equalizer, signString];
     

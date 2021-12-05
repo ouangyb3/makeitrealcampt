@@ -19,6 +19,7 @@
 		2A0C4E3F18D6D18700200F18 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A0C4E2118D6D18700200F18 /* UIKit.framework */; };
 		2A0C4E4718D6D18700200F18 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A0C4E4518D6D18700200F18 /* InfoPlist.strings */; };
 		2A0C4E4918D6D18700200F18 /* DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C4E4818D6D18700200F18 /* DemoTests.m */; };
+		AF0F01A51FF4A0430095BE0C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF0F01A41FF4A0430095BE0C /* ViewController.m */; };
 		AF16D1981F026C4000A2B28B /* ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF16D1971F026C4000A2B28B /* ScrollViewController.m */; };
 		AF353EDA1CFC24E400969035 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF353ED91CFC24E400969035 /* CoreLocation.framework */; };
 		AF353EDF1CFC24FB00969035 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF353EDE1CFC24FB00969035 /* AdSupport.framework */; };
@@ -86,6 +87,8 @@
 		2A0C4E4618D6D18700200F18 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2A0C4E4818D6D18700200F18 /* DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoTests.m; sourceTree = "<group>"; };
 		2A0C4E5218D6D19700200F18 /* MobileTracking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MobileTracking.xcodeproj; path = ../MobileTracking/MobileTracking.xcodeproj; sourceTree = "<group>"; };
+		AF0F01A31FF4A0430095BE0C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		AF0F01A41FF4A0430095BE0C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		AF16D1961F026C4000A2B28B /* ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewController.h; sourceTree = "<group>"; };
 		AF16D1971F026C4000A2B28B /* ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollViewController.m; sourceTree = "<group>"; };
 		AF353ED91CFC24E400969035 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -164,6 +167,8 @@
 			children = (
 				2A0C4E2C18D6D18700200F18 /* AppDelegate.h */,
 				2A0C4E2D18D6D18700200F18 /* AppDelegate.m */,
+				AF0F01A31FF4A0430095BE0C /* ViewController.h */,
+				AF0F01A41FF4A0430095BE0C /* ViewController.m */,
 				AF78E1511EFA247B0025B677 /* sdkconfig.xml */,
 				AFB3717D1F3854E10092930F /* admaster.js */,
 				2A0C4E2F18D6D18700200F18 /* Main.storyboard */,
@@ -352,6 +357,7 @@
 			files = (
 				2A0C4E2E18D6D18700200F18 /* AppDelegate.m in Sources */,
 				2A0C4E2A18D6D18700200F18 /* main.m in Sources */,
+				AF0F01A51FF4A0430095BE0C /* ViewController.m in Sources */,
 				AF16D1981F026C4000A2B28B /* ScrollViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,7 +527,7 @@
 					"-lxml2",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.abc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c90e628d-bcd8-48eb-8fc7-d9afa36b5577";
 				PROVISIONING_PROFILE_SPECIFIER = SDK_Developer;
@@ -555,7 +561,7 @@
 					"-lxml2",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.abc;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "c90e628d-bcd8-48eb-8fc7-d9afa36b5577";
 				PROVISIONING_PROFILE_SPECIFIER = SDK_Developer;
