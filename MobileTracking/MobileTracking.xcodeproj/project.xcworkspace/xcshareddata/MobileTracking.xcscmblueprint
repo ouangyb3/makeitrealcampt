@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "AE690331FF995CC7ECDAD7EC4033EE68B2CDECD2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "AE690331FF995CC7ECDAD7EC4033EE68B2CDECD2" : 9223372036854775807,
+    "6A41E5A725AED0DCD5E5E153CE1E565033830CA5" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "6AAEA0B5-C01C-4F4D-9AA2-BDA0486AE0C5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "AE690331FF995CC7ECDAD7EC4033EE68B2CDECD2" : "MMAViewabilitySDK_iOS\/",
+    "6A41E5A725AED0DCD5E5E153CE1E565033830CA5" : "develop"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MobileTracking",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MobileTracking\/MobileTracking.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/git.oschina.net\/AdMaster\/MMA_iOS_SDK.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6A41E5A725AED0DCD5E5E153CE1E565033830CA5"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "git.oschina.net:meagle_mz\/MMAViewabilitySDK_iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AE690331FF995CC7ECDAD7EC4033EE68B2CDECD2"
+    }
+  ]
+}
