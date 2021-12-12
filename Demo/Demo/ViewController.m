@@ -20,7 +20,7 @@
     // Do any additional setup after loading the view.
 }
 - (IBAction)click:(id)sender {
-//    NSString *url = @"http://v.admaster.com.cn/i/a90981,b1899467,c2,i0,m202,8a2,8b2,h,2p,2jtt,2w15,2x1101,2d1234,va1,2g0101";
+    NSString *url = @"http://v.admaster.com.cn/i/a90981,b1899467,c2,i0,m202,8a2,8b2,h,2p,2jtt,2w15,2x1101,2d1234,va1,2g0101";
 //    [[MobileTracking sharedInstance] view:url];
 }
 

@@ -44,7 +44,6 @@
 		2A81720B18DAEB3A00E0EFEC /* MMA_SDKConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE28B18CF1EA5007BD457 /* MMA_SDKConfig.m */; };
 		2A81720C18DAEB3A00E0EFEC /* MMA_TaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2B018D07126007BD457 /* MMA_TaskQueue.m */; };
 		2A81720D18DAEB3A00E0EFEC /* GTMNSString+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2A018D02ED2007BD457 /* GTMNSString+URLArguments.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		2A81720E18DAEB3A00E0EFEC /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE29B18CFF9EF007BD457 /* LocationService.m */; };
 		2A81720F18DAEB3A00E0EFEC /* RequestQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE1FE18CED086007BD457 /* RequestQueue.m */; };
 		2A81721118DAEB3A00E0EFEC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABFE29718CF2B5F007BD457 /* CoreLocation.framework */; };
 		2A81721218DAEB3A00E0EFEC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABFE28118CF1778007BD457 /* UIKit.framework */; };
@@ -60,7 +59,6 @@
 		2ABFE28C18CF1EA5007BD457 /* MMA_SDKConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE28B18CF1EA5007BD457 /* MMA_SDKConfig.m */; };
 		2ABFE28F18CF25A1007BD457 /* MMA_XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE28E18CF25A1007BD457 /* MMA_XMLReader.m */; };
 		2ABFE29818CF2B5F007BD457 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABFE29718CF2B5F007BD457 /* CoreLocation.framework */; };
-		2ABFE29C18CFF9EF007BD457 /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE29B18CFF9EF007BD457 /* LocationService.m */; };
 		2ABFE2A118D02ED2007BD457 /* GTMNSString+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2A018D02ED2007BD457 /* GTMNSString+URLArguments.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2ABFE2A418D0581A007BD457 /* MMA_Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2A318D0581A007BD457 /* MMA_Log.m */; };
 		2ABFE2A718D06E79007BD457 /* MMA_Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2A618D06E79007BD457 /* MMA_Task.m */; };
@@ -88,6 +86,8 @@
 		AF1AAEA91EF61EF300E9C276 /* VAViewTools.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE8F1EF61EF300E9C276 /* VAViewTools.m */; };
 		AF1AAEAA1EF61EF300E9C276 /* ViewabilityService.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE911EF61EF300E9C276 /* ViewabilityService.m */; };
 		AF1AAEAB1EF61EF300E9C276 /* ViewabilityService.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE911EF61EF300E9C276 /* ViewabilityService.m */; };
+		AF59E97320510DDF00994BCF /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = AF59E97220510DDF00994BCF /* LocationService.m */; };
+		AF59E977205116C400994BCF /* LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = AF59E97220510DDF00994BCF /* LocationService.m */; };
 		AF89EC731EFA0CB400A2AF21 /* Viewability_iOS.md in Sources */ = {isa = PBXBuildFile; fileRef = AF89EC721EFA0CB400A2AF21 /* Viewability_iOS.md */; };
 		AF89EC741EFA0CB400A2AF21 /* Viewability_iOS.md in Sources */ = {isa = PBXBuildFile; fileRef = AF89EC721EFA0CB400A2AF21 /* Viewability_iOS.md */; };
 		AFB3716B1F3854770092930F /* VACacheWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB3715A1F3854770092930F /* VACacheWebView.m */; };
@@ -179,8 +179,6 @@
 		2ABFE28D18CF25A1007BD457 /* MMA_XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_XMLReader.h; sourceTree = "<group>"; };
 		2ABFE28E18CF25A1007BD457 /* MMA_XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_XMLReader.m; sourceTree = "<group>"; };
 		2ABFE29718CF2B5F007BD457 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		2ABFE29A18CFF9EF007BD457 /* LocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
-		2ABFE29B18CFF9EF007BD457 /* LocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
 		2ABFE29D18CFFA57007BD457 /* MMA_Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_Macro.h; sourceTree = "<group>"; };
 		2ABFE29F18D02ED2007BD457 /* GTMNSString+URLArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GTMNSString+URLArguments.h"; sourceTree = "<group>"; };
 		2ABFE2A018D02ED2007BD457 /* GTMNSString+URLArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GTMNSString+URLArguments.m"; sourceTree = "<group>"; };
@@ -215,6 +213,8 @@
 		AF1AAE8F1EF61EF300E9C276 /* VAViewTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAViewTools.m; sourceTree = "<group>"; };
 		AF1AAE901EF61EF300E9C276 /* ViewabilityService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewabilityService.h; sourceTree = "<group>"; };
 		AF1AAE911EF61EF300E9C276 /* ViewabilityService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewabilityService.m; sourceTree = "<group>"; };
+		AF59E97120510DDF00994BCF /* LocationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationService.h; sourceTree = "<group>"; };
+		AF59E97220510DDF00994BCF /* LocationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationService.m; sourceTree = "<group>"; };
 		AF89EC721EFA0CB400A2AF21 /* Viewability_iOS.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Viewability_iOS.md; sourceTree = "<group>"; };
 		AFB371591F3854770092930F /* VACacheWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VACacheWebView.h; sourceTree = "<group>"; };
 		AFB3715A1F3854770092930F /* VACacheWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VACacheWebView.m; sourceTree = "<group>"; };
@@ -458,10 +458,10 @@
 		2ABFE29918CFF9EF007BD457 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				2ABFE29A18CFF9EF007BD457 /* LocationService.h */,
-				2ABFE29B18CFF9EF007BD457 /* LocationService.m */,
 				2A79BC1D18D2DC2900FC62C1 /* TrackingInfoService.h */,
 				2A79BC1E18D2DC2900FC62C1 /* TrackingInfoService.m */,
+				AF59E97120510DDF00994BCF /* LocationService.h */,
+				AF59E97220510DDF00994BCF /* LocationService.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -677,11 +677,11 @@
 				2ABFE2A118D02ED2007BD457 /* GTMNSString+URLArguments.m in Sources */,
 				AF1AAE921EF61EF300E9C276 /* AdHeper.m in Sources */,
 				AF1AAE9C1EF61EF300E9C276 /* VAMonitorConfig.m in Sources */,
-				2ABFE29C18CFF9EF007BD457 /* LocationService.m in Sources */,
 				AFB3717B1F3854770092930F /* ViewabilityJSService.m in Sources */,
 				AF1AAEA61EF61EF300E9C276 /* VAViewMonitor.m in Sources */,
 				2ABFE22518CED086007BD457 /* RequestQueue.m in Sources */,
 				AFB3716B1F3854770092930F /* VACacheWebView.m in Sources */,
+				AF59E97320510DDF00994BCF /* LocationService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -719,6 +719,7 @@
 				2A81720718DAEB3A00E0EFEC /* MMA_Log.m in Sources */,
 				2A81720818DAEB3A00E0EFEC /* SSNetworkInfo.m in Sources */,
 				2A81720918DAEB3A00E0EFEC /* MMA_Reachability.m in Sources */,
+				AF59E977205116C400994BCF /* LocationService.m in Sources */,
 				2A81720A18DAEB3A00E0EFEC /* MMA_OpenUDID.m in Sources */,
 				AF1AAE971EF61EF300E9C276 /* UIView+Monitor.m in Sources */,
 				2A81720B18DAEB3A00E0EFEC /* MMA_SDKConfig.m in Sources */,
@@ -728,7 +729,6 @@
 				2A81720D18DAEB3A00E0EFEC /* GTMNSString+URLArguments.m in Sources */,
 				AF1AAE931EF61EF300E9C276 /* AdHeper.m in Sources */,
 				AF1AAE9D1EF61EF300E9C276 /* VAMonitorConfig.m in Sources */,
-				2A81720E18DAEB3A00E0EFEC /* LocationService.m in Sources */,
 				AFB3717C1F3854770092930F /* ViewabilityJSService.m in Sources */,
 				AF1AAEA71EF61EF300E9C276 /* VAViewMonitor.m in Sources */,
 				2A81720F18DAEB3A00E0EFEC /* RequestQueue.m in Sources */,

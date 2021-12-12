@@ -508,7 +508,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 4E89P63KS8;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
@@ -517,7 +517,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = "Demo/Demo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Demo",
@@ -527,10 +527,11 @@
 					"-lxml2",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c90e628d-bcd8-48eb-8fc7-d9afa36b5577";
-				PROVISIONING_PROFILE_SPECIFIER = SDK_Developer;
+				PROVISIONING_PROFILE = "97e98d37-8685-4f3a-96ce-cd9d04f6286a";
+				PROVISIONING_PROFILE_SPECIFIER = "com_*";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -542,7 +543,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				DEVELOPMENT_TEAM = 4E89P63KS8;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
@@ -551,7 +552,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
 				INFOPLIST_FILE = "Demo/Demo-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Demo",
@@ -561,10 +562,11 @@
 					"-lxml2",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcd;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c90e628d-bcd8-48eb-8fc7-d9afa36b5577";
-				PROVISIONING_PROFILE_SPECIFIER = SDK_Developer;
+				PROVISIONING_PROFILE = "97e98d37-8685-4f3a-96ce-cd9d04f6286a";
+				PROVISIONING_PROFILE_SPECIFIER = "com_*";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
 			};

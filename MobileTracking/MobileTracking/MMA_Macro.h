@@ -9,7 +9,7 @@
 #ifndef MobileTracking_Macro_h
 #define MobileTracking_Macro_h
 
-#define MMA_SDK_VERSION @"V2.0.0"
+#define MMA_SDK_VERSION @"V2.0.1"
 
 #define NOTIFICATION_VB @"viewability_notification"
 #define NOTIFICATION_EXPOSE @"expose_notification"
@@ -33,6 +33,7 @@
 #define DEFAULT_SEND_QUEUE_TIMER_INTERVAL (1 * 10)
 #define UPDATE_SDK_CONFIG_WIFI_INTERVAL (1 * 24 * 60 * 60)
 #define UPDATE_SDK_CONFIG_3G_INTERVAL (3 * 24 * 60 * 60)
+#define LOCATION_UPDATE_INTERVAL 120 //定位刷新间隔 单位:秒
 
 #define NETWORK_STATUS_WIFI 1
 #define NETWORK_STATUS_3G   0
