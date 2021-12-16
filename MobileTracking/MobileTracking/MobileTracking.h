@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 Admaster. All rights reserved.
 //
 
-//#define MMA_SDK_VERSION @"V2.0.1"
+//#define MMA_SDK_VERSION @"V2.0.3"
 
 #import <UIKit/UIKit.h>
 

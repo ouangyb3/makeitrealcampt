@@ -445,7 +445,7 @@
                 <encrypt>
                     <MAC>raw</MAC>
                     <IDA>raw</IDA>
-                    <IMEI>raw</IMEI>
+                    <IMEI>md5</IMEI>
                     <ANDROIDID>raw</ANDROIDID>
                 </encrypt>
                 <applist>
@@ -486,6 +486,12 @@
                     </argument>
                     <argument>
                         <key>IMEI</key>
+                        <value>m2</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <argument>
+                        <key>RAWIMEI</key>
                         <value>m3</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>

@@ -7,12 +7,12 @@
 //
 
 #import "MMA_XMLReader.h"
-#import "GDataXMLNode.h"
+#import "MMA_GDataXMLNode.h"
 
 @interface MMA_XMLReader()
 
-+ (void)initOfflineCache:(MMA_SDKConfig *)sdkConfig rootElement:(GDataXMLElement *)rootElement;
-+ (void)initCompanies:(MMA_SDKConfig *)sdkConfig rootElement:(GDataXMLElement *)rootElement;
++ (void)initOfflineCache:(MMA_SDKConfig *)sdkConfig rootElement:(MMA_GDataXMLElement *)rootElement;
++ (void)initCompanies:(MMA_SDKConfig *)sdkConfig rootElement:(MMA_GDataXMLElement *)rootElement;
 
 @end
 
@@ -23,10 +23,10 @@
     
     MMA_SDKConfig *sdkConfig = [[MMA_SDKConfig alloc] init];
     
-    GDataXMLDocument *doc = [[GDataXMLDocument alloc]initWithXMLString:xmlString options:0 error:nil];
+    MMA_GDataXMLDocument *doc = [[MMA_GDataXMLDocument alloc]initWithXMLString:xmlString options:0 error:nil];
     [doc setCharacterEncoding:@"utf-8"];
     
-    GDataXMLElement *rootElement = [doc rootElement] ;
+    MMA_GDataXMLElement *rootElement = [doc rootElement] ;
     
     [self initOfflineCache:sdkConfig rootElement:rootElement];
     [self initCompanies:sdkConfig rootElement:rootElement];
@@ -39,10 +39,10 @@
     
     MMA_SDKConfig *sdkConfig = [[MMA_SDKConfig alloc] init];
     
-    GDataXMLDocument *doc = [[GDataXMLDocument alloc] initWithData:data  options:0 error:nil];
+    MMA_GDataXMLDocument *doc = [[MMA_GDataXMLDocument alloc] initWithData:data  options:0 error:nil];
     [doc setCharacterEncoding:@"utf-8"];
     
-    GDataXMLElement *rootElement = [doc rootElement];
+    MMA_GDataXMLElement *rootElement = [doc rootElement];
     
     [self initOfflineCache:sdkConfig rootElement:rootElement];
     [self initViewability:sdkConfig rootElement:rootElement];
@@ -52,26 +52,26 @@
     return sdkConfig;
 }
 
-+ (NSInteger)stringToIntergetFromElement:(GDataXMLElement *)element name:(NSString *)name
++ (NSInteger)stringToIntergetFromElement:(MMA_GDataXMLElement *)element name:(NSString *)name
 {
     NSString *string = [[[element elementsForName:name] firstObject] stringValue] ;
     NSCharacterSet *characterSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     return  [[string stringByTrimmingCharactersInSet:characterSet] integerValue];
 }
 
-+(NSString *)StringTrimFromElement:(GDataXMLElement*)element name:(NSString*)name{
++(NSString *)StringTrimFromElement:(MMA_GDataXMLElement*)element name:(NSString*)name{
     NSString *string = [[[element elementsForName:name] firstObject] stringValue] ;
     return [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
-+ (void)initOfflineCache:(MMA_SDKConfig *)sdkConfig rootElement:(GDataXMLElement *)rootElement
++ (void)initOfflineCache:(MMA_SDKConfig *)sdkConfig rootElement:(MMA_GDataXMLElement *)rootElement
 {
     NSArray *array = [rootElement elementsForName:@"offlineCache"];
     if (array == nil || [array count] == 0) {
         return;
     }
     
-    GDataXMLElement *element = [array firstObject];
+    MMA_GDataXMLElement *element = [array firstObject];
     MMA_OfflineCache *offlineCache = [[MMA_OfflineCache alloc] init];
     
     offlineCache.length = [self stringToIntergetFromElement:element name:@"length"];
@@ -81,13 +81,13 @@
     sdkConfig.offlineCache = offlineCache;
 }
 
-+ (void)initViewability:(MMA_SDKConfig *)sdkConfig rootElement:(GDataXMLElement *)rootElement {
++ (void)initViewability:(MMA_SDKConfig *)sdkConfig rootElement:(MMA_GDataXMLElement *)rootElement {
     NSArray *array = [rootElement elementsForName:@"viewability"];
     if (array == nil || [array count] == 0) {
         return;
     }
     
-    GDataXMLElement *element = [array firstObject];
+    MMA_GDataXMLElement *element = [array firstObject];
     MMA_Viewability *viewability = [[MMA_Viewability alloc] init];
     
     viewability.intervalTime = [self stringToIntergetFromElement:element name:@"intervalTime"];
@@ -103,12 +103,12 @@
     
 }
 
-+ (void)initCompanies:(MMA_SDKConfig *)sdkConfig rootElement:(GDataXMLElement *)rootElement
++ (void)initCompanies:(MMA_SDKConfig *)sdkConfig rootElement:(MMA_GDataXMLElement *)rootElement
 {
     sdkConfig.companies = [NSMutableDictionary dictionary];
     NSArray *companys = [rootElement nodesForXPath:@"//companies/company" error:nil];
     
-    for (GDataXMLElement *element in companys) {
+    for (MMA_GDataXMLElement *element in companys) {
         MMA_Company *company = [[MMA_Company alloc] init];
         
         
@@ -118,7 +118,7 @@
         
         company.domain = [NSMutableArray array];
         NSArray *urls = [element nodesForXPath:@"domain/url" error:nil];
-        for (GDataXMLElement *url in urls) {
+        for (MMA_GDataXMLElement *url in urls) {
             [company.domain addObject:[url stringValue]];
         }
         
@@ -141,17 +141,17 @@
         company.MMASwitch = [[MMA_Switch alloc] init];
         
         company.MMASwitch.isTrackLocation = [[[[element nodesForXPath:@"switch/isTrackLocation" error:nil] firstObject] stringValue] boolValue];
-        GDataXMLElement *offlineCacheExpiration = [[element elementsForName:@"switch"] firstObject];
+        MMA_GDataXMLElement *offlineCacheExpiration = [[element elementsForName:@"switch"] firstObject];
         company.MMASwitch.offlineCacheExpiration = [self stringToIntergetFromElement:offlineCacheExpiration name:@"offlineCacheExpiration"];
         
-        GDataXMLElement *viewabilityTrackPolicy = [[element elementsForName:@"switch"] firstObject];
+        MMA_GDataXMLElement *viewabilityTrackPolicy = [[element elementsForName:@"switch"] firstObject];
         company.MMASwitch.viewabilityTrackPolicy = [self stringToIntergetFromElement:viewabilityTrackPolicy name:@"viewabilityTrackPolicy"];
 
         
         
-        GDataXMLElement *encryptElement = [[element nodesForXPath:@"switch/encrypt" error:nil] firstObject];
+        MMA_GDataXMLElement *encryptElement = [[element nodesForXPath:@"switch/encrypt" error:nil] firstObject];
         company.MMASwitch.encrypt = [NSMutableDictionary dictionary];
-        for(GDataXMLElement *el  in [encryptElement children]){
+        for(MMA_GDataXMLElement *el  in [encryptElement children]){
             [company.MMASwitch.encrypt setValue:[el stringValue] forKey:[el name]];
         }
         
@@ -159,7 +159,7 @@
         
         company.config.arguments = [NSMutableDictionary dictionary];
         NSArray *arguments = [element nodesForXPath:@"config/arguments/argument" error:nil];
-        for(GDataXMLElement *el  in arguments){
+        for(MMA_GDataXMLElement *el  in arguments){
             MMA_Argument *argument = [[MMA_Argument alloc] init];
             argument.key = [self StringTrimFromElement:el name:@"key"];
             argument.value = [self StringTrimFromElement:el name:@"value"];
@@ -170,7 +170,7 @@
         
         company.config.events = [NSMutableDictionary dictionary];
         NSArray *events = [element nodesForXPath:@"config/events/event" error:nil];
-        for(GDataXMLElement *el  in events){
+        for(MMA_GDataXMLElement *el  in events){
             MMA_Event *event = [[MMA_Event alloc] init];
             event.key = [self StringTrimFromElement:el name:@"key" ];
             event.value = [self StringTrimFromElement:el name:@"value" ];
@@ -179,10 +179,10 @@
             
         }
         
-        //        GDataXMLElement *impressionplaceElement = [[element nodesForXPath:@"config/Adplacement/argument" error:nil] firstObject];
+        //        MMA_GDataXMLElement *impressionplaceElement = [[element nodesForXPath:@"config/Adplacement/argument" error:nil] firstObject];
         NSArray *impressionplaceElement = [element nodesForXPath:@"config/Adplacement/argument" error:nil];
         company.config.Adplacement = [NSMutableDictionary dictionary];
-        for(GDataXMLElement *el  in impressionplaceElement){
+        for(MMA_GDataXMLElement *el  in impressionplaceElement){
             MMA_Argument *argument = [[MMA_Argument alloc] init];
             argument.key = [self StringTrimFromElement:el name:@"key" ];
             argument.value = [self StringTrimFromElement:el name:@"value" ];
@@ -192,7 +192,7 @@
         
         company.config.viewabilityarguments = [NSMutableDictionary dictionary];
         NSArray *viewabilityarguments = [element nodesForXPath:@"config/viewabilityarguments/argument" error:nil];
-        for(GDataXMLElement *el  in viewabilityarguments){
+        for(MMA_GDataXMLElement *el  in viewabilityarguments){
             MMA_Argument *argument = [[MMA_Argument alloc] init];
             argument.key = [self StringTrimFromElement:el name:@"key"];
             argument.value = [self StringTrimFromElement:el name:@"value"];
