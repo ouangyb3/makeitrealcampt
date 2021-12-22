@@ -46,7 +46,7 @@
 @end
 
 
-@interface VBOpenResult : NSObject
+@interface MMA_VBOpenResult : NSObject
 @property (nonatomic) BOOL canOpen;
 @property (nonatomic,copy) NSString *url;
 //@property (nonatomic,copy) NSString *viewabilityURL;
@@ -55,7 +55,7 @@
 
 @end
 
-@implementation VBOpenResult
+@implementation MMA_VBOpenResult
 
 - (instancetype)init {
     self = [super init];
@@ -114,7 +114,6 @@
             [[NSUserDefaults standardUserDefaults] removeObjectForKey:SDK_CONFIG_DATA_KEY];
         }
         /*  Old (NSUserDefaults) ----> New(File) */
-        
         
         NSData *sdkData = [NSData dataWithContentsOfFile:SDK_CONFIG_DATA_PATH];
         if (sdkData) {
@@ -199,8 +198,8 @@
                 continue;
             }
             NSURL *URL = [NSURL URLWithString:task.url];
-            NSURLCacheStoragePolicy policy = NSURLRequestReloadIgnoringCacheData;
-            NSURLRequest *request = [NSURLRequest requestWithURL:URL cachePolicy:policy timeoutInterval:self.sdkConfig.offlineCache.timeout];
+//            NSURLCacheStoragePolicy policy = NSURLRequestReloadIgnoringCacheData;
+            NSURLRequest *request = [NSURLRequest requestWithURL:URL cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:self.sdkConfig.offlineCache.timeout];
             RQOperation *operation = [RQOperation operationWithRequest:request];
             
             operation.completionHandler = ^(__unused NSURLResponse *response, NSData *data, NSError *error)
@@ -232,8 +231,7 @@
             MMA_Task *task = [self.sendQueue pop];
             [MMA_Log log:@"##send_queue_url:%@" ,task.url];
             NSURL *URL = [NSURL URLWithString:task.url];
-            NSURLCacheStoragePolicy policy = NSURLRequestReloadIgnoringLocalAndRemoteCacheData;
-            NSURLRequest *request = [NSURLRequest requestWithURL:URL cachePolicy:policy timeoutInterval:self.sdkConfig.offlineCache.timeout];
+            NSURLRequest *request = [NSURLRequest requestWithURL:URL cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:self.sdkConfig.offlineCache.timeout];
             RQOperation *operation = [RQOperation operationWithRequest:request];
             
             operation.completionHandler = ^(__unused NSURLResponse *response, NSData *data, NSError *error)
@@ -389,11 +387,11 @@
 
 
 // 去掉字段2g 如果有2j 去掉AdMeasurability Adviewability AdviewabilityEvents ImpressionID四个字段生成链接
-- (VBOpenResult *)vbFilterURL:(NSString *)url isForViewability:(BOOL)viewability isVideo:(BOOL)isVideo {
+- (MMA_VBOpenResult *)vbFilterURL:(NSString *)url isForViewability:(BOOL)viewability isVideo:(BOOL)isVideo {
     @try {
         
         MMA_Company *company = [self confirmCompany:url];
-        VBOpenResult *res = [[VBOpenResult alloc] init];
+        MMA_VBOpenResult *res = [[MMA_VBOpenResult alloc] init];
         res.config = self.viewabilityConfig; // 初始化默认配置为当前的配置
         res.url = url;
         res.canOpen = NO;
@@ -427,7 +425,7 @@
         NSString *noRedirectURL = [NSString stringWithString:trackURL];
         NSMutableString *filterURL = [[NSMutableString alloc] initWithString:noRedirectURL];
         
-        NSArray *exposeKeys = @[IMPRESSIONID];
+        NSArray *exposeKeys = @[IMPRESSIONID, IMPRESSIONTYPE];
         
 //        NSArray *viewabilityKeys = @[AD_MEASURABILITY,
 //                                     AD_VB,
@@ -570,7 +568,7 @@
 
 - (void)click:(NSString *)url
 {
-    VBOpenResult *result = [self vbFilterURL:url isForViewability:NO isVideo:NO];
+    MMA_VBOpenResult *result = [self vbFilterURL:url isForViewability:NO isVideo:NO];
     url = [NSString stringWithString:result.url];
     MMA_Company *company = [self confirmCompany:url];
     if(!company) {
@@ -578,6 +576,15 @@
         return;
     }
     NSString *adID = [self getAdIDForURL:url];
+    if (adID && adID.length) {
+        NSString *domain = company.domain[0];
+        if(!domain || !domain.length) {
+            domain = @"";
+        }
+
+        NSString *monitorKey = [NSString stringWithFormat:@"%@-%@",domain,adID];
+        [_viewabilityService setVAMonitorVisible:monitorKey];
+    }
     NSString *impressKey = [NSString stringWithFormat:@"%@-%@",company.domain[0],adID];
     
     NSString *impressID = _impressionDictionary[impressKey];
@@ -590,12 +597,12 @@
 }
 
 // 普通曝光请求: 普通曝光默认不开启viewability. 需要redirectURL
-- (void)view:(NSString *)url
+- (void)view:(NSString *)url ad:(UIView *)adView impressionType:(NSInteger)type
 {
     @try {
         BOOL viewability = NO;
-        VBOpenResult *result = [self vbFilterURL:url isForViewability:viewability isVideo:NO];
-        [self view:url ad:nil isVideo:NO videoPlayType:0 handleResult:result];
+        MMA_VBOpenResult *result = [self vbFilterURL:url isForViewability:viewability isVideo:NO];
+        [self view:url ad:adView isVideo:NO videoPlayType:0 handleResult:result impressionType:type];
     }
     @catch (NSException *exception) {
         [MMA_Log log:@"##exception:%@" ,exception];
@@ -605,17 +612,15 @@
 // 视频Viewaility曝光请求: 视频曝光判断是否含有相关AdViewabilityEvents字段决定是否开启viewability 不需要redirectURL
 - (void)viewVideo:(NSString *)url ad:(UIView *)adView videoPlayType:(NSInteger)type{
     BOOL viewability = YES;
-    VBOpenResult *result = [self vbFilterURL:url isForViewability:viewability isVideo:YES];
-    
-    [self view:url ad:adView isVideo:YES videoPlayType:type handleResult:result];
+    MMA_VBOpenResult *result = [self vbFilterURL:url isForViewability:viewability isVideo:YES];
+    [self view:url ad:adView isVideo:YES videoPlayType:type handleResult:result impressionType:1];
 }
 
 // 广告Viewability曝光请求: 同视频Viewability曝光逻辑 不需要redirectURL
 - (void)view:(NSString *)url ad:(UIView *)adView {
     BOOL viewability = YES;
-    VBOpenResult *result = [self vbFilterURL:url isForViewability:viewability isVideo:NO];
-
-    [self view:url ad:adView isVideo:NO videoPlayType:0 handleResult:result];
+    MMA_VBOpenResult *result = [self vbFilterURL:url isForViewability:viewability isVideo:NO];
+    [self view:url ad:adView isVideo:NO videoPlayType:0 handleResult:result impressionType:1];
 }
 
 // 停止可见监测
@@ -643,7 +648,7 @@
 
 
 // viewability曝光不需要redirectURL已在前面剔除,普通曝光需要redirectURL
-- (void)view:(NSString *)url ad:(UIView *)adView isVideo:(BOOL)isVideo videoPlayType:(NSInteger)type handleResult:(VBOpenResult *)result {
+- (void)view:(NSString *)url ad:(UIView *)adView isVideo:(BOOL)isVideo videoPlayType:(NSInteger)type handleResult:(MMA_VBOpenResult *)result  impressionType:(NSInteger)impressionType{
     @try {
         /**
          *  获取是否含有使用viewability字段
@@ -685,12 +690,23 @@
         NSString * compString = [NSString stringWithFormat:@"%@%@%@%@",[self.trackingInfoService idfa],[self.trackingInfoService idfv],adID,timestamp];
         NSString *impressID  = [MMA_Helper md5HexDigest:compString];
         _impressionDictionary[impressKey] = impressID;
-        
         /**
          *  发送正常的url 监测使用去噪impressionID曝光url,拼接AD_VB (2f),AD_VB_RESULT(vx)
          */
-        [self filterURL:[self handleImpressURL:result.url impression:impressID redirectURL:result.redirectURL additionKey:useViewabilityService]];
-        [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_EXPOSE object:nil];
+        
+//        impressionType=0视为Tracked ads；impressionType=1视为曝光
+        if (impressionType == 0) {
+            [self handleImpressionType:@"0" URL:result.url impression:impressID redirectURL:result.redirectURL additionKey:useViewabilityService];
+        } else if (impressionType == 1){
+            if(!adView || ![adView isKindOfClass:[UIView class]]) {
+//                view=nil或者view非法的情况下，未达到CBR条件，如果是可见监测停止监测
+                [self handleImpressionType:@"0" URL:result.url impression:impressID redirectURL:result.redirectURL additionKey:useViewabilityService];
+                return;
+            } else {
+//                达到CBR条件，如果是可见监测继续监测
+                [self handleImpressionType:@"1" URL:result.url impression:impressID redirectURL:result.redirectURL additionKey:useViewabilityService];
+            }
+        }
         
         /**
          *  Viewability功能模块
@@ -707,28 +723,28 @@
             
             // 如果view非法或为空 不可测量参数置为0
             if(!adView || ![adView isKindOfClass:[UIView class]]) {
-                
-                NSDictionary *dictionary = @{
-                                             AD_VB_EVENTS : @"[]",
-                                             AD_VB : @"0",
-                                             AD_VB_RESULT : @"2",
-                                             IMPRESSIONID : impressID,
-                                             AD_MEASURABILITY : @"0"
-                                             };
-                NSMutableDictionary *accessDictionary = [NSMutableDictionary dictionary];
-                [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString * key, id obj, BOOL * _Nonnull stop) {
-                    NSString *accessKey = keyvalueAccess[key];
-                    if(accessKey && accessKey.length) {
-                        accessDictionary[accessKey] = obj;
-                    }
-                }];
-                NSString *url = [self monitorHandleWithURL:result.url data:accessDictionary redirectURL:@""];
-                [self filterURL:url];
-            } else {
-                VAMonitor *monitor = [VAMonitor monitorWithView:adView isVideo:isVideo url:result.url redirectURL:@"" impressionID:impressID adID:adID keyValueAccess:[keyvalueAccess copy] config:result.config domain:domain];
-                monitor.delegate = self;
-                [_viewabilityService addVAMonitor:monitor];
+                return;
+//                NSDictionary *dictionary = @{
+//                                             AD_VB_EVENTS : @"[]",
+//                                             AD_VB : @"0",
+//                                             AD_VB_RESULT : @"2",
+//                                             IMPRESSIONID : impressID,
+//                                             AD_MEASURABILITY : @"0"
+//                                             };
+//                NSMutableDictionary *accessDictionary = [NSMutableDictionary dictionary];
+//                [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString * key, id obj, BOOL * _Nonnull stop) {
+//                    NSString *accessKey = keyvalueAccess[key];
+//                    if(accessKey && accessKey.length) {
+//                        accessDictionary[accessKey] = obj;
+//                    }
+//                }];
+//                NSString *url = [self monitorHandleWithURL:result.url data:accessDictionary redirectURL:@""];
+//                [self filterURL:url];
             }
+            VAMonitor *monitor = [VAMonitor monitorWithView:adView isVideo:isVideo url:result.url redirectURL:@"" impressionID:impressID adID:adID keyValueAccess:[keyvalueAccess copy] config:result.config domain:domain];
+            monitor.delegate = self;
+            [_viewabilityService addVAMonitor:monitor];
+            
             
         }
         
@@ -740,6 +756,16 @@
     }
 }
 
+- (void)handleImpressionType:(NSString *)impressionType URL:(NSString *)url impression:(NSString *)impressionID redirectURL:(NSString *)redirectURL additionKey:(BOOL)additionKey  {
+    MMA_Company *company = [self confirmCompany:url];
+    NSMutableString *trackURL = [NSMutableString stringWithString:url];
+    MMA_Argument *impressionTypeArgument = [company.config.viewabilityarguments valueForKey:IMPRESSIONTYPE];
+    if(impressionTypeArgument.value) {
+        [trackURL appendFormat:@"%@%@%@%@",company.separator,impressionTypeArgument.value,company.equalizer,impressionType];
+    }
+    [self filterURL:[self handleImpressURL:trackURL impression:impressionID redirectURL:redirectURL additionKey:additionKey]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_EXPOSE object:nil];
+}
 
 // 普通曝光
 - (void)jsView:(NSString *)url ad:(UIView *)adView{

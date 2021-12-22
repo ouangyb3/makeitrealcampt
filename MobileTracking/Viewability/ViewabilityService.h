@@ -16,4 +16,6 @@
 - (void)addVAMonitor:(VAMonitor *)monitor;
 - (void)processCacheMonitorsWithDelegate:(id <VAMonitorDataProtocol>)delegate;
 - (void)stopVAMonitor:(NSString *)monitorKey;
+- (void)setVAMonitorVisible:(NSString *)monitorKey;
+
 @end

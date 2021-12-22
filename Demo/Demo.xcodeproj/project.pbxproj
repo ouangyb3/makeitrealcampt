@@ -16,16 +16,24 @@
 		2A0C4E3F18D6D18700200F18 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A0C4E2118D6D18700200F18 /* UIKit.framework */; };
 		2A0C4E4718D6D18700200F18 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2A0C4E4518D6D18700200F18 /* InfoPlist.strings */; };
 		2A0C4E4918D6D18700200F18 /* DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A0C4E4818D6D18700200F18 /* DemoTests.m */; };
-		AF0F01A51FF4A0430095BE0C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF0F01A41FF4A0430095BE0C /* ViewController.m */; };
-		AF16D1981F026C4000A2B28B /* ScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF16D1971F026C4000A2B28B /* ScrollViewController.m */; };
+		772E49B322F189B00009DFD2 /* MMAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 772E49B222F189B00009DFD2 /* MMAViewController.m */; };
+		772E49BD22F1959B0009DFD2 /* VideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 772E49B422F195950009DFD2 /* VideoViewController.xib */; };
+		772E49BE22F1959B0009DFD2 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 772E49B522F195960009DFD2 /* SecondViewController.m */; };
+		772E49BF22F1959B0009DFD2 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 772E49B722F195970009DFD2 /* VideoViewController.m */; };
+		772E49C022F1959B0009DFD2 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 772E49B822F195980009DFD2 /* SecondViewController.xib */; };
+		772E49C122F1959B0009DFD2 /* NormalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 772E49B922F195990009DFD2 /* NormalViewController.m */; };
+		772E49C222F1959B0009DFD2 /* NormalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 772E49BA22F195990009DFD2 /* NormalViewController.xib */; };
+		772E49C722F19F950009DFD2 /* videoAd.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 772E49C522F19F940009DFD2 /* videoAd.mp4 */; };
+		77303F6722F98A3A00A51176 /* Advertisement.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 77303F6622F98A3A00A51176 /* Advertisement.mp4 */; };
+		77303F6A22F98F2D00A51176 /* landingPageIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 77303F6922F98F2D00A51176 /* landingPageIcon.png */; };
+		7781CA6122C4BBD1002805DB /* sdkconfig.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7781CA6022C4BBD1002805DB /* sdkconfig.xml */; };
+		77BDFC3F230D44BF00079FDF /* libMobileTrackingSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABB195518DAFA0300C7CAA9 /* libMobileTrackingSimulator.a */; };
 		AF353EDF1CFC24FB00969035 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF353EDE1CFC24FB00969035 /* AdSupport.framework */; };
 		AF4B464B218AB16400BE2F3F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF353EE01CFC251C00969035 /* SystemConfiguration.framework */; };
 		AF4B464C218AB18300BE2F3F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF353ED91CFC24E400969035 /* CoreLocation.framework */; };
 		AF6EA2E51EF655AD000DF811 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF6EA2E41EF655AD000DF811 /* Images.xcassets */; };
-		AF78E1521EFA247B0025B677 /* sdkconfig.xml in Resources */ = {isa = PBXBuildFile; fileRef = AF78E1511EFA247B0025B677 /* sdkconfig.xml */; };
 		AF7D89611EF655F50069A7DC /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7D89601EF655F50069A7DC /* Launch Screen.storyboard */; };
 		AFB3717E1F3854E10092930F /* admaster.js in Resources */ = {isa = PBXBuildFile; fileRef = AFB3717D1F3854E10092930F /* admaster.js */; };
-		AFBC6A3A1EF9578D0030508A /* libMobileTrackingSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABB195518DAFA0300C7CAA9 /* libMobileTrackingSimulator.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +65,7 @@
 			remoteGlobalIDString = 2A81721B18DAEB3A00E0EFEC;
 			remoteInfo = MobileTrackingSimulator;
 		};
-		AFBC6A381EF957860030508A /* PBXContainerItemProxy */ = {
+		77BDFC40230D44CE00079FDF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2A0C4E5218D6D19700200F18 /* MobileTracking.xcodeproj */;
 			proxyType = 1;
@@ -84,16 +92,26 @@
 		2A0C4E4618D6D18700200F18 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2A0C4E4818D6D18700200F18 /* DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoTests.m; sourceTree = "<group>"; };
 		2A0C4E5218D6D19700200F18 /* MobileTracking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MobileTracking.xcodeproj; path = ../MobileTracking/MobileTracking.xcodeproj; sourceTree = "<group>"; };
-		AF0F01A31FF4A0430095BE0C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		AF0F01A41FF4A0430095BE0C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		AF16D1961F026C4000A2B28B /* ScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewController.h; sourceTree = "<group>"; };
-		AF16D1971F026C4000A2B28B /* ScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollViewController.m; sourceTree = "<group>"; };
+		772E49B122F189B00009DFD2 /* MMAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMAViewController.h; sourceTree = "<group>"; };
+		772E49B222F189B00009DFD2 /* MMAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMAViewController.m; sourceTree = "<group>"; };
+		772E49B422F195950009DFD2 /* VideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoViewController.xib; sourceTree = "<group>"; };
+		772E49B522F195960009DFD2 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		772E49B622F195970009DFD2 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		772E49B722F195970009DFD2 /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		772E49B822F195980009DFD2 /* SecondViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
+		772E49B922F195990009DFD2 /* NormalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NormalViewController.m; sourceTree = "<group>"; };
+		772E49BA22F195990009DFD2 /* NormalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NormalViewController.xib; sourceTree = "<group>"; };
+		772E49BB22F1959A0009DFD2 /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
+		772E49BC22F1959B0009DFD2 /* NormalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NormalViewController.h; sourceTree = "<group>"; };
+		772E49C522F19F940009DFD2 /* videoAd.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = videoAd.mp4; sourceTree = "<group>"; };
+		77303F6622F98A3A00A51176 /* Advertisement.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Advertisement.mp4; sourceTree = "<group>"; };
+		77303F6922F98F2D00A51176 /* landingPageIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = landingPageIcon.png; sourceTree = "<group>"; };
+		7781CA6022C4BBD1002805DB /* sdkconfig.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sdkconfig.xml; sourceTree = "<group>"; };
 		AF2DFF4021955F0300B10C3F /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		AF353ED91CFC24E400969035 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AF353EDE1CFC24FB00969035 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		AF353EE01CFC251C00969035 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AF6EA2E41EF655AD000DF811 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		AF78E1511EFA247B0025B677 /* sdkconfig.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sdkconfig.xml; sourceTree = "<group>"; };
 		AF7D89601EF655F50069A7DC /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		AFB3717D1F3854E10092930F /* admaster.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = admaster.js; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,9 +121,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77BDFC3F230D44BF00079FDF /* libMobileTrackingSimulator.a in Frameworks */,
 				AF4B464C218AB18300BE2F3F /* CoreLocation.framework in Frameworks */,
 				AF4B464B218AB16400BE2F3F /* SystemConfiguration.framework in Frameworks */,
-				AFBC6A3A1EF9578D0030508A /* libMobileTrackingSimulator.a in Frameworks */,
 				AF353EDF1CFC24FB00969035 /* AdSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,15 +179,25 @@
 		2A0C4E2318D6D18700200F18 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				77303F6622F98A3A00A51176 /* Advertisement.mp4 */,
+				772E49C522F19F940009DFD2 /* videoAd.mp4 */,
+				77303F6922F98F2D00A51176 /* landingPageIcon.png */,
 				2A0C4E2C18D6D18700200F18 /* AppDelegate.h */,
 				2A0C4E2D18D6D18700200F18 /* AppDelegate.m */,
-				AF0F01A31FF4A0430095BE0C /* ViewController.h */,
-				AF0F01A41FF4A0430095BE0C /* ViewController.m */,
-				AF78E1511EFA247B0025B677 /* sdkconfig.xml */,
+				772E49B122F189B00009DFD2 /* MMAViewController.h */,
+				772E49B222F189B00009DFD2 /* MMAViewController.m */,
+				772E49BC22F1959B0009DFD2 /* NormalViewController.h */,
+				772E49B922F195990009DFD2 /* NormalViewController.m */,
+				772E49BA22F195990009DFD2 /* NormalViewController.xib */,
+				772E49B622F195970009DFD2 /* SecondViewController.h */,
+				772E49B522F195960009DFD2 /* SecondViewController.m */,
+				772E49B822F195980009DFD2 /* SecondViewController.xib */,
+				772E49BB22F1959A0009DFD2 /* VideoViewController.h */,
+				772E49B722F195970009DFD2 /* VideoViewController.m */,
+				772E49B422F195950009DFD2 /* VideoViewController.xib */,
 				AFB3717D1F3854E10092930F /* admaster.js */,
 				2A0C4E2F18D6D18700200F18 /* Main.storyboard */,
-				AF16D1961F026C4000A2B28B /* ScrollViewController.h */,
-				AF16D1971F026C4000A2B28B /* ScrollViewController.m */,
+				7781CA6022C4BBD1002805DB /* sdkconfig.xml */,
 				AF7D89601EF655F50069A7DC /* Launch Screen.storyboard */,
 				AF6EA2E41EF655AD000DF811 /* Images.xcassets */,
 				2A0C4E2418D6D18700200F18 /* Supporting Files */,
@@ -230,7 +258,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				AFBC6A391EF957860030508A /* PBXTargetDependency */,
+				77BDFC41230D44CE00079FDF /* PBXTargetDependency */,
 			);
 			name = Demo;
 			productName = Demo;
@@ -267,6 +295,11 @@
 					2A0C4E1918D6D18700200F18 = {
 						DevelopmentTeam = 44PQ7EUSW9;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.AccessWiFi = {
+								enabled = 0;
+							};
+						};
 					};
 					2A0C4E3A18D6D18700200F18 = {
 						DevelopmentTeam = 4E89P63KS8;
@@ -279,6 +312,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -328,11 +362,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7781CA6122C4BBD1002805DB /* sdkconfig.xml in Resources */,
+				77303F6722F98A3A00A51176 /* Advertisement.mp4 in Resources */,
+				772E49BD22F1959B0009DFD2 /* VideoViewController.xib in Resources */,
 				AF6EA2E51EF655AD000DF811 /* Images.xcassets in Resources */,
+				772E49C222F1959B0009DFD2 /* NormalViewController.xib in Resources */,
+				77303F6A22F98F2D00A51176 /* landingPageIcon.png in Resources */,
+				772E49C722F19F950009DFD2 /* videoAd.mp4 in Resources */,
 				2A0C4E2818D6D18700200F18 /* InfoPlist.strings in Resources */,
-				AF78E1521EFA247B0025B677 /* sdkconfig.xml in Resources */,
 				AFB3717E1F3854E10092930F /* admaster.js in Resources */,
 				AF7D89611EF655F50069A7DC /* Launch Screen.storyboard in Resources */,
+				772E49C022F1959B0009DFD2 /* SecondViewController.xib in Resources */,
 				2A0C4E3118D6D18700200F18 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,10 +392,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				772E49BE22F1959B0009DFD2 /* SecondViewController.m in Sources */,
 				2A0C4E2E18D6D18700200F18 /* AppDelegate.m in Sources */,
 				2A0C4E2A18D6D18700200F18 /* main.m in Sources */,
-				AF0F01A51FF4A0430095BE0C /* ViewController.m in Sources */,
-				AF16D1981F026C4000A2B28B /* ScrollViewController.m in Sources */,
+				772E49BF22F1959B0009DFD2 /* VideoViewController.m in Sources */,
+				772E49C122F1959B0009DFD2 /* NormalViewController.m in Sources */,
+				772E49B322F189B00009DFD2 /* MMAViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,10 +417,10 @@
 			target = 2A0C4E1918D6D18700200F18 /* Demo */;
 			targetProxy = 2A0C4E4018D6D18700200F18 /* PBXContainerItemProxy */;
 		};
-		AFBC6A391EF957860030508A /* PBXTargetDependency */ = {
+		77BDFC41230D44CE00079FDF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = MobileTrackingSimulator;
-			targetProxy = AFBC6A381EF957860030508A /* PBXContainerItemProxy */;
+			targetProxy = 77BDFC40230D44CE00079FDF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -504,10 +546,11 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jian Wu (G946Z272GF)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jian Wu (G946Z272GF)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 44PQ7EUSW9;
+				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -528,7 +571,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "97e98d37-8685-4f3a-96ce-cd9d04f6286a";
-				PROVISIONING_PROFILE_SPECIFIER = sur_developer;
+				PROVISIONING_PROFILE_SPECIFIER = Develop;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
@@ -540,10 +583,11 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jian Wu (G946Z272GF)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jian Wu (G946Z272GF)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 44PQ7EUSW9;
+				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -564,7 +608,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "97e98d37-8685-4f3a-96ce-cd9d04f6286a";
-				PROVISIONING_PROFILE_SPECIFIER = sur_developer;
+				PROVISIONING_PROFILE_SPECIFIER = Develop;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;

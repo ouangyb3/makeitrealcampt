@@ -20,6 +20,8 @@
 
 @property (nonatomic,readonly) BOOL hidden;
 
+@property (nonatomic,readonly) BOOL ad_showing;
+
 @property (nonatomic,readonly) BOOL isForground;   // 是否前台运行 0/后 1/前
 
 @property (nonatomic,readonly) NSDate *captureDate;   // 监测日期

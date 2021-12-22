@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIView+Monitor.h"
+#import "UIView+MMA_Monitor.h"
 #import "VAMonitorFrame.h"
 #import "VAMonitorTimeline.h"
 #import "VAMonitorConfig.h"
@@ -56,6 +56,9 @@ typedef NS_ENUM(NSUInteger, VAProgressStatus) {
 
 @property (nonatomic, strong,readonly) VAMonitorConfig *config;
 @property (nonatomic, readonly) BOOL isValid;
+
+@property (nonatomic, readonly) BOOL clickToValid;//强交互致使得广告监测结果有效可见
+
 @property (nonatomic, readonly) BOOL isVideo;
 
 
@@ -72,6 +75,8 @@ typedef NS_ENUM(NSUInteger, VAProgressStatus) {
 - (void)captureAdStatus;
 
 - (void)stopAndUpload;
+
+- (void)setValidExpose;
 
 - (NSString *)keyQuery:(NSString *)key;
 - (BOOL)canRecord:(NSString *)key;
