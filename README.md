@@ -1,6 +1,6 @@
-## MMA iOS SDK 部署指南
+## 数字广告监测及验证统一SDK 部署指南（iOS）
 
-### 步骤1：添加 MMA iOS SDK 到工程中
+### 步骤1：添加 iOS SDK 到工程中
 
 1. 将SDK发布文件中，release目录下的**MobileTracking.h** 、**libMobileTracking.a**、**sdkconfig.xml** 三个文件拷贝到项目工程中，将 **sdkconfig.xml** 上传到 web 服务器，使其可以通过 web 方式访问，假设其地址为 **http://xxxxxx.com/sdkconfig.xml**（其后会用到）。
 2. 在项目工程 App 的 Target Build Settings 中的 **Other Linker Flags** 选项里添加 **-lxml2** **-all_load** 或 **-lxml2** **-force_load** 静态库的绝对路径
@@ -13,10 +13,11 @@
 	AdSupport.framework
 	CoreTelephony.framework
  	SystemConfiguration.framework
+    WebKit.framework
 ```
 
 
-### 步骤2:配置文件sdkconfig.xml的使用方法
+### 步骤2:使用方法
 在使用的文件中引用 
 **#import "MobileTracking.h"**.
 
@@ -43,8 +44,8 @@ SDK 会自动下载远程的配置文件，使用最新的配置文件进行参�
 通过调用以下的代码进行曝光的监测，
 
  * view:参数为第三方公司的监测地址
- * ad:参数为当前广告视图对象（**可视化广告监测为必传字段，普通广告监测默认缺省。**）
- * videoPlayType:参数为当前视频广告的播放类型（**视频可视化广告监测为可选字段，1-自动播放，2-手动播放，0-无法识别。**）
+ * ad:参数为当前广告视图对象（**广告可见曝光监测为必传字段，普通广告监测默认缺省。**）
+ * videoPlayType:参数为当前视频广告的播放类型（**视频广告可见曝光监测为可选字段，1-自动播放，2-手动播放，0-无法识别。**）
  * impressionType:参数为曝光的类型。（**普通广告监测的类型为必选字段，0-Tracked ads，1-曝光**）
 
 3.1 曝光监测

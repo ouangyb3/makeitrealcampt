@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <WebKit/WebKit.h>
 @protocol VAJavascriptBridgeProtocol <NSObject>
 - (void)stopViewability:(NSString *)url;
 - (void)saveJSCacheData:(NSString *)data;
@@ -19,7 +19,7 @@
 
 @property (nonatomic, copy) void(^webFinishBlock)();
 
-- (instancetype)initWithWebView:(UIWebView *)webView delegate:(id <VAJavascriptBridgeProtocol>) delegate;
+- (instancetype)initWithWebView:(WKWebView *)webView delegate:(id <VAJavascriptBridgeProtocol>) delegate;
 - (void)sendViewabilityMessage:(NSString *)viewabilityMessage;
 
 - (void)sendCacheMessage:(NSString *)cacheViewabilityMessage;

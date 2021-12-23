@@ -116,6 +116,9 @@
 		AFB3717C1F3854770092930F /* ViewabilityJSService.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB3716A1F3854770092930F /* ViewabilityJSService.m */; };
 		AFB87D332004BAA000A02E0C /* libMMASign.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB87D322004BA9E00A02E0C /* libMMASign.a */; };
 		AFB87D342004BAA100A02E0C /* libMMASign.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB87D322004BA9E00A02E0C /* libMMASign.a */; };
+		C765ABE023262B660066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABDF23262B660066E906 /* WebKit.framework */; };
+		C765ABE123262B710066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABDF23262B660066E906 /* WebKit.framework */; };
+		C765ABE223262C040066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABDF23262B660066E906 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -248,6 +251,7 @@
 		AFB371691F3854770092930F /* ViewabilityJSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewabilityJSService.h; sourceTree = "<group>"; };
 		AFB3716A1F3854770092930F /* ViewabilityJSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewabilityJSService.m; sourceTree = "<group>"; };
 		AFB87D322004BA9E00A02E0C /* libMMASign.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMMASign.a; sourceTree = "<group>"; };
+		C765ABDF23262B660066E906 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +259,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C765ABE023262B660066E906 /* WebKit.framework in Frameworks */,
 				2ABFE29818CF2B5F007BD457 /* CoreLocation.framework in Frameworks */,
 				2ABFE28218CF1778007BD457 /* UIKit.framework in Frameworks */,
 				AFB87D332004BAA000A02E0C /* libMMASign.a in Frameworks */,
@@ -267,6 +272,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C765ABE223262C040066E906 /* WebKit.framework in Frameworks */,
 				2A632A3018CEB10B00BE2533 /* libMobileTrackingDevice.a in Frameworks */,
 				2A632A2A18CEB10B00BE2533 /* XCTest.framework in Frameworks */,
 				2A632A2B18CEB10B00BE2533 /* Foundation.framework in Frameworks */,
@@ -277,6 +283,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C765ABE123262B710066E906 /* WebKit.framework in Frameworks */,
 				2A81721118DAEB3A00E0EFEC /* CoreLocation.framework in Frameworks */,
 				2A81721218DAEB3A00E0EFEC /* UIKit.framework in Frameworks */,
 				AFB87D342004BAA100A02E0C /* libMMASign.a in Frameworks */,
@@ -312,6 +319,7 @@
 		2A632A1A18CEB10B00BE2533 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C765ABDF23262B660066E906 /* WebKit.framework */,
 				2ABFE29718CF2B5F007BD457 /* CoreLocation.framework */,
 				2ABFE28118CF1778007BD457 /* UIKit.framework */,
 				2ABFE27F18CF176D007BD457 /* AdSupport.framework */,
@@ -824,7 +832,7 @@
 					"$(inherited)",
 					/usr/include/libxml2,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = "-lxml2";
@@ -867,7 +875,7 @@
 					"$(inherited)",
 					/usr/include/libxml2,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = "-lxml2";
