@@ -13,6 +13,7 @@
 	AdSupport.framework
 	CoreTelephony.framework
  	SystemConfiguration.framework
+    WebKit.framework
 ```
 
 

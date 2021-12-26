@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <WebKit/WebKit.h>
 @interface VACacheWebView : NSObject
 
 + (void)start;
-+ (UIWebView *)getWebView;
++ (WKWebView *)getWebView;
 
 @end
