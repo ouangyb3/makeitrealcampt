@@ -893,7 +893,7 @@
 					armv7s,
 				);
 				DSTROOT = /tmp/MobileTracking.dst;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
@@ -903,7 +903,7 @@
 					"$(PROJECT_DIR)/MobileTracking/EncryptModule",
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_CFLAGS = "";
+				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -919,7 +919,7 @@
 					armv7s,
 				);
 				DSTROOT = /tmp/MobileTracking.dst;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
@@ -929,7 +929,7 @@
 					"$(PROJECT_DIR)/MobileTracking/EncryptModule",
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_CFLAGS = "";
+				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -940,6 +940,7 @@
 		2A632A3F18CEB10B00BE2533 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -956,6 +957,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MobileTracking/EncryptModule",
 				);
+				OTHER_CFLAGS = "-fembed-bitcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -964,6 +966,7 @@
 		2A632A4018CEB10B00BE2533 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -976,6 +979,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/MobileTracking/EncryptModule",
 				);
+				OTHER_CFLAGS = "-fembed-bitcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -989,7 +993,7 @@
 					armv7s,
 				);
 				DSTROOT = /tmp/MobileTracking.dst;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
 				LIBRARY_SEARCH_PATHS = (
@@ -998,7 +1002,7 @@
 					"$(PROJECT_DIR)/MobileTracking/EncryptModule",
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_CFLAGS = "";
+				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = MobileTrackingSimulator;
 				SKIP_INSTALL = YES;
@@ -1014,7 +1018,7 @@
 					armv7s,
 				);
 				DSTROOT = /tmp/MobileTracking.dst;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MobileTracking/MobileTracking-Prefix.pch";
 				LIBRARY_SEARCH_PATHS = (
@@ -1023,7 +1027,7 @@
 					"$(PROJECT_DIR)/MobileTracking/EncryptModule",
 				);
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_CFLAGS = "";
+				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = MobileTrackingSimulator;
 				SKIP_INSTALL = YES;
@@ -1038,9 +1042,9 @@
 					"$(ARCHS_STANDARD)",
 					"armv7s,arm64",
 				);
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_CFLAGS = "";
+				OTHER_CFLAGS = "-fembed-bitcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "armv7 armv7s armv64";
 			};
@@ -1053,9 +1057,9 @@
 					"$(ARCHS_STANDARD)",
 					"armv7s,arm64",
 				);
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				OTHER_CFLAGS = "";
+				OTHER_CFLAGS = "-fembed-bitcode";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "armv7 armv7s armv64";
 			};

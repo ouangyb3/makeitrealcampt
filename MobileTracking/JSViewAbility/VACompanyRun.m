@@ -57,9 +57,9 @@ static const char *data_send_queue = "adview.jsmonitor.dataSend.queue";
         }];
 
         
-        dispatch_async(dispatch_get_main_queue(), ^{
+ 
             [self.webView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
-        });
+ 
      
         
         

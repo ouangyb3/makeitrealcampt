@@ -24,11 +24,11 @@
     if(self = [super init]) {
         
         self.webView = webView;
-        dispatch_async(dispatch_get_main_queue(), ^{
+ 
             
          self.webView.navigationDelegate = self;
             
-        });
+  
     
         self.delegate = delegate;
         // 线程保护: 3s 没有返回自动resume

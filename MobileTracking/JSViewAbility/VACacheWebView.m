@@ -32,12 +32,8 @@ static dispatch_queue_t _webViewQueue;
 }
 
 + (void)generateWebView {
-    WKWebView *webView = [[[WKWebView alloc] init]initWithFrame:CGRectMake(0, 0, 300, 500)];
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        UINavigationController *nav =[UIApplication sharedApplication].keyWindow.rootViewController;
-//
-//           [nav.topViewController.view addSubview:webView];
-//    });
+    WKWebView *webView = [[WKWebView alloc] init];
+ 
   
     [_canUsedWebViews addObject:webView];
 
