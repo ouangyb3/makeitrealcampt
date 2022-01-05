@@ -75,11 +75,10 @@
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(finishedPlay) name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
 
 //    点击广告，触发事件，进入下一个页面
-    _tapview = [[UIView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 520)];
-    [_bottomScrollView addSubview:_tapview];
+     
     UITapGestureRecognizer *tableViewGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapView:)];
  
-    [_tapview addGestureRecognizer:tableViewGesture];
+    [_avMoviePlayerController.view  addGestureRecognizer:tableViewGesture];
     
 //    播放的内容提醒：广告&正片
     _remindLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 550, [UIScreen mainScreen].bounds.size.width, 50)];
