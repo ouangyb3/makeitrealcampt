@@ -71,21 +71,21 @@ static const char *view_capture_queue = "adview.capture.queue";
             tempStatus = obj.status;
             tempProgressStatus = obj.progressStatus;
         });
-        
+          
         //进度监测或可视化监测有一个没有结束则不移除
         if(tempStatus == VAMonitorStatusUploaded && tempProgressStatus == VAProgressStatusEnd) {
             NSString *monitorKey = [NSString stringWithFormat:@"%@-%@",obj.domain,obj.adID];
             [invalidMonitors addObject:monitorKey];
             NSLog(@"ID:%@视图上传完成停止监测",obj.adID);
-             _ret = NO;
+           _ret = NO;
             //可视化监测和进度监测如果有一个没有结束,则继续监测.
         } else if(tempStatus == VAMonitorStatusRuning || tempProgressStatus == VAProgressStatusRuning) {
             dispatch_async(_captureQueue, ^{
                 [obj captureAdStatusAndVerify];
                 NSLog(@"ID:%@视图捕获状态",obj.adID);
-                _ret = YES;
+               
             });
-            
+             _ret = YES;
         }
     }];
     [_monitors removeObjectsForKeys:invalidMonitors];
@@ -131,7 +131,7 @@ static const char *view_capture_queue = "adview.capture.queue";
         VAMonitor *exitMonitor = _monitors[monitorKey];
         if(exitMonitor) {
             NSLog(@"Key:%@ 广告存在停止监测",monitorKey);
-            
+                   _ret = NO;
             exitMonitor.status = VAMonitorStatusWaitingUpload;
             exitMonitor.progressStatus = VAProgressStatusEnd;
             
@@ -148,6 +148,7 @@ static const char *view_capture_queue = "adview.capture.queue";
         VAMonitor *exitMonitor = _monitors[monitorKey];
         if (exitMonitor) {
             NSLog(@"Key:%@ 广告存在停止监测",monitorKey);
+                   _ret = NO;
             [exitMonitor setValidExpose];
             exitMonitor.status = VAMonitorStatusWaitingUpload;
             exitMonitor.progressStatus = VAProgressStatusEnd;
@@ -163,7 +164,7 @@ static const char *view_capture_queue = "adview.capture.queue";
     @try {
         dispatch_barrier_sync(_captureQueue, ^{
             NSDictionary *monitors = [NSDictionary dictionaryWithDictionary:_monitors];
-//             NSLog(@"保存检测数据%@",monitors);
+          NSLog(@"保存检测数据%@",monitors);
             /**只在检测开始， 才进行保存数据判断*/
        
                NSDate * date =  [NSDate date];
