@@ -387,7 +387,7 @@
 
 
 // 去掉字段2g 如果有2j 去掉AdMeasurability Adviewability AdviewabilityEvents ImpressionID四个字段生成链接
-- (MMA_VBOpenResult *)vbFilterURL:(NSString *)url isForViewability:(BOOL)viewability isVideo:(BOOL)isVideo {
+- (MMA_VBOpenResult *)vbFilterURL:(NSString *)url isForViewability:(BOOL)viewability isVideo:(BOOL)isVideo  videoPlayType:(NSInteger)type{
     @try {
         
         MMA_Company *company = [self confirmCompany:url];
@@ -527,6 +527,11 @@
                         } else if([key isEqualToString:AD_VB_VIDEOPROGRESS]) { //2a
                             res.config.needRecordProgress = YES;
                         }
+                        /**加入第一次可见曝光监测中videoType vg字段*/
+                            else if([key isEqualToString:AD_VB_VIDEOPLAYTYPE]&&isVideo) { //2a
+                                                  reWriteString = [NSString stringWithFormat:@"%@%@%@%ld", separator, value, equalizer,(long)type] ;
+                          
+                                              }
                         // if contain enable key in url set viewability service OPEN(yes)
 //                        else if ([key isEqualToString:AD_VB_ENABLE]) { //2p
 //                            if([self isExitKey:value inURL:url withCompany:company]) {
@@ -568,7 +573,7 @@
 
 - (void)click:(NSString *)url
 {
-    MMA_VBOpenResult *result = [self vbFilterURL:url isForViewability:NO isVideo:NO];
+    MMA_VBOpenResult *result = [self vbFilterURL:url isForViewability:NO isVideo:NO videoPlayType:0];
     url = [NSString stringWithString:result.url];
     MMA_Company *company = [self confirmCompany:url];
     if(!company) {
@@ -601,7 +606,7 @@
 {
     @try {
         BOOL viewability = NO;
-        MMA_VBOpenResult *result = [self vbFilterURL:url isForViewability:viewability isVideo:NO];
+        MMA_VBOpenResult *result = [self vbFilterURL:url isForViewability:viewability isVideo:NO videoPlayType:0];
         [self view:url ad:adView isVideo:NO videoPlayType:0 handleResult:result impressionType:type];
     }
     @catch (NSException *exception) {
@@ -612,14 +617,14 @@
 // 视频Viewaility曝光请求: 视频曝光判断是否含有相关AdViewabilityEvents字段决定是否开启viewability 不需要redirectURL
 - (void)viewVideo:(NSString *)url ad:(UIView *)adView videoPlayType:(NSInteger)type{
     BOOL viewability = YES;
-    MMA_VBOpenResult *result = [self vbFilterURL:url isForViewability:viewability isVideo:YES];
+    MMA_VBOpenResult *result = [self vbFilterURL:url isForViewability:viewability isVideo:YES videoPlayType:type];
     [self view:url ad:adView isVideo:YES videoPlayType:type handleResult:result impressionType:1];
 }
 
 // 广告Viewability曝光请求: 同视频Viewability曝光逻辑 不需要redirectURL
 - (void)view:(NSString *)url ad:(UIView *)adView {
     BOOL viewability = YES;
-    MMA_VBOpenResult *result = [self vbFilterURL:url isForViewability:viewability isVideo:NO];
+    MMA_VBOpenResult *result = [self vbFilterURL:url isForViewability:viewability isVideo:NO videoPlayType:0];
     [self view:url ad:adView isVideo:NO videoPlayType:0 handleResult:result impressionType:1];
 }
 
