@@ -14,7 +14,7 @@
 #import "MMA_Reachability.h"
 #import "MMA_Macro.h"
 #import <SystemConfiguration/CaptiveNetwork.h>
-
+static NSString *openUDID = nil;
 @implementation MMA_TrackingInfoService
 
 + (MMA_TrackingInfoService *)sharedInstance {
@@ -71,8 +71,19 @@
 
 - (NSString *)openUDID
 {
-    NSString *openUDID = [MMA_OpenUDID value];
-    return openUDID ? openUDID : @"";
+    if (openUDID) {
+           
+        return openUDID;
+    }else{
+ 
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                openUDID = [MMA_OpenUDID value];
+        });
+      
+    }
+ 
+     
+  return openUDID ? openUDID : @"";
 }
 
 - (NSString *)location
