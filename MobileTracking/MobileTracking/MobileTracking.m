@@ -26,6 +26,7 @@
 #import "VAMonitorConfig.h"
 #import "ViewabilityJSService.h"
 #import "VAViewCapture.h"
+#import "MMA_IVTInfoService.h"
 
 @interface MobileTracking() <VAMonitorDataProtocol>
 
@@ -654,111 +655,116 @@
 
 // viewability曝光不需要redirectURL已在前面剔除,普通曝光需要redirectURL
 - (void)view:(NSString *)url ad:(UIView *)adView isVideo:(BOOL)isVideo videoPlayType:(NSInteger)type handleResult:(MMA_VBOpenResult *)result  impressionType:(NSInteger)impressionType{
-    @try {
-        /**
-         *  获取是否含有使用viewability字段
-         */
-        result.config.videoPlayType = type;
-    
-        
+    [[MMA_IVTInfoService sharedInstance] getSensorInfo:^(NSString * _Nonnull l7, NSString * _Nonnull l8, NSString * _Nonnull l9, NSString * _Nonnull l10, NSString * _Nonnull l11, NSString * _Nonnull l12) {
+        NSLog(@"=====%@,%@,%@",l7,l8,l9);
+           }];
+         @try {
+                /**
+                 *  获取是否含有使用viewability字段
+                 */
+                result.config.videoPlayType = type;
+                
+                
 
-        BOOL useViewabilityService = result.canOpen;
-        MMA_Company *company = [self confirmCompany:url];
-//        ==========
-        result.config.trackPolicy = company.MMASwitch.viewabilityTrackPolicy;
-        if(!company) {
-            [MMA_Log log:@"%@" ,@"company is nil,please check your 'sdkconfig.xml' file"];
-            return;
-        }
-        
-        /**
-         *  获取广告位ID,如果没有扔回MMA
-         */
-        NSString *adID = [self getAdIDForURL:url];
-        if(!adID || !adID.length) {
-            [self filterURL:url];
-            [MMA_Log log:@"adplacement get failed: %@" ,@"no adplacement"];
-            return;
-        }
-        
-        NSString *domain = company.domain[0];
-        if(!domain || !domain.length) {
-            domain = @"";
-        }
-        /**
-         *  拼接impressionID
-         */
-        NSString *impressKey = [NSString stringWithFormat:@"%@-%@",domain,adID];
-        
-        //iOS:MD5(idfa+idfv+广告位ID+时间戳（ms））
-        NSString * timestamp = [NSString stringWithFormat:@"%.0f",[[NSDate date] timeIntervalSince1970] * 1000];
-        NSString * compString = [NSString stringWithFormat:@"%@%@%@%@",[self.trackingInfoService idfa],[self.trackingInfoService idfv],adID,timestamp];
-        NSString *impressID  = [MMA_Helper md5HexDigest:compString];
-        _impressionDictionary[impressKey] = impressID;
-        /**
-         *  发送正常的url 监测使用去噪impressionID曝光url,拼接AD_VB (2f),AD_VB_RESULT(vx)
-         */
-        
-//        impressionType=0视为Tracked ads；impressionType=1视为曝光
-        if (impressionType == 0) {
-            [self handleImpressionType:@"0" URL:result.url impression:impressID redirectURL:result.redirectURL additionKey:useViewabilityService];
-        } else if (impressionType == 1){
-            if(!adView || ![adView isKindOfClass:[UIView class]]) {
-//                view=nil或者view非法的情况下，未达到CBR条件，如果是可见监测停止监测
-                [self handleImpressionType:@"0" URL:result.url impression:impressID redirectURL:result.redirectURL additionKey:useViewabilityService];
-                return;
-            } else {
-//                达到CBR条件，如果是可见监测继续监测
-                [self handleImpressionType:@"1" URL:result.url impression:impressID redirectURL:result.redirectURL additionKey:useViewabilityService];
-            }
-        }
-        
-        /**
-         *  Viewability功能模块
-         */
-        if(useViewabilityService) {
-            
-            NSMutableDictionary *keyvalueAccess = [NSMutableDictionary dictionary];
-            [VIEW_ABILITY_KEY enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                MMA_Argument *argument = company.config.viewabilityarguments[obj];
-                if(argument.key&& argument.key.length && argument.value && argument.value.length) {
-                    keyvalueAccess[obj] = argument.value;
+                BOOL useViewabilityService = result.canOpen;
+                MMA_Company *company = [self confirmCompany:url];
+        //        ==========
+                result.config.trackPolicy = company.MMASwitch.viewabilityTrackPolicy;
+                if(!company) {
+                    [MMA_Log log:@"%@" ,@"company is nil,please check your 'sdkconfig.xml' file"];
+                    return;
                 }
-            }];
-            
-            // 如果view非法或为空 不可测量参数置为0
-            if(!adView || ![adView isKindOfClass:[UIView class]]) {
-                return;
-//                NSDictionary *dictionary = @{
-//                                             AD_VB_EVENTS : @"[]",
-//                                             AD_VB : @"0",
-//                                             AD_VB_RESULT : @"2",
-//                                             IMPRESSIONID : impressID,
-//                                             AD_MEASURABILITY : @"0"
-//                                             };
-//                NSMutableDictionary *accessDictionary = [NSMutableDictionary dictionary];
-//                [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString * key, id obj, BOOL * _Nonnull stop) {
-//                    NSString *accessKey = keyvalueAccess[key];
-//                    if(accessKey && accessKey.length) {
-//                        accessDictionary[accessKey] = obj;
-//                    }
-//                }];
-//                NSString *url = [self monitorHandleWithURL:result.url data:accessDictionary redirectURL:@""];
-//                [self filterURL:url];
+                
+                /**
+                 *  获取广告位ID,如果没有扔回MMA
+                 */
+                NSString *adID = [self getAdIDForURL:url];
+                if(!adID || !adID.length) {
+                    [self filterURL:url];
+                    [MMA_Log log:@"adplacement get failed: %@" ,@"no adplacement"];
+                    return;
+                }
+                
+                NSString *domain = company.domain[0];
+                if(!domain || !domain.length) {
+                    domain = @"";
+                }
+                /**
+                 *  拼接impressionID
+                 */
+                NSString *impressKey = [NSString stringWithFormat:@"%@-%@",domain,adID];
+                
+                //iOS:MD5(idfa+idfv+广告位ID+时间戳（ms））
+                NSString * timestamp = [NSString stringWithFormat:@"%.0f",[[NSDate date] timeIntervalSince1970] * 1000];
+                NSString * compString = [NSString stringWithFormat:@"%@%@%@%@",[self.trackingInfoService idfa],[self.trackingInfoService idfv],adID,timestamp];
+                NSString *impressID  = [MMA_Helper md5HexDigest:compString];
+                _impressionDictionary[impressKey] = impressID;
+                /**
+                 *  发送正常的url 监测使用去噪impressionID曝光url,拼接AD_VB (2f),AD_VB_RESULT(vx)
+                 */
+                
+        //        impressionType=0视为Tracked ads；impressionType=1视为曝光
+                if (impressionType == 0) {
+                    [self handleImpressionType:@"0" URL:result.url impression:impressID redirectURL:result.redirectURL additionKey:useViewabilityService];
+                } else if (impressionType == 1){
+                    if(!adView || ![adView isKindOfClass:[UIView class]]) {
+        //                view=nil或者view非法的情况下，未达到CBR条件，如果是可见监测停止监测
+                        [self handleImpressionType:@"0" URL:result.url impression:impressID redirectURL:result.redirectURL additionKey:useViewabilityService];
+                        return;
+                    } else {
+        //                达到CBR条件，如果是可见监测继续监测
+                        [self handleImpressionType:@"1" URL:result.url impression:impressID redirectURL:result.redirectURL additionKey:useViewabilityService];
+                    }
+                }
+                
+                /**
+                 *  Viewability功能模块
+                 */
+                if(useViewabilityService) {
+                    
+                    NSMutableDictionary *keyvalueAccess = [NSMutableDictionary dictionary];
+                    [VIEW_ABILITY_KEY enumerateObjectsUsingBlock:^(NSString *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                        MMA_Argument *argument = company.config.viewabilityarguments[obj];
+                        if(argument.key&& argument.key.length && argument.value && argument.value.length) {
+                            keyvalueAccess[obj] = argument.value;
+                        }
+                    }];
+                    
+                    // 如果view非法或为空 不可测量参数置为0
+                    if(!adView || ![adView isKindOfClass:[UIView class]]) {
+                        return;
+        //                NSDictionary *dictionary = @{
+        //                                             AD_VB_EVENTS : @"[]",
+        //                                             AD_VB : @"0",
+        //                                             AD_VB_RESULT : @"2",
+        //                                             IMPRESSIONID : impressID,
+        //                                             AD_MEASURABILITY : @"0"
+        //                                             };
+        //                NSMutableDictionary *accessDictionary = [NSMutableDictionary dictionary];
+        //                [dictionary enumerateKeysAndObjectsUsingBlock:^(NSString * key, id obj, BOOL * _Nonnull stop) {
+        //                    NSString *accessKey = keyvalueAccess[key];
+        //                    if(accessKey && accessKey.length) {
+        //                        accessDictionary[accessKey] = obj;
+        //                    }
+        //                }];
+        //                NSString *url = [self monitorHandleWithURL:result.url data:accessDictionary redirectURL:@""];
+        //                [self filterURL:url];
+                    }
+                    VAMonitor *monitor = [VAMonitor monitorWithView:adView isVideo:isVideo url:result.url redirectURL:@"" impressionID:impressID adID:adID keyValueAccess:[keyvalueAccess copy] config:result.config domain:domain];
+                    monitor.delegate = self;
+                    [_viewabilityService addVAMonitor:monitor];
+                    
+                    
+                }
+                
+                
+                
+            } @catch (NSException *exception) {
+                [MMA_Log log:@"##view:ad: exception:%@" ,exception];
+                
             }
-            VAMonitor *monitor = [VAMonitor monitorWithView:adView isVideo:isVideo url:result.url redirectURL:@"" impressionID:impressID adID:adID keyValueAccess:[keyvalueAccess copy] config:result.config domain:domain];
-            monitor.delegate = self;
-            [_viewabilityService addVAMonitor:monitor];
-            
-            
-        }
-        
-        
-        
-    } @catch (NSException *exception) {
-        [MMA_Log log:@"##view:ad: exception:%@" ,exception];
-        
-    }
+//   }];
+//   
 }
 
 - (void)handleImpressionType:(NSString *)impressionType URL:(NSString *)url impression:(NSString *)impressionID redirectURL:(NSString *)redirectURL additionKey:(BOOL)additionKey  {

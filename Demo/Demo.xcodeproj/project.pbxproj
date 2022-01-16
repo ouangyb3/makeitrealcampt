@@ -33,8 +33,9 @@
 		AF6EA2E51EF655AD000DF811 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF6EA2E41EF655AD000DF811 /* Images.xcassets */; };
 		AF7D89611EF655F50069A7DC /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7D89601EF655F50069A7DC /* Launch Screen.storyboard */; };
 		AFB3717E1F3854E10092930F /* admaster.js in Resources */ = {isa = PBXBuildFile; fileRef = AFB3717D1F3854E10092930F /* admaster.js */; };
-		C765ABEC23262CDA0066E906 /* libMobileTrackingSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABB195518DAFA0300C7CAA9 /* libMobileTrackingSimulator.a */; };
 		C765ABED23262CE00066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABE923262CC20066E906 /* WebKit.framework */; };
+		C78B6BB0236C303F0022BD30 /* libMobileTrackingSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABB195518DAFA0300C7CAA9 /* libMobileTrackingSimulator.a */; };
+		C78B6BC5236C33A60022BD30 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78B6BC0236C33A60022BD30 /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,13 +65,6 @@
 			containerPortal = 2A0C4E5218D6D19700200F18 /* MobileTracking.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2A81721B18DAEB3A00E0EFEC;
-			remoteInfo = MobileTrackingSimulator;
-		};
-		77BDFC40230D44CE00079FDF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2A0C4E5218D6D19700200F18 /* MobileTracking.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 2A8171FF18DAEB3A00E0EFEC;
 			remoteInfo = MobileTrackingSimulator;
 		};
 /* End PBXContainerItemProxy section */
@@ -116,6 +110,7 @@
 		AF7D89601EF655F50069A7DC /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		AFB3717D1F3854E10092930F /* admaster.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = admaster.js; sourceTree = "<group>"; };
 		C765ABE923262CC20066E906 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		C78B6BC0236C33A60022BD30 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,8 +118,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C78B6BC5236C33A60022BD30 /* CoreMotion.framework in Frameworks */,
 				C765ABED23262CE00066E906 /* WebKit.framework in Frameworks */,
-				C765ABEC23262CDA0066E906 /* libMobileTrackingSimulator.a in Frameworks */,
+				C78B6BB0236C303F0022BD30 /* libMobileTrackingSimulator.a in Frameworks */,
 				AF4B464C218AB18300BE2F3F /* CoreLocation.framework in Frameworks */,
 				AF4B464B218AB16400BE2F3F /* SystemConfiguration.framework in Frameworks */,
 				AF353EDF1CFC24FB00969035 /* AdSupport.framework in Frameworks */,
@@ -167,6 +163,7 @@
 		2A0C4E1C18D6D18700200F18 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C78B6BC0236C33A60022BD30 /* CoreMotion.framework */,
 				C765ABE923262CC20066E906 /* WebKit.framework */,
 				AF2DFF4021955F0300B10C3F /* libxml2.tbd */,
 				AF353EE01CFC251C00969035 /* SystemConfiguration.framework */,
@@ -262,7 +259,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				77BDFC41230D44CE00079FDF /* PBXTargetDependency */,
 			);
 			name = Demo;
 			productName = Demo;
@@ -420,11 +416,6 @@
 			isa = PBXTargetDependency;
 			target = 2A0C4E1918D6D18700200F18 /* Demo */;
 			targetProxy = 2A0C4E4018D6D18700200F18 /* PBXContainerItemProxy */;
-		};
-		77BDFC41230D44CE00079FDF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MobileTrackingSimulator;
-			targetProxy = 77BDFC40230D44CE00079FDF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

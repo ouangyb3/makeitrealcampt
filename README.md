@@ -6,7 +6,7 @@
 2. 在项目工程 App 的 Target Build Settings 中的 **Other Linker Flags** 选项里添加 **-lxml2** **-all_load** 或 **-lxml2** **-force_load** 静态库的绝对路径
 3. 添加SDK需要的Framework
 在需要添加SDK的项目的 Xcode 开发环境中选择 TARGETS-->Build Phases-->Link Binary With Libraries--> + 添加以下framework框架:
-
+4.需要在info.plist 新增NSMotionUsageDescription(Privacy - Motion Usage Description) 键值对，并进行说明。
 ```
     CoreLocation.framework
     libxml2.2.tbd
@@ -14,6 +14,7 @@
 	CoreTelephony.framework
  	SystemConfiguration.framework
     WebKit.framework
+    CoreMotion.framework
 ```
 
 

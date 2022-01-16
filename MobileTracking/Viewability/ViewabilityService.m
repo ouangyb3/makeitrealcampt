@@ -184,16 +184,23 @@ static const char *view_capture_queue = "adview.capture.queue";
 - (void)processCacheMonitorsWithDelegate:(id <VAMonitorDataProtocol>)delegate {
     dispatch_async(_captureQueue, ^{
         if([[NSFileManager defaultManager] fileExistsAtPath:VA_MONITOR_SAVE_PATH isDirectory:nil]) {
-            NSDictionary<NSString *, VAMonitor *> *cacheMonitors = [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:VA_MONITOR_SAVE_PATH]];
-            NSLog(@"读取%lu条缓存数据",(unsigned long)[[cacheMonitors allKeys] count]);
-            [cacheMonitors enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, VAMonitor * _Nonnull obj, BOOL * _Nonnull stop) {
-                obj.delegate = delegate;
-                // 如果已经上传过监测数据,则不再上传
-                if(obj.status != VAMonitorStatusUploaded) {
-                    [obj stopAndUpload];
-                }
-            }];
-            [[NSFileManager defaultManager] removeItemAtPath:VA_MONITOR_SAVE_PATH error:nil];
+            @try {
+                   NSDictionary<NSString *, VAMonitor *> *cacheMonitors = [NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithContentsOfFile:VA_MONITOR_SAVE_PATH]];
+                         NSLog(@"读取%lu条缓存数据",(unsigned long)[[cacheMonitors allKeys] count]);
+                         [cacheMonitors enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, VAMonitor * _Nonnull obj, BOOL * _Nonnull stop) {
+                             obj.delegate = delegate;
+                             // 如果已经上传过监测数据,则不再上传
+                             if(obj.status != VAMonitorStatusUploaded) {
+                                 [obj stopAndUpload];
+                             }
+                         }];
+                         [[NSFileManager defaultManager] removeItemAtPath:VA_MONITOR_SAVE_PATH error:nil];
+            } @catch (NSException *exception) {
+             
+            } @finally {
+              
+            }
+         
         }
     });
 }
