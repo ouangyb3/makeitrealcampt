@@ -55,6 +55,7 @@
 //    视频
     NSURL *url = [[NSBundle mainBundle] URLForResource:@"Advertisement.mp4" withExtension:nil];
      _avMovieView = [[UIView alloc]initWithFrame: CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 320)];
+    _avMovieView.backgroundColor  = [UIColor blackColor];
     
          [_bottomScrollView addSubview:_avMovieView];
       
