@@ -34,6 +34,8 @@
 #define UPDATE_SDK_CONFIG_WIFI_INTERVAL (1 * 24 * 60 * 60)
 #define UPDATE_SDK_CONFIG_3G_INTERVAL (3 * 24 * 60 * 60)
 #define LOCATION_UPDATE_INTERVAL 120 //定位刷新间隔 单位:秒
+#define SENSOR_UPDATE_INTERVAL 1 //传感器刷新间隔 单位:秒
+#define SENSOR_COLLECT_TIME 0.5 //传感器采集时间 单位:秒
 
 #define NETWORK_STATUS_WIFI 1
 #define NETWORK_STATUS_3G   0
@@ -90,8 +92,53 @@
 
 #define AD_VB_VIDEOPLAYTYPE @"AdviewabilityVideoPlayType" //可视监测传入的视频播放类型
 #define AD_VB_VIDEOPROGRESS @"AdviewabilityVideoProgress" //可视视频播放进度监测事件类型字段 (string)播放 1/4：25 播放 1/2：50播放 3/4：75 播放完成：100
+ 
+ 
+                    
+                           
+                           
+                         
+                              
+                     
+                            
+/**IVT参数*/
+/**是否越狱*/
+#define  IVT_isRoot @"isRoot"
+/**剩余电量*/
+#define  IVT_electricity @"electricity"
+/**是否充电*/
+#define  IVT_isCharging @"isCharging"
+/**是否模拟器*/
+#define  IVT_isSimulator @"isSimulator"
+/**是否hook*/
+#define  IVT_isHook @"isHook"
+/**是否刷机*/
+#define  IVT_isFlash @"isFlash"
+/**加速度*/
+#define  IVT_Accelerometer @"Accelerometer"
+/**磁场*/
+#define  IVT_Magnetometer @"Magnetometer"
+/**方向*/
+#define  IVT_direction @"direction"
+/**陀螺仪*/
+#define  IVT_gyroActive @"gyroActive"
+/**光线*/
+#define  IVT_brightness @"brightness"
+/**气压*/
+#define  IVT_pressure @"pressure"
+/**温度*/
+#define  IVT_temperature @"temperature"
+/**距离*/
+#define  IVT_proximity @"proximity"
+/**重力*/
+#define  IVT_deviceMotion  @"deviceMotion"
+/**线性加速度*/
+#define  IVT_lineAccelerometer @"lineAccelerometer"
+/**旋转矢量*/
+#define  IVT_RotationVector @"RotationVector"
 
-
+#define IVT_ARRAY @[IVT_isRoot,IVT_electricity,IVT_isCharging,IVT_isSimulator,IVT_isHook,IVT_isFlash,IVT_Accelerometer,IVT_Magnetometer,IVT_direction,IVT_gyroActive,IVT_brightness,IVT_pressure,IVT_temperature,IVT_proximity,IVT_deviceMotion,IVT_lineAccelerometer,IVT_RotationVector]
+ 
 //switch
 #define AD_VB_POLICY @"viewabilityTrackPolicy"  //可视化监测采集策略
 

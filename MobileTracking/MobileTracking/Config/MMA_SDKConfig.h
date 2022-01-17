@@ -50,6 +50,7 @@
 @property (nonatomic, strong) NSMutableDictionary *arguments;
 @property (nonatomic, strong) NSMutableDictionary *Adplacement;
 @property (nonatomic, strong) NSMutableDictionary *viewabilityarguments;
+@property (nonatomic, strong) NSMutableDictionary *sensorarguments;
 @end
 /*--------------加密签名设置--------------*/
 @interface MMA_Signature : NSObject

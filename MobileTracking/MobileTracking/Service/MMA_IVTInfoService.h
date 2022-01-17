@@ -14,16 +14,38 @@
 + (MMA_IVTInfoService *)sharedInstance;
 
 /**是否越狱*/
-+(BOOL)isRoot;
+-(BOOL)isRoot;
 /**剩余电量*/
-+(double)electricity;
+-(double)electricity;
 /**是否充电*/
-+(BOOL)isCharging;
+-(BOOL)isCharging;
 /**是否模拟器*/
-+(BOOL)isSimulator;
-/**加速度传感器*/
--(void)getSensorInfo:(void(^)(NSString *l7,NSString*l8,NSString * l9,NSString *l10,NSString *l11,NSString *l12))info;
+-(BOOL)isSimulator;
+ /**距离*/
+ -(BOOL)proximity;
+ 
+/**加速度值*/
+@property(nonatomic,copy)NSString * Accelerometer;
+/**陀螺仪值*/
+@property(nonatomic,copy)NSString * gyroActive;
+/**磁场值*/
+@property(nonatomic,copy)NSString * Magnetometer;
+/**重力值*/
+@property(nonatomic,copy)NSString * deviceMotion;
+/**气压值*/
+@property(nonatomic,copy)NSString * pressure;
+/**方向传感器*/
+@property(nonatomic,copy)NSString * direction;
 
+/**光线强弱*/
+@property(nonatomic,copy)NSString * brightness;
+
+-(void)updateSensorInfo:(void(^)())result;
+/**距离上次刷新时间s*/
+-(NSInteger )timeDifference;
+
+//根据value排序
++(NSArray*)ArrayWithDict:(NSDictionary*)dict;
 @end
 
  

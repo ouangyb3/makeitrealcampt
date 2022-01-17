@@ -94,12 +94,25 @@
         [self initTimer];
         [self openLBS];
         [self initViewabilityService];
+        [self performSelector:@selector(initSensor) withObject:nil afterDelay:0.1];
         
         
     }
     return self;
 }
-
+-(void)initSensor{
+    
+    [[MMA_IVTInfoService sharedInstance] updateSensorInfo:^{
+             
+                  MMA_IVTInfoService * ivt = [MMA_IVTInfoService sharedInstance] ;
+                 
+//                  
+//                  NSLog(@"加速度：%@ =陀螺仪：%@= 磁场：%@= 重力值：%@ = 方向值：%@= 气压：%@ = 光线强弱:%@",ivt.Accelerometer,ivt.gyroActive,ivt.Magnetometer,ivt.deviceMotion,ivt.direction,ivt.pressure,ivt.brightness);
+//                  
+//                  NSLog(@"越狱：%ld , 充电：%ld, 模拟器:%ld，剩余电量:%lf,距离：%ld",ivt.isRoot,ivt.isCharging,ivt.isSimulator,ivt.electricity,ivt.proximity);
+                     }];
+    
+}
 - (void)initSdkConfig
 {
     @try {
@@ -563,6 +576,60 @@
             }
             res.canOpen = NO;
         }
+#pragma mark == ivt ==
+          [[MMA_IVTInfoService sharedInstance] updateSensorInfo: nil];
+           MMA_IVTInfoService * ivt =  [MMA_IVTInfoService sharedInstance];
+                    NSString *separator = company.separator;
+                    NSString *equalizer = company.equalizer;
+                   NSString *reWriteString = @"";
+     NSArray *sensorArray =    [MMA_IVTInfoService ArrayWithDict:company.config.sensorarguments];
+                        for (NSInteger i =0; i<sensorArray.count; i++) {
+                            
+                            MMA_Argument *argument  = sensorArray[i];
+                        NSString *key = argument.key;
+                     
+                        if (key && key.length) {
+                            NSString *value = argument.value;
+                            if (value && value.length) {
+                                NSString *replacedString = @"";
+                              
+                         
+                                NSString * str;
+                                @try {
+                                      str = [ivt valueForKey:key];
+                               
+                                } @catch (NSException *exception) {
+                                    
+                                    str = @"-";
+                                } @finally {
+                                    
+                                }
+                                   
+                           
+                          
+                          
+ 
+                               
+                                if([reWriteString length] !=0) {
+                                    
+                                    reWriteString = [reWriteString stringByAppendingString:@","];
+                                    
+                                }
+                             
+                                reWriteString = [reWriteString stringByAppendingFormat :@"%@:%@", value, str?str:@"-"];
+
+                                                  
+                             
+                                [filterURL replaceOccurrencesOfString:[NSString stringWithFormat:@"%@%@%@[^%@]*", separator, value, equalizer, separator] withString:replacedString options:NSRegularExpressionSearch range:NSMakeRange(0, filterURL.length)];
+                              
+                            }
+                        }
+                    }
+        
+                               if(reWriteString && reWriteString.length) {
+                                          [filterURL appendFormat:@"&svl=[%@]",reWriteString];
+                                      }
+        
         res.url = filterURL;
         return res;
     } @catch (NSException *exception) {
@@ -574,6 +641,8 @@
 
 - (void)click:(NSString *)url
 {
+  
+    
     MMA_VBOpenResult *result = [self vbFilterURL:url isForViewability:NO isVideo:NO videoPlayType:0];
     url = [NSString stringWithString:result.url];
     MMA_Company *company = [self confirmCompany:url];
@@ -655,9 +724,7 @@
 
 // viewability曝光不需要redirectURL已在前面剔除,普通曝光需要redirectURL
 - (void)view:(NSString *)url ad:(UIView *)adView isVideo:(BOOL)isVideo videoPlayType:(NSInteger)type handleResult:(MMA_VBOpenResult *)result  impressionType:(NSInteger)impressionType{
-    [[MMA_IVTInfoService sharedInstance] getSensorInfo:^(NSString * _Nonnull l7, NSString * _Nonnull l8, NSString * _Nonnull l9, NSString * _Nonnull l10, NSString * _Nonnull l11, NSString * _Nonnull l12) {
-        NSLog(@"=====%@,%@,%@",l7,l8,l9);
-           }];
+ 
          @try {
                 /**
                  *  获取是否含有使用viewability字段
