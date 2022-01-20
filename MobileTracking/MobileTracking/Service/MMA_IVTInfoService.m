@@ -43,6 +43,7 @@
 @property(nonatomic,assign)NSInteger lastTime;
 
 @property(nonatomic,strong)NSMutableArray * brightnessAry;
+@property(nonatomic,strong)NSMutableArray * directionAry;
 /**光感检测*/
 @property (nonatomic, strong) AVCaptureSession *session;
 /**方向传感器*/
@@ -79,6 +80,7 @@
     dispatch_once(&onceToken, ^{
         _sharedInstance = [[self alloc] init];
         _sharedInstance.brightnessAry = [[NSMutableArray alloc]init];
+        _sharedInstance.directionAry = [[NSMutableArray alloc]init];
         _sharedInstance.Count = SENSOR_COLLECT_TIME/SENSOR_UPDATE_TIME;
       //  [_sharedInstance checkEnable];
         
@@ -155,6 +157,9 @@
     }
     _updateing = YES;
     
+    [self.brightnessAry removeAllObjects];
+    [self.directionAry removeAllObjects];
+    
     //加速度
  __block   NSMutableArray *  Accelerometer = [[NSMutableArray alloc]init];
     //陀螺仪
@@ -172,9 +177,10 @@
        [self.motionManage startMagnetometerUpdates];
     
       NSDictionary *tempInfoDict = [[NSBundle mainBundle] infoDictionary];
-    if (![tempInfoDict objectForKey:@"NSLocationWhenInUseUsageDescription"])
+ 
+    if (![tempInfoDict objectForKey:@"NSLocationWhenInUseUsageDescription"]&&[CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied)
       {
-         self.direction =@"-";
+         self.Direction =@"-";
           
       }else{
           [self.locationManager startUpdatingHeading];
@@ -187,7 +193,7 @@
     AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if (status == AVAuthorizationStatusRestricted || status == AVAuthorizationStatusDenied||![tempInfoDict objectForKey:@"NSCameraUsageDescription"])
     {
-        self.brightness = @"-";
+        self.Brightness = @"-";
         
     }else{
         
@@ -224,13 +230,13 @@
             [ Magnetometer addObject:[NSString stringWithFormat:@"%lf,%lf,%lf", weakSelf.motionManage.magnetometerData.magneticField.x,   weakSelf.motionManage.magnetometerData.magneticField.y,   weakSelf.motionManage.magnetometerData.magneticField.z]];
            
             [ deviceMotion addObject:[NSString stringWithFormat:@"%lf,%lf,%lf", weakSelf.motionManage.deviceMotion.attitude.yaw,   weakSelf.motionManage.deviceMotion.attitude.pitch,   weakSelf.motionManage.deviceMotion.attitude.roll]];
-           NSLog(@"收集数据中%ld",i);
+           
            i++;
            if (i==_Count) {
                         weakSelf.Accelerometer = [self stringWithAry:Accelerometer];
-                         weakSelf.gyroActive = [self stringWithAry:gyroActive];
+                         weakSelf.GyroActive = [self stringWithAry:gyroActive];
                           weakSelf.Magnetometer = [self stringWithAry:Magnetometer];
-                          weakSelf.deviceMotion = [self stringWithAry:deviceMotion];
+                          weakSelf.DeviceMotion = [self stringWithAry:deviceMotion];
                    
                            weakSelf.lastTime = [[NSDate date] timeIntervalSince1970];
                          [[NSUserDefaults  standardUserDefaults] setInteger: weakSelf.lastTime forKey:SENSOR_LAST_TIME];
@@ -254,7 +260,7 @@
       [self.altimeter startRelativeAltitudeUpdatesToQueue:NSOperationQueue.mainQueue withHandler:^(CMAltitudeData * _Nullable altitudeData, NSError * _Nullable error) {
 
           [MMA_Log log:@"气压：%lf",[altitudeData.pressure floatValue]];
-          weakSelf.pressure =[NSString stringWithFormat:@"%lf",[altitudeData.pressure floatValue]];
+          weakSelf.Pressure =[NSString stringWithFormat:@"%lf",[altitudeData.pressure floatValue]];
           
              [weakSelf.altimeter stopRelativeAltitudeUpdates];
           
@@ -278,6 +284,13 @@
  #pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate
 
  - (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
+     static BOOL isWaiting = NO;
+      static NSInteger count = 0;
+     
+     if (isWaiting) {
+             return;
+         }
+         isWaiting = YES;
      
      CFDictionaryRef metadataDicRef = CMCopyDictionaryOfAttachments(NULL, sampleBuffer, kCMAttachmentMode_ShouldPropagate);
      NSDictionary *metadataDic = (__bridge NSDictionary *)metadataDicRef;
@@ -285,13 +298,9 @@
      NSDictionary *exifDic = metadataDic[(__bridge NSString *)kCGImagePropertyExifDictionary];
      CGFloat brightness = [exifDic[(__bridge NSString *)kCGImagePropertyExifBrightnessValue] floatValue];
      
-     static BOOL isWaiting = NO;
-     static NSInteger count = 0;
+    
      
-     if (isWaiting) {
-         return;
-     }
-     isWaiting = YES;
+    
      
      __weak typeof (self) WeakSelf = self;
      dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(SENSOR_UPDATE_TIME * NSEC_PER_SEC)), dispatch_get_global_queue(0, 0), ^{
@@ -302,7 +311,7 @@
             isWaiting = NO;
                count++;
          if (count==_Count) {
-             _brightness = [self stringWithAry:WeakSelf.brightnessAry];
+             _Brightness = [self stringWithAry:WeakSelf.brightnessAry];
                      [self.session stopRunning];
                _updateing = NO;
                  }
@@ -312,13 +321,36 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
     
-    NSString *newHeadingString = [NSString stringWithFormat:@"%f,%f,%f,%f,%f,%f", newHeading.trueHeading, newHeading.magneticHeading, newHeading.headingAccuracy, newHeading.x, newHeading.y, newHeading.z];
+        static BOOL isWaiting = NO;
+         static NSInteger count = 0;
+        
+        if (isWaiting) {
+                return;
+            }
+            isWaiting = YES;
     
-    self.direction = newHeadingString;
+  
     
-    [manager stopUpdatingHeading];
+     
     
-      _updateing = NO;
+    __weak typeof (self) WeakSelf = self;
+       dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(SENSOR_UPDATE_TIME * NSEC_PER_SEC)), dispatch_get_global_queue(0, 0), ^{
+          
+           NSString *newHeadingString = [NSString stringWithFormat:@"%f,%f,%f,%f,%f,%f", newHeading.trueHeading, newHeading.magneticHeading, newHeading.headingAccuracy, newHeading.x, newHeading.y, newHeading.z];
+           
+        
+           
+           [WeakSelf.directionAry addObject:newHeadingString];
+           
+           
+              isWaiting = NO;
+                 count++;
+           if (count==_Count) {
+                self.Direction = [self stringWithAry:WeakSelf.directionAry];
+                      [manager stopUpdatingHeading];
+                 _updateing = NO;
+                   }
+          });
     
    
 }
@@ -351,7 +383,7 @@
     return root;
 }
 /**剩余电量*/
--(double)electricity{
+-(double)Electricity{
     [UIDevice currentDevice].batteryMonitoringEnabled = YES;
     double deviceLevel = [UIDevice currentDevice].batteryLevel;
     return deviceLevel;
@@ -389,7 +421,7 @@
     
 }
  /**距离*/
--(BOOL)proximity{
+-(BOOL)Proximity{
     
     [UIDevice currentDevice].proximityMonitoringEnabled = YES;
     

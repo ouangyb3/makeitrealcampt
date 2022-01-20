@@ -142,6 +142,8 @@ NSString *const MMAHTTPResponseErrorDomain = @"MMAHTTPResponseErrorDomain";
             
         }
     }
+    [self.connectionSession invalidateAndCancel];
+       self.connectionSession = nil;
 }
 
 - (void)finish
@@ -158,6 +160,8 @@ NSString *const MMAHTTPResponseErrorDomain = @"MMAHTTPResponseErrorDomain";
             [self didChangeValueForKey:@"isExecuting"];
         }
     }
+    [self.connectionSession invalidateAndCancel];
+       self.connectionSession = nil;
 }
 
 - (NSSet *)autoRetryErrorCodes
@@ -216,6 +220,9 @@ NSString *const MMAHTTPResponseErrorDomain = @"MMAHTTPResponseErrorDomain";
         
         if (_completionHandler) _completionHandler(_responseReceived, _accumulatedData, error);
     }
+    
+   [self.connectionSession invalidateAndCancel];
+      self.connectionSession = nil;
   
 }
 - (void) URLSession:(NSURLSession *)session dataTask:(nonnull NSURLSessionDataTask *)dataTask didReceiveData:(nonnull NSData *)data {
@@ -226,11 +233,15 @@ NSString *const MMAHTTPResponseErrorDomain = @"MMAHTTPResponseErrorDomain";
     }
     [_accumulatedData appendData:data];
     
+ 
+    
 }
 - (void) URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
     _responseReceived = response;
 
     completionHandler(NSURLSessionResponseAllow);
+    
+ 
 
 }
 
@@ -240,6 +251,8 @@ NSString *const MMAHTTPResponseErrorDomain = @"MMAHTTPResponseErrorDomain";
         _isRedirect = YES;
     }
     completionHandler(request);
+    
+    
 }
 
 #pragma mark - NSURLConnectionDelegate

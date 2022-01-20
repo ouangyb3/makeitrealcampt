@@ -34,7 +34,7 @@
 #define UPDATE_SDK_CONFIG_WIFI_INTERVAL (1 * 24 * 60 * 60)
 #define UPDATE_SDK_CONFIG_3G_INTERVAL (3 * 24 * 60 * 60)
 #define LOCATION_UPDATE_INTERVAL 120 //定位刷新间隔 单位:秒
-#define SENSOR_UPDATE_INTERVAL 1 //传感器刷新间隔 单位:秒
+#define SENSOR_UPDATE_INTERVAL 5 //传感器刷新间隔 单位:秒
 #define SENSOR_COLLECT_TIME 0.5 //传感器采集时间 单位:秒
 
 #define NETWORK_STATUS_WIFI 1

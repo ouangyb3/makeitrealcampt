@@ -26,13 +26,13 @@
 		772E49C722F19F950009DFD2 /* videoAd.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 772E49C522F19F940009DFD2 /* videoAd.mp4 */; };
 		77303F6722F98A3A00A51176 /* Advertisement.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 77303F6622F98A3A00A51176 /* Advertisement.mp4 */; };
 		77303F6A22F98F2D00A51176 /* landingPageIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 77303F6922F98F2D00A51176 /* landingPageIcon.png */; };
-		7781CA6122C4BBD1002805DB /* sdkconfig.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7781CA6022C4BBD1002805DB /* sdkconfig.xml */; };
 		AF353EDF1CFC24FB00969035 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF353EDE1CFC24FB00969035 /* AdSupport.framework */; };
 		AF4B464B218AB16400BE2F3F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF353EE01CFC251C00969035 /* SystemConfiguration.framework */; };
 		AF4B464C218AB18300BE2F3F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF353ED91CFC24E400969035 /* CoreLocation.framework */; };
 		AF6EA2E51EF655AD000DF811 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF6EA2E41EF655AD000DF811 /* Images.xcassets */; };
 		AF7D89611EF655F50069A7DC /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7D89601EF655F50069A7DC /* Launch Screen.storyboard */; };
 		AFB3717E1F3854E10092930F /* admaster.js in Resources */ = {isa = PBXBuildFile; fileRef = AFB3717D1F3854E10092930F /* admaster.js */; };
+		C726E490237C0932000EC447 /* sdkconfig.xml in Resources */ = {isa = PBXBuildFile; fileRef = C726E48F237C0932000EC447 /* sdkconfig.xml */; };
 		C74B783D237557EA0031DE10 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74B7838237557EA0031DE10 /* Photos.framework */; };
 		C765ABED23262CE00066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABE923262CC20066E906 /* WebKit.framework */; };
 		C78B6BB0236C303F0022BD30 /* libMobileTrackingSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABB195518DAFA0300C7CAA9 /* libMobileTrackingSimulator.a */; };
@@ -102,7 +102,6 @@
 		772E49C522F19F940009DFD2 /* videoAd.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = videoAd.mp4; sourceTree = "<group>"; };
 		77303F6622F98A3A00A51176 /* Advertisement.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Advertisement.mp4; sourceTree = "<group>"; };
 		77303F6922F98F2D00A51176 /* landingPageIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = landingPageIcon.png; sourceTree = "<group>"; };
-		7781CA6022C4BBD1002805DB /* sdkconfig.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sdkconfig.xml; sourceTree = "<group>"; };
 		AF2DFF4021955F0300B10C3F /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		AF353ED91CFC24E400969035 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AF353EDE1CFC24FB00969035 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -110,6 +109,7 @@
 		AF6EA2E41EF655AD000DF811 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AF7D89601EF655F50069A7DC /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		AFB3717D1F3854E10092930F /* admaster.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = admaster.js; sourceTree = "<group>"; };
+		C726E48F237C0932000EC447 /* sdkconfig.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sdkconfig.xml; sourceTree = "<group>"; };
 		C74B7838237557EA0031DE10 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		C765ABE923262CC20066E906 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		C78B6BC0236C33A60022BD30 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -200,9 +200,9 @@
 				772E49BB22F1959A0009DFD2 /* VideoViewController.h */,
 				772E49B722F195970009DFD2 /* VideoViewController.m */,
 				772E49B422F195950009DFD2 /* VideoViewController.xib */,
+				C726E48F237C0932000EC447 /* sdkconfig.xml */,
 				AFB3717D1F3854E10092930F /* admaster.js */,
 				2A0C4E2F18D6D18700200F18 /* Main.storyboard */,
-				7781CA6022C4BBD1002805DB /* sdkconfig.xml */,
 				AF7D89601EF655F50069A7DC /* Launch Screen.storyboard */,
 				AF6EA2E41EF655AD000DF811 /* Images.xcassets */,
 				2A0C4E2418D6D18700200F18 /* Supporting Files */,
@@ -366,7 +366,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7781CA6122C4BBD1002805DB /* sdkconfig.xml in Resources */,
+				C726E490237C0932000EC447 /* sdkconfig.xml in Resources */,
 				77303F6722F98A3A00A51176 /* Advertisement.mp4 in Resources */,
 				772E49BD22F1959B0009DFD2 /* VideoViewController.xib in Resources */,
 				AF6EA2E51EF655AD000DF811 /* Images.xcassets in Resources */,

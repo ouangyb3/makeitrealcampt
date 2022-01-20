@@ -577,58 +577,40 @@
             res.canOpen = NO;
         }
 #pragma mark == ivt ==
-          [[MMA_IVTInfoService sharedInstance] updateSensorInfo: nil];
-           MMA_IVTInfoService * ivt =  [MMA_IVTInfoService sharedInstance];
-                    NSString *separator = company.separator;
-                    NSString *equalizer = company.equalizer;
-                   NSString *reWriteString = @"";
-     NSArray *sensorArray =    [MMA_IVTInfoService ArrayWithDict:company.config.sensorarguments];
-                        for (NSInteger i =0; i<sensorArray.count; i++) {
-                            
-                            MMA_Argument *argument  = sensorArray[i];
-                        NSString *key = argument.key;
-                     
-                        if (key && key.length) {
-                            NSString *value = argument.value;
-                            if (value && value.length) {
-                                NSString *replacedString = @"";
-                              
-                         
-                                NSString * str;
-                                @try {
-                                      str = [ivt valueForKey:key];
-                               
-                                } @catch (NSException *exception) {
-                                    
-                                    str = @"-";
-                                } @finally {
-                                    
-                                }
-                                   
-                           
-                          
-                          
- 
-                               
-                                if([reWriteString length] !=0) {
-                                    
-                                    reWriteString = [reWriteString stringByAppendingString:@","];
-                                    
-                                }
-                             
-                                reWriteString = [reWriteString stringByAppendingFormat :@"%@:%@", value, str?str:@"-"];
-
-                                                  
-                             
-                                [filterURL replaceOccurrencesOfString:[NSString stringWithFormat:@"%@%@%@[^%@]*", separator, value, equalizer, separator] withString:replacedString options:NSRegularExpressionSearch range:NSMakeRange(0, filterURL.length)];
-                              
-                            }
-                        }
-                    }
         
-                               if(reWriteString && reWriteString.length) {
-                                          [filterURL appendFormat:@"&svl=[%@]",reWriteString];
-                                      }
+          NSString *svl = company.antidevice;
+        if (svl) {
+            
+
+         [[MMA_IVTInfoService sharedInstance] updateSensorInfo: nil];
+    
+                   NSString *separator = company.separator;
+                   NSString *equalizer = company.equalizer;
+                
+    NSArray *sensorArray =    [MMA_IVTInfoService ArrayWithDict:company.config.sensorarguments];
+                       for (NSInteger i =0; i<sensorArray.count; i++) {
+                           
+                           MMA_Argument *argument  = sensorArray[i];
+                       NSString *key = argument.key;
+                    
+                       if (key && key.length) {
+                           NSString *value = argument.value;
+                           if (value && value.length) {
+                               NSString *replacedString = @"";
+                             
+                         
+
+                              
+                             
+                                                 
+                            
+                               [filterURL replaceOccurrencesOfString:[NSString stringWithFormat:@"%@%@%@[^%@]*", separator, value, equalizer, separator] withString:replacedString options:NSRegularExpressionSearch range:NSMakeRange(0, filterURL.length)];
+                             
+                           }
+                       }
+                   }
+       
+                          }
         
         res.url = filterURL;
         return res;
@@ -1030,7 +1012,7 @@
         }
     }
     /********************************************/
-    
+   
     
     /*确保过滤掉xml文件里需要重新拼接的字段*/
     NSArray *arr = [trackURL componentsSeparatedByString:company.separator];
@@ -1147,10 +1129,84 @@
         }
     }
     
+ 
+    
     // 添加签名加密模块
     NSString *signString = [MMASign sign:trackURL ts:ts sdkv:MMA_SDK_VERSION];
     [MMA_Log log:@"signString: %@"  ,signString];
     [trackURL appendFormat:@"%@%@%@%@", company.separator, company.signature.paramKey, company.equalizer, signString];
+    
+    #pragma mark == ivt ==
+     
+           
+               NSString *svl = company.antidevice;
+     if (svl) {
+         
+
+               BOOL ret = YES;
+               if([[MMA_IVTInfoService sharedInstance] timeDifference]<SENSOR_UPDATE_INTERVAL){
+                   
+                   ret = NO;
+                                              }
+                  MMA_IVTInfoService * ivt =  [MMA_IVTInfoService sharedInstance];
+                          
+                          NSString *reWriteString = @"";
+            NSArray *sensorArray =    [MMA_IVTInfoService ArrayWithDict:company.config.sensorarguments];
+                               for (NSInteger i =0; i<sensorArray.count; i++) {
+                                   
+                                   MMA_Argument *argument  = sensorArray[i];
+                               NSString *key = argument.key;
+                            
+                               if (key && key.length) {
+                                   NSString *value = argument.value;
+                                   if (value && value.length) {
+                                     
+                                     
+                                
+                                       NSString * str;
+                                       @try {
+                                             str = [ivt valueForKey:key];
+                                      
+                                       } @catch (NSException *exception) {
+                                           
+                                           str = @"-";
+                                       } @finally {
+                                           
+                                       }
+                                          
+                                  
+                                       NSLog(@"%@,%@",key,value);
+                                 
+        
+                                      
+                                       if([reWriteString length] !=0) {
+                                           
+                                           reWriteString = [reWriteString stringByAppendingString:@","];
+                                           
+                                       }
+                                
+                                       if (ret==NO&&i>5) {
+                                           str = @"-";
+                                       }
+                                      
+                                       reWriteString = [reWriteString stringByAppendingFormat :@"%@:%@", value, str?str:@"-"];
+
+                                                         
+                                    
+                                     
+                                   }
+                               }
+                           }
+               
+     
+                                      if(reWriteString && reWriteString.length) {
+                                          NSString * ivtStr = [NSString stringWithFormat:@"{%@}",reWriteString];
+                                         [trackURL appendFormat:@"%@%@%@%@", company.separator, company.antidevice, company.equalizer, ivtStr ];
+                                      
+                                             }
+         
+             }
+     
     
     if (redirecturl !=nil&&![redirecturl isEqualToString:@""]) {
         [trackURL appendString:redirecturl];

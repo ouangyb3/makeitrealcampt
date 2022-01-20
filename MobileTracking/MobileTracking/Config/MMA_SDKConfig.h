@@ -77,6 +77,7 @@
 @property (nonatomic, strong) MMA_Config *config ;
 @property (nonatomic, strong) NSString *separator;
 @property (nonatomic, strong) NSString *equalizer;
+@property (nonatomic, strong) NSString *antidevice;
 @property (nonatomic, assign) Boolean timeStampUseSecond;
 @property (nonatomic, strong) NSString *jsname;
 @property (nonatomic, strong) NSString *jsurl;

@@ -128,6 +128,7 @@
         
         company.separator = [[[element elementsForName:@"separator" ] firstObject] stringValue];
         company.equalizer = [[[element elementsForName:@"equalizer" ] firstObject] stringValue];
+        company.antidevice = [[[element elementsForName:@"antidevice" ] firstObject] stringValue];
         if (company.equalizer == nil) {
             company.equalizer = @"";
         }
