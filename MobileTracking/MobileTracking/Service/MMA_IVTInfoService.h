@@ -25,20 +25,20 @@
  -(BOOL)Proximity;
  
 /**加速度值*/
-@property(nonatomic,copy)NSString * Accelerometer;
+@property(nonatomic,strong)NSArray * Accelerometer;
 /**陀螺仪值*/
-@property(nonatomic,copy)NSString * GyroActive;
+@property(nonatomic,strong)NSArray * GyroActive;
 /**磁场值*/
-@property(nonatomic,copy)NSString * Magnetometer;
+@property(nonatomic,strong)NSArray * Magnetometer;
 /**重力值*/
-@property(nonatomic,copy)NSString * DeviceMotion;
+@property(nonatomic,strong)NSArray * DeviceMotion;
 /**气压值*/
 @property(nonatomic,copy)NSString * Pressure;
 /**方向传感器*/
-@property(nonatomic,copy)NSString * Direction;
+@property(nonatomic,strong)NSArray * Direction;
 
 /**光线强弱*/
-@property(nonatomic,copy)NSString * Brightness;
+@property(nonatomic,strong)NSArray * Brightness;
 
 -(void)updateSensorInfo:(void(^)())result;
 /**距离上次刷新时间s*/
@@ -46,6 +46,8 @@
 
 //根据value排序
 +(NSArray*)ArrayWithDict:(NSDictionary*)dict;
+//根据value排序2
++(NSArray*)ArrayWithDict2:(NSDictionary*)dict;
 @end
 
  

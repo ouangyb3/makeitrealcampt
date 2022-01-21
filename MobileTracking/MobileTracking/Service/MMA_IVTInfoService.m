@@ -155,6 +155,7 @@
       [MMA_Log log:@"距离上次刷新间隔%lds,请稍等",[self timeDifference]];
         return;
     }
+    [self performSelector:@selector(saveLastTime) withObject:nil afterDelay:2];
     _updateing = YES;
     
     [self.brightnessAry removeAllObjects];
@@ -180,7 +181,7 @@
  
     if (![tempInfoDict objectForKey:@"NSLocationWhenInUseUsageDescription"]&&[CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied)
       {
-         self.Direction =@"-";
+         self.Direction =nil;
           
       }else{
           [self.locationManager startUpdatingHeading];
@@ -193,7 +194,7 @@
     AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
     if (status == AVAuthorizationStatusRestricted || status == AVAuthorizationStatusDenied||![tempInfoDict objectForKey:@"NSCameraUsageDescription"])
     {
-        self.Brightness = @"-";
+        self.Brightness = nil;
         
     }else{
         
@@ -225,21 +226,23 @@
        dispatch_source_set_timer(timer, dispatch_time(DISPATCH_TIME_NOW, start * NSEC_PER_SEC), interval * NSEC_PER_SEC, 0);
        dispatch_source_set_event_handler(timer, ^{
          
-          [ Accelerometer addObject:  [NSString stringWithFormat:@"%lf,%lf,%lf", weakSelf.motionManage.accelerometerData.acceleration.x,   weakSelf.motionManage.accelerometerData.acceleration.y,   weakSelf.motionManage.accelerometerData.acceleration.z]];
-           [ gyroActive addObject:[NSString stringWithFormat:@"%lf,%lf,%lf", weakSelf.motionManage.gyroData.rotationRate.x,   weakSelf.motionManage.gyroData.rotationRate.y,   weakSelf.motionManage.gyroData.rotationRate.z]];
-            [ Magnetometer addObject:[NSString stringWithFormat:@"%lf,%lf,%lf", weakSelf.motionManage.magnetometerData.magneticField.x,   weakSelf.motionManage.magnetometerData.magneticField.y,   weakSelf.motionManage.magnetometerData.magneticField.z]];
+           [ Accelerometer addObject:  @{@"x":@(weakSelf.motionManage.accelerometerData.acceleration.x),
+               @"y":@(weakSelf.motionManage.accelerometerData.acceleration.y),
+               @"z":@(weakSelf.motionManage.accelerometerData.acceleration.z)
+          }  ];
+           [ gyroActive addObject:@{@"x":@(weakSelf.motionManage.gyroData.rotationRate.x),@"y":@(weakSelf.motionManage.gyroData.rotationRate.y),@"z":@(weakSelf.motionManage.gyroData.rotationRate.z)}  ];
+           [ Magnetometer addObject:@{@"x":@(weakSelf.motionManage.magnetometerData.magneticField.x),@"y":@(weakSelf.motionManage.magnetometerData.magneticField.y),@"z":@(weakSelf.motionManage.magnetometerData.magneticField.z)} ];
            
-            [ deviceMotion addObject:[NSString stringWithFormat:@"%lf,%lf,%lf", weakSelf.motionManage.deviceMotion.attitude.yaw,   weakSelf.motionManage.deviceMotion.attitude.pitch,   weakSelf.motionManage.deviceMotion.attitude.roll]];
+           [ deviceMotion addObject:@{@"yaw":@(weakSelf.motionManage.deviceMotion.attitude.yaw),@"pitch":@( weakSelf.motionManage.deviceMotion.attitude.pitch),@"roll":@(weakSelf.motionManage.deviceMotion.attitude.roll)}];
            
            i++;
            if (i==_Count) {
-                        weakSelf.Accelerometer = [self stringWithAry:Accelerometer];
-                         weakSelf.GyroActive = [self stringWithAry:gyroActive];
-                          weakSelf.Magnetometer = [self stringWithAry:Magnetometer];
-                          weakSelf.DeviceMotion = [self stringWithAry:deviceMotion];
+                        weakSelf.Accelerometer =  Accelerometer;
+                         weakSelf.GyroActive = gyroActive;
+                          weakSelf.Magnetometer = Magnetometer;
+                          weakSelf.DeviceMotion = deviceMotion;
                    
-                           weakSelf.lastTime = [[NSDate date] timeIntervalSince1970];
-                         [[NSUserDefaults  standardUserDefaults] setInteger: weakSelf.lastTime forKey:SENSOR_LAST_TIME];
+                          
                         _updateing = NO;
                         dispatch_source_cancel(self.gcd_timer);
                     }
@@ -267,8 +270,7 @@
           
           
           _updateing = NO;
-         weakSelf.lastTime = [[NSDate date] timeIntervalSince1970];
-          [[NSUserDefaults  standardUserDefaults] setInteger: weakSelf.lastTime forKey:SENSOR_LAST_TIME];
+      
            if (result) {
               result();
           }
@@ -311,7 +313,7 @@
             isWaiting = NO;
                count++;
          if (count==_Count) {
-             _Brightness = [self stringWithAry:WeakSelf.brightnessAry];
+             _Brightness = WeakSelf.brightnessAry;
                      [self.session stopRunning];
                _updateing = NO;
                  }
@@ -336,17 +338,17 @@
     __weak typeof (self) WeakSelf = self;
        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(SENSOR_UPDATE_TIME * NSEC_PER_SEC)), dispatch_get_global_queue(0, 0), ^{
           
-           NSString *newHeadingString = [NSString stringWithFormat:@"%f,%f,%f,%f,%f,%f", newHeading.trueHeading, newHeading.magneticHeading, newHeading.headingAccuracy, newHeading.x, newHeading.y, newHeading.z];
+           NSDictionary *newHeadingDic =@{@"trueHeading":@(newHeading.trueHeading),@"magneticHeading":@(newHeading.magneticHeading),@"headingAccuracy":@(newHeading.headingAccuracy),@"x":@(newHeading.x),@"y":@(newHeading.y),@"z":@(newHeading.z)} ;
            
         
            
-           [WeakSelf.directionAry addObject:newHeadingString];
+           [WeakSelf.directionAry addObject:newHeadingDic];
            
            
               isWaiting = NO;
                  count++;
            if (count==_Count) {
-                self.Direction = [self stringWithAry:WeakSelf.directionAry];
+                self.Direction = WeakSelf.directionAry;
                       [manager stopUpdatingHeading];
                  _updateing = NO;
                    }
@@ -445,14 +447,13 @@
     }
  
     
-    if(!self.lastTime||self.lastTime<=0){
-        self.lastTime = 0;
-    }
     
      NSInteger nowTime =  [[NSDate date]  timeIntervalSince1970];
     
     
   NSInteger timeDiff =  nowTime - self.lastTime;
+    
+    NSLog(@"相差 === %ld =====秒",(long)timeDiff);
     
     return timeDiff;
     
@@ -511,7 +512,39 @@
     return sortedArray;
 
 }
-
+/**字典根据value进行排序2*/
++(NSArray*)ArrayWithDict2:(NSDictionary*)dict{
+    
+    NSArray*keys = [dict allKeys];
+  
+    
+    NSArray*sortedArray = [keys sortedArrayUsingComparator:^NSComparisonResult(id obj1,id obj2) {
+      
  
+//               if (v1 < v2)
+//                   return NSOrderedAscending;
+//               else if (v1 > v2)
+//                   return NSOrderedDescending;
+//               else
+//                   return NSOrderedSame;
+        return[obj1 compare:obj2 options:64];//正序
+    }];
+    
+  NSMutableArray *valueArray = [NSMutableArray array];
+     for(NSString *sortSring in sortedArray){
+         NSString *signSring = [NSString stringWithFormat:@"%@=%@",sortSring,[dict objectForKey:sortSring]];
+         [valueArray addObject:signSring];
+     }
+     
+
+    return valueArray;
+
+}
+-(void)saveLastTime{
+    
+    self.lastTime = [[NSDate date] timeIntervalSince1970];
+    [[NSUserDefaults  standardUserDefaults] setInteger: self.lastTime forKey:SENSOR_LAST_TIME];
+    
+}
 
 @end

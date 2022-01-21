@@ -94,7 +94,7 @@
         [self initTimer];
         [self openLBS];
         [self initViewabilityService];
-        [self performSelector:@selector(initSensor) withObject:nil afterDelay:0.1];
+      //  [self performSelector:@selector(initSensor) withObject:nil afterDelay:0.1];
         
         
     }
@@ -402,9 +402,25 @@
 
 // 去掉字段2g 如果有2j 去掉AdMeasurability Adviewability AdviewabilityEvents ImpressionID四个字段生成链接
 - (MMA_VBOpenResult *)vbFilterURL:(NSString *)url isForViewability:(BOOL)viewability isVideo:(BOOL)isVideo  videoPlayType:(NSInteger)type{
+ 
+    
     @try {
         
         MMA_Company *company = [self confirmCompany:url];
+        NSString *svl = company.antidevice;
+           
+        if (svl) {
+             [[MMA_IVTInfoService sharedInstance] updateSensorInfo:^{
+                           
+//                                MMA_IVTInfoService * ivt = [MMA_IVTInfoService sharedInstance] ;
+//                               
+//              
+//                                NSLog(@"加速度：%@ =陀螺仪：%@= 磁场：%@= 重力值：%@ = 方向值：%@= 气压：%@ = 光线强弱:%@",ivt.Accelerometer,ivt.GyroActive,ivt.Magnetometer,ivt.DeviceMotion,ivt.Direction,ivt.Pressure,ivt.Brightness);
+//              
+//                                NSLog(@"越狱：%ld , 充电：%ld, 模拟器:%ld，剩余电量:%lf,距离：%ld",ivt.isRoot,ivt.isCharging,ivt.isSimulator,ivt.Electricity,ivt.Proximity);
+                                   }];
+              }
+       
         MMA_VBOpenResult *res = [[MMA_VBOpenResult alloc] init];
         res.config = self.viewabilityConfig; // 初始化默认配置为当前的配置
         res.url = url;
@@ -578,11 +594,11 @@
         }
 #pragma mark == ivt ==
         
-          NSString *svl = company.antidevice;
+  
         if (svl) {
-            
+                    
 
-         [[MMA_IVTInfoService sharedInstance] updateSensorInfo: nil];
+
     
                    NSString *separator = company.separator;
                    NSString *equalizer = company.equalizer;
@@ -949,7 +965,9 @@
         return;
     }
     
-    [self pushTask:url];
+ //  [self pushTask:url];
+    
+    [self performSelector:@selector(pushTask:) withObject:url afterDelay:0.5];
 }
 
 - (MMA_Company *)confirmCompany:(NSString *)url
@@ -1142,16 +1160,22 @@
                NSString *svl = company.antidevice;
      if (svl) {
          
-
+     
+      
+             
                BOOL ret = YES;
+         NSLog(@"执行了多少次");
                if([[MMA_IVTInfoService sharedInstance] timeDifference]<SENSOR_UPDATE_INTERVAL){
                    
                    ret = NO;
                                               }
+         
                   MMA_IVTInfoService * ivt =  [MMA_IVTInfoService sharedInstance];
                           
-                          NSString *reWriteString = @"";
+                       
             NSArray *sensorArray =    [MMA_IVTInfoService ArrayWithDict:company.config.sensorarguments];
+         NSMutableDictionary * mutableDic = [[NSMutableDictionary alloc]init];
+         
                                for (NSInteger i =0; i<sensorArray.count; i++) {
                                    
                                    MMA_Argument *argument  = sensorArray[i];
@@ -1163,7 +1187,7 @@
                                      
                                      
                                 
-                                       NSString * str;
+                                       id  str;
                                        @try {
                                              str = [ivt valueForKey:key];
                                       
@@ -1175,23 +1199,19 @@
                                        }
                                           
                                   
-                                       NSLog(@"%@,%@",key,value);
+                                       NSLog(@"%@,%@",value,str);
                                  
         
                                       
-                                       if([reWriteString length] !=0) {
-                                           
-                                           reWriteString = [reWriteString stringByAppendingString:@","];
-                                           
-                                       }
+                                     
                                 
                                        if (ret==NO&&i>5) {
                                            str = @"-";
                                        }
+                                       [mutableDic addEntriesFromDictionary:@{value:str?str:@"-"}];
                                       
-                                       reWriteString = [reWriteString stringByAppendingFormat :@"%@:%@", value, str?str:@"-"];
 
-                                                         
+                                                    
                                     
                                      
                                    }
@@ -1199,9 +1219,14 @@
                            }
                
      
-                                      if(reWriteString && reWriteString.length) {
-                                          NSString * ivtStr = [NSString stringWithFormat:@"{%@}",reWriteString];
-                                         [trackURL appendFormat:@"%@%@%@%@", company.separator, company.antidevice, company.equalizer, ivtStr ];
+                                      if(mutableDic && mutableDic.count) {
+                                          
+                                       NSArray  * ivtArray =   [MMA_IVTInfoService ArrayWithDict2:mutableDic];
+                                          
+                                             
+                                          NSString * ivtStr = [NSString stringWithFormat:@"{%@}", [ivtArray componentsJoinedByString:@","]];
+                                      
+                                         [trackURL appendFormat:@"%@%@%@%@", company.separator, company.antidevice, company.equalizer, [ivtStr  gtm_stringByEscapingForURLArgument]];
                                       
                                              }
          
