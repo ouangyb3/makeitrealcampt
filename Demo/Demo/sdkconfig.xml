@@ -910,7 +910,7 @@
                       <adidurl>https://g.cn.miaozhen.com/x/k=adid</adidurl>
 
                       <!--是否启用反作弊配置字段-->
-                      <!--antidevice>svl</antidevice-->
+                      <antidevice>svl</antidevice>
             <equalizer>=</equalizer>
 
             <!--如果设置true   timeStamper使用秒-->

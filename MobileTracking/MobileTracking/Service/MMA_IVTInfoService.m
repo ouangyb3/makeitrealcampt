@@ -14,7 +14,7 @@
 #import "MMA_Log.h"
 #import "MMA_Macro.h"
 #import <CoreLocation/CoreLocation.h>
- 
+
 #define SENSOR_LAST_TIME @"SENSOR_LAST_TIME"
 #define SENSOR_UPDATE_TIME 0.1
 /*--------------参数设置-----------------*/
@@ -74,7 +74,7 @@
 }
 
 + (MMA_IVTInfoService *)sharedInstance {
-    
+   
     static MMA_IVTInfoService *_sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -453,7 +453,7 @@
     
   NSInteger timeDiff =  nowTime - self.lastTime;
     
-    NSLog(@"相差 === %ld =====秒",(long)timeDiff);
+  //  [MMA_Log log:@"相差 === %ld =====秒",(long)timeDiff];
     
     return timeDiff;
     
