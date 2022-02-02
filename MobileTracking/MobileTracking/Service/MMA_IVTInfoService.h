@@ -22,23 +22,22 @@
 /**是否模拟器*/
 -(BOOL)isSimulator;
  /**距离*/
- -(BOOL)Proximity;
- 
+@property(nonatomic,copy)NSString * Proximity;
 /**加速度值*/
-@property(nonatomic,strong)NSArray * Accelerometer;
+@property(nonatomic,copy)NSString * Accelerometer;
 /**陀螺仪值*/
-@property(nonatomic,strong)NSArray * GyroActive;
+@property(nonatomic,copy)NSString * GyroActive;
 /**磁场值*/
-@property(nonatomic,strong)NSArray * Magnetometer;
+@property(nonatomic,copy)NSString * Magnetometer;
 /**重力值*/
-@property(nonatomic,strong)NSArray * DeviceMotion;
+@property(nonatomic,copy)NSString * DeviceMotion;
 /**气压值*/
 @property(nonatomic,copy)NSString * Pressure;
 /**方向传感器*/
-@property(nonatomic,strong)NSArray * Direction;
+@property(nonatomic,copy)NSString *  Direction;
 
 /**光线强弱*/
-@property(nonatomic,strong)NSArray * Brightness;
+@property(nonatomic,copy)NSString * Brightness;
 
 -(void)updateSensorInfo:(void(^)())result;
 /**距离上次刷新时间s*/

@@ -965,9 +965,11 @@
         return;
     }
     
- //  [self pushTask:url];
-    
-    [self performSelector:@selector(pushTask:) withObject:url afterDelay:0.5];
+    __weak typeof (self) weakSelf = self;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_global_queue(0, 0), ^{
+        [weakSelf pushTask:url];
+    });
+ 
 }
 
 - (MMA_Company *)confirmCompany:(NSString *)url
@@ -1172,9 +1174,10 @@
          
                   MMA_IVTInfoService * ivt =  [MMA_IVTInfoService sharedInstance];
                           
-                       
+                       NSString *reWriteString = @"";
+
             NSArray *sensorArray =    [MMA_IVTInfoService ArrayWithDict:company.config.sensorarguments];
-         NSMutableDictionary * mutableDic = [[NSMutableDictionary alloc]init];
+        
          
                                for (NSInteger i =0; i<sensorArray.count; i++) {
                                    
@@ -1193,7 +1196,7 @@
                                       
                                        } @catch (NSException *exception) {
                                            
-                                           str = @"-";
+                                           str = @"\"-\"";
                                        } @finally {
                                            
                                        }
@@ -1201,17 +1204,21 @@
                                   
                                        NSLog(@"%@,%@",value,str);
                                  
-        
+        if([reWriteString length] !=0) {
+            
+            reWriteString = [reWriteString stringByAppendingString:@","];
+            
+        }
+
                                       
                                      
                                 
                                        if (ret==NO&&i>5) {
-                                           str = @"-";
+                                           str = @"\"-\"";
                                        }
-                                       [mutableDic addEntriesFromDictionary:@{value:str?str:@"-"}];
-                                      
+                                    
+                                                    reWriteString = [reWriteString stringByAppendingFormat :@"\"%@\":%@", value, str?str:@"-"];
 
-                                                    
                                     
                                      
                                    }
@@ -1219,12 +1226,14 @@
                            }
                
      
-                                      if(mutableDic && mutableDic.count) {
+                                                                 if(reWriteString && reWriteString.length) {
+
                                           
-                                       NSArray  * ivtArray =   [MMA_IVTInfoService ArrayWithDict2:mutableDic];
+                                    
                                           
-                                             
-                                          NSString * ivtStr = [NSString stringWithFormat:@"{%@}", [ivtArray componentsJoinedByString:@","]];
+                                       NSString * ivtStr = [NSString stringWithFormat:@"{%@}",reWriteString];
+                                          
+
                                       
                                          [trackURL appendFormat:@"%@%@%@%@", company.separator, company.antidevice, company.equalizer, [ivtStr  gtm_stringByEscapingForURLArgument]];
                                       

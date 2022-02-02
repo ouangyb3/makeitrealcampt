@@ -9,7 +9,7 @@
 #import "MMA_IVTInfoService.h"
 #import <CoreMotion/CoreMotion.h>
 #import <AVFoundation/AVFoundation.h>
-#import <ImageIO/CGImageProperties.h>
+ 
 #import <UIKit/UIKit.h>
 #import "MMA_Log.h"
 #import "MMA_Macro.h"
@@ -151,12 +151,12 @@
 }
 -(void)updateSensorInfo:(void (^)())result{
     
-    if ([self timeDifference]<SENSOR_UPDATE_INTERVAL||_updateing==YES) {
+    if ([self timeDifference]<SENSOR_UPDATE_INTERVAL) {
       [MMA_Log log:@"距离上次刷新间隔%lds,请稍等",[self timeDifference]];
         return;
     }
     [self performSelector:@selector(saveLastTime) withObject:nil afterDelay:2];
-    _updateing = YES;
+ 
     
     [self.brightnessAry removeAllObjects];
     [self.directionAry removeAllObjects];
@@ -169,6 +169,9 @@
   __block  NSMutableArray *  Magnetometer = [[NSMutableArray alloc]init];
     //设备方向
   __block  NSMutableArray *  deviceMotion = [[NSMutableArray alloc]init];
+    
+    //光线传感器
+      __block  NSMutableArray *  Proximity = [[NSMutableArray alloc]init];
   
   __weak typeof (self) weakSelf = self;
     
@@ -191,8 +194,8 @@
 
 
     
-    AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-    if (status == AVAuthorizationStatusRestricted || status == AVAuthorizationStatusDenied||![tempInfoDict objectForKey:@"NSCameraUsageDescription"])
+//    AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if (![tempInfoDict objectForKey:@"NSCameraUsageDescription"])
     {
         self.Brightness = nil;
         
@@ -216,7 +219,12 @@
         
     }
     
+   [UIDevice currentDevice].proximityMonitoringEnabled = YES;
    
+    BOOL ret = ([UIDevice currentDevice].proximityState) ;
+   
+       [UIDevice currentDevice].proximityMonitoringEnabled = NO;
+
     
   __block  NSInteger i = 0;
     NSTimeInterval start = 0.1;//开始时间
@@ -226,24 +234,36 @@
        dispatch_source_set_timer(timer, dispatch_time(DISPATCH_TIME_NOW, start * NSEC_PER_SEC), interval * NSEC_PER_SEC, 0);
        dispatch_source_set_event_handler(timer, ^{
          
-           [ Accelerometer addObject:  @{@"x":@(weakSelf.motionManage.accelerometerData.acceleration.x),
-               @"y":@(weakSelf.motionManage.accelerometerData.acceleration.y),
-               @"z":@(weakSelf.motionManage.accelerometerData.acceleration.z)
-          }  ];
-           [ gyroActive addObject:@{@"x":@(weakSelf.motionManage.gyroData.rotationRate.x),@"y":@(weakSelf.motionManage.gyroData.rotationRate.y),@"z":@(weakSelf.motionManage.gyroData.rotationRate.z)}  ];
-           [ Magnetometer addObject:@{@"x":@(weakSelf.motionManage.magnetometerData.magneticField.x),@"y":@(weakSelf.motionManage.magnetometerData.magneticField.y),@"z":@(weakSelf.motionManage.magnetometerData.magneticField.z)} ];
-           
-           [ deviceMotion addObject:@{@"yaw":@(weakSelf.motionManage.deviceMotion.attitude.yaw),@"pitch":@( weakSelf.motionManage.deviceMotion.attitude.pitch),@"roll":@(weakSelf.motionManage.deviceMotion.attitude.roll)}];
-           
+           [ Accelerometer addObject:  [NSString stringWithFormat:@"{\"x\":%lf,\"y\":%lf,\"z\":%lf}", weakSelf.motionManage.accelerometerData.acceleration.x,   weakSelf.motionManage.accelerometerData.acceleration.y,   weakSelf.motionManage.accelerometerData.acceleration.z]];
+            [ gyroActive addObject:[NSString stringWithFormat:@"{\"x\":%lf,\"y\":%lf,\"z\":%lf}", weakSelf.motionManage.gyroData.rotationRate.x,   weakSelf.motionManage.gyroData.rotationRate.y,   weakSelf.motionManage.gyroData.rotationRate.z]];
+             [ Magnetometer addObject:[NSString stringWithFormat:@"{\"x\":%lf,\"y\":%lf,\"z\":%lf}", weakSelf.motionManage.magnetometerData.magneticField.x,   weakSelf.motionManage.magnetometerData.magneticField.y,   weakSelf.motionManage.magnetometerData.magneticField.z]];
+
+           [ deviceMotion addObject:[NSString stringWithFormat:@"{\"x\":%lf,\"y\":%lf,\"z\":%lf}", weakSelf.motionManage.deviceMotion.attitude.yaw,   weakSelf.motionManage.deviceMotion.attitude.pitch,   weakSelf.motionManage.deviceMotion.attitude.roll]];
+       [Proximity addObject:[NSString stringWithFormat:@"{\"x\":%ld}", ret]];
+     //      [ Accelerometer addObject:  @{@"x":@(weakSelf.motionManage.accelerometerData.acceleration.x),
+//               @"y":@(weakSelf.motionManage.accelerometerData.acceleration.y),
+//               @"z":@(weakSelf.motionManage.accelerometerData.acceleration.z)
+//          }  ];
+//           [ gyroActive addObject:@{@"x":@(weakSelf.motionManage.gyroData.rotationRate.x),@"y":@(weakSelf.motionManage.gyroData.rotationRate.y),@"z":@(weakSelf.motionManage.gyroData.rotationRate.z)}  ];
+//           [ Magnetometer addObject:@{@"x":@(weakSelf.motionManage.magnetometerData.magneticField.x),@"y":@(weakSelf.motionManage.magnetometerData.magneticField.y),@"z":@(weakSelf.motionManage.magnetometerData.magneticField.z)} ];
+//
+//           [ deviceMotion addObject:@{@"x":@(weakSelf.motionManage.deviceMotion.attitude.yaw),@"y":@( weakSelf.motionManage.deviceMotion.attitude.pitch),@"z":@(weakSelf.motionManage.deviceMotion.attitude.roll)}];
+         
+         
            i++;
            if (i==_Count) {
-                        weakSelf.Accelerometer =  Accelerometer;
-                         weakSelf.GyroActive = gyroActive;
-                          weakSelf.Magnetometer = Magnetometer;
-                          weakSelf.DeviceMotion = deviceMotion;
-                   
+//                        weakSelf.Accelerometer =  Accelerometer;
+//                         weakSelf.GyroActive = gyroActive;
+//                          weakSelf.Magnetometer = Magnetometer;
+//                          weakSelf.DeviceMotion = deviceMotion;
+//
+               weakSelf.Accelerometer = [self stringWithAry:Accelerometer];
+                weakSelf.GyroActive = [self stringWithAry:gyroActive];
+                 weakSelf.Magnetometer = [self stringWithAry:Magnetometer];
+                 weakSelf.DeviceMotion = [self stringWithAry:deviceMotion];
+                  weakSelf.Proximity = [self stringWithAry:Proximity];
                           
-                        _updateing = NO;
+            
                         dispatch_source_cancel(self.gcd_timer);
                     }
    
@@ -269,7 +289,7 @@
           
           
           
-          _updateing = NO;
+   
       
            if (result) {
               result();
@@ -286,14 +306,10 @@
  #pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate
 
  - (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
-     static BOOL isWaiting = NO;
+ 
       static NSInteger count = 0;
      
-     if (isWaiting) {
-             return;
-         }
-         isWaiting = YES;
-     
+    
      CFDictionaryRef metadataDicRef = CMCopyDictionaryOfAttachments(NULL, sampleBuffer, kCMAttachmentMode_ShouldPropagate);
      NSDictionary *metadataDic = (__bridge NSDictionary *)metadataDicRef;
      CFRelease(metadataDicRef);
@@ -307,15 +323,15 @@
      __weak typeof (self) WeakSelf = self;
      dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(SENSOR_UPDATE_TIME * NSEC_PER_SEC)), dispatch_get_global_queue(0, 0), ^{
         
-         [WeakSelf.brightnessAry addObject:[NSString stringWithFormat:@"%f", brightness]];
+         [WeakSelf.brightnessAry addObject:[NSString stringWithFormat:@"{\"x\":%f}", brightness]];
          
          
-            isWaiting = NO;
+    
                count++;
          if (count==_Count) {
-             _Brightness = WeakSelf.brightnessAry;
+             _Brightness = [self stringWithAry:WeakSelf.brightnessAry];
                      [self.session stopRunning];
-               _updateing = NO;
+      
                  }
         });
  }
@@ -323,13 +339,10 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
     
-        static BOOL isWaiting = NO;
+      
          static NSInteger count = 0;
         
-        if (isWaiting) {
-                return;
-            }
-            isWaiting = YES;
+      
     
   
     
@@ -338,19 +351,21 @@
     __weak typeof (self) WeakSelf = self;
        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(SENSOR_UPDATE_TIME * NSEC_PER_SEC)), dispatch_get_global_queue(0, 0), ^{
           
-           NSDictionary *newHeadingDic =@{@"trueHeading":@(newHeading.trueHeading),@"magneticHeading":@(newHeading.magneticHeading),@"headingAccuracy":@(newHeading.headingAccuracy),@"x":@(newHeading.x),@"y":@(newHeading.y),@"z":@(newHeading.z)} ;
+                     NSString *newHeadingString = [NSString stringWithFormat:@"{\"x\":%lf,\"y\":%lf,\"z\":%lf}",  newHeading.x, newHeading.y, newHeading.z];
+
            
         
            
-           [WeakSelf.directionAry addObject:newHeadingDic];
+           [WeakSelf.directionAry addObject:newHeadingString];
            
            
-              isWaiting = NO;
+     
                  count++;
            if (count==_Count) {
-                self.Direction = WeakSelf.directionAry;
+                       self.Direction = [self stringWithAry:WeakSelf.directionAry];
+
                       [manager stopUpdatingHeading];
-                 _updateing = NO;
+        
                    }
           });
     
@@ -422,19 +437,8 @@
     
     
 }
- /**距离*/
--(BOOL)Proximity{
-    
-    [UIDevice currentDevice].proximityMonitoringEnabled = YES;
-    
-    BOOL ret = ([UIDevice currentDevice].proximityState) ;
-    
-        [UIDevice currentDevice].proximityMonitoringEnabled = NO;
-    
-    return ret;
-    
-    
-}
+ 
+ 
 
 
 
@@ -473,7 +477,7 @@
         
         if([str length] !=0) {
             
-            str = [str stringByAppendingString:@"/"];
+            str = [str stringByAppendingString:@","];
             
         }
         
