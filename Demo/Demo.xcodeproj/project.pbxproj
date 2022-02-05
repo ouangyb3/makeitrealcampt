@@ -33,7 +33,6 @@
 		AF7D89611EF655F50069A7DC /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7D89601EF655F50069A7DC /* Launch Screen.storyboard */; };
 		AFB3717E1F3854E10092930F /* admaster.js in Resources */ = {isa = PBXBuildFile; fileRef = AFB3717D1F3854E10092930F /* admaster.js */; };
 		C726E4B5238665E1000EC447 /* sdkconfig.xml in Resources */ = {isa = PBXBuildFile; fileRef = C726E4B4238665E1000EC447 /* sdkconfig.xml */; };
-		C74B783D237557EA0031DE10 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74B7838237557EA0031DE10 /* Photos.framework */; };
 		C765ABED23262CE00066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABE923262CC20066E906 /* WebKit.framework */; };
 		C78B6BB0236C303F0022BD30 /* libMobileTrackingSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABB195518DAFA0300C7CAA9 /* libMobileTrackingSimulator.a */; };
 		C78B6BC5236C33A60022BD30 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78B6BC0236C33A60022BD30 /* CoreMotion.framework */; };
@@ -120,7 +119,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C74B783D237557EA0031DE10 /* Photos.framework in Frameworks */,
 				C78B6BC5236C33A60022BD30 /* CoreMotion.framework in Frameworks */,
 				C765ABED23262CE00066E906 /* WebKit.framework in Frameworks */,
 				C78B6BB0236C303F0022BD30 /* libMobileTrackingSimulator.a in Frameworks */,
