@@ -71,7 +71,8 @@
         [self.viewList addObject:view.mma_properties];
         
         CGRect coverRect = [self.adView mma_intersectionWithView:view];
-        if (!CGRectEqualToRect(coverRect, CGRectZero)) {
+      //  NSLog(@"ViewSizeWidth:%f",coverRect.size.width);
+        if (!CGRectEqualToRect(coverRect, CGRectZero)&&coverRect.size.width>0) {
             if (![self.adView mma_isSuper:view]) {
 //                限制最大view数量阈值
                 if (self.viewCoverList.count < 60) {
