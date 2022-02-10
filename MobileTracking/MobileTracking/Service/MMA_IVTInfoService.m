@@ -82,7 +82,7 @@
         _sharedInstance.brightnessAry = [[NSMutableArray alloc]init];
         _sharedInstance.directionAry = [[NSMutableArray alloc]init];
         _sharedInstance.Count = SENSOR_COLLECT_TIME/SENSOR_UPDATE_TIME;
-      //  [_sharedInstance checkEnable];
+    //  [_sharedInstance checkEnable];
         
     });
     return _sharedInstance;
@@ -155,7 +155,7 @@
       [MMA_Log log:@"距离上次刷新间隔%lds,请稍等",[self timeDifference]];
         return;
     }
-    [self performSelector:@selector(saveLastTime) withObject:nil afterDelay:2];
+   
  
     
     [self.brightnessAry removeAllObjects];
@@ -233,7 +233,7 @@
        dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
        dispatch_source_set_timer(timer, dispatch_time(DISPATCH_TIME_NOW, start * NSEC_PER_SEC), interval * NSEC_PER_SEC, 0);
        dispatch_source_set_event_handler(timer, ^{
-         
+           //NSLog(@"###l7:%lf,l8:%lf,l10:%lf,l15:%lf",weakSelf.motionManage.accelerometerData.acceleration.x,weakSelf.motionManage.gyroData.rotationRate.x,weakSelf.motionManage.magnetometerData.magneticField.x,weakSelf.motionManage.deviceMotion.attitude.yaw);
            [ Accelerometer addObject:  [NSString stringWithFormat:@"{\"x\":%lf,\"y\":%lf,\"z\":%lf}", weakSelf.motionManage.accelerometerData.acceleration.x,   weakSelf.motionManage.accelerometerData.acceleration.y,   weakSelf.motionManage.accelerometerData.acceleration.z]];
             [ gyroActive addObject:[NSString stringWithFormat:@"{\"x\":%lf,\"y\":%lf,\"z\":%lf}", weakSelf.motionManage.gyroData.rotationRate.x,   weakSelf.motionManage.gyroData.rotationRate.y,   weakSelf.motionManage.gyroData.rotationRate.z]];
              [ Magnetometer addObject:[NSString stringWithFormat:@"{\"x\":%lf,\"y\":%lf,\"z\":%lf}", weakSelf.motionManage.magnetometerData.magneticField.x,   weakSelf.motionManage.magnetometerData.magneticField.y,   weakSelf.motionManage.magnetometerData.magneticField.z]];
@@ -257,13 +257,19 @@
 //                          weakSelf.Magnetometer = Magnetometer;
 //                          weakSelf.DeviceMotion = deviceMotion;
 //
-               weakSelf.Accelerometer = [self stringWithAry:Accelerometer];
-                weakSelf.GyroActive = [self stringWithAry:gyroActive];
+                 weakSelf.Accelerometer = [self stringWithAry:Accelerometer];
+                 weakSelf.GyroActive = [self stringWithAry:gyroActive];
                  weakSelf.Magnetometer = [self stringWithAry:Magnetometer];
                  weakSelf.DeviceMotion = [self stringWithAry:deviceMotion];
-                  weakSelf.Proximity = [self stringWithAry:Proximity];
-                          
-            
+                 weakSelf.Proximity = [self stringWithAry:Proximity];
+                      [weakSelf.motionManage    stopGyroUpdates];
+                      [weakSelf.motionManage   stopAccelerometerUpdates];
+                      [weakSelf.motionManage stopDeviceMotionUpdates];
+                      [weakSelf.motionManage stopMagnetometerUpdates];
+               dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.1 * NSEC_PER_SEC)), dispatch_get_global_queue(0, 0), ^{
+                   self->_lastTime = [[NSDate date] timeIntervalSince1970];
+                     [[NSUserDefaults  standardUserDefaults] setInteger: self->_lastTime forKey:SENSOR_LAST_TIME];
+               });
                         dispatch_source_cancel(self.gcd_timer);
                     }
    
@@ -287,7 +293,7 @@
           
              [weakSelf.altimeter stopRelativeAltitudeUpdates];
           
-          
+           
           
    
       
@@ -371,7 +377,7 @@
     
    
 }
-
+ 
 
 /**是否越狱*/
 -(BOOL)isRoot{
@@ -457,7 +463,7 @@
     
   NSInteger timeDiff =  nowTime - self.lastTime;
     
-  //  [MMA_Log log:@"相差 === %ld =====秒",(long)timeDiff];
+ // [MMA_Log log:@"相差 === %ld =====秒",(long)timeDiff];
     
     return timeDiff;
     

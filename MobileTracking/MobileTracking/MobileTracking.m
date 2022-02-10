@@ -964,9 +964,9 @@
         [MMA_Log log:@"%@" ,@"company is nil,please check your 'sdkconfig.xml' file"];
         return;
     }
-    
+      //  [self pushTask:url];
     __weak typeof (self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_global_queue(0, 0), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.1 * NSEC_PER_SEC)), dispatch_get_global_queue(0, 0), ^{
         [weakSelf pushTask:url];
     });
  
@@ -1166,7 +1166,7 @@
       
              
                BOOL ret = YES;
-         NSLog(@"执行了多少次");
+ 
                if([[MMA_IVTInfoService sharedInstance] timeDifference]<SENSOR_UPDATE_INTERVAL){
                    
                    ret = NO;
@@ -1233,7 +1233,7 @@
                                           
                                        NSString * ivtStr = [NSString stringWithFormat:@"{%@}",reWriteString];
                                           
-
+//                                     [MMA_Log log:@"url:%@",ivtStr];
                                       
                                          [trackURL appendFormat:@"%@%@%@%@", company.separator, company.antidevice, company.equalizer, [ivtStr  gtm_stringByEscapingForURLArgument]];
                                       
