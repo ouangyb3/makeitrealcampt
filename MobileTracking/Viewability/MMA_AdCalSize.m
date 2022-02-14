@@ -143,12 +143,12 @@
     if (adNode == nil) {
         return;
     }
-    if (leftNode == nil) {
-        return;
-    }
-    if (rightNode == nil) {
-        return;
-    }
+//    if (leftNode == nil) {
+//        return;
+//    }
+//    if (rightNode == nil) {
+//        return;
+//    }
     if (line.left == adNode.left && line.right == adNode.right) {
         adNode.coveredNum += line.isTop ? 1 : -1;
 //        计算当前所有的区间的覆盖面积
