@@ -27,13 +27,14 @@
 		77303F6722F98A3A00A51176 /* Advertisement.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 77303F6622F98A3A00A51176 /* Advertisement.mp4 */; };
 		77303F6A22F98F2D00A51176 /* landingPageIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 77303F6922F98F2D00A51176 /* landingPageIcon.png */; };
 		7781CA6122C4BBD1002805DB /* sdkconfig.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7781CA6022C4BBD1002805DB /* sdkconfig.xml */; };
-		77BDFC3F230D44BF00079FDF /* libMobileTrackingSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABB195518DAFA0300C7CAA9 /* libMobileTrackingSimulator.a */; };
 		AF353EDF1CFC24FB00969035 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF353EDE1CFC24FB00969035 /* AdSupport.framework */; };
 		AF4B464B218AB16400BE2F3F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF353EE01CFC251C00969035 /* SystemConfiguration.framework */; };
 		AF4B464C218AB18300BE2F3F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF353ED91CFC24E400969035 /* CoreLocation.framework */; };
 		AF6EA2E51EF655AD000DF811 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF6EA2E41EF655AD000DF811 /* Images.xcassets */; };
 		AF7D89611EF655F50069A7DC /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7D89601EF655F50069A7DC /* Launch Screen.storyboard */; };
 		AFB3717E1F3854E10092930F /* admaster.js in Resources */ = {isa = PBXBuildFile; fileRef = AFB3717D1F3854E10092930F /* admaster.js */; };
+		C765ABEC23262CDA0066E906 /* libMobileTrackingSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABB195518DAFA0300C7CAA9 /* libMobileTrackingSimulator.a */; };
+		C765ABED23262CE00066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABE923262CC20066E906 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +115,7 @@
 		AF6EA2E41EF655AD000DF811 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AF7D89601EF655F50069A7DC /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		AFB3717D1F3854E10092930F /* admaster.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = admaster.js; sourceTree = "<group>"; };
+		C765ABE923262CC20066E906 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +123,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77BDFC3F230D44BF00079FDF /* libMobileTrackingSimulator.a in Frameworks */,
+				C765ABED23262CE00066E906 /* WebKit.framework in Frameworks */,
+				C765ABEC23262CDA0066E906 /* libMobileTrackingSimulator.a in Frameworks */,
 				AF4B464C218AB18300BE2F3F /* CoreLocation.framework in Frameworks */,
 				AF4B464B218AB16400BE2F3F /* SystemConfiguration.framework in Frameworks */,
 				AF353EDF1CFC24FB00969035 /* AdSupport.framework in Frameworks */,
@@ -164,6 +167,7 @@
 		2A0C4E1C18D6D18700200F18 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C765ABE923262CC20066E906 /* WebKit.framework */,
 				AF2DFF4021955F0300B10C3F /* libxml2.tbd */,
 				AF353EE01CFC251C00969035 /* SystemConfiguration.framework */,
 				AF353EDE1CFC24FB00969035 /* AdSupport.framework */,
@@ -294,7 +298,7 @@
 				TargetAttributes = {
 					2A0C4E1918D6D18700200F18 = {
 						DevelopmentTeam = 44PQ7EUSW9;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.AccessWiFi = {
 								enabled = 0;
@@ -546,9 +550,9 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jian Wu (G946Z272GF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jian Wu (G946Z272GF)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 44PQ7EUSW9;
 				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -570,8 +574,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "97e98d37-8685-4f3a-96ce-cd9d04f6286a";
-				PROVISIONING_PROFILE_SPECIFIER = Develop;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
@@ -583,9 +587,9 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Jian Wu (G946Z272GF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Jian Wu (G946Z272GF)";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 44PQ7EUSW9;
 				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -607,8 +611,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "97e98d37-8685-4f3a-96ce-cd9d04f6286a";
-				PROVISIONING_PROFILE_SPECIFIER = Develop;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;

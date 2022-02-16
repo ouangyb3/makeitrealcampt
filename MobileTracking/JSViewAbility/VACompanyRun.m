@@ -15,10 +15,10 @@
 #import "VAJSMaros.h"
 #import "VACacheWebView.h"
 #import "MMA_Macro.h"
-
+#import <WebKit/WebKit.h>
 @interface VACompanyRun () <VAJavascriptBridgeProtocol>
 
-@property (nonatomic, strong) UIWebView *webView;
+@property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) NSMutableDictionary <NSString *,VAViewCapture *>*captureObjs;
 
 @property (nonatomic, strong) VAJavascriptBridge *jsBridge;
@@ -57,8 +57,10 @@ static const char *data_send_queue = "adview.jsmonitor.dataSend.queue";
         }];
 
         
-        
-        [self.webView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
+ 
+            [self.webView loadHTMLString:html baseURL:[[NSBundle mainBundle] bundleURL]];
+ 
+     
         
         
         _dataHandleQueue = dispatch_queue_create(data_handle_queue, DISPATCH_QUEUE_CONCURRENT);

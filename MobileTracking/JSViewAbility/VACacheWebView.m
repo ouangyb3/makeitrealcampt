@@ -32,13 +32,15 @@ static dispatch_queue_t _webViewQueue;
 }
 
 + (void)generateWebView {
-    UIWebView *webView = [[UIWebView alloc] init];
+    WKWebView *webView = [[WKWebView alloc] init];
+ 
+  
     [_canUsedWebViews addObject:webView];
 
 }
 
-+ (UIWebView *)getWebView {
-    __block UIWebView *webView;
++ (WKWebView *)getWebView {
+    __block WKWebView *webView;
     dispatch_sync(_webViewQueue, ^{
         if(!_canUsedWebViews.count) {
             dispatch_sync(dispatch_get_main_queue(), ^{
