@@ -9,6 +9,7 @@
 //
 #import "ViewabilityService.h"
 #import "VAMaros.h"
+#import "MMA_Log.h"
 
 @interface ViewabilityService ()
 
@@ -18,6 +19,8 @@
 
 @property (nonatomic) dispatch_source_t timer;
 @property (nonatomic) NSDate *lastCacheDate;
+
+@property(nonatomic,assign)BOOL ret;
 
 @end
 static const char *view_monitor_queue = "adview.monitor.queue";
@@ -68,24 +71,28 @@ static const char *view_capture_queue = "adview.capture.queue";
             tempStatus = obj.status;
             tempProgressStatus = obj.progressStatus;
         });
-        
+          
         //进度监测或可视化监测有一个没有结束则不移除
         if(tempStatus == VAMonitorStatusUploaded && tempProgressStatus == VAProgressStatusEnd) {
             NSString *monitorKey = [NSString stringWithFormat:@"%@-%@",obj.domain,obj.adID];
             [invalidMonitors addObject:monitorKey];
             NSLog(@"ID:%@视图上传完成停止监测",obj.adID);
+           _ret = NO;
             //可视化监测和进度监测如果有一个没有结束,则继续监测.
         } else if(tempStatus == VAMonitorStatusRuning || tempProgressStatus == VAProgressStatusRuning) {
             dispatch_async(_captureQueue, ^{
                 [obj captureAdStatusAndVerify];
                 NSLog(@"ID:%@视图捕获状态",obj.adID);
+               
             });
+             _ret = YES;
         }
     }];
     [_monitors removeObjectsForKeys:invalidMonitors];
-    
-    [self saveMonitors];
-    
+    if (_ret==YES) {
+           [self saveMonitors];
+    }
+     
     
 }
 
@@ -124,7 +131,7 @@ static const char *view_capture_queue = "adview.capture.queue";
         VAMonitor *exitMonitor = _monitors[monitorKey];
         if(exitMonitor) {
             NSLog(@"Key:%@ 广告存在停止监测",monitorKey);
-            
+                   _ret = NO;
             exitMonitor.status = VAMonitorStatusWaitingUpload;
             exitMonitor.progressStatus = VAProgressStatusEnd;
             
@@ -141,6 +148,7 @@ static const char *view_capture_queue = "adview.capture.queue";
         VAMonitor *exitMonitor = _monitors[monitorKey];
         if (exitMonitor) {
             NSLog(@"Key:%@ 广告存在停止监测",monitorKey);
+                   _ret = NO;
             [exitMonitor setValidExpose];
             exitMonitor.status = VAMonitorStatusWaitingUpload;
             exitMonitor.progressStatus = VAProgressStatusEnd;
@@ -152,14 +160,21 @@ static const char *view_capture_queue = "adview.capture.queue";
 }
 
 - (void)saveMonitors {
+  
     @try {
         dispatch_barrier_sync(_captureQueue, ^{
             NSDictionary *monitors = [NSDictionary dictionaryWithDictionary:_monitors];
-            
-            if(!_lastCacheDate || [[NSDate date] timeIntervalSinceDate:_lastCacheDate] > _config.cacheInterval) {
-                _lastCacheDate = [NSDate date];
+          NSLog(@"保存检测数据%@",monitors);
+            /**只在检测开始， 才进行保存数据判断*/
+       
+               NSDate * date =  [NSDate date];
+            if(!_lastCacheDate || [date timeIntervalSinceDate:_lastCacheDate] > _config.cacheInterval) {
+//                 NSLog(@"写入数据%lf",_config.cacheInterval);
+                _lastCacheDate = date;
                 [NSKeyedArchiver archiveRootObject:monitors toFile:VA_MONITOR_SAVE_PATH];
             }
+                
+                   
         });
     } @catch (NSException *exception) {
         NSLog(@"#exception# 保存监测崩溃");
