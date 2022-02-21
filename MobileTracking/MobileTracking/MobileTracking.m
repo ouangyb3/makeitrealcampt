@@ -222,6 +222,7 @@
 
 - (void)handleSendQueueTimer:(NSTimer *)timer
 {
+       @try {
     NSInteger netStatus = [self.trackingInfoService networkCondition];
     if (netStatus == NETWORK_STATUS_NO) {
         return;
@@ -248,6 +249,10 @@
             [[MMA_RequestQueue mainQueue] addOperation:operation];
         }
     }
+             }
+           @catch (NSException *exception) {
+           }
+
 }
 
 - (void)didEnterBackground

@@ -47,7 +47,7 @@
         }
         
 //        使用CGFloat小数点，小数点14位可能出现偏差，所以修改为float
-        self.ad_showing =  !self.isShowing || view.mma_sHeight != view.mma_height || view.mma_sWidth != view.mma_width;
+        self.ad_showing =  !self.isShowing ;
 
         self.showOnWindow = view.mma_showOnKeyWindow;
         self.originFrame = view.frame;
@@ -71,7 +71,7 @@
         [self.viewList addObject:view.mma_properties];
         
         CGRect coverRect = [self.adView mma_intersectionWithView:view];
-        if (!CGRectEqualToRect(coverRect, CGRectZero)) {
+               if (!CGRectEqualToRect(coverRect, CGRectZero)&&coverRect.size.width>0) {
             if (![self.adView mma_isSuper:view]) {
 //                限制最大view数量阈值
                 if (self.viewCoverList.count < 60) {
