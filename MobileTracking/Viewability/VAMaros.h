@@ -9,14 +9,14 @@
 #import <Foundation/Foundation.h>
 
 #import <UIKit/UIKit.h>
-
+#import "MMA_Log.h"
 #define VAStringFromSize(x) [VAMaros sizeToString:x]
 #define VAStringFromPoint(x) [VAMaros pointToString:x]
 #define VAPixelStringFromSize(x) [VAMaros sizeToPixelString:x]
 #define VAPixelStringFromPoint(x) [VAMaros pointToPixelString:x]
 
 #define DLOG(FORMAT, ...) //printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
-#define NSLog(FORMAT, ...) printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#define NSLog(FORMAT, ...) //printf("%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 
 //#define NSLog(format,...)
 

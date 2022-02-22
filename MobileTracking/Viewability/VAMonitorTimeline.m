@@ -82,7 +82,7 @@
     }
     
     _monitorDuration = [_end.captureDate timeIntervalSinceDate:_start.captureDate];
-   // NSLog(@"ID:%p 持续监测时长:%f 曝光时长:%f 监测时间片:%d",self,_monitorDuration,_exposeDuration,self.frames.count);
+     NSLog(@"ID:%p 持续监测时长:%f 曝光时长:%f 监测时间片:%d",self,_monitorDuration,_exposeDuration,self.frames.count);
 
 }
 
