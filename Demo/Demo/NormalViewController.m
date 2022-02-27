@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *bottomScrollView;
 @property (weak, nonatomic) IBOutlet UIButton *adView;
 
+@property (weak, nonatomic) IBOutlet UIImageView *testView;
 @property (assign, nonatomic)BOOL isPop;
 
 @property (nonatomic, strong)NSString *clickUrl;
@@ -55,7 +56,11 @@ NSString *const displayViewUrl = @"http://e.cn.miaozhen.com/r/k=2128485&p=7Q5OK&
     _isPop = NO;
     _bottomScrollView.delegate = self;
     
-  
+  _testView.image =  nil;
+//   _testView.tag = 999;
+//    _testView.backgroundColor=nil;
+ //  _testView.image = [UIImage imageNamed:@"landingPageIcon"];
+    
     
 }
 
