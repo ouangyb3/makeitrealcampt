@@ -17,6 +17,21 @@
     /**肉眼无法察觉的透明度*/
     BOOL alphaCheck = !(self.alpha <= 0.01);
     BOOL hiddenCheck = !self.hidden;
+ 
+   
+    BOOL sizeCheck = self.mma_width != 0 && self.mma_height != 0;
+    BOOL sSizeCheck = self.mma_sWidth != 0 && self.mma_sHeight != 0;
+    
+    BOOL windowCheck = [self isKindOfClass:[UIWindow class]] ? YES : (self.window != nil);
+    
+    return alphaCheck && hiddenCheck && sizeCheck && sSizeCheck && windowCheck ;
+    
+}
+
+- (BOOL)mma_ViewIsShowing{
+    /**肉眼无法察觉的透明度*/
+    BOOL alphaCheck = !(self.alpha <= 0.01);
+    BOOL hiddenCheck = !self.hidden;
     BOOL ClearColorCheck = YES;
     BOOL backgroundColorCheck  = YES;
     UIImageView * imgView = (UIImageView *)self;
@@ -36,6 +51,7 @@
     return alphaCheck && hiddenCheck && sizeCheck && sSizeCheck && windowCheck && ClearColorCheck&&backgroundColorCheck;
     
 }
+
 
 - (BOOL)mma_hiddenCheck {
     BOOL alphaCheck = !(self.alpha == 0);
