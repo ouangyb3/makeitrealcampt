@@ -415,6 +415,7 @@
         NSString *svl = company.antidevice;
            
         if (svl) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
              [[MMA_IVTInfoService sharedInstance] updateSensorInfo:^{
                            
 //                                MMA_IVTInfoService * ivt = [MMA_IVTInfoService sharedInstance] ;
@@ -424,6 +425,8 @@
 //              
 //                                NSLog(@"越狱：%ld , 充电：%ld, 模拟器:%ld，剩余电量:%lf,距离：%ld",ivt.isRoot,ivt.isCharging,ivt.isSimulator,ivt.Electricity,ivt.Proximity);
                                    }];
+                            
+                        });
               }
        
         MMA_VBOpenResult *res = [[MMA_VBOpenResult alloc] init];
