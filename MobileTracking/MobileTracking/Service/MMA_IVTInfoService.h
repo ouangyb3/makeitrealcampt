@@ -16,7 +16,7 @@
 /**是否越狱*/
 -(BOOL)isRoot;
 /**剩余电量*/
--(double)Electricity;
+-(NSString *)Electricity;
 /**是否充电*/
 -(BOOL)isCharging;
 /**是否模拟器*/

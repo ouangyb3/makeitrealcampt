@@ -406,10 +406,16 @@
     return root;
 }
 /**剩余电量*/
--(double)Electricity{
+-(NSString *)Electricity{
     [UIDevice currentDevice].batteryMonitoringEnabled = YES;
     double deviceLevel = [UIDevice currentDevice].batteryLevel;
-    return deviceLevel;
+    NSString * deviceLevelStr;
+    if (deviceLevel <0||deviceLevel>1) {
+        deviceLevelStr = @"-";
+    }else{
+        deviceLevelStr  = [NSString stringWithFormat:@"%f",deviceLevel];
+    }
+    return deviceLevelStr;
 }
 /**是否充电*/
 -(BOOL)isCharging{
