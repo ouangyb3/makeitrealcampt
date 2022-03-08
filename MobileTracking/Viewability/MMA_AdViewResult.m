@@ -60,7 +60,7 @@
 
 #pragma mark - method
 - (void)enqueueView:(UIView *)view {
-    
+    //
     @try {
         
         if (!_adView) {
