@@ -28,9 +28,13 @@
 
 - (void)push:(MMA_Task *)task
 {
-    if ([self.queue indexOfObject:task] == NSNotFound) {
-        [self.queue addObject:task];
+    @synchronized(self.queue) {
+           if ([self.queue indexOfObject:task] == NSNotFound) {
+             [self.queue addObject:task];
+         }
+    
     }
+ 
 }
 
 - (MMA_Task *)pop

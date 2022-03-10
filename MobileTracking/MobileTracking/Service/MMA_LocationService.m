@@ -37,16 +37,22 @@
 }
 
 - (CLLocationManager *)locationManager {
+      dispatch_async(dispatch_get_main_queue(), ^{
     if (!_locationManager) {
         _locationManager = [[CLLocationManager alloc] init];
 //        不主动弹出弹窗，需要在允许的时候获取
 //        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
 //            [_locationManager requestWhenInUseAuthorization];
 //        }
-        [_locationManager setDelegate:self];
-        [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-        [_locationManager setDistanceFilter:kCLDistanceFilterNone];
+      
+             [_locationManager setDelegate:self];
+            [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+         [_locationManager setDistanceFilter:kCLDistanceFilterNone];
+  
+       
+     
     }
+                });
     return _locationManager;
 }
 - (void)start {
