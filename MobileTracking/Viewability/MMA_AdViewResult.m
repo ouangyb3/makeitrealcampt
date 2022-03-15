@@ -70,7 +70,7 @@
         if (!view.mma_ViewIsShowing) {
             return ;
         }
-        NSLog(@"###tag%@",view.tag);
+     //   NSLog(@"###tag%@",view.tag);
         [self.viewList addObject:view.mma_properties];
         
         CGRect coverRect = [self.adView mma_intersectionWithView:view];

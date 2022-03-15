@@ -479,27 +479,33 @@
 /**ary转字符串*/
 -(NSString*)stringWithAry:(NSArray*)ary{
     
-    
-    NSString*str =@"";
-    
-    for(NSString*string in ary) {
-        
-       
-    
-        
-        if([str length] !=0) {
+    @try {
+           NSString*str =@"";
+         
+         for(NSString*string in ary) {
+             
             
-            str = [str stringByAppendingString:@","];
-            
-        }
+         
+             
+             if([str length] !=0) {
+                 
+                 str = [str stringByAppendingString:@","];
+                 
+             }
+             
+             str = [str stringByAppendingFormat:@"%@",string];
+             
+         }
+         
+         str = [NSString stringWithFormat:@"[%@]",str];
         
-        str = [str stringByAppendingFormat:@"%@",string];
-        
+         return str;
+    } @catch (NSException *exception) {
+         
+    } @finally {
+         
     }
-    
-    str = [NSString stringWithFormat:@"[%@]",str];
-   
-    return str;
+ 
 
 }
 

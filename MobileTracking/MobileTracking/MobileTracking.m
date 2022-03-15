@@ -664,7 +664,7 @@
         }
 
         NSString *monitorKey = [NSString stringWithFormat:@"%@-%@",domain,adID];
-        [_viewabilityService setVAMonitorVisible:monitorKey];
+       [_viewabilityService setVAMonitorVisible:monitorKey];
     }
     NSString *impressKey = [NSString stringWithFormat:@"%@-%@",company.domain[0],adID];
     
@@ -972,12 +972,35 @@
         [MMA_Log log:@"%@" ,@"company is nil,please check your 'sdkconfig.xml' file"];
         return;
     }
-      //  [self pushTask:url];
+    if([[MMA_IVTInfoService sharedInstance] timeDifference]<SENSOR_UPDATE_INTERVAL){
+                  
+         [self pushTask:url];
+                  
+    }else{
+        
+
+    
+   
     __weak typeof (self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.1 * NSEC_PER_SEC)), dispatch_get_global_queue(0, 0), ^{
-        [weakSelf pushTask:url];
-    });
- 
+    if (IOSV<11.0) {
+//          dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//           [weakSelf pushTask:url];
+//                 });
+        dispatch_async(dispatch_get_main_queue(), ^{
+             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.1 * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+                              [weakSelf pushTask:url];
+                          });
+        });
+
+
+    }else{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.1 * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            [weakSelf pushTask:url];
+        });
+        
+   }
+    
+     }
 }
 
 - (MMA_Company *)confirmCompany:(NSString *)url
@@ -1010,7 +1033,9 @@
         task.failedCount = 0;
         task.hasFailed = false;
         task.hasLock = false;
+       
         [self.sendQueue push:task];
+       
     }
     @catch (NSException *exception) {
         [MMA_Log log:@"##pushTask exception:%@" ,exception];
@@ -1170,7 +1195,7 @@
                NSString *svl = company.antidevice;
      if (svl) {
          
-     
+    
       
              
                BOOL ret = YES;
@@ -1178,6 +1203,7 @@
                if([[MMA_IVTInfoService sharedInstance] timeDifference]<SENSOR_UPDATE_INTERVAL){
                    
                    ret = NO;
+                   
                                               }
          
                   MMA_IVTInfoService * ivt =  [MMA_IVTInfoService sharedInstance];
@@ -1186,17 +1212,21 @@
 
             NSArray *sensorArray =    [MMA_IVTInfoService ArrayWithDict:company.config.sensorarguments];
         
-         
+          
                                for (NSInteger i =0; i<sensorArray.count; i++) {
-                                   
+                               
+                                        
+                                                                                                    
+                                                                                                          
                                    MMA_Argument *argument  = sensorArray[i];
                                NSString *key = argument.key;
-                            
+                             
                                if (key && key.length) {
+                               
                                    NSString *value = argument.value;
                                    if (value && value.length) {
                                      
-                                     
+                                  
                                 
                                        id  str;
                                        @try {
@@ -1240,9 +1270,16 @@
                                     
                                           
                                        NSString * ivtStr = [NSString stringWithFormat:@"{%@}",reWriteString];
-                                          
+                                                                 
+                                                                     
 //                                     [MMA_Log log:@"url:%@",ivtStr];
-                                      
+//                                                                     dispatch_async(dispatch_get_main_queue(), ^{
+//                                                                          UITextView * textV = [[UITextView alloc]initWithFrame:CGRectMake(30, 50, 200, 300)];
+//                                                                                                                                             textV.text = ivtStr;
+//
+//                                                                                                                                             [[UIApplication sharedApplication].keyWindow addSubview:textV];
+//                                                                     });
+                                                                    
                                          [trackURL appendFormat:@"%@%@%@%@", company.separator, company.antidevice, company.equalizer, [ivtStr  gtm_stringByEscapingForURLArgument]];
                                       
                                              }
@@ -1250,6 +1287,7 @@
              }
      
     
+                                                                     
     if (redirecturl !=nil&&![redirecturl isEqualToString:@""]) {
         [trackURL appendString:redirecturl];
     }
