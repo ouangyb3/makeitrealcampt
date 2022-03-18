@@ -1255,7 +1255,7 @@
                                            str = @"\"-\"";
                                        }
                                     
-                                                    reWriteString = [reWriteString stringByAppendingFormat :@"\"%@\":%@", value, str?str:@"-"];
+                                                    reWriteString = [reWriteString stringByAppendingFormat :@"\"%@\":%@", value, str?str:@"\"-\""];
 
                                     
                                      
