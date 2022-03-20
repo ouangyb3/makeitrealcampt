@@ -915,11 +915,8 @@
         [MMA_Log log:@"%@" ,@"company is nil,please check your 'sdkconfig.xml' file"];
         return;
     }
-      //  [self pushTask:url];
-    __weak typeof (self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.1 * NSEC_PER_SEC)), dispatch_get_global_queue(0, 0), ^{
-        [weakSelf pushTask:url];
-    });
+     [self pushTask:url];
+  
  
 }
 
