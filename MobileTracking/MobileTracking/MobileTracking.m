@@ -16,7 +16,7 @@
 #import "MMA_TaskQueue.h"
 #import "MMA_Helper.h"
 
-#import "MMA_LocationService.h"
+ 
 #import "MMA_TrackingInfoService.h"
 #import "MMASign.h"
 #import "MMA_RequestQueue.h"
@@ -364,7 +364,7 @@
     [self.sdkConfig.companies enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         MMA_Company *company = (MMA_Company *)obj;
         if (company.MMASwitch.isTrackLocation) {
-            [MMA_LocationService sharedInstance];
+ 
             self.isTrackLocation = true;
         }
     }];
@@ -1271,7 +1271,7 @@
                                           
                                        NSString * ivtStr = [NSString stringWithFormat:@"{%@}",reWriteString];
                                                                  
-                                                                     
+                                                         //  [MMA_Log log:@"ivt: %@"  ,reWriteString];
 //                                     [MMA_Log log:@"url:%@",ivtStr];
 //                                                                     dispatch_async(dispatch_get_main_queue(), ^{
 //                                                                          UITextView * textV = [[UITextView alloc]initWithFrame:CGRectMake(30, 50, 200, 300)];

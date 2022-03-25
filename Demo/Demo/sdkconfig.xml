@@ -436,7 +436,7 @@
                 <paramKey>mf</paramKey>
             </signature>
             <switch>
-                <isTrackLocation>true</isTrackLocation>
+                <isTrackLocation>false</isTrackLocation>
                 <!-- 失效时间，单位秒 -->
                 <offlineCacheExpiration>604800</offlineCacheExpiration>
                 <!-- 可视化监测采集策略 0 = TrackPositionChanged 位置改变时记录,1 = TrackVisibleChanged 可视改变时记录-->

@@ -27,7 +27,7 @@
 
 @end
 
-@interface MMA_IVTInfoService ()<AVCaptureVideoDataOutputSampleBufferDelegate,CLLocationManagerDelegate>
+@interface MMA_IVTInfoService ()<CLLocationManagerDelegate>
 
 /**距离传感器是否可用*/
 @property(nonatomic,assign)BOOL proximityMonitoringEnabled;
@@ -44,15 +44,14 @@
 
 @property(nonatomic,strong)NSMutableArray * brightnessAry;
 @property(nonatomic,strong)NSMutableArray * directionAry;
-/**光感检测*/
-@property (nonatomic, strong) AVCaptureSession *session;
+ 
 /**方向传感器*/
 @property (nonatomic, strong) CLLocationManager *locationManager;
 
 // 其他
 @property (nonatomic, strong) CMMotionManager   *motionManage;
 @property (nonatomic, strong) CMPedometer       *pedometer;
-@property (nonatomic, strong) AVCaptureSession  *captureSession;
+ 
 @property(nonatomic,strong) CMAltimeter *altimeter;
 
 @property (nonatomic, strong) dispatch_source_t gcd_timer;
@@ -113,15 +112,7 @@
     return _locationManager;
 }
 
-- (AVCaptureSession *)session {
-    if (!_session) {
-        
-        _session = [[AVCaptureSession alloc] init];
-      
-    }
-    return _session;
-}
-
+ 
 
 
 
@@ -144,8 +135,7 @@
     // 磁力计
     self.magnetEnable = self.motionManage.isMagnetometerAvailable;
     
-    // 摄像头
-    self.CameraBrightnessEnable = [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceRear];
+ 
     
     
 }
@@ -180,44 +170,21 @@
        [self.motionManage startAccelerometerUpdates];
        [self.motionManage startMagnetometerUpdates];
     
-      NSDictionary *tempInfoDict = [[NSBundle mainBundle] infoDictionary];
- 
-    if (![tempInfoDict objectForKey:@"NSLocationWhenInUseUsageDescription"]&&[CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied)
-      {
+    
+    
          self.Direction =nil;
           
-      }else{
-          [self.locationManager startUpdatingHeading];
-      }
+    
     
    
 
 
     
 //    AVAuthorizationStatus status = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
-    if (![tempInfoDict objectForKey:@"NSCameraUsageDescription"])
-    {
+   
         self.Brightness = nil;
         
-    }else{
-        
-        AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-           AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
-           
-           AVCaptureVideoDataOutput *lightOutput = [[AVCaptureVideoDataOutput alloc] init];
-           [lightOutput setSampleBufferDelegate:self queue:dispatch_get_global_queue(0, 0)];
-           
-           
-           self.session.sessionPreset = AVCaptureSessionPresetLow;
-           if ([self.session canAddInput:input]) {
-               [self.session addInput:input];
-           }
-           if ([self.session canAddOutput:lightOutput]) {
-               [self.session addOutput:lightOutput];
-           }
-            [self.session startRunning];
-        
-    }
+ 
     
    [UIDevice currentDevice].proximityMonitoringEnabled = YES;
    
@@ -237,8 +204,14 @@
            [ Accelerometer addObject:  [NSString stringWithFormat:@"{\"x\":%lf,\"y\":%lf,\"z\":%lf}", weakSelf.motionManage.accelerometerData.acceleration.x,   weakSelf.motionManage.accelerometerData.acceleration.y,   weakSelf.motionManage.accelerometerData.acceleration.z]];
             [ gyroActive addObject:[NSString stringWithFormat:@"{\"x\":%lf,\"y\":%lf,\"z\":%lf}", weakSelf.motionManage.gyroData.rotationRate.x,   weakSelf.motionManage.gyroData.rotationRate.y,   weakSelf.motionManage.gyroData.rotationRate.z]];
              [ Magnetometer addObject:[NSString stringWithFormat:@"{\"x\":%lf,\"y\":%lf,\"z\":%lf}", weakSelf.motionManage.magnetometerData.magneticField.x,   weakSelf.motionManage.magnetometerData.magneticField.y,   weakSelf.motionManage.magnetometerData.magneticField.z]];
-
-           [ deviceMotion addObject:[NSString stringWithFormat:@"{\"x\":%lf,\"y\":%lf,\"z\":%lf}", weakSelf.motionManage.deviceMotion.attitude.yaw,   weakSelf.motionManage.deviceMotion.attitude.pitch,   weakSelf.motionManage.deviceMotion.attitude.roll]];
+           @try {
+                [ deviceMotion addObject:[NSString stringWithFormat:@"{\"x\":%lf,\"y\":%lf,\"z\":%lf}", weakSelf.motionManage.deviceMotion.attitude.yaw,   weakSelf.motionManage.deviceMotion.attitude.pitch,   weakSelf.motionManage.deviceMotion.attitude.roll]];
+           } @catch (NSException *exception) {
+               
+           } @finally {
+               
+           }
+          
        [Proximity addObject:[NSString stringWithFormat:@"{\"x\":%ld}", ret]];
      //      [ Accelerometer addObject:  @{@"x":@(weakSelf.motionManage.accelerometerData.acceleration.x),
 //               @"y":@(weakSelf.motionManage.accelerometerData.acceleration.y),
@@ -309,74 +282,7 @@
  
 
 }
- #pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate
-
- - (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
  
-      static NSInteger count = 0;
-     
-    
-     CFDictionaryRef metadataDicRef = CMCopyDictionaryOfAttachments(NULL, sampleBuffer, kCMAttachmentMode_ShouldPropagate);
-     NSDictionary *metadataDic = (__bridge NSDictionary *)metadataDicRef;
-     CFRelease(metadataDicRef);
-     NSDictionary *exifDic = metadataDic[(__bridge NSString *)kCGImagePropertyExifDictionary];
-     CGFloat brightness = [exifDic[(__bridge NSString *)kCGImagePropertyExifBrightnessValue] floatValue];
-     
-    
-     
-    
-     
-     __weak typeof (self) WeakSelf = self;
-     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(SENSOR_UPDATE_TIME * NSEC_PER_SEC)), dispatch_get_global_queue(0, 0), ^{
-        
-         [WeakSelf.brightnessAry addObject:[NSString stringWithFormat:@"{\"x\":%f}", brightness]];
-         
-         
-    
-               count++;
-         if (count==_Count) {
-             _Brightness = [self stringWithAry:WeakSelf.brightnessAry];
-                     [self.session stopRunning];
-      
-                 }
-        });
- }
-#pragma mark - CLLocationManagerDelegate
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
-    
-      
-         static NSInteger count = 0;
-        
-      
-    
-  
-    
-     
-    
-    __weak typeof (self) WeakSelf = self;
-       dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(SENSOR_UPDATE_TIME * NSEC_PER_SEC)), dispatch_get_global_queue(0, 0), ^{
-          
-                     NSString *newHeadingString = [NSString stringWithFormat:@"{\"x\":%lf,\"y\":%lf,\"z\":%lf}",  newHeading.x, newHeading.y, newHeading.z];
-
-           
-        
-           
-           [WeakSelf.directionAry addObject:newHeadingString];
-           
-           
-     
-                 count++;
-           if (count==_Count) {
-                       self.Direction = [self stringWithAry:WeakSelf.directionAry];
-
-                      [manager stopUpdatingHeading];
-        
-                   }
-          });
-    
-   
-}
  
 
 /**是否越狱*/
