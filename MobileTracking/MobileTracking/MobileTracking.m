@@ -26,7 +26,7 @@
 #import "VAMonitorConfig.h"
 #import "ViewabilityJSService.h"
 #import "VAViewCapture.h"
-#import "MMA_IVTInfoService.h"
+ 
 
 @interface MobileTracking() <VAMonitorDataProtocol>
 
@@ -102,15 +102,7 @@
 }
 -(void)initSensor{
     
-    [[MMA_IVTInfoService sharedInstance] updateSensorInfo:^{
-             
-                  MMA_IVTInfoService * ivt = [MMA_IVTInfoService sharedInstance] ;
-                 
-//                  
-//                  NSLog(@"加速度：%@ =陀螺仪：%@= 磁场：%@= 重力值：%@ = 方向值：%@= 气压：%@ = 光线强弱:%@",ivt.Accelerometer,ivt.gyroActive,ivt.Magnetometer,ivt.deviceMotion,ivt.direction,ivt.pressure,ivt.brightness);
-//                  
-//                  NSLog(@"越狱：%ld , 充电：%ld, 模拟器:%ld，剩余电量:%lf,距离：%ld",ivt.isRoot,ivt.isCharging,ivt.isSimulator,ivt.electricity,ivt.proximity);
-                     }];
+ 
     
 }
 - (void)initSdkConfig
@@ -412,22 +404,8 @@
     @try {
         
         MMA_Company *company = [self confirmCompany:url];
-        NSString *svl = company.antidevice;
-           
-        if (svl) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-             [[MMA_IVTInfoService sharedInstance] updateSensorInfo:^{
-                           
-//                                MMA_IVTInfoService * ivt = [MMA_IVTInfoService sharedInstance] ;
-//                               
-//              
-//                                NSLog(@"加速度：%@ =陀螺仪：%@= 磁场：%@= 重力值：%@ = 方向值：%@= 气压：%@ = 光线强弱:%@",ivt.Accelerometer,ivt.GyroActive,ivt.Magnetometer,ivt.DeviceMotion,ivt.Direction,ivt.Pressure,ivt.Brightness);
-//              
-//                                NSLog(@"越狱：%ld , 充电：%ld, 模拟器:%ld，剩余电量:%lf,距离：%ld",ivt.isRoot,ivt.isCharging,ivt.isSimulator,ivt.Electricity,ivt.Proximity);
-                                   }];
-                            
-                        });
-              }
+      
+      
        
         MMA_VBOpenResult *res = [[MMA_VBOpenResult alloc] init];
         res.config = self.viewabilityConfig; // 初始化默认配置为当前的配置
@@ -600,41 +578,10 @@
             }
             res.canOpen = NO;
         }
-#pragma mark == ivt ==
+ 
         
   
-        if (svl) {
-                    
-
-
-    
-                   NSString *separator = company.separator;
-                   NSString *equalizer = company.equalizer;
-                
-    NSArray *sensorArray =    [MMA_IVTInfoService ArrayWithDict:company.config.sensorarguments];
-                       for (NSInteger i =0; i<sensorArray.count; i++) {
-                           
-                           MMA_Argument *argument  = sensorArray[i];
-                       NSString *key = argument.key;
-                    
-                       if (key && key.length) {
-                           NSString *value = argument.value;
-                           if (value && value.length) {
-                               NSString *replacedString = @"";
-                             
-                         
-
-                              
-                             
-                                                 
-                            
-                               [filterURL replaceOccurrencesOfString:[NSString stringWithFormat:@"%@%@%@[^%@]*", separator, value, equalizer, separator] withString:replacedString options:NSRegularExpressionSearch range:NSMakeRange(0, filterURL.length)];
-                             
-                           }
-                       }
-                   }
-       
-                          }
+   
         
         res.url = filterURL;
         return res;
@@ -972,35 +919,18 @@
         [MMA_Log log:@"%@" ,@"company is nil,please check your 'sdkconfig.xml' file"];
         return;
     }
-    if([[MMA_IVTInfoService sharedInstance] timeDifference]<SENSOR_UPDATE_INTERVAL){
-                  
+  
          [self pushTask:url];
                   
-    }else{
+ 
         
 
     
+    
+        
    
-    __weak typeof (self) weakSelf = self;
-    if (IOSV<11.0) {
-//          dispatch_async(dispatch_get_global_queue(0, 0), ^{
-//           [weakSelf pushTask:url];
-//                 });
-        dispatch_async(dispatch_get_main_queue(), ^{
-             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.1 * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-                              [weakSelf pushTask:url];
-                          });
-        });
-
-
-    }else{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.1 * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            [weakSelf pushTask:url];
-        });
-        
-   }
     
-     }
+    
 }
 
 - (MMA_Company *)confirmCompany:(NSString *)url
@@ -1189,103 +1119,8 @@
     [MMA_Log log:@"signString: %@"  ,signString];
     [trackURL appendFormat:@"%@%@%@%@", company.separator, company.signature.paramKey, company.equalizer, signString];
     
-    #pragma mark == ivt ==
-     
-           
-               NSString *svl = company.antidevice;
-     if (svl) {
-         
-    
-      
-             
-               BOOL ret = YES;
  
-               if([[MMA_IVTInfoService sharedInstance] timeDifference]<SENSOR_UPDATE_INTERVAL){
-                   
-                   ret = NO;
-                   
-                                              }
-         
-                  MMA_IVTInfoService * ivt =  [MMA_IVTInfoService sharedInstance];
-                          
-                       NSString *reWriteString = @"";
-
-            NSArray *sensorArray =    [MMA_IVTInfoService ArrayWithDict:company.config.sensorarguments];
         
-          
-                               for (NSInteger i =0; i<sensorArray.count; i++) {
-                               
-                                        
-                                                                                                    
-                                                                                                          
-                                   MMA_Argument *argument  = sensorArray[i];
-                               NSString *key = argument.key;
-                             
-                               if (key && key.length) {
-                               
-                                   NSString *value = argument.value;
-                                   if (value && value.length) {
-                                     
-                                  
-                                
-                                       id  str;
-                                       @try {
-                                             str = [ivt valueForKey:key];
-                                      
-                                       } @catch (NSException *exception) {
-                                           
-                                           str = @"\"-\"";
-                                       } @finally {
-                                           
-                                       }
-                                          
-                                  
-                                       NSLog(@"%@,%@",value,str);
-                                 
-        if([reWriteString length] !=0) {
-            
-            reWriteString = [reWriteString stringByAppendingString:@","];
-            
-        }
-
-                                      
-                                     
-                                
-                                       if (ret==NO&&i>5) {
-                                           str = @"\"-\"";
-                                       }
-                                    
-                                                    reWriteString = [reWriteString stringByAppendingFormat :@"\"%@\":%@", value, str?str:@"\"-\""];
-
-                                    
-                                     
-                                   }
-                               }
-                           }
-               
-     
-                                                                 if(reWriteString && reWriteString.length) {
-
-                                          
-                                    
-                                          
-                                       NSString * ivtStr = [NSString stringWithFormat:@"{%@}",reWriteString];
-                                                                 
-                                                         //  [MMA_Log log:@"ivt: %@"  ,reWriteString];
-//                                     [MMA_Log log:@"url:%@",ivtStr];
-//                                                                     dispatch_async(dispatch_get_main_queue(), ^{
-//                                                                          UITextView * textV = [[UITextView alloc]initWithFrame:CGRectMake(30, 50, 200, 300)];
-//                                                                                                                                             textV.text = ivtStr;
-//
-//                                                                                                                                             [[UIApplication sharedApplication].keyWindow addSubview:textV];
-//                                                                     });
-                                                                    
-                                         [trackURL appendFormat:@"%@%@%@%@", company.separator, company.antidevice, company.equalizer, [ivtStr  gtm_stringByEscapingForURLArgument]];
-                                      
-                                             }
-         
-             }
-     
     
                                                                      
     if (redirecturl !=nil&&![redirecturl isEqualToString:@""]) {
