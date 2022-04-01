@@ -120,7 +120,7 @@
     sysctlbyname("hw.machine", machine, &size, NULL, 0);
     NSString * platform = [NSString stringWithUTF8String:machine];
     free(machine);
-    return platform;
+    return platform?platform:@"";
 }
 
 - (NSString *)idfv
