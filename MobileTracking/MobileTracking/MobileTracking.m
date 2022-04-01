@@ -1073,7 +1073,11 @@
         } else if ([argument.key isEqualToString:TRACKING_KEY_TERM]) {
             
             NSString *term = [[self.trackingInfoService term] gtm_stringByEscapingForURLArgument];
+            if(term&&term.length>0){
+        
             [trackURL appendFormat:@"%@%@%@%@", company.separator, queryArgsKey, company.equalizer, term];
+                
+                    }
             
         } else if ([argument.key isEqualToString:TRACKING_KEY_WIFI]) {
             
