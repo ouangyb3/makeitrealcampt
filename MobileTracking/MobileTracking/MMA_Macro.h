@@ -9,7 +9,7 @@
 #ifndef MobileTracking_Macro_h
 #define MobileTracking_Macro_h
 
-#define MMA_SDK_VERSION @"V2.1.5"
+#define MMA_SDK_VERSION @"V2.1.6"
 
 #define NOTIFICATION_VB @"viewability_notification"
 #define NOTIFICATION_EXPOSE @"expose_notification"
