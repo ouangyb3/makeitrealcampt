@@ -80,7 +80,12 @@ NSString *const displayViewUrl = @"http://e.cn.miaozhen.com/r/k=2128485&p=7Q5OK&
         {
        
             //    普通曝光
-            [[MobileTracking sharedInstance] view:@"http://tyfx.m.cn.miaozhen.com/x/k=2122670&p=7P5QF&dx=__IPDX__&rt=2&ns=__IP__&ni=__IESID__&v=__LOC__&xa=__ADPLATFORM__&tr=__REQUESTID__&mo=__OS__&m0=__OPENUDID__&m0a=__DUID__&m1=__ANDROIDID1__&m1a=__ANDROIDID__&m2=__IMEI__&m4=__AAID__&m5=__IDFA__&m6=__MAC1__&m6a=__MAC__&nd=__DRA__&np=__POS__&nn=__APP__&nc=__VID__&nf=__FLL__&ne=__SLL__&ng=__CTREF__&nx=__TRANSID__&vx=__VIEWSEQ__&ve=__DISVID__&vg=__IFAUTO__&vd=__DETAIL__&vf=__GROUP__&va=1&o=" ad:_adView impressionType:1];
+          
+ 
+                
+       
+            [[MobileTracking sharedInstance] view:normalViewUrl ad:_adView impressionType:1];
+            
             _clickUrl = [NSString stringWithFormat:@"%@", normalClickUrl];
             self.title = @"曝光及点击";
             
@@ -91,7 +96,7 @@ NSString *const displayViewUrl = @"http://e.cn.miaozhen.com/r/k=2128485&p=7Q5OK&
             
             //            可视化曝光+可视化点击
             //    可视化曝光
-            [[MobileTracking sharedInstance] view:displayViewUrl ad:_adView];
+            [[MobileTracking sharedInstance] view:@"https://g.ads.cn.miaozhen.com/v1.1/i.gif?cp=1446&sp=51035&ad=__ADID__&adgp=__ADGPID__&cr=7788&rq=__REQUESTID__&mck=__MCOOKIE__&did=__DEVICEID__&dmp=__DMP__&rs=__RESPONSEID__&srcsp=__SOURCESP__&maca=__MAC__&maca1=__MAC1__&ta=__TA__&excl=__EXCL__&ci=__CIDX__&ig=,u" ad:_adView];
             _clickUrl = [NSString stringWithFormat:@"%@", displayClickUrl];
             self.title = @"Display可见曝光";
             
