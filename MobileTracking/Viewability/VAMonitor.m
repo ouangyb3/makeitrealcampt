@@ -207,10 +207,10 @@
     }
     
     // 视频类型传入
-    if (self.isVideo) {
-        [parmaters setValue:[NSString stringWithFormat:@"%ld", (long)self.config.videoPlayType] forKey:AD_VB_VIDEOPLAYTYPE];
-    }
-    
+//    if (self.isVideo) {
+//        [parmaters setValue:[NSString stringWithFormat:@"%ld", (long)self.config.videoPlayType] forKey:AD_VB_VIDEOPLAYTYPE];
+//    }
+//    
     NSMutableDictionary *accessDictionary = [NSMutableDictionary dictionary];
     [parmaters enumerateKeysAndObjectsUsingBlock:^(NSString * key, id obj, BOOL * _Nonnull stop) {
         if([self canRecord:key]) {
