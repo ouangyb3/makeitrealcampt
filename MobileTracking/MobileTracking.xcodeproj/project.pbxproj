@@ -251,6 +251,8 @@
 		AFB371691F3854770092930F /* ViewabilityJSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewabilityJSService.h; sourceTree = "<group>"; };
 		AFB3716A1F3854770092930F /* ViewabilityJSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewabilityJSService.m; sourceTree = "<group>"; };
 		AFB87D322004BA9E00A02E0C /* libMMASign.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMMASign.a; sourceTree = "<group>"; };
+		C74B78322375573A0031DE10 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Photos.framework; sourceTree = DEVELOPER_DIR; };
+		C74B7835237557510031DE10 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/PhotosUI.framework; sourceTree = DEVELOPER_DIR; };
 		C765ABDF23262B660066E906 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -319,6 +321,8 @@
 		2A632A1A18CEB10B00BE2533 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C74B7835237557510031DE10 /* PhotosUI.framework */,
+				C74B78322375573A0031DE10 /* Photos.framework */,
 				C765ABDF23262B660066E906 /* WebKit.framework */,
 				2ABFE29718CF2B5F007BD457 /* CoreLocation.framework */,
 				2ABFE28118CF1778007BD457 /* UIKit.framework */,

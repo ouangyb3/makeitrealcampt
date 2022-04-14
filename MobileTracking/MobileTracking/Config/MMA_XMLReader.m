@@ -128,6 +128,7 @@
         
         company.separator = [[[element elementsForName:@"separator" ] firstObject] stringValue];
         company.equalizer = [[[element elementsForName:@"equalizer" ] firstObject] stringValue];
+        company.antidevice = [[[element elementsForName:@"antidevice" ] firstObject] stringValue];
         if (company.equalizer == nil) {
             company.equalizer = @"";
         }
@@ -200,6 +201,19 @@
             argument.isRequired = [[self StringTrimFromElement:el name:@"isRequired"] boolValue];
             [company.config.viewabilityarguments setValue:argument forKey:argument.key];
         }
+        
+        
+            company.config.sensorarguments = [NSMutableDictionary dictionary];
+            NSArray *sensorarguments = [element nodesForXPath:@"config/sensorarguments/argument" error:nil];
+            for(MMA_GDataXMLElement *el  in sensorarguments){
+                MMA_Argument *argument = [[MMA_Argument alloc] init];
+                argument.key = [self StringTrimFromElement:el name:@"key"];
+                argument.value = [self StringTrimFromElement:el name:@"value"];
+                argument.urlEncode = [[self StringTrimFromElement:el name:@"urlEncode"] boolValue];
+                argument.isRequired = [[self StringTrimFromElement:el name:@"isRequired"] boolValue];
+                [company.config.sensorarguments setValue:argument forKey:argument.key];
+            }
+        
         
         [sdkConfig.companies setValue:company forKey:company.name];
     }

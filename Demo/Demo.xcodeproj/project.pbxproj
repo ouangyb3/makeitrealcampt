@@ -26,15 +26,16 @@
 		772E49C722F19F950009DFD2 /* videoAd.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 772E49C522F19F940009DFD2 /* videoAd.mp4 */; };
 		77303F6722F98A3A00A51176 /* Advertisement.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 77303F6622F98A3A00A51176 /* Advertisement.mp4 */; };
 		77303F6A22F98F2D00A51176 /* landingPageIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 77303F6922F98F2D00A51176 /* landingPageIcon.png */; };
-		7781CA6122C4BBD1002805DB /* sdkconfig.xml in Resources */ = {isa = PBXBuildFile; fileRef = 7781CA6022C4BBD1002805DB /* sdkconfig.xml */; };
 		AF353EDF1CFC24FB00969035 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF353EDE1CFC24FB00969035 /* AdSupport.framework */; };
 		AF4B464B218AB16400BE2F3F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF353EE01CFC251C00969035 /* SystemConfiguration.framework */; };
 		AF4B464C218AB18300BE2F3F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF353ED91CFC24E400969035 /* CoreLocation.framework */; };
 		AF6EA2E51EF655AD000DF811 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF6EA2E41EF655AD000DF811 /* Images.xcassets */; };
 		AF7D89611EF655F50069A7DC /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7D89601EF655F50069A7DC /* Launch Screen.storyboard */; };
 		AFB3717E1F3854E10092930F /* admaster.js in Resources */ = {isa = PBXBuildFile; fileRef = AFB3717D1F3854E10092930F /* admaster.js */; };
-		C765ABEC23262CDA0066E906 /* libMobileTrackingSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABB195518DAFA0300C7CAA9 /* libMobileTrackingSimulator.a */; };
+		C726E4B5238665E1000EC447 /* sdkconfig.xml in Resources */ = {isa = PBXBuildFile; fileRef = C726E4B4238665E1000EC447 /* sdkconfig.xml */; };
 		C765ABED23262CE00066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABE923262CC20066E906 /* WebKit.framework */; };
+		C78B6BB0236C303F0022BD30 /* libMobileTrackingSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABB195518DAFA0300C7CAA9 /* libMobileTrackingSimulator.a */; };
+		C78B6BC5236C33A60022BD30 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78B6BC0236C33A60022BD30 /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,13 +65,6 @@
 			containerPortal = 2A0C4E5218D6D19700200F18 /* MobileTracking.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 2A81721B18DAEB3A00E0EFEC;
-			remoteInfo = MobileTrackingSimulator;
-		};
-		77BDFC40230D44CE00079FDF /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2A0C4E5218D6D19700200F18 /* MobileTracking.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 2A8171FF18DAEB3A00E0EFEC;
 			remoteInfo = MobileTrackingSimulator;
 		};
 /* End PBXContainerItemProxy section */
@@ -107,7 +101,6 @@
 		772E49C522F19F940009DFD2 /* videoAd.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = videoAd.mp4; sourceTree = "<group>"; };
 		77303F6622F98A3A00A51176 /* Advertisement.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Advertisement.mp4; sourceTree = "<group>"; };
 		77303F6922F98F2D00A51176 /* landingPageIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = landingPageIcon.png; sourceTree = "<group>"; };
-		7781CA6022C4BBD1002805DB /* sdkconfig.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sdkconfig.xml; sourceTree = "<group>"; };
 		AF2DFF4021955F0300B10C3F /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
 		AF353ED91CFC24E400969035 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AF353EDE1CFC24FB00969035 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -115,7 +108,10 @@
 		AF6EA2E41EF655AD000DF811 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AF7D89601EF655F50069A7DC /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		AFB3717D1F3854E10092930F /* admaster.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = admaster.js; sourceTree = "<group>"; };
+		C726E4B4238665E1000EC447 /* sdkconfig.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sdkconfig.xml; sourceTree = "<group>"; };
+		C74B7838237557EA0031DE10 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		C765ABE923262CC20066E906 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		C78B6BC0236C33A60022BD30 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,8 +119,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C78B6BC5236C33A60022BD30 /* CoreMotion.framework in Frameworks */,
 				C765ABED23262CE00066E906 /* WebKit.framework in Frameworks */,
-				C765ABEC23262CDA0066E906 /* libMobileTrackingSimulator.a in Frameworks */,
+				C78B6BB0236C303F0022BD30 /* libMobileTrackingSimulator.a in Frameworks */,
 				AF4B464C218AB18300BE2F3F /* CoreLocation.framework in Frameworks */,
 				AF4B464B218AB16400BE2F3F /* SystemConfiguration.framework in Frameworks */,
 				AF353EDF1CFC24FB00969035 /* AdSupport.framework in Frameworks */,
@@ -167,6 +164,8 @@
 		2A0C4E1C18D6D18700200F18 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C74B7838237557EA0031DE10 /* Photos.framework */,
+				C78B6BC0236C33A60022BD30 /* CoreMotion.framework */,
 				C765ABE923262CC20066E906 /* WebKit.framework */,
 				AF2DFF4021955F0300B10C3F /* libxml2.tbd */,
 				AF353EE01CFC251C00969035 /* SystemConfiguration.framework */,
@@ -200,8 +199,8 @@
 				772E49B722F195970009DFD2 /* VideoViewController.m */,
 				772E49B422F195950009DFD2 /* VideoViewController.xib */,
 				AFB3717D1F3854E10092930F /* admaster.js */,
+				C726E4B4238665E1000EC447 /* sdkconfig.xml */,
 				2A0C4E2F18D6D18700200F18 /* Main.storyboard */,
-				7781CA6022C4BBD1002805DB /* sdkconfig.xml */,
 				AF7D89601EF655F50069A7DC /* Launch Screen.storyboard */,
 				AF6EA2E41EF655AD000DF811 /* Images.xcassets */,
 				2A0C4E2418D6D18700200F18 /* Supporting Files */,
@@ -262,7 +261,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				77BDFC41230D44CE00079FDF /* PBXTargetDependency */,
 			);
 			name = Demo;
 			productName = Demo;
@@ -366,13 +364,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7781CA6122C4BBD1002805DB /* sdkconfig.xml in Resources */,
 				77303F6722F98A3A00A51176 /* Advertisement.mp4 in Resources */,
 				772E49BD22F1959B0009DFD2 /* VideoViewController.xib in Resources */,
 				AF6EA2E51EF655AD000DF811 /* Images.xcassets in Resources */,
 				772E49C222F1959B0009DFD2 /* NormalViewController.xib in Resources */,
 				77303F6A22F98F2D00A51176 /* landingPageIcon.png in Resources */,
 				772E49C722F19F950009DFD2 /* videoAd.mp4 in Resources */,
+				C726E4B5238665E1000EC447 /* sdkconfig.xml in Resources */,
 				2A0C4E2818D6D18700200F18 /* InfoPlist.strings in Resources */,
 				AFB3717E1F3854E10092930F /* admaster.js in Resources */,
 				AF7D89611EF655F50069A7DC /* Launch Screen.storyboard in Resources */,
@@ -420,11 +418,6 @@
 			isa = PBXTargetDependency;
 			target = 2A0C4E1918D6D18700200F18 /* Demo */;
 			targetProxy = 2A0C4E4018D6D18700200F18 /* PBXContainerItemProxy */;
-		};
-		77BDFC41230D44CE00079FDF /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = MobileTrackingSimulator;
-			targetProxy = 77BDFC40230D44CE00079FDF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

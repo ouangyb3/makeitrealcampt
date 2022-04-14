@@ -140,9 +140,9 @@
     MMA_AdNode *adNode = [self.nodeList objectForKey:@(index)];
     MMA_AdNode *leftNode = [self.nodeList objectForKey:@(index<<1)];
     MMA_AdNode *rightNode = [self.nodeList objectForKey:@(index<<1|1)];
-//    if (adNode == nil) {
-//        return;
-//    }
+    if (adNode == nil) {
+        return;
+    }
 //    if (leftNode == nil) {
 //        return;
 //    }

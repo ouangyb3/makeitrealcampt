@@ -50,6 +50,7 @@
 @property (nonatomic, strong) NSMutableDictionary *arguments;
 @property (nonatomic, strong) NSMutableDictionary *Adplacement;
 @property (nonatomic, strong) NSMutableDictionary *viewabilityarguments;
+@property (nonatomic, strong) NSMutableDictionary *sensorarguments;
 @end
 /*--------------加密签名设置--------------*/
 @interface MMA_Signature : NSObject
@@ -76,6 +77,7 @@
 @property (nonatomic, strong) MMA_Config *config ;
 @property (nonatomic, strong) NSString *separator;
 @property (nonatomic, strong) NSString *equalizer;
+@property (nonatomic, strong) NSString *antidevice;
 @property (nonatomic, assign) Boolean timeStampUseSecond;
 @property (nonatomic, strong) NSString *jsname;
 @property (nonatomic, strong) NSString *jsurl;
