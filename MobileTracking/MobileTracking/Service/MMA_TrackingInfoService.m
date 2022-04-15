@@ -79,18 +79,26 @@
 }
  
 - (NSString *)openUDID {
+    
     /// 说明：
     ///     open UDID 一般不会发生改变，只有在用户的手机恢复系统，或者删除所有包含 openUDID 的APP的时候，才会发生改变。
     ///     因为每次获取 open UDID 都比较耗时。因此，可以将之持久化保存起来。
     
     /// 先获取缓存的 open UDID；
-    NSString *openUDID = [[NSUserDefaults standardUserDefaults] stringForKey:MMA_LocalCacheOpenUDIDPersistKey];
-    /// 如果没有缓存，同步持久化保存。
-    if(!openUDID){
-        [self persistOpenUDID];
-    }
+    @try {
+         NSString *openUDID = [[NSUserDefaults standardUserDefaults] stringForKey:MMA_LocalCacheOpenUDIDPersistKey];
+           /// 如果没有缓存，同步持久化保存。
+           if(!openUDID||openUDID.length<=0){
+               [self persistOpenUDID];
+           }
 
-    return openUDID ? openUDID : @"";
+           return openUDID ? openUDID : @"";
+    } @catch (NSException *exception) {
+        
+    } @finally {
+        
+    }
+   
 }
 
 - (NSString *)persistOpenUDID {
