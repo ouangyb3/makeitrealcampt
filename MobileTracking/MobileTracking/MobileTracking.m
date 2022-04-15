@@ -16,7 +16,7 @@
 #import "MMA_TaskQueue.h"
 #import "MMA_Helper.h"
 
-#import "MMA_LocationService.h"
+ 
 #import "MMA_TrackingInfoService.h"
 #import "MMASign.h"
 #import "MMA_RequestQueue.h"
@@ -94,13 +94,17 @@
         [self initTimer];
         [self openLBS];
         [self initViewabilityService];
-    
+      //  [self performSelector:@selector(initSensor) withObject:nil afterDelay:0.1];
         
         
     }
     return self;
 }
+-(void)initSensor{
+    
  
+    
+}
 - (void)initSdkConfig
 {
     @try {
@@ -352,7 +356,7 @@
     [self.sdkConfig.companies enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         MMA_Company *company = (MMA_Company *)obj;
         if (company.MMASwitch.isTrackLocation) {
-            [MMA_LocationService sharedInstance];
+ 
             self.isTrackLocation = true;
         }
     }];
@@ -400,7 +404,7 @@
     @try {
         
         MMA_Company *company = [self confirmCompany:url];
-   
+      
       
        
         MMA_VBOpenResult *res = [[MMA_VBOpenResult alloc] init];
@@ -577,7 +581,7 @@
  
         
   
- 
+   
         
         res.url = filterURL;
         return res;
@@ -607,7 +611,7 @@
         }
 
         NSString *monitorKey = [NSString stringWithFormat:@"%@-%@",domain,adID];
-        [_viewabilityService setVAMonitorVisible:monitorKey];
+       [_viewabilityService setVAMonitorVisible:monitorKey];
     }
     NSString *impressKey = [NSString stringWithFormat:@"%@-%@",company.domain[0],adID];
     
@@ -915,9 +919,18 @@
         [MMA_Log log:@"%@" ,@"company is nil,please check your 'sdkconfig.xml' file"];
         return;
     }
-     [self pushTask:url];
   
+         [self pushTask:url];
+                  
  
+        
+
+    
+    
+        
+   
+    
+    
 }
 
 - (MMA_Company *)confirmCompany:(NSString *)url
@@ -950,7 +963,9 @@
         task.failedCount = 0;
         task.hasFailed = false;
         task.hasLock = false;
+       
         [self.sendQueue push:task];
+       
     }
     @catch (NSException *exception) {
         [MMA_Log log:@"##pushTask exception:%@" ,exception];
@@ -1058,7 +1073,11 @@
         } else if ([argument.key isEqualToString:TRACKING_KEY_TERM]) {
             
             NSString *term = [[self.trackingInfoService term] gtm_stringByEscapingForURLArgument];
+            if(term&&term.length>0){
+        
             [trackURL appendFormat:@"%@%@%@%@", company.separator, queryArgsKey, company.equalizer, term];
+                
+                    }
             
         } else if ([argument.key isEqualToString:TRACKING_KEY_WIFI]) {
             
@@ -1105,8 +1124,9 @@
     [trackURL appendFormat:@"%@%@%@%@", company.separator, company.signature.paramKey, company.equalizer, signString];
     
  
-     
+        
     
+                                                                     
     if (redirecturl !=nil&&![redirecturl isEqualToString:@""]) {
         [trackURL appendString:redirecturl];
     }

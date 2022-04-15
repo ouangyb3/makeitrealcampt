@@ -435,6 +435,7 @@
                 <publicKey>DbXiUlEVN</publicKey>
                 <paramKey>mf</paramKey>
             </signature>
+
             <switch>
                 <isTrackLocation>true</isTrackLocation>
                 <!-- 失效时间，单位秒 -->
@@ -449,13 +450,12 @@
                     <ANDROIDID>md5</ANDROIDID>
                 </encrypt>
 
-
                 <applist>
-                <!-- applist上报地址 e.g. https:xxxx.com.cn/track/applist -->
-                <uploadUrl>/apl/</uploadUrl>
-                <!-- applist上报时间间隔，单位为小时,配置为0时，不上报-->
-                <uploadTime>24</uploadTime>
-                <usegzip>false</usegzip>
+                    <!-- applist上报地址 e.g. https:xxxx.com.cn/track/applist -->
+                    <uploadUrl>/apl/</uploadUrl>
+                    <!-- applist上报时间间隔，单位为小时,配置为0时，不上报-->
+                    <uploadTime>24</uploadTime>
+                    <usegzip>false</usegzip>
                 </applist>
             </switch>
             <config>
@@ -781,142 +781,18 @@
                     </argument>
 
                 </viewabilityarguments>
-             <!-- 反作弊-->
-                          <sensorarguments>
-                              <!-- 是否越狱 -->
-                              <argument>
-                                  <key>isRoot</key>
-                                  <value>l1</value>
-                                  <urlEncode>true</urlEncode>
-                                  <isRequired>true</isRequired>
-                              </argument>
-                              <!-- 剩余电量 -->
-                              <argument>
-                                  <key>Electricity</key>
-                                  <value>l2</value>
-                                  <urlEncode>true</urlEncode>
-                                  <isRequired>true</isRequired>
-                              </argument>
-                              <!-- 是否充电 -->
-                              <argument>
-                                  <key>isCharging</key>
-                                  <value>l3</value>
-                                  <urlEncode>true</urlEncode>
-                                  <isRequired>true</isRequired>
-                              </argument>
-                              <!-- 是否模拟器 -->
-                              <argument>
-                                  <key>isSimulator</key>
-                                  <value>l4</value>
-                                  <urlEncode>true</urlEncode>
-                                  <isRequired>true</isRequired>
-                              </argument>
-                              <!-- 是否hook -->
-                              <argument>
-                                  <key>isHook</key>
-                                  <value>l5</value>
-                                  <urlEncode>true</urlEncode>
-                                  <isRequired>true</isRequired>
-                              </argument>
-                              <!-- 是否刷机 -->
-                              <argument>
-                                  <key>isFlash</key>
-                                  <value>l6</value>
-                                  <urlEncode>true</urlEncode>
-                                  <isRequired>true</isRequired>
-                              </argument>
-                              <!-- 加速度值 -->
-                              <argument>
-                                  <key>Accelerometer</key>
-                                  <value>l7</value>
-                                  <urlEncode>true</urlEncode>
-                                  <isRequired>true</isRequired>
-                              </argument>
-                              <!-- 磁场值 -->
-                              <argument>
-                                  <key>Magnetometer</key>
-                                  <value>l8</value>
-                                  <urlEncode>true</urlEncode>
-                                  <isRequired>true</isRequired>
-                              </argument>
-                              <!-- 方向值 -->
-                              <argument>
-                                  <key>Direction</key>
-                                  <value>l9</value>
-                                  <urlEncode>true</urlEncode>
-                                  <isRequired>true</isRequired>
-                              </argument>
-                              <!-- 陀螺仪 -->
-                              <argument>
-                                  <key>GyroActive</key>
-                                  <value>l10</value>
-                                  <urlEncode>true</urlEncode>
-                                  <isRequired>true</isRequired>
-                              </argument>
-                              <!-- 光线 -->
-                              <argument>
-                                  <key>Brightness</key>
-                                  <value>l11</value>
-                                  <urlEncode>true</urlEncode>
-                                  <isRequired>true</isRequired>
-                              </argument>
-                              <!-- 气压 -->
-                              <argument>
-                                  <key>Pressure</key>
-                                  <value>l12</value>
-                                  <urlEncode>true</urlEncode>
-                                  <isRequired>true</isRequired>
-                              </argument>
-                              <!-- 温度 -->
-                              <argument>
-                                  <key>Temperature</key>
-                                  <value>l13</value>
-                                  <urlEncode>true</urlEncode>
-                                  <isRequired>true</isRequired>
-                              </argument>
-                              <!-- 距离 -->
-                              <argument>
-                                  <key>Proximity</key>
-                                  <value>l14</value>
-                                  <urlEncode>true</urlEncode>
-                                  <isRequired>true</isRequired>
-                              </argument>
-                              <!-- 重力 -->
-                              <argument>
-                                  <key>DeviceMotion</key>
-                                  <value>l15</value>
-                                  <urlEncode>true</urlEncode>
-                                  <isRequired>true</isRequired>
-                              </argument>
-                              <!-- 线性加速度 -->
-                              <argument>
-                                  <key>LineAccelerometer</key>
-                                  <value>l16</value>
-                                  <urlEncode>true</urlEncode>
-                                  <isRequired>true</isRequired>
-                              </argument>
-                              <!-- 旋转矢量 -->
-                              <argument>
-                                  <key>RotationVector</key>
-                                  <value>l17</value>
-                                  <urlEncode>true</urlEncode>
-                                  <isRequired>true</isRequired>
-                              </argument>
-                          </sensorarguments>
-                      </config>
-                      <separator>&amp;</separator>
-                      <!--<separator>&amp;</separator>-->
-                      <!--ADID服务端地址-->
-                      <adidurl>https://g.cn.miaozhen.com/x/k=adid</adidurl>
 
-                      <!--是否启用反作弊配置字段-->
-                      <antidevice>svl</antidevice>
+            </config>
+            <separator>&amp;</separator>
+            <!--<separator>&amp;</separator>-->
+            <!--ADID服务端地址-->
+            <adidurl>https://g.cn.miaozhen.com/x/k=adid</adidurl>
+
             <equalizer>=</equalizer>
 
             <!--如果设置true   timeStamper使用秒-->
             <timeStampUseSecond>true</timeStampUseSecond>
         </company>
-
         <company>
             <name>girdsum</name>
             <jsurl></jsurl>

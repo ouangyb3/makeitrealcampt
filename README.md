@@ -13,12 +13,9 @@
 	AdSupport.framework
 	CoreTelephony.framework
  	SystemConfiguration.framework
-    WebKit.framework
-    CoreMotion.framework
-    CoreMedia.framework
-    AVFoundation.framework
+    WebKit.framework  
 ```
-4. 需要在info.plist 新增NSMotionUsageDescription(Privacy - Motion Usage Description) 键值对，并进行说明。
+ 
 
 ### 步骤2:使用方法
 在使用的文件中引用 

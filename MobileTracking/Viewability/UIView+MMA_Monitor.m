@@ -14,18 +14,44 @@
 
 //Window投射尺寸 自身尺寸 alpha hidden window
 - (BOOL)mma_isShowing {
-    
-    BOOL alphaCheck = !(self.alpha == 0);
+    /**肉眼无法察觉的透明度*/
+    BOOL alphaCheck = !(self.alpha <= 0.01);
     BOOL hiddenCheck = !self.hidden;
-    
+ 
+   
     BOOL sizeCheck = self.mma_width != 0 && self.mma_height != 0;
     BOOL sSizeCheck = self.mma_sWidth != 0 && self.mma_sHeight != 0;
     
     BOOL windowCheck = [self isKindOfClass:[UIWindow class]] ? YES : (self.window != nil);
     
-    return alphaCheck && hiddenCheck && sizeCheck && sSizeCheck && windowCheck;
+    return alphaCheck && hiddenCheck && sizeCheck && sSizeCheck && windowCheck ;
     
 }
+
+- (BOOL)mma_ViewIsShowing{
+    /**肉眼无法察觉的透明度*/
+    BOOL alphaCheck = !(self.alpha <= 0.01);
+    BOOL hiddenCheck = !self.hidden;
+    BOOL ClearColorCheck = YES;
+    BOOL backgroundColorCheck  = YES;
+    UIImageView * imgView = (UIImageView *)self;
+   /**这里逻辑还需要严谨化 需要判断图片的实际大小*/
+    if(![imgView isKindOfClass:[UIImageView class]]||([imgView isKindOfClass:[UIImageView class]]&&imgView.image==nil)){
+        /**透明颜色判断*/
+    ClearColorCheck = ! CGColorEqualToColor(self.backgroundColor.CGColor,  [UIColor clearColor].CGColor);
+        backgroundColorCheck =  !(self.backgroundColor==nil);
+    }
+ 
+   
+    BOOL sizeCheck = self.mma_width != 0 && self.mma_height != 0;
+    BOOL sSizeCheck = self.mma_sWidth != 0 && self.mma_sHeight != 0;
+    
+    BOOL windowCheck = [self isKindOfClass:[UIWindow class]] ? YES : (self.window != nil);
+    
+    return alphaCheck && hiddenCheck && sizeCheck && sSizeCheck && windowCheck && ClearColorCheck&&backgroundColorCheck;
+    
+}
+
 
 - (BOOL)mma_hiddenCheck {
     BOOL alphaCheck = !(self.alpha == 0);

@@ -60,16 +60,17 @@
 
 #pragma mark - method
 - (void)enqueueView:(UIView *)view {
-    //
+    
     @try {
         
         if (!_adView) {
             return ;
         }
         /* 如果这个视图没有显示就不添加进list */
-        if (!view.mma_isShowing) {
+        if (!view.mma_ViewIsShowing) {
             return ;
         }
+     //   NSLog(@"###tag%@",view.tag);
         [self.viewList addObject:view.mma_properties];
         
         CGRect coverRect = [self.adView mma_intersectionWithView:view];

@@ -10,7 +10,7 @@
 #import "MMA_SSNetworkInfo.h"
 #import "MMA_OpenUDID.h"
 #import <AdSupport/AdSupport.h>
-#import "MMA_LocationService.h"
+ 
 #import "MMA_Reachability.h"
 #import "MMA_Macro.h"
 #import <SystemConfiguration/CaptiveNetwork.h>
@@ -114,14 +114,10 @@
 
 - (NSString *)location
 {
-    CLLocation *currentLocation = [[MMA_LocationService sharedInstance] getCurrentLocation];
-    if(currentLocation==nil) {
+ 
         return @"";
-    }
-    double latitude = [((CLLocation *) currentLocation) coordinate].latitude;
-    double longitude = [((CLLocation *) currentLocation) coordinate].longitude;
-    double horizontalAccuracy =  ((CLLocation *) currentLocation).horizontalAccuracy;
-    return  [NSString stringWithFormat:@"%fx%fx%f", latitude, longitude, horizontalAccuracy];
+ 
+   
 }
 
 - (NSString *)term
@@ -132,7 +128,7 @@
     sysctlbyname("hw.machine", machine, &size, NULL, 0);
     NSString * platform = [NSString stringWithUTF8String:machine];
     free(machine);
-    return platform;
+    return platform?platform:@"";
 }
 
 - (NSString *)idfv

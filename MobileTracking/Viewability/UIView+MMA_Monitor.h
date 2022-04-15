@@ -13,6 +13,9 @@
 /** isshowing */
 - (BOOL)mma_isShowing;
 
+/**on AdViewIsShowing*/
+- (BOOL)mma_ViewIsShowing;
+
 /** traverse all superview issshowing */
 - (BOOL)mma_isSuperviewsShowing;
 

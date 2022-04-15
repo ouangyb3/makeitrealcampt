@@ -92,8 +92,6 @@
 		AF1AAEA91EF61EF300E9C276 /* VAViewTools.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE8F1EF61EF300E9C276 /* VAViewTools.m */; };
 		AF1AAEAA1EF61EF300E9C276 /* ViewabilityService.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE911EF61EF300E9C276 /* ViewabilityService.m */; };
 		AF1AAEAB1EF61EF300E9C276 /* ViewabilityService.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1AAE911EF61EF300E9C276 /* ViewabilityService.m */; };
-		AF59E97320510DDF00994BCF /* MMA_LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = AF59E97220510DDF00994BCF /* MMA_LocationService.m */; };
-		AF59E977205116C400994BCF /* MMA_LocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = AF59E97220510DDF00994BCF /* MMA_LocationService.m */; };
 		AF89EC731EFA0CB400A2AF21 /* Viewability_iOS.md in Sources */ = {isa = PBXBuildFile; fileRef = AF89EC721EFA0CB400A2AF21 /* Viewability_iOS.md */; };
 		AF89EC741EFA0CB400A2AF21 /* Viewability_iOS.md in Sources */ = {isa = PBXBuildFile; fileRef = AF89EC721EFA0CB400A2AF21 /* Viewability_iOS.md */; };
 		AFB3716B1F3854770092930F /* VACacheWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB3715A1F3854770092930F /* VACacheWebView.m */; };
@@ -229,8 +227,6 @@
 		AF1AAE8F1EF61EF300E9C276 /* VAViewTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAViewTools.m; sourceTree = "<group>"; };
 		AF1AAE901EF61EF300E9C276 /* ViewabilityService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewabilityService.h; sourceTree = "<group>"; };
 		AF1AAE911EF61EF300E9C276 /* ViewabilityService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewabilityService.m; sourceTree = "<group>"; };
-		AF59E97120510DDF00994BCF /* MMA_LocationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMA_LocationService.h; sourceTree = "<group>"; };
-		AF59E97220510DDF00994BCF /* MMA_LocationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MMA_LocationService.m; sourceTree = "<group>"; };
 		AF89EC721EFA0CB400A2AF21 /* Viewability_iOS.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Viewability_iOS.md; sourceTree = "<group>"; };
 		AFB371591F3854770092930F /* VACacheWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VACacheWebView.h; sourceTree = "<group>"; };
 		AFB3715A1F3854770092930F /* VACacheWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VACacheWebView.m; sourceTree = "<group>"; };
@@ -485,8 +481,6 @@
 			children = (
 				2A79BC1D18D2DC2900FC62C1 /* MMA_TrackingInfoService.h */,
 				2A79BC1E18D2DC2900FC62C1 /* MMA_TrackingInfoService.m */,
-				AF59E97120510DDF00994BCF /* MMA_LocationService.h */,
-				AF59E97220510DDF00994BCF /* MMA_LocationService.m */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -716,7 +710,6 @@
 				AF1AAEA61EF61EF300E9C276 /* VAViewMonitor.m in Sources */,
 				2ABFE22518CED086007BD457 /* MMA_RequestQueue.m in Sources */,
 				AFB3716B1F3854770092930F /* VACacheWebView.m in Sources */,
-				AF59E97320510DDF00994BCF /* MMA_LocationService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -758,7 +751,6 @@
 				2A81720718DAEB3A00E0EFEC /* MMA_Log.m in Sources */,
 				2A81720818DAEB3A00E0EFEC /* MMA_SSNetworkInfo.m in Sources */,
 				2A81720918DAEB3A00E0EFEC /* MMA_Reachability.m in Sources */,
-				AF59E977205116C400994BCF /* MMA_LocationService.m in Sources */,
 				2A81720A18DAEB3A00E0EFEC /* MMA_OpenUDID.m in Sources */,
 				AF1AAE971EF61EF300E9C276 /* UIView+MMA_Monitor.m in Sources */,
 				2A81720B18DAEB3A00E0EFEC /* MMA_SDKConfig.m in Sources */,
