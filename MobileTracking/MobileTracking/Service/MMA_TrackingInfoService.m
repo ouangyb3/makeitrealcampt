@@ -27,7 +27,11 @@
         _sharedInstance = [[self alloc] init];
         /// 在开始调用SDK的时候，异步持久化一次 openUDID
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            [_sharedInstance persistOpenUDID];
+           NSString *openUDID = [[NSUserDefaults standardUserDefaults] stringForKey:MMA_LocalCacheOpenUDIDPersistKey];
+                      /// 如果没有缓存，同步持久化保存。
+                      if(!openUDID||openUDID.length<=0){
+                          [_sharedInstance persistOpenUDID];
+                      }
         });
          
     });

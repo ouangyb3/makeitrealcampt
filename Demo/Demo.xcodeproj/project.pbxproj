@@ -69,7 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2A0C4E1A18D6D18700200F18 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A0C4E1A18D6D18700200F18 /* MMA测试.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MMA测试.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A0C4E1D18D6D18700200F18 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2A0C4E1F18D6D18700200F18 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2A0C4E2118D6D18700200F18 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -153,7 +153,7 @@
 		2A0C4E1B18D6D18700200F18 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2A0C4E1A18D6D18700200F18 /* Demo.app */,
+				2A0C4E1A18D6D18700200F18 /* MMA测试.app */,
 				2A0C4E3B18D6D18700200F18 /* DemoTests.xctest */,
 			);
 			name = Products;
@@ -262,7 +262,7 @@
 			);
 			name = Demo;
 			productName = Demo;
-			productReference = 2A0C4E1A18D6D18700200F18 /* Demo.app */;
+			productReference = 2A0C4E1A18D6D18700200F18 /* MMA测试.app */;
 			productType = "com.apple.product-type.application";
 		};
 		2A0C4E3A18D6D18700200F18 /* DemoTests */ = {
@@ -564,7 +564,7 @@
 					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "MMA测试";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -601,7 +601,7 @@
 					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "MMA测试";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

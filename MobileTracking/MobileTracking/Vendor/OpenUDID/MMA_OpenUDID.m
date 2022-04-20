@@ -91,6 +91,9 @@ static int const kOpenUDIDRedundancySlots = 100;
 // Convenience method to support iOS & Mac OS X
 //
 + (NSMutableDictionary*) _getDictFromPasteboard:(id)pboard {
+    if(!pboard){
+        return nil;
+    }
 #if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR	
     id item = [pboard dataForPasteboardType:kOpenUDIDDomain];
 #else
@@ -272,13 +275,15 @@ static int const kOpenUDIDRedundancySlots = 100;
 #else
         NSPasteboard* slotPB = [NSPasteboard pasteboardWithName:slotPBid];
 #endif
+        @synchronized (slotPB){
         OpenUDIDLog(@"SlotPB name = %@",slotPBid);
         if (slotPB==nil) {
             // assign availableSlotPBid to be the first one available
             if (availableSlotPBid==nil) availableSlotPBid = slotPBid;
         } else {
+            
             NSDictionary* dict = [MMA_OpenUDID _getDictFromPasteboard:slotPB];
-            NSString* oudid = [dict objectForKey:kOpenUDIDKey];
+            NSString* oudid = dict?[dict objectForKey:kOpenUDIDKey]:nil;
             OpenUDIDLog(@"SlotPB dict = %@",dict);
             if (oudid==nil) {
                 // availableSlotPBid could inside a non null slot where no oudid can be found
@@ -300,6 +305,8 @@ static int const kOpenUDIDRedundancySlots = 100;
                 }
             }
         }
+    }
+        
     }
     
     // sort the Frequency dict with highest occurence count of the same OpenUDID (redundancy, failsafe)
@@ -350,7 +357,7 @@ static int const kOpenUDIDRedundancySlots = 100;
 #else
         NSPasteboard* slotPB = [NSPasteboard pasteboardWithName:availableSlotPBid];
 #endif
-        
+         @synchronized (slotPB){
         // save slotPBid to the defaults, and remember to save later
         //
         if (localDict) {
@@ -362,6 +369,8 @@ static int const kOpenUDIDRedundancySlots = 100;
         //
         if (openUDID && localDict)
             [MMA_OpenUDID _setDict:localDict forPasteboard:slotPB];
+    }
+        
     }
 
     // Save the dictionary locally if applicable
@@ -398,6 +407,7 @@ static int const kOpenUDIDRedundancySlots = 100;
     kOpenUDIDSessionCache = [openUDID retain];
     return kOpenUDIDSessionCache;
 }
+ 
 
 + (void) setOptOut:(BOOL)optOutValue {
 
