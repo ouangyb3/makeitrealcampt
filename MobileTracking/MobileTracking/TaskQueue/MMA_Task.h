@@ -14,4 +14,5 @@
 @property (nonatomic, assign) NSInteger failedCount;
 @property (nonatomic, assign) BOOL hasFailed;
 @property (nonatomic, assign) BOOL hasLock;
+@property(nonatomic,copy)void(^succeedBlock)(id);
 @end

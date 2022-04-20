@@ -17,7 +17,7 @@
 
 @protocol VAMonitorDataProtocol <NSObject>
 
-- (void)monitor:(VAMonitor *)monitor didReceiveData:(NSDictionary *)monitorData;
+- (void)monitor:(VAMonitor *)monitor didReceiveData:(NSDictionary *)monitorData succeed:(void(^)(id))succeedBlock;
 @end
 
 
@@ -48,6 +48,7 @@ typedef NS_ENUM(NSUInteger, VAProgressStatus) {
 @property (nonatomic, copy, readonly) NSString *impressionID;
 @property (nonatomic, copy, readonly) NSString *adID;
 @property (nonatomic, copy, readonly) NSString *domain;
+@property (nonatomic,copy)void(^succeedBlock)(id);
 
 
 @property (nonatomic, strong, readonly) VAMonitorTimeline *timeline;
