@@ -96,7 +96,7 @@ NSString *const displayViewUrl = @"http://e.cn.miaozhen.com/r/k=2128485&p=7Q5OK&
             
             //            可视化曝光+可视化点击
             //    可视化曝光
-            [[MobileTracking sharedInstance] view:@"https://g.ads.cn.miaozhen.com/v1.1/i.gif?cp=1446&sp=51035&ad=__ADID__&adgp=__ADGPID__&cr=7788&rq=__REQUESTID__&mck=__MCOOKIE__&did=__DEVICEID__&dmp=__DMP__&rs=__RESPONSEID__&srcsp=__SOURCESP__&maca=__MAC__&maca1=__MAC1__&ta=__TA__&excl=__EXCL__&ci=__CIDX__&ig=,u" ad:_adView];
+            [[MobileTracking sharedInstance] view:displayViewUrl ad:_adView];
             _clickUrl = [NSString stringWithFormat:@"%@", displayClickUrl];
             self.title = @"Display可见曝光";
             
