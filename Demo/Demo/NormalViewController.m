@@ -98,15 +98,13 @@ NSString *const displayViewUrl = @"http://e.cn.miaozhen.com/r/k=2128485&p=7Q5OK&
             
             //            可视化曝光+可视化点击
             //    可视化曝光
-            for (NSInteger i =0; i<200; i++) {
+            for (NSInteger i =0; i<10; i++) {
                 
-         
-            [[MobileTracking sharedInstance] view:displayViewUrl ad:_adView succeed:^(id result) {
-                NSLog(@"可视化:%@",result);
-            }];
-            [[MobileTracking sharedInstance] view:normalViewUrl ad:_adView impressionType:1  succeed:^(id result) {
-                          NSLog(@"正常:%@",result);
-                      }];
+                [[MobileTracking sharedInstance] view:displayViewUrl ad:_adView succeed:^(id response) {
+                    // NSLog(@"可视化:%@",response);
+                }];
+            
+           
                    }
             _clickUrl = [NSString stringWithFormat:@"%@", displayClickUrl];
             self.title = @"Display可见曝光";
@@ -125,8 +123,8 @@ NSString *const displayViewUrl = @"http://e.cn.miaozhen.com/r/k=2128485&p=7Q5OK&
     SecondViewController *secondVC = [[SecondViewController alloc]init];
     [self.navigationController pushViewController:secondVC animated:YES];
 //    点击
-    [[MobileTracking sharedInstance]click:_clickUrl succeed:^(id result) {
-        NSLog(@"点击:%@",result);
+    [[MobileTracking sharedInstance]click:_clickUrl succeed:^(id response) {
+        NSLog(@"点击:%@",response);
     }];
     
 }
