@@ -76,6 +76,8 @@
             //    可视化视频曝光
         [[MobileTracking sharedInstance] viewVideo:_viewUrl ad:_avMovieView videoPlayType:_type succeed:^(id result) {
             NSLog(@"%@",result);
+        } failed:^{
+              NSLog(@"failed");
         }];
      
   
@@ -142,15 +144,19 @@
             self.view.tag =1;
            [_player play];
         
-                   [[MobileTracking sharedInstance] viewVideo:_viewUrl ad:_avMovieView videoPlayType:_type succeed:^(id result) {
-                       NSLog(@"%@",result);
+                   [[MobileTracking sharedInstance] viewVideo:_viewUrl ad:_avMovieView videoPlayType:_type succeed:^(id response) {
+                       NSLog(@"%@",response);
+                   } failed:^{
+                         NSLog(@"failed");
                    }];
              
            _remindLabel.text = @"status:前贴片广告播放中...";
     } else {
         //    可视化视频点击
-        [[MobileTracking sharedInstance]click:_clickUrl succeed:^(id result) {
-            NSLog(@"%@",result);
+        [[MobileTracking sharedInstance]click:_clickUrl succeed:^(id response) {
+            NSLog(@"%@",response);
+        } failed:^{
+              NSLog(@"failed");
         }];
         
         [_player pause];

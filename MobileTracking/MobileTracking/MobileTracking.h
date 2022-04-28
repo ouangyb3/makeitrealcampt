@@ -21,17 +21,17 @@
 - (void)enableLog:(BOOL)enableLog;
 
 // 点击
-- (void)click:(NSString *)url succeed:(void(^)(id response))succeedBlock;
+- (void)click:(NSString *)url succeed:(void(^)(id response))succeedBlock failed:(void(^)())failedBlock;
 
 /* 普通曝光
  url:监测的链接
  adView:监测的广告视图对象
  impressionType:曝光类型。Tracked Ads:0；曝光：1
  */
-- (void)view:(NSString *)url ad:(UIView *)adView impressionType:(NSInteger)type succeed:(void(^)(id response))succeedBlock;
+- (void)view:(NSString *)url ad:(UIView *)adView impressionType:(NSInteger)type succeed:(void(^)(id response))succeedBlock failed:(void(^)())failedBlock;
 
 // 可视化监测曝光
-- (void)view:(NSString *)url ad:(UIView *)adView succeed:(void(^)(id response))succeedBlock;
+- (void)view:(NSString *)url ad:(UIView *)adView succeed:(void(^)(id response))succeedBlock failed:(void(^)())failedBlock;
 
 /* 视频可视化监测曝光
     自动播放:1
@@ -40,7 +40,7 @@
 
     无法识别:0
  */
-- (void)viewVideo:(NSString *)url ad:(UIView *)adView videoPlayType:(NSInteger)type succeed:(void(^)(id response))succeedBlock;
+- (void)viewVideo:(NSString *)url ad:(UIView *)adView videoPlayType:(NSInteger)type succeed:(void(^)(id response))succeedBlock failed:(void(^)())failedBlock;
 
 //停止可见监测
 - (void)stop:(NSString *)url;

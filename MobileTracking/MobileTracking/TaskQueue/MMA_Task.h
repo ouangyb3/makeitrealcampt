@@ -15,4 +15,5 @@
 @property (nonatomic, assign) BOOL hasFailed;
 @property (nonatomic, assign) BOOL hasLock;
 @property(nonatomic,copy)void(^succeedBlock)(id);
+@property(nonatomic,copy)void(^failedBlock)();
 @end
