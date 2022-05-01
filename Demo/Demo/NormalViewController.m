@@ -30,7 +30,7 @@ NSString *const normalViewUrl = @"http://tyfx.m.cn.miaozhen.com/x/k=2122669&p=7P
 
 
 //可视化点击url
-NSString *const displayClickUrl = @"http://tyfx.m.cn.miaozhen.com/x/k=2128485&p=7P5QE&dx=__IPDX__&rt=2&ns=__IP__&ni=__IESID__&v=__LOC__&xa=__ADPLATFORM__&tr=__REQUESTID__&mo=__OS__&m0=__OPENUDID__&m0a=__DUID__&m1=__ANDROIDID1__&m1a=__ANDROIDID__&m2=__IMEI__&m4=__AAID__&m5=__IDFA__&m6=__MAC1__&m6a=__MAC__&nd=__DRA__&np=__POS__&nn=__APP__&nc=__VID__&nf=__FLL__&ne=__SLL__&ng=__CTREF__&nx=__TRANSID__&o=";
+NSString *const displayClickUrl = @"http://tyfx.m.cn.miaozhen.com/x/k=2122669&p=7P5QE&dx=__IPDX__&rt=2&ns=__IP__&ni=__IESID__&v=__LOC__&xa=__ADPLATFORM__&tr=__REQUESTID__&mo=__OS__&m0=__OPENUDID__&m0a=__DUID__&m1=__ANDROIDID1__&m1a=__ANDROIDID__&m2=__IMEI__&m4=__AAID__&m5=__IDFA__&m6=__MAC1__&m6a=__MAC__&nd=__DRA__&np=__POS__&nn=__APP__&nc=__VID__&nf=__FLL__&ne=__SLL__&ng=__CTREF__&nx=__TRANSID__&o=";
 
 //可视化曝光url
 NSString *const displayViewUrl = @"http://e.cn.miaozhen.com/r/k=2128485&p=7Q5OK&dx=__IPDX__&rt=2&ns=__IP__&ni=__IESID__&v=__LOC__&xa=__ADPLATFORM__&tr=__REQUESTID__&o=";
@@ -84,11 +84,7 @@ NSString *const displayViewUrl = @"http://e.cn.miaozhen.com/r/k=2128485&p=7Q5OK&
  
                 
        
-            [[MobileTracking sharedInstance] view:normalViewUrl ad:_adView impressionType:1 succeed:^(id result) {
-                NSLog(@"%@",result);
-            } failed:^{
-                NSLog(@"failed");
-            }];
+            [[MobileTracking sharedInstance] view:normalViewUrl ad:_adView impressionType:1];
             
             _clickUrl = [NSString stringWithFormat:@"%@", normalClickUrl];
             self.title = @"曝光及点击";
@@ -100,13 +96,7 @@ NSString *const displayViewUrl = @"http://e.cn.miaozhen.com/r/k=2128485&p=7Q5OK&
             
             //            可视化曝光+可视化点击
             //    可视化曝光
-           
-                [[MobileTracking sharedInstance] view:displayViewUrl ad:_adView succeed:^(id response) {
-                      NSLog(@"%@",response);
-                } failed:^{
-                     NSLog(@"failed");
-                }];
-             
+            [[MobileTracking sharedInstance] view:displayViewUrl ad:_adView];
             _clickUrl = [NSString stringWithFormat:@"%@", displayClickUrl];
             self.title = @"Display可见曝光";
             
@@ -124,11 +114,7 @@ NSString *const displayViewUrl = @"http://e.cn.miaozhen.com/r/k=2128485&p=7Q5OK&
     SecondViewController *secondVC = [[SecondViewController alloc]init];
     [self.navigationController pushViewController:secondVC animated:YES];
 //    点击
-    [[MobileTracking sharedInstance]click:_clickUrl succeed:^(id response) {
-        NSLog(@"点击:%@",response);
-    } failed:^{
-          NSLog(@"failed");
-    }];
+    [[MobileTracking sharedInstance]click:_clickUrl];
     
 }
 

@@ -127,8 +127,8 @@
         if ([self canRecord:AD_VB_VIDEOPROGRESS]) {
             accessDictionary[[self keyQuery:AD_VB_VIDEOPROGRESS]] = uploadPar;
         }
-        if(self.delegate && [self.delegate respondsToSelector:@selector(monitor:didReceiveData:succeed:failed:)]) {
-            [_delegate monitor:self didReceiveData:accessDictionary succeed:self.succeedBlock failed:self.failedBlock];
+        if(self.delegate && [self.delegate respondsToSelector:@selector(monitor:didReceiveData:)]) {
+            [_delegate monitor:self didReceiveData:accessDictionary];
         }
     }
     
@@ -218,8 +218,8 @@
         }
     }];
     
-    if(self.delegate && [self.delegate respondsToSelector:@selector(monitor:didReceiveData:succeed:failed:)]) {
-        [_delegate monitor:self didReceiveData:accessDictionary succeed:self.succeedBlock failed:self.failedBlock];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(monitor:didReceiveData:)]) {
+        [_delegate monitor:self didReceiveData:accessDictionary];
     }
     
     self.status = VAMonitorStatusUploaded;
