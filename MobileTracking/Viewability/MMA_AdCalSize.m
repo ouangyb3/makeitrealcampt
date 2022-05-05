@@ -121,7 +121,7 @@
     adNode.len = 0;
     [self.nodeList setObject:adNode forKey:@(index)];
     
-    if (aX + 1 == aY) {
+    if (aX + 1 >= aY) {
         return;
     }
     
