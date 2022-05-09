@@ -302,7 +302,7 @@
 						};
 					};
 					2A0C4E3A18D6D18700200F18 = {
-						DevelopmentTeam = 4E89P63KS8;
+						DevelopmentTeam = 44PQ7EUSW9;
 						TestTargetID = 2A0C4E1918D6D18700200F18;
 					};
 				};
@@ -616,6 +616,7 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 44PQ7EUSW9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -641,6 +642,7 @@
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Demo.app/Demo";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 44PQ7EUSW9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
