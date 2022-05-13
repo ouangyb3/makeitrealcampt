@@ -264,12 +264,12 @@
                               if(adViewabilityResult.value && adViewabilityResult.value.length) {
                                    
                                 NSString *  vx1  =[NSString stringWithFormat: @"%@%@%@%@",self.M_Company.separator,adViewabilityResult.value,self.M_Company.equalizer,@"1"];
-                                 NSString *  vx4  =[NSString stringWithFormat: @"%@%@%@%@",self.M_Company.separator,adViewabilityResult.value,self.M_Company.equalizer,@"4"];
+//                                 NSString *  vx4  =[NSString stringWithFormat: @"%@%@%@%@",self.M_Company.separator,adViewabilityResult.value,self.M_Company.equalizer,@"4"];
                                     if ([task.url containsString:vx1]) {
                                         
                                    task.succeedBlock(@"有效可见曝光");
                                         
-                                    }else  if ([task.url containsString:vx4]) {
+                                    }else  {
                                         
                                    task.succeedBlock(@"无效可见曝光");
                                  }
@@ -283,8 +283,7 @@
                 }
             };
             [[MMA_RequestQueue mainQueue] addOperation:operation];
-            UIImageView  * j;
-            j.image
+          
             
         }
     }
