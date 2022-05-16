@@ -35,7 +35,6 @@
 		C726E4B5238665E1000EC447 /* sdkconfig.xml in Resources */ = {isa = PBXBuildFile; fileRef = C726E4B4238665E1000EC447 /* sdkconfig.xml */; };
 		C765ABED23262CE00066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABE923262CC20066E906 /* WebKit.framework */; };
 		C78B6BB0236C303F0022BD30 /* libMobileTrackingSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABB195518DAFA0300C7CAA9 /* libMobileTrackingSimulator.a */; };
-		C78B6BC5236C33A60022BD30 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C78B6BC0236C33A60022BD30 /* CoreMotion.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,7 +118,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C78B6BC5236C33A60022BD30 /* CoreMotion.framework in Frameworks */,
 				C765ABED23262CE00066E906 /* WebKit.framework in Frameworks */,
 				C78B6BB0236C303F0022BD30 /* libMobileTrackingSimulator.a in Frameworks */,
 				AF4B464C218AB18300BE2F3F /* CoreLocation.framework in Frameworks */,

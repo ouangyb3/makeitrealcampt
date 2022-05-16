@@ -21,32 +21,22 @@
 -(BOOL)isCharging;
 /**是否模拟器*/
 -(BOOL)isSimulator;
- /**距离*/
-@property(nonatomic,copy)NSString * Proximity;
-/**加速度值*/
-@property(nonatomic,copy)NSString * Accelerometer;
-/**陀螺仪值*/
-@property(nonatomic,copy)NSString * GyroActive;
-/**磁场值*/
-@property(nonatomic,copy)NSString * Magnetometer;
-/**重力值*/
-@property(nonatomic,copy)NSString * DeviceMotion;
-/**气压值*/
-@property(nonatomic,copy)NSString * Pressure;
-/**方向传感器*/
-@property(nonatomic,copy)NSString *  Direction;
-
-/**光线强弱*/
-@property(nonatomic,copy)NSString * Brightness;
+ 
 
 -(void)updateSensorInfo:(void(^)())result;
 /**距离上次刷新时间s*/
 -(NSInteger )timeDifference;
+/**存储当前时间*/
+-(void)saveLastTime;
+
+-(BOOL)iSupdate;
 
 //根据value排序
 +(NSArray*)ArrayWithDict:(NSDictionary*)dict;
 //根据value排序2
 +(NSArray*)ArrayWithDict2:(NSDictionary*)dict;
+
+
 @end
 
  
