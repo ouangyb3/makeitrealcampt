@@ -114,6 +114,8 @@
 		AFB3717C1F3854770092930F /* ViewabilityJSService.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB3716A1F3854770092930F /* ViewabilityJSService.m */; };
 		AFB87D332004BAA000A02E0C /* libMMASign.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB87D322004BA9E00A02E0C /* libMMASign.a */; };
 		AFB87D342004BAA100A02E0C /* libMMASign.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB87D322004BA9E00A02E0C /* libMMASign.a */; };
+		C733D3E524A9C73F002F137E /* MMA_IVTInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = C733D3E424A9C73F002F137E /* MMA_IVTInfoService.m */; };
+		C733D3E624A9C73F002F137E /* MMA_IVTInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = C733D3E424A9C73F002F137E /* MMA_IVTInfoService.m */; };
 		C765ABE023262B660066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABDF23262B660066E906 /* WebKit.framework */; };
 		C765ABE123262B710066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABDF23262B660066E906 /* WebKit.framework */; };
 		C765ABE223262C040066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABDF23262B660066E906 /* WebKit.framework */; };
@@ -247,6 +249,8 @@
 		AFB371691F3854770092930F /* ViewabilityJSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewabilityJSService.h; sourceTree = "<group>"; };
 		AFB3716A1F3854770092930F /* ViewabilityJSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewabilityJSService.m; sourceTree = "<group>"; };
 		AFB87D322004BA9E00A02E0C /* libMMASign.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMMASign.a; sourceTree = "<group>"; };
+		C733D3E324A9C73E002F137E /* MMA_IVTInfoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_IVTInfoService.h; sourceTree = "<group>"; };
+		C733D3E424A9C73F002F137E /* MMA_IVTInfoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_IVTInfoService.m; sourceTree = "<group>"; };
 		C74B78322375573A0031DE10 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Photos.framework; sourceTree = DEVELOPER_DIR; };
 		C74B7835237557510031DE10 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/PhotosUI.framework; sourceTree = DEVELOPER_DIR; };
 		C765ABDF23262B660066E906 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -479,6 +483,8 @@
 		2ABFE29918CFF9EF007BD457 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				C733D3E324A9C73E002F137E /* MMA_IVTInfoService.h */,
+				C733D3E424A9C73F002F137E /* MMA_IVTInfoService.m */,
 				2A79BC1D18D2DC2900FC62C1 /* MMA_TrackingInfoService.h */,
 				2A79BC1E18D2DC2900FC62C1 /* MMA_TrackingInfoService.m */,
 			);
@@ -682,6 +688,7 @@
 				AF1AAE9E1EF61EF300E9C276 /* VAMonitorFrame.m in Sources */,
 				77919862229FB9C10090A788 /* MMA_AdHelper.m in Sources */,
 				AF1AAE981EF61EF300E9C276 /* VAMaros.m in Sources */,
+				C733D3E524A9C73F002F137E /* MMA_IVTInfoService.m in Sources */,
 				AF1AAEA81EF61EF300E9C276 /* VAViewTools.m in Sources */,
 				AF89EC731EFA0CB400A2AF21 /* Viewability_iOS.md in Sources */,
 				AF1AAE941EF61EF300E9C276 /* NSDate+VASDK.m in Sources */,
@@ -735,6 +742,7 @@
 				2A81720318DAEB3A00E0EFEC /* MMA_GDataXMLNode.m in Sources */,
 				77919866229FBDE80090A788 /* MMA_AdViewMonitor.m in Sources */,
 				AF1AAE9F1EF61EF300E9C276 /* VAMonitorFrame.m in Sources */,
+				C733D3E624A9C73F002F137E /* MMA_IVTInfoService.m in Sources */,
 				AF1AAE991EF61EF300E9C276 /* VAMaros.m in Sources */,
 				AF1AAEA91EF61EF300E9C276 /* VAViewTools.m in Sources */,
 				AF89EC741EFA0CB400A2AF21 /* Viewability_iOS.md in Sources */,

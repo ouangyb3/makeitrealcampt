@@ -26,6 +26,7 @@
 #import "VAMonitorConfig.h"
 #import "ViewabilityJSService.h"
 #import "VAViewCapture.h"
+#import "MMA_IVTInfoService.h"
  
 
 @interface MobileTracking() <VAMonitorDataProtocol>
@@ -101,11 +102,7 @@
     }
     return self;
 }
--(void)initSensor{
-    
  
-    
-}
 - (void)initSdkConfig
 {
     @try {
@@ -436,8 +433,11 @@
     @try {
         
         MMA_Company *company = [self confirmCompany:url];
-      
-      
+ 
+        NSString *svl = company.antidevice;
+           
+       
+ 
        
         MMA_VBOpenResult *res = [[MMA_VBOpenResult alloc] init];
         res.config = self.viewabilityConfig; // 初始化默认配置为当前的配置
@@ -956,6 +956,7 @@
         return;
     }
   
+ 
          [self pushTask:url succeed:succeedBlock failed:failedBlock];
                   
  
@@ -966,7 +967,7 @@
         
    
     
-    
+ 
 }
 
 - (MMA_Company *)confirmCompany:(NSString *)url
@@ -1162,7 +1163,98 @@
     [trackURL appendFormat:@"%@%@%@%@", company.separator, company.signature.paramKey, company.equalizer, signString];
     
  
+    #pragma mark == ivt ==
+     
+           
+               NSString *svl = company.antidevice;
+         MMA_IVTInfoService * ivt =  [MMA_IVTInfoService sharedInstance];
+     if (svl) {
+         
+ 
+    
+                   
+
+                          
+                       NSString *reWriteString = @"";
+
+            NSArray *sensorArray =    [MMA_IVTInfoService ArrayWithDict:company.config.sensorarguments];
         
+                               BOOL  iSupdate = ivt.iSupdate;
+                               for (NSInteger i =0; i<sensorArray.count; i++) {
+               
+                                   MMA_Argument *argument  = sensorArray[i];
+                               NSString *key = argument.key;
+                             
+                               if (key && key.length) {
+                               
+                                   NSString *value = argument.value;
+                                   if (value && value.length) {
+                                     
+                                  
+                                
+                                       id  str;
+                                       @try {
+                                           if (iSupdate) {
+                                              str = [ivt valueForKey:key];
+                                           }else{
+                                              str = @"\"-\"";
+                                           }
+                                           
+                                      
+                                       } @catch (NSException *exception) {
+                                           
+                                           str = @"\"-\"";
+                                       } @finally {
+                                           
+                                       }
+                                          
+                                  
+                                
+                                 
+        if([reWriteString length] !=0) {
+            
+            reWriteString = [reWriteString stringByAppendingString:@","];
+            
+        }
+                           
+                                                    reWriteString = [reWriteString stringByAppendingFormat :@"\"%@\":%@", value, str?str:@"\"-\""];
+
+                                    
+                                     
+                                   }
+                               }
+                           }
+               
+     
+                                                                 if(reWriteString && reWriteString.length) {
+
+                                          
+                                    
+                                          
+                                       NSString * ivtStr = [NSString stringWithFormat:@"{%@}",reWriteString];
+                                                                 
+                                                                     
+//                                     [MMA_Log log:@"url:%@",ivtStr];
+//                                                                     dispatch_async(dispatch_get_main_queue(), ^{
+//                                                                          UITextView * textV = [[UITextView alloc]initWithFrame:CGRectMake(30, 50, 200, 300)];
+//                                                                                                                                             textV.text = ivtStr;
+//
+//                                                                                                                                             [[UIApplication sharedApplication].keyWindow addSubview:textV];
+//                                                                     });
+                                                                    
+                                         [trackURL appendFormat:@"%@%@%@%@", company.separator, company.antidevice, company.equalizer, [ivtStr  gtm_stringByEscapingForURLArgument]];
+                                                                     
+                                                    if (iSupdate) {
+                                                         [ivt saveLastTime];
+                                                           }
+                                      
+         
+             }
+                   
+          
+     
+     }
+ 
     
                                                                      
     if (redirecturl !=nil&&![redirecturl isEqualToString:@""]) {
