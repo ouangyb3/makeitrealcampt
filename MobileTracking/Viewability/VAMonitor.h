@@ -13,11 +13,12 @@
 #import "VAMonitorConfig.h"
 #import "MMA_Macro.h"
 #import "VAMaros.h"
+#import "MMA_Task.h"
 @class VAMonitor;
 
 @protocol VAMonitorDataProtocol <NSObject>
 
-- (void)monitor:(VAMonitor *)monitor didReceiveData:(NSDictionary *)monitorData succeed:(void(^)(id))succeedBlock failed:(void(^)())failedBlock;
+- (void)monitor:(VAMonitor *)monitor task:(MMA_Task *)task didReceiveData:(NSDictionary *)monitorData succeed:(void(^)(id))succeedBlock failed:(void(^)())failedBlock;
 @end
 
 
@@ -48,6 +49,7 @@ typedef NS_ENUM(NSUInteger, VAProgressStatus) {
 @property (nonatomic, copy, readonly) NSString *impressionID;
 @property (nonatomic, copy, readonly) NSString *adID;
 @property (nonatomic, copy, readonly) NSString *domain;
+@property(nonatomic,strong)MMA_Task * task;
 @property (nonatomic,copy)void(^succeedBlock)(id);
 @property (nonatomic,copy)void(^failedBlock)(id);
 

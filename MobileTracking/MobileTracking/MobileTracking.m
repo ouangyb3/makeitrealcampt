@@ -90,12 +90,15 @@
         _trackingInfoService = [MMA_TrackingInfoService sharedInstance];
         _impressionDictionary = [NSMutableDictionary dictionary];
         _isTrackLocation = false;
-        
+       
+          
+ 
         [self initSdkConfig];
         [self initQueue];
         [self initTimer];
         [self openLBS];
         [self initViewabilityService];
+        
       //  [self performSelector:@selector(initSensor) withObject:nil afterDelay:0.1];
         
         
@@ -167,6 +170,7 @@
 
 - (void)initTimer
 {
+  
     NSInteger failedQueueInterval = self.sdkConfig.offlineCache.queueExpirationSecs;
     if (!failedQueueInterval) {
         failedQueueInterval = DEFAULT_FAILED_QUEUE_TIMER_INTERVAL;
@@ -182,6 +186,8 @@
                                                      selector:@selector(handleSendQueueTimer:)
                                                      userInfo:nil
                                                       repeats:YES];
+  
+     
 }
 
 - (void)handleFailedQueueTimer:(NSTimer *)timer
@@ -259,16 +265,22 @@
                         MMA_Argument *adViewabilityResult = [self.M_Company.config.viewabilityarguments valueForKey:AD_VB_RESULT];
                        
                               if(adViewabilityResult.value && adViewabilityResult.value.length) {
-                                   
+                          
                                 NSString *  vx1  =[NSString stringWithFormat: @"%@%@%@%@",self.M_Company.separator,adViewabilityResult.value,self.M_Company.equalizer,@"1"];
-//                                 NSString *  vx4  =[NSString stringWithFormat: @"%@%@%@%@",self.M_Company.separator,adViewabilityResult.value,self.M_Company.equalizer,@"4"];
+                                NSString *  vx4  =[NSString stringWithFormat: @"%@%@%@%@",self.M_Company.separator,adViewabilityResult.value,self.M_Company.equalizer,@"4"];
+                            
                                     if ([task.url containsString:vx1]) {
                                         
-                                   task.succeedBlock(@"有效可见曝光");
+                                        task.succeedBlock([NSString stringWithFormat:@"%@---%@",task.url,TaskTypeAry[VIEWABLE]]);
                                         
-                                    }else  {
+                                    }else   if ([task.url containsString:vx4]) {
+                                                                           
+                                                                           task.succeedBlock([NSString stringWithFormat:@"%@---%@",task.url,TaskTypeAry[NONVIEWABLE]]);
+                                                                       
+                                                                           
+                                                                       } else  {
                                         
-                                   task.succeedBlock(@"无效可见曝光");
+                                                                           task.succeedBlock([NSString stringWithFormat:@"%@---%@",task.url,task.tType]);
                                  }
                                   
                               }
@@ -652,8 +664,9 @@
      *  拼接u参数和impressID
      */
     url = [self handleImpressURL:url impression:impressID redirectURL:result.redirectURL additionKey:NO];
-    
-    [self filterURL:url succeed:succeedBlock failed:failedBlock];
+    MMA_Task * task = [[MMA_Task alloc]init];
+    task.tType = TaskTypeAry[CLICK];
+    [self filterURL:url task:task succeed:succeedBlock failed:failedBlock];
 }
 
 // 普通曝光请求: 普通曝光默认不开启viewability. 需要redirectURL
@@ -662,7 +675,8 @@
     @try {
         BOOL viewability = NO;
         MMA_VBOpenResult *result = [self vbFilterURL:url isForViewability:viewability isVideo:NO videoPlayType:0];
-        [self view:url ad:adView isVideo:NO videoPlayType:0 handleResult:result impressionType:type succeed:succeedBlock failed:failedBlock];
+    
+        [self view:url    ad:adView  isVideo:NO videoPlayType:0 handleResult:result impressionType:type succeed:succeedBlock failed:failedBlock];
     }
     @catch (NSException *exception) {
         [MMA_Log log:@"##exception:%@" ,exception];
@@ -673,14 +687,16 @@
 - (void)viewVideo:(NSString *)url ad:(UIView *)adView videoPlayType:(NSInteger)type succeed:(void(^)(id))succeedBlock failed:(void(^)())failedBlock{
     BOOL viewability = YES;
     MMA_VBOpenResult *result = [self vbFilterURL:url isForViewability:viewability isVideo:YES videoPlayType:type];
-    [self view:url ad:adView isVideo:YES videoPlayType:type handleResult:result impressionType:1 succeed:succeedBlock failed:failedBlock];
+   
+    [self view:url   ad:adView isVideo:YES videoPlayType:type handleResult:result impressionType:1 succeed:succeedBlock failed:failedBlock];
 }
 
 // 广告Viewability曝光请求: 同视频Viewability曝光逻辑 不需要redirectURL
 - (void)view:(NSString *)url ad:(UIView *)adView succeed:(void(^)(id))succeedBlock failed:(void(^)())failedBlock{
     BOOL viewability = YES;
     MMA_VBOpenResult *result = [self vbFilterURL:url isForViewability:viewability isVideo:NO videoPlayType:0];
-    [self view:url ad:adView isVideo:NO videoPlayType:0 handleResult:result impressionType:1 succeed:succeedBlock failed:failedBlock];
+    
+    [self view:url    ad:adView isVideo:NO videoPlayType:0 handleResult:result impressionType:1 succeed:succeedBlock failed:failedBlock];
 }
 
 // 停止可见监测
@@ -708,7 +724,7 @@
 
 
 // viewability曝光不需要redirectURL已在前面剔除,普通曝光需要redirectURL
-- (void)view:(NSString *)url ad:(UIView *)adView isVideo:(BOOL)isVideo videoPlayType:(NSInteger)type handleResult:(MMA_VBOpenResult *)result  impressionType:(NSInteger)impressionType succeed:(void(^)(id))succeedBlock failed:(void(^)())failedBlock{
+- (void)view:(NSString *)url    ad:(UIView *)adView isVideo:(BOOL)isVideo videoPlayType:(NSInteger)type handleResult:(MMA_VBOpenResult *)result  impressionType:(NSInteger)impressionType succeed:(void(^)(id))succeedBlock failed:(void(^)())failedBlock{
  
          @try {
                 /**
@@ -733,7 +749,9 @@
                  */
                 NSString *adID = [self getAdIDForURL:url];
                 if(!adID || !adID.length) {
-                    [self filterURL:url succeed:succeedBlock failed:failedBlock];
+                    MMA_Task * task  = [[MMA_Task alloc]init];
+                        task.tType = TaskTypeAry[UNMEASURED];
+                    [self filterURL:url task:task   succeed:succeedBlock failed:failedBlock];
                     [MMA_Log log:@"adplacement get failed: %@" ,@"no adplacement"];
                     return;
                 }
@@ -758,15 +776,21 @@
                 
         //        impressionType=0视为Tracked ads；impressionType=1视为曝光
                 if (impressionType == 0) {
-                    [self handleImpressionType:@"0" URL:result.url impression:impressID redirectURL:result.redirectURL additionKey:useViewabilityService succeed:succeedBlock failed:failedBlock] ;
+                    MMA_Task * task  = [[MMA_Task alloc]init];
+                        task.tType = TaskTypeAry[IMPRESSION];
+                    [self handleImpressionType:@"0"  task:task URL:result.url impression:impressID redirectURL:result.redirectURL additionKey:useViewabilityService succeed:succeedBlock failed:failedBlock] ;
                 } else if (impressionType == 1){
+                    MMA_Task * task  = [[MMA_Task alloc]init];
+                        task.tType = TaskTypeAry[IMPRESSION];
                     if(!adView || ![adView isKindOfClass:[UIView class]]) {
         //                view=nil或者view非法的情况下，未达到CBR条件，如果是可见监测停止监测
-                        [self handleImpressionType:@"0" URL:result.url impression:impressID redirectURL:result.redirectURL additionKey:useViewabilityService succeed:succeedBlock failed:failedBlock];
+                        [self  handleImpressionType:@"0" task:task URL:result.url impression:impressID redirectURL:result.redirectURL additionKey:useViewabilityService succeed:succeedBlock failed:failedBlock];
                         return;
                     } else {
+                        MMA_Task * task  = [[MMA_Task alloc]init];
+                            task.tType = TaskTypeAry[IMPRESSION];
         //                达到CBR条件，如果是可见监测继续监测
-                        [self handleImpressionType:@"1" URL:result.url impression:impressID redirectURL:result.redirectURL additionKey:useViewabilityService succeed:succeedBlock failed:failedBlock];
+                        [self handleImpressionType:@"1"  task:task URL:result.url impression:impressID redirectURL:result.redirectURL additionKey:useViewabilityService succeed:succeedBlock failed:failedBlock];
                     }
                 }
                 
@@ -803,9 +827,13 @@
         //                NSString *url = [self monitorHandleWithURL:result.url data:accessDictionary redirectURL:@""];
         //                [self filterURL:url];
                     }
+                    MMA_Task * task  = [[MMA_Task alloc]init];
+                        task.tType = TaskTypeAry[IMPRESSION];
+                    
                     VAMonitor *monitor = [VAMonitor monitorWithView:adView isVideo:isVideo url:result.url redirectURL:@"" impressionID:impressID adID:adID keyValueAccess:[keyvalueAccess copy] config:result.config domain:domain];
                     monitor.succeedBlock=succeedBlock;
                     monitor.failedBlock =failedBlock;
+                    monitor.task = task;
                     monitor.delegate = self;
                    
                     [_viewabilityService addVAMonitor:monitor];
@@ -823,14 +851,14 @@
 //   
 }
 
-- (void)handleImpressionType:(NSString *)impressionType URL:(NSString *)url impression:(NSString *)impressionID redirectURL:(NSString *)redirectURL additionKey:(BOOL)additionKey  succeed:(void(^)(id))succeedBlock  failed:(void(^)())failedBlock{
+- (void)handleImpressionType:(NSString *)impressionType task:(MMA_Task *)task  URL:(NSString *)url impression:(NSString *)impressionID redirectURL:(NSString *)redirectURL additionKey:(BOOL)additionKey  succeed:(void(^)(id))succeedBlock  failed:(void(^)())failedBlock{
     MMA_Company *company = [self confirmCompany:url];
     NSMutableString *trackURL = [NSMutableString stringWithString:url];
     MMA_Argument *impressionTypeArgument = [company.config.viewabilityarguments valueForKey:IMPRESSIONTYPE];
     if(impressionTypeArgument.value) {
         [trackURL appendFormat:@"%@%@%@%@",company.separator,impressionTypeArgument.value,company.equalizer,impressionType];
     }
-    [self filterURL:[self handleImpressURL:trackURL impression:impressionID redirectURL:redirectURL additionKey:additionKey] succeed:succeedBlock failed:failedBlock];
+    [self  filterURL:[self handleImpressURL:trackURL impression:impressionID redirectURL:redirectURL additionKey:additionKey] task:task succeed:succeedBlock failed:failedBlock];
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_EXPOSE object:nil];
 }
 
@@ -858,12 +886,12 @@
 
 
 //Viewability可视化监测Delegate 接收数据
-- (void)monitor:(VAMonitor *)monitor didReceiveData:(NSDictionary *)monitorData succeed:(void(^)(id))succeedBlock failed:(void(^)())failedBlock {
+- (void)monitor:(VAMonitor *)monitor task:(MMA_Task *)task didReceiveData:(NSDictionary *)monitorData succeed:(void(^)(id))succeedBlock failed:(void(^)())failedBlock {
     NSString *url = [self monitorHandleWithURL:monitor.url data:monitorData redirectURL:monitor.redirectURL];
     
     NSLog(@"viewabilityURL-----------------------%@",url);
 
-    [self filterURL:url succeed:succeedBlock failed:failedBlock];
+    [self filterURL:url task:task succeed:succeedBlock failed:failedBlock];
 }
 
 - (NSString *)handleImpressURL:(NSString *)url impression:(NSString *)impressionID redirectURL:(NSString *)redirectURL additionKey:(BOOL)additionKey {
@@ -949,7 +977,7 @@
 }
 
 
-- (void)filterURL:(NSString *)url succeed:(void(^)(id))succeedBlock failed:(void(^)())failedBlock
+- (void)filterURL:(NSString *)url  task:(MMA_Task *)task  succeed:(void(^)(id))succeedBlock failed:(void(^)())failedBlock
 {
     if ([self confirmCompany:url] == nil) {
         [MMA_Log log:@"%@" ,@"company is nil,please check your 'sdkconfig.xml' file"];
@@ -957,7 +985,7 @@
     }
   
  
-         [self pushTask:url succeed:succeedBlock failed:failedBlock];
+         [self pushTask:url task:task  succeed:succeedBlock failed:failedBlock];
                   
  
         
@@ -990,11 +1018,11 @@
 }
 
 
-- (void)pushTask: (NSString *)url succeed:(void(^)(id))succeedBlock failed:(void(^)())failedBlock
+- (void)pushTask: (NSString *)url task:(MMA_Task *)task succeed:(void(^)(id))succeedBlock failed:(void(^)())failedBlock
 {
     @try {
         NSString *trackURL = [self generateTrackingURL:url];
-        MMA_Task *task = [[MMA_Task alloc] init];
+//        MMA_Task *task = [[MMA_Task alloc] init];
         task.url = trackURL;
         task.timePoint = [[[NSDate alloc] init] timeIntervalSince1970];
         task.failedCount = 0;
@@ -1179,7 +1207,7 @@
 
             NSArray *sensorArray =    [MMA_IVTInfoService ArrayWithDict:company.config.sensorarguments];
         
-                               BOOL  iSupdate = ivt.iSupdate;
+//                               BOOL  iSupdate = ivt.iSupdate;
                                for (NSInteger i =0; i<sensorArray.count; i++) {
                
                                    MMA_Argument *argument  = sensorArray[i];
@@ -1194,11 +1222,11 @@
                                 
                                        id  str;
                                        @try {
-                                           if (iSupdate) {
+//                                           if (iSupdate) {
                                               str = [ivt valueForKey:key];
-                                           }else{
-                                              str = @"\"-\"";
-                                           }
+//                                           }else{
+//                                              str = @"\"-\"";
+//                                           }
                                            
                                       
                                        } @catch (NSException *exception) {
@@ -1234,19 +1262,13 @@
                                        NSString * ivtStr = [NSString stringWithFormat:@"{%@}",reWriteString];
                                                                  
                                                                      
-//                                     [MMA_Log log:@"url:%@",ivtStr];
-//                                                                     dispatch_async(dispatch_get_main_queue(), ^{
-//                                                                          UITextView * textV = [[UITextView alloc]initWithFrame:CGRectMake(30, 50, 200, 300)];
-//                                                                                                                                             textV.text = ivtStr;
-//
-//                                                                                                                                             [[UIApplication sharedApplication].keyWindow addSubview:textV];
-//                                                                     });
+ 
                                                                     
                                          [trackURL appendFormat:@"%@%@%@%@", company.separator, company.antidevice, company.equalizer, [ivtStr  gtm_stringByEscapingForURLArgument]];
                                                                      
-                                                    if (iSupdate) {
-                                                         [ivt saveLastTime];
-                                                           }
+//                                                    if (iSupdate) {
+//                                                         [ivt saveLastTime];
+//                                                           }
                                       
          
              }

@@ -85,7 +85,7 @@
 }
  
 -(BOOL)iSupdate{
-    if ([self timeDifference]>SENSOR_UPDATE_INTERVAL) {
+    if ([self timeDifference]>=SENSOR_UPDATE_INTERVAL) {
 
         return YES;
     }else{

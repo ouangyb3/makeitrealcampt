@@ -18,7 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
-    [[MobileTracking sharedInstance] enableLog:YES];
+ [[MobileTracking sharedInstance] enableLog:YES];
 
 //    ViewController *vc1 = [[ViewController alloc] init];
 //    UINavigationController *navCtrl1 = [[UINavigationController alloc] initWithRootViewController:vc1];

@@ -822,7 +822,6 @@
                       <!--是否启用反作弊配置字段-->
                       <antidevice>svl</antidevice>
             <equalizer>=</equalizer>
-
             <!--如果设置true   timeStamper使用秒-->
             <timeStampUseSecond>true</timeStampUseSecond>
         </company>

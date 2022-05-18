@@ -85,7 +85,7 @@ NSString *const displayViewUrl = @"http://e.cn.miaozhen.com/r/k=2128485&p=7Q5OK&
                 
        
             [[MobileTracking sharedInstance] view:normalViewUrl ad:_adView impressionType:1 succeed:^(id result) {
-                NSLog(@"%@",result);
+                NSLog(@"普通曝光：%@",result);
             } failed:^{
                 NSLog(@"failed");
             }];
@@ -100,12 +100,17 @@ NSString *const displayViewUrl = @"http://e.cn.miaozhen.com/r/k=2128485&p=7Q5OK&
             
             //            可视化曝光+可视化点击
             //    可视化曝光
-           
-                [[MobileTracking sharedInstance] view:displayViewUrl ad:_adView succeed:^(id response) {
-                      NSLog(@"%@",response);
-                } failed:^{
-                     NSLog(@"failed");
-                }];
+         
+                for (NSInteger i =0; i<200; i++) {
+                    [[MobileTracking sharedInstance] view:displayViewUrl ad:_adView succeed:^(id response) {
+                                                       NSLog(@"可视化曝光：%@",response);
+                                                 } failed:^{
+                                                      NSLog(@"failed");
+                                                 }];
+                }
+              
+         
+               
              
             _clickUrl = [NSString stringWithFormat:@"%@", displayClickUrl];
             self.title = @"Display可见曝光";
