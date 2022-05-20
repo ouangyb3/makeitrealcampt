@@ -101,13 +101,13 @@ NSString *const displayViewUrl = @"http://e.cn.miaozhen.com/r/k=2128485&p=7Q5OK&
             //            可视化曝光+可视化点击
             //    可视化曝光
          
-                for (NSInteger i =0; i<200; i++) {
+         
                     [[MobileTracking sharedInstance] view:displayViewUrl ad:_adView succeed:^(id response) {
-                                                       NSLog(@"可视化曝光：%@",response);
+                                         NSLog(@"可视化曝光：%@",response);
                                                  } failed:^{
-                                                      NSLog(@"failed");
+                                         NSLog(@"failed");
                                                  }];
-                }
+            
               
          
                

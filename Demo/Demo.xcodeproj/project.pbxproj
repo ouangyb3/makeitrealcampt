@@ -33,7 +33,7 @@
 		AF7D89611EF655F50069A7DC /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7D89601EF655F50069A7DC /* Launch Screen.storyboard */; };
 		AFB3717E1F3854E10092930F /* admaster.js in Resources */ = {isa = PBXBuildFile; fileRef = AFB3717D1F3854E10092930F /* admaster.js */; };
 		C765ABED23262CE00066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABE923262CC20066E906 /* WebKit.framework */; };
-		C77368FA23F50752005E1ACB /* sdkconfig.xml in Resources */ = {isa = PBXBuildFile; fileRef = C77368F923F50752005E1ACB /* sdkconfig.xml */; };
+		C782595124ADEA04005A4B4E /* sdkconfig.xml in Resources */ = {isa = PBXBuildFile; fileRef = C782595024ADEA04005A4B4E /* sdkconfig.xml */; };
 		C78B6BB0236C303F0022BD30 /* libMobileTrackingSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABB195518DAFA0300C7CAA9 /* libMobileTrackingSimulator.a */; };
 /* End PBXBuildFile section */
 
@@ -109,7 +109,7 @@
 		AFB3717D1F3854E10092930F /* admaster.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = admaster.js; sourceTree = "<group>"; };
 		C74B7838237557EA0031DE10 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		C765ABE923262CC20066E906 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		C77368F923F50752005E1ACB /* sdkconfig.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sdkconfig.xml; sourceTree = "<group>"; };
+		C782595024ADEA04005A4B4E /* sdkconfig.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sdkconfig.xml; sourceTree = "<group>"; };
 		C78B6BC0236C33A60022BD30 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -195,8 +195,8 @@
 				772E49B822F195980009DFD2 /* SecondViewController.xib */,
 				772E49BB22F1959A0009DFD2 /* VideoViewController.h */,
 				772E49B722F195970009DFD2 /* VideoViewController.m */,
+				C782595024ADEA04005A4B4E /* sdkconfig.xml */,
 				772E49B422F195950009DFD2 /* VideoViewController.xib */,
-				C77368F923F50752005E1ACB /* sdkconfig.xml */,
 				AFB3717D1F3854E10092930F /* admaster.js */,
 				2A0C4E2F18D6D18700200F18 /* Main.storyboard */,
 				AF7D89601EF655F50069A7DC /* Launch Screen.storyboard */,
@@ -362,7 +362,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C77368FA23F50752005E1ACB /* sdkconfig.xml in Resources */,
+				C782595124ADEA04005A4B4E /* sdkconfig.xml in Resources */,
 				77303F6722F98A3A00A51176 /* Advertisement.mp4 in Resources */,
 				772E49BD22F1959B0009DFD2 /* VideoViewController.xib in Resources */,
 				AF6EA2E51EF655AD000DF811 /* Images.xcassets in Resources */,
