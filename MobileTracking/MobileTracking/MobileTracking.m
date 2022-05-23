@@ -253,7 +253,7 @@
                     task.hasFailed = true;
                     [self.failedQueue push:task];
                     if(task.failedBlock){
-                        task.failedBlock();
+                        task.failedBlock([NSString stringWithFormat:@"MMA_URL Failed To Send"]);
                     }
                 } else {
               //   NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
@@ -271,16 +271,16 @@
                             
                                     if ([task.url containsString:vx1]) {
                                         
-                                        task.succeedBlock([NSString stringWithFormat:@"%@---%@",task.url,TaskTypeAry[VIEWABLE]]);
+                                        task.succeedBlock(TaskTypeAry[VIEWABLE]);
                                         
                                     }else   if ([task.url containsString:vx4]) {
                                                                            
-                                                                           task.succeedBlock([NSString stringWithFormat:@"%@---%@",task.url,TaskTypeAry[NONVIEWABLE]]);
+                                                                           task.succeedBlock(TaskTypeAry[NONVIEWABLE]);
                                                                        
                                                                            
                                                                        } else  {
                                         
-                                                                           task.succeedBlock([NSString stringWithFormat:@"%@---%@",task.url,task.tType]);
+                                                                           task.succeedBlock(task.tType);
                                  }
                                   
                               }

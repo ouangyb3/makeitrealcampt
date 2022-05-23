@@ -84,10 +84,10 @@ NSString *const displayViewUrl = @"http://e.cn.miaozhen.com/r/k=2128485&p=7Q5OK&
  
                 
        
-            [[MobileTracking sharedInstance] view:normalViewUrl ad:_adView impressionType:1 succeed:^(id result) {
-                NSLog(@"普通曝光：%@",result);
-            } failed:^{
-                NSLog(@"failed");
+            [[MobileTracking sharedInstance] view:normalViewUrl ad:_adView impressionType:1 succeed:^(NSString *eventType) {
+                   //监测代码发送成功
+            } failed:^(NSString *errorMessage) {
+                 //监测代码发送失败
             }];
             
             _clickUrl = [NSString stringWithFormat:@"%@", normalClickUrl];
@@ -102,11 +102,11 @@ NSString *const displayViewUrl = @"http://e.cn.miaozhen.com/r/k=2128485&p=7Q5OK&
             //    可视化曝光
          
          
-                    [[MobileTracking sharedInstance] view:displayViewUrl ad:_adView succeed:^(id response) {
-                                         NSLog(@"可视化曝光：%@",response);
-                                                 } failed:^{
-                                         NSLog(@"failed");
-                                                 }];
+            [[MobileTracking sharedInstance] view:displayViewUrl ad:_adView succeed:^(NSString *eventType) {
+                NSLog(@"%@",eventType);
+            } failed:^(NSString *errorMessage) {
+                 NSLog(@"%@",errorMessage);
+            }];
             
               
          
@@ -129,10 +129,10 @@ NSString *const displayViewUrl = @"http://e.cn.miaozhen.com/r/k=2128485&p=7Q5OK&
     SecondViewController *secondVC = [[SecondViewController alloc]init];
     [self.navigationController pushViewController:secondVC animated:YES];
 //    点击
-    [[MobileTracking sharedInstance]click:_clickUrl succeed:^(id response) {
-        NSLog(@"点击:%@",response);
-    } failed:^{
-          NSLog(@"failed");
+    [[MobileTracking sharedInstance]click:_clickUrl succeed:^(NSString *eventType) {
+        NSLog(@"%@",eventType);
+    } failed:^(NSString *errorMessage) {
+         NSLog(@"%@",errorMessage);
     }];
     
 }
