@@ -120,7 +120,7 @@
     adNode.right = [self.sortedXValues[aY-1] floatValue];
     adNode.len = 0;
     [self.nodeList setObject:adNode forKey:@(index)];
-    
+    //X与Y相等时会发生 爆栈问题。
     if (aX + 1 >= aY) {
         return;
     }

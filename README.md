@@ -24,7 +24,7 @@
 使用说明:
 
 #### 1、初始化方法
-在进行监测之前，必须进行初始化，通过以上的代码进行初始化操作
+在进行监测之前，必须进行初始化，通过以下的代码进行初始化操作
 
 ```
 [MobileTracking sharedInstance]
@@ -52,7 +52,11 @@ SDK 会自动下载远程的配置文件，使用最新的配置文件进行参�
 
 ```
 // impressionType=1 表示这是曝光监测。此时如果传0，表示这是Tracked ads监测
-[[MobileTracking sharedInstance] view:@"http://example.com/xxxxxx” ad:adView impressionType:1]; 
+[[MobileTracking sharedInstance] view:@"http://example.com/xxxxxx” ad:adView impressionType:1 succeed:^(NSString *eventType) {
+       //监测代码发送成功
+} failed:^(NSString *errorMessage) {
+     //监测代码发送失败
+}];
 
 ```
 
@@ -65,7 +69,11 @@ SDK 会自动下载远程的配置文件，使用最新的配置文件进行参�
 3.2 可见性广告监测
 
 ```
-[[MobileTracking sharedInstance] view:@"http://example.com/xxxxxx” ad:adview];
+[[MobileTracking sharedInstance] view:@"http://example.com/xxxxxx” ad:adview succeed:^(NSString *eventType) {
+       //监测代码发送成功
+} failed:^(NSString *errorMessage) {
+     //监测代码发送失败
+}];
 
 ```
 　  备注：对广告进行可见性监测时，广告必须是满足开始渲染（Begin to render，简称BtR）条件的合法曝光，否则SDK不会执行可见监测。在调用可见曝光监测接口时，SDK会查验传入的广告View对象是否已开始渲染，如果是，则SDK会向监测方发出曝光上报，并继续进行可见监测，直到满足可见/不可见条件，再结束可见监测流程；如果不是，则SDK会向监测方发出Tracked Ads上报，并结束可见监测流程。
@@ -73,7 +81,11 @@ SDK 会自动下载远程的配置文件，使用最新的配置文件进行参�
 3.3 视频可见性广告监测
 
 ```
-[[MobileTracking sharedInstance] viewVideo:@"http://example.com/xxxxxx” ad:adview videoPlayType:type];
+[[MobileTracking sharedInstance] viewVideo:@"http://example.com/xxxxxx” ad:adview videoPlayType:type succeed:^(NSString *eventType) {
+       //监测代码发送成功
+} failed:^(NSString *errorMessage) {
+     //监测代码发送失败
+}];
 
 ```
 3.4 可见性广告JS监测
