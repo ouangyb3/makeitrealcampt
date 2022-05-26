@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -112,13 +112,13 @@
 		AFB3717A1F3854770092930F /* VAViewCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB371681F3854770092930F /* VAViewCapture.m */; };
 		AFB3717B1F3854770092930F /* ViewabilityJSService.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB3716A1F3854770092930F /* ViewabilityJSService.m */; };
 		AFB3717C1F3854770092930F /* ViewabilityJSService.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB3716A1F3854770092930F /* ViewabilityJSService.m */; };
-		AFB87D332004BAA000A02E0C /* libMMASign.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB87D322004BA9E00A02E0C /* libMMASign.a */; };
-		AFB87D342004BAA100A02E0C /* libMMASign.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB87D322004BA9E00A02E0C /* libMMASign.a */; };
 		C733D3E524A9C73F002F137E /* MMA_IVTInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = C733D3E424A9C73F002F137E /* MMA_IVTInfoService.m */; };
 		C733D3E624A9C73F002F137E /* MMA_IVTInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = C733D3E424A9C73F002F137E /* MMA_IVTInfoService.m */; };
 		C765ABE023262B660066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABDF23262B660066E906 /* WebKit.framework */; };
 		C765ABE123262B710066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABDF23262B660066E906 /* WebKit.framework */; };
 		C765ABE223262C040066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABDF23262B660066E906 /* WebKit.framework */; };
+		C7B03F7E24B576FB0094D787 /* libMMASign.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7B03F7D24B576FB0094D787 /* libMMASign.xcframework */; };
+		C7B03F7F24B576FB0094D787 /* libMMASign.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7B03F7D24B576FB0094D787 /* libMMASign.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -208,7 +208,6 @@
 		7791985C229FB9C00090A788 /* MMA_AdCalSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_AdCalSize.m; sourceTree = "<group>"; };
 		7791985D229FB9C00090A788 /* MMA_AdHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_AdHelper.m; sourceTree = "<group>"; };
 		7791985E229FB9C00090A788 /* MMA_AdCalSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_AdCalSize.h; sourceTree = "<group>"; };
-		AF0F01A01FF49BCC0095BE0C /* MMASign.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MMASign.h; sourceTree = "<group>"; };
 		AF1AAE7A1EF61EF300E9C276 /* NSDate+VASDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+VASDK.h"; sourceTree = "<group>"; };
 		AF1AAE7B1EF61EF300E9C276 /* NSDate+VASDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+VASDK.m"; sourceTree = "<group>"; };
 		AF1AAE7C1EF61EF300E9C276 /* UIView+MMA_Monitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MMA_Monitor.h"; sourceTree = "<group>"; };
@@ -248,12 +247,12 @@
 		AFB371681F3854770092930F /* VAViewCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VAViewCapture.m; sourceTree = "<group>"; };
 		AFB371691F3854770092930F /* ViewabilityJSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewabilityJSService.h; sourceTree = "<group>"; };
 		AFB3716A1F3854770092930F /* ViewabilityJSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewabilityJSService.m; sourceTree = "<group>"; };
-		AFB87D322004BA9E00A02E0C /* libMMASign.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMMASign.a; sourceTree = "<group>"; };
 		C733D3E324A9C73E002F137E /* MMA_IVTInfoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_IVTInfoService.h; sourceTree = "<group>"; };
 		C733D3E424A9C73F002F137E /* MMA_IVTInfoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_IVTInfoService.m; sourceTree = "<group>"; };
 		C74B78322375573A0031DE10 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Photos.framework; sourceTree = DEVELOPER_DIR; };
 		C74B7835237557510031DE10 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/PhotosUI.framework; sourceTree = DEVELOPER_DIR; };
 		C765ABDF23262B660066E906 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		C7B03F7D24B576FB0094D787 /* libMMASign.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = libMMASign.xcframework; path = "../../../../多家媒体不同版本的MMA SDK/多家媒体不同版本的MMA SDK/资料整理/sign/MMASDKSIGN_iOS/MMASignProject/build/Release-iphoneos/libMMASign.xcframework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,8 +263,8 @@
 				C765ABE023262B660066E906 /* WebKit.framework in Frameworks */,
 				2ABFE29818CF2B5F007BD457 /* CoreLocation.framework in Frameworks */,
 				2ABFE28218CF1778007BD457 /* UIKit.framework in Frameworks */,
-				AFB87D332004BAA000A02E0C /* libMMASign.a in Frameworks */,
 				2ABFE28018CF176D007BD457 /* AdSupport.framework in Frameworks */,
+				C7B03F7E24B576FB0094D787 /* libMMASign.xcframework in Frameworks */,
 				2A632A1C18CEB10B00BE2533 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,8 +287,8 @@
 				C765ABE123262B710066E906 /* WebKit.framework in Frameworks */,
 				2A81721118DAEB3A00E0EFEC /* CoreLocation.framework in Frameworks */,
 				2A81721218DAEB3A00E0EFEC /* UIKit.framework in Frameworks */,
-				AFB87D342004BAA100A02E0C /* libMMASign.a in Frameworks */,
 				2A81721318DAEB3A00E0EFEC /* AdSupport.framework in Frameworks */,
+				C7B03F7F24B576FB0094D787 /* libMMASign.xcframework in Frameworks */,
 				2A81721518DAEB3A00E0EFEC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,9 +379,8 @@
 		2ABFE1F118CED085007BD457 /* EncryptModule */ = {
 			isa = PBXGroup;
 			children = (
+				C7B03F7D24B576FB0094D787 /* libMMASign.xcframework */,
 				2A632A3118CEB10B00BE2533 /* MobileTrackingTests */,
-				AFB87D322004BA9E00A02E0C /* libMMASign.a */,
-				AF0F01A01FF49BCC0095BE0C /* MMASign.h */,
 			);
 			path = EncryptModule;
 			sourceTree = "<group>";
