@@ -8,7 +8,7 @@
 
 #import "MMA_TrackingInfoService.h"
 #import "MMA_SSNetworkInfo.h"
-#import "MMA_OpenUDID.h"
+
 #import <AdSupport/AdSupport.h>
  
 #import "MMA_Reachability.h"
@@ -16,7 +16,7 @@
 #import <SystemConfiguration/CaptiveNetwork.h>
 
  
-#define MMA_LocalCacheOpenUDIDPersistKey @"kMMA_LocalCacheOpenUDIDPersistKey"
+
 
 @implementation MMA_TrackingInfoService
 
@@ -25,14 +25,8 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedInstance = [[self alloc] init];
-        /// 在开始调用SDK的时候，异步持久化一次 openUDID
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-           NSString *openUDID = [[NSUserDefaults standardUserDefaults] stringForKey:MMA_LocalCacheOpenUDIDPersistKey];
-                      /// 如果没有缓存，同步持久化保存。
-                      if(!openUDID||openUDID.length<=0){
-                          [_sharedInstance persistOpenUDID];
-                      }
-        });
+    
+    
          
     });
     return _sharedInstance;
@@ -82,38 +76,6 @@
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString*)kCFBundleNameKey];
 }
  
-- (NSString *)openUDID {
-    
-    /// 说明：
-    ///     open UDID 一般不会发生改变，只有在用户的手机恢复系统，或者删除所有包含 openUDID 的APP的时候，才会发生改变。
-    ///     因为每次获取 open UDID 都比较耗时。因此，可以将之持久化保存起来。
-    
-    /// 先获取缓存的 open UDID；
-    @try {
-         NSString *openUDID = [[NSUserDefaults standardUserDefaults] stringForKey:MMA_LocalCacheOpenUDIDPersistKey];
-           /// 如果没有缓存，同步持久化保存。
-           if(!openUDID||openUDID.length<=0){
-               [self persistOpenUDID];
-           }
-
-           return openUDID ? openUDID : @"";
-    } @catch (NSException *exception) {
-        
-    } @finally {
-        
-    }
-   
-}
-
-- (NSString *)persistOpenUDID {
-   
-
-    NSString *openUDID =  [MMA_OpenUDID value];
-    [[NSUserDefaults standardUserDefaults] setObject:openUDID forKey:MMA_LocalCacheOpenUDIDPersistKey];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    return openUDID;
-}
  
 
 - (NSString *)location

@@ -23,7 +23,7 @@
 @property (nonatomic, strong, readonly) NSString *scwh;
 @property (nonatomic, strong, readonly) NSString *appKey;
 @property (nonatomic, strong, readonly) NSString *appName;
-@property (nonatomic, strong, readonly) NSString *openUDID;
+
 @property (nonatomic, strong, readonly) NSString *location;
 @property (nonatomic, strong, readonly) NSString *term;
 @property (nonatomic, assign, readonly) NSInteger networkCondition;

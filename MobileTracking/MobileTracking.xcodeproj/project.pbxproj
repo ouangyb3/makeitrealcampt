@@ -40,7 +40,6 @@
 		2A81720718DAEB3A00E0EFEC /* MMA_Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2A318D0581A007BD457 /* MMA_Log.m */; };
 		2A81720818DAEB3A00E0EFEC /* MMA_SSNetworkInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A8171BD18DA91C700E0EFEC /* MMA_SSNetworkInfo.m */; };
 		2A81720918DAEB3A00E0EFEC /* MMA_Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE1FB18CED086007BD457 /* MMA_Reachability.m */; };
-		2A81720A18DAEB3A00E0EFEC /* MMA_OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE1F718CED085007BD457 /* MMA_OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2A81720B18DAEB3A00E0EFEC /* MMA_SDKConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE28B18CF1EA5007BD457 /* MMA_SDKConfig.m */; };
 		2A81720C18DAEB3A00E0EFEC /* MMA_TaskQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2B018D07126007BD457 /* MMA_TaskQueue.m */; };
 		2A81720D18DAEB3A00E0EFEC /* MMA_GTMNSString+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE2A018D02ED2007BD457 /* MMA_GTMNSString+URLArguments.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -50,7 +49,6 @@
 		2A81721318DAEB3A00E0EFEC /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABFE27F18CF176D007BD457 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		2A81721518DAEB3A00E0EFEC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A632A1B18CEB10B00BE2533 /* Foundation.framework */; };
 		2A81721718DAEB3A00E0EFEC /* MobileTracking.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 2A632A2018CEB10B00BE2533 /* MobileTracking.h */; };
-		2ABFE22318CED086007BD457 /* MMA_OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE1F718CED085007BD457 /* MMA_OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2ABFE22418CED086007BD457 /* MMA_Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE1FB18CED086007BD457 /* MMA_Reachability.m */; };
 		2ABFE22518CED086007BD457 /* MMA_RequestQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE1FE18CED086007BD457 /* MMA_RequestQueue.m */; };
 		2ABFE23B18CF0427007BD457 /* MMA_GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ABFE23A18CF0427007BD457 /* MMA_GDataXMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -173,9 +171,6 @@
 		2A8171BD18DA91C700E0EFEC /* MMA_SSNetworkInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_SSNetworkInfo.m; sourceTree = "<group>"; };
 		2A8171BF18DA979E00E0EFEC /* MMA_SystemServicesConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_SystemServicesConstants.h; sourceTree = "<group>"; };
 		2A81721B18DAEB3A00E0EFEC /* libMobileTrackingSimulator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMobileTrackingSimulator.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		2ABFE1F618CED085007BD457 /* MMA_OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_OpenUDID.h; sourceTree = "<group>"; };
-		2ABFE1F718CED085007BD457 /* MMA_OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_OpenUDID.m; sourceTree = "<group>"; };
-		2ABFE1F818CED085007BD457 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		2ABFE1FA18CED086007BD457 /* MMA_Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_Reachability.h; sourceTree = "<group>"; };
 		2ABFE1FB18CED086007BD457 /* MMA_Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMA_Reachability.m; sourceTree = "<group>"; };
 		2ABFE1FD18CED086007BD457 /* MMA_RequestQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMA_RequestQueue.h; sourceTree = "<group>"; };
@@ -391,21 +386,10 @@
 				2ABFE29E18D02ED2007BD457 /* GTMNSString */,
 				2ABFE24C18CF1756007BD457 /* SystemService */,
 				2ABFE23818CF0427007BD457 /* GDataXMLNode */,
-				2ABFE1F518CED085007BD457 /* OpenUDID */,
 				2ABFE1F918CED086007BD457 /* Reachability */,
 				2ABFE1FC18CED086007BD457 /* RequestQueue */,
 			);
 			path = Vendor;
-			sourceTree = "<group>";
-		};
-		2ABFE1F518CED085007BD457 /* OpenUDID */ = {
-			isa = PBXGroup;
-			children = (
-				2ABFE1F618CED085007BD457 /* MMA_OpenUDID.h */,
-				2ABFE1F718CED085007BD457 /* MMA_OpenUDID.m */,
-				2ABFE1F818CED085007BD457 /* README.md */,
-			);
-			path = OpenUDID;
 			sourceTree = "<group>";
 		};
 		2ABFE1F918CED086007BD457 /* Reachability */ = {
@@ -702,7 +686,6 @@
 				2ABFE2A418D0581A007BD457 /* MMA_Log.m in Sources */,
 				2A8171BE18DA91C700E0EFEC /* MMA_SSNetworkInfo.m in Sources */,
 				2ABFE22418CED086007BD457 /* MMA_Reachability.m in Sources */,
-				2ABFE22318CED086007BD457 /* MMA_OpenUDID.m in Sources */,
 				AF1AAE961EF61EF300E9C276 /* UIView+MMA_Monitor.m in Sources */,
 				2ABFE28C18CF1EA5007BD457 /* MMA_SDKConfig.m in Sources */,
 				2ABFE2B118D07126007BD457 /* MMA_TaskQueue.m in Sources */,
@@ -757,7 +740,6 @@
 				2A81720718DAEB3A00E0EFEC /* MMA_Log.m in Sources */,
 				2A81720818DAEB3A00E0EFEC /* MMA_SSNetworkInfo.m in Sources */,
 				2A81720918DAEB3A00E0EFEC /* MMA_Reachability.m in Sources */,
-				2A81720A18DAEB3A00E0EFEC /* MMA_OpenUDID.m in Sources */,
 				AF1AAE971EF61EF300E9C276 /* UIView+MMA_Monitor.m in Sources */,
 				2A81720B18DAEB3A00E0EFEC /* MMA_SDKConfig.m in Sources */,
 				2A81720C18DAEB3A00E0EFEC /* MMA_TaskQueue.m in Sources */,

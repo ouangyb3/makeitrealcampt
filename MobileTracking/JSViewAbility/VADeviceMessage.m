@@ -39,7 +39,6 @@ static NSString *_locationInfo;
                                                @"akey" : [[service appKey] gtm_stringByEscapingForURLArgument],
                                                @"aname" : [[service appName] gtm_stringByEscapingForURLArgument],
                                                @"scwh" : [service scwh],
-                                               @"openudid" :   [[service openUDID] gtm_stringByEscapingForURLArgument],
                                                @"term" : [[service term] gtm_stringByEscapingForURLArgument],
                                                @"wifissid"  : [[service wifiSSID] gtm_stringByEscapingForURLArgument],
                                                @"wifibssid"  : [MMA_Helper md5HexDigest:[service wifiBSSID]],

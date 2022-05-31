@@ -184,13 +184,7 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-                    <!-- iOS OPENUDID 值 -->
-                    <argument>
-                        <key>OPENUDID</key>
-                        <value>o</value>
-                        <urlEncode>true</urlEncode>
-                        <isRequired>true</isRequired>
-                    </argument>
+                
                     <!-- 设备的机型 -->
                     <argument>
                         <key>TERM</key>
@@ -570,13 +564,7 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-                    <!-- iOS OPENUDID 值 -->
-                    <argument>
-                        <key>OPENUDID</key>
-                        <value>m0</value>
-                        <urlEncode>true</urlEncode>
-                        <isRequired>true</isRequired>
-                    </argument>
+                 
                     <!-- 设备的机型 -->
                     <argument>
                         <key>TERM</key>
@@ -953,12 +941,7 @@
                         <isRequired>true</isRequired>
                     </argument>
 
-                    <argument>
-                        <key>OPENUDID</key>
-                        <value>oid</value>
-                        <urlEncode>true</urlEncode>
-                        <isRequired>true</isRequired>
-                    </argument>
+                   
 
                     <argument>
                         <key>TERM</key>
@@ -1306,12 +1289,7 @@
                         <isRequired>true</isRequired>
                     </argument>
 
-                    <argument>
-                        <key>OPENUDID</key>
-                        <value>o</value>
-                        <urlEncode>true</urlEncode>
-                        <isRequired>true</isRequired>
-                    </argument>
+                   
                     <argument>
                         <key>TERM</key>
                         <value>r</value>
@@ -1574,12 +1552,7 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
-                    <argument>
-                        <key>OPENUDID</key>
-                        <value>rouid</value>
-                        <urlEncode>true</urlEncode>
-                        <isRequired>true</isRequired>
-                    </argument>
+                    
                     <argument>
                         <key>TERM</key>
                         <value>rterm</value>
@@ -1862,12 +1835,7 @@
                         <isRequired>true</isRequired>
                     </argument>
 
-                    <argument>
-                        <key>OPENUDID</key>
-                        <value>openudid</value>
-                        <urlEncode>true</urlEncode>
-                        <isRequired>true</isRequired>
-                    </argument>
+                   
 
                     <argument>
                         <key>ODIN</key>
@@ -2214,12 +2182,7 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>false</isRequired>
                     </argument>
-                    <argument>
-                        <key>OPENUDID</key>
-                        <value>openudid</value>
-                        <urlEncode>true</urlEncode>
-                        <isRequired>false</isRequired>
-                    </argument>
+                     
                     <argument>
                         <key>TERM</key>
                         <value>devicetype</value>

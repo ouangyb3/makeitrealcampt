@@ -47,7 +47,7 @@
 
 #define TRACKING_KEY_IDFAMD5    @"IDFAMD5"
 
-#define TRACKING_KEY_OPENUDID   @"OPENUDID"
+
 #define TRACKING_KEY_TS         @"TS"
 #define TRACKING_KEY_LBS        @"LBS"
 #define TRACKING_KEY_OSVS       @"OSVS"

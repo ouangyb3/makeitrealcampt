@@ -1103,12 +1103,7 @@
             NSDictionary *encrptDic = company.MMASwitch.encrypt;
             [trackURL appendFormat:@"%@%@%@%@", company.separator, queryArgsKey, company.equalizer,[MMA_Helper md5HexDigest:idfa]];
             /************/
-        } else if ([argument.key isEqualToString:TRACKING_KEY_OPENUDID]) {
-            
-            NSString *openUDID = [[self.trackingInfoService openUDID] gtm_stringByEscapingForURLArgument];
-            [trackURL appendFormat:@"%@%@%@%@", company.separator, queryArgsKey, company.equalizer, openUDID];
-            
-        } else if ([argument.key isEqualToString:TRACKING_KEY_TS]) {
+        }  else if ([argument.key isEqualToString:TRACKING_KEY_TS]) {
             /*增加了根据配置文件选择客户端传输的时间精度为妙或者毫秒*/
             NSDate *date = [NSDate date];
             NSString *timestamp = [NSString stringWithFormat:@"%.0f", [date timeIntervalSince1970] * 1000];
