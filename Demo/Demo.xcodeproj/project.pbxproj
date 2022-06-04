@@ -35,6 +35,7 @@
 		C765ABED23262CE00066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABE923262CC20066E906 /* WebKit.framework */; };
 		C782595124ADEA04005A4B4E /* sdkconfig.xml in Resources */ = {isa = PBXBuildFile; fileRef = C782595024ADEA04005A4B4E /* sdkconfig.xml */; };
 		C78B6BB0236C303F0022BD30 /* libMobileTrackingSimulator.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABB195518DAFA0300C7CAA9 /* libMobileTrackingSimulator.a */; };
+		C7E0DA1924BEAF98003D19F4 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7E0DA1724BEAED3003D19F4 /* AppTrackingTransparency.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,8 @@
 		C765ABE923262CC20066E906 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		C782595024ADEA04005A4B4E /* sdkconfig.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sdkconfig.xml; sourceTree = "<group>"; };
 		C78B6BC0236C33A60022BD30 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		C7E0DA1724BEAED3003D19F4 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
+		C7E0DA1D24BEB206003D19F4 /* MMA测试.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "MMA测试.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7E0DA1924BEAF98003D19F4 /* AppTrackingTransparency.framework in Frameworks */,
 				C765ABED23262CE00066E906 /* WebKit.framework in Frameworks */,
 				C78B6BB0236C303F0022BD30 /* libMobileTrackingSimulator.a in Frameworks */,
 				AF4B464C218AB18300BE2F3F /* CoreLocation.framework in Frameworks */,
@@ -162,6 +166,7 @@
 		2A0C4E1C18D6D18700200F18 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C7E0DA1724BEAED3003D19F4 /* AppTrackingTransparency.framework */,
 				C74B7838237557EA0031DE10 /* Photos.framework */,
 				C78B6BC0236C33A60022BD30 /* CoreMotion.framework */,
 				C765ABE923262CC20066E906 /* WebKit.framework */,
@@ -180,6 +185,7 @@
 		2A0C4E2318D6D18700200F18 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				C7E0DA1D24BEB206003D19F4 /* MMA测试.entitlements */,
 				77303F6622F98A3A00A51176 /* Advertisement.mp4 */,
 				772E49C522F19F940009DFD2 /* videoAd.mp4 */,
 				77303F6922F98F2D00A51176 /* landingPageIcon.png */,
@@ -541,6 +547,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = "Demo/MMA测试.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -569,6 +576,7 @@
 				PRODUCT_NAME = "MMA测试";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;
@@ -580,6 +588,7 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = "Demo/MMA测试.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -608,6 +617,7 @@
 				PRODUCT_NAME = "MMA测试";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTS_MACCATALYST = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 arm64";
 				WRAPPER_EXTENSION = app;

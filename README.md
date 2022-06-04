@@ -14,6 +14,7 @@
 	CoreTelephony.framework
  	SystemConfiguration.framework
     WebKit.framework  
+    AppTrackingTransparency.framework
 ```
  
 
