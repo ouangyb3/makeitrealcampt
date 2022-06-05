@@ -10,7 +10,10 @@
 #import "MMA_SSNetworkInfo.h"
 
 #import <AdSupport/AdSupport.h>
+#if !TARGET_OS_MACCATALYST
 #import <AppTrackingTransparency/AppTrackingTransparency.h>
+#endif
+
 
 #import "MMA_Reachability.h"
 #import "MMA_Macro.h"
@@ -53,19 +56,22 @@
 - (NSString *)idfa
 {
     NSString *idfa = nil;
+   
+#if !TARGET_OS_MACCATALYST
+    
     if (@available(iOS 14, *)) {
- 
+
                    if ([ATTrackingManager trackingAuthorizationStatus] == ATTrackingManagerAuthorizationStatusAuthorized) {
                        idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
                    }
-        
+
            } else {
-              
+
                if ([[ASIdentifierManager sharedManager] isAdvertisingTrackingEnabled]) {
                    idfa = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
                }
            }
-    
+#endif
 
     return idfa ? idfa : @"";
 }

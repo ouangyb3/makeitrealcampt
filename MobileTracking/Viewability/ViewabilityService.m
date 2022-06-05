@@ -82,6 +82,7 @@ static const char *view_capture_queue = "adview.capture.queue";
         } else if(tempStatus == VAMonitorStatusRuning || tempProgressStatus == VAProgressStatusRuning) {
             dispatch_async(_captureQueue, ^{
 #if DEBUG
+ 
                 dispatch_async(dispatch_get_main_queue(), ^{
                       [obj captureAdStatusAndVerify];
                 });
