@@ -20,19 +20,19 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
-//    if (@available(iOS 14, *)) {
-//               // iOS14及以上版本需要先请求权限
-//               [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
-//                   
-//                   if (status == ATTrackingManagerAuthorizationStatusAuthorized) {
-//                       NSLog(@"同意授权");
-//                
-//               
-//                   }else{
-//                       NSLog(@"被拒绝，请在设置-隐私-广告中打开广告跟踪功能");
-//                   }
-//               }];
-//           }
+    if (@available(iOS 14, *)) {
+               // iOS14及以上版本需要先请求权限
+               [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+                   
+                   if (status == ATTrackingManagerAuthorizationStatusAuthorized) {
+                       NSLog(@"同意授权");
+                
+               
+                   }else{
+                       NSLog(@"被拒绝，请在设置-隐私-广告中打开广告跟踪功能");
+                   }
+               }];
+           }
 
                
  [[MobileTracking sharedInstance] enableLog:YES];

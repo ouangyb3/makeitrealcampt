@@ -572,7 +572,7 @@
 					"-lxml2",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde2;
 				PRODUCT_NAME = "MMA测试";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -613,7 +613,7 @@
 					"-lxml2",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde2;
 				PRODUCT_NAME = "MMA测试";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
