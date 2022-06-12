@@ -117,8 +117,7 @@
 		C7E0DA0C24BEAE2B003D19F4 /* MMA_TrackingInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A79BC1E18D2DC2900FC62C1 /* MMA_TrackingInfoService.m */; };
 		C7E0DA2024BEE41F003D19F4 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7E0DA1024BEAEB1003D19F4 /* AppTrackingTransparency.framework */; };
 		C7E0DA2124BEE423003D19F4 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7E0DA1024BEAEB1003D19F4 /* AppTrackingTransparency.framework */; };
-		C7F626F124DA87E800B0F93C /* libMMASign.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F626F024DA87E800B0F93C /* libMMASign.a */; };
-		C7F626F224DA87E800B0F93C /* libMMASign.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F626F024DA87E800B0F93C /* libMMASign.a */; };
+		C7F6271524DBB17F00B0F93C /* libMMASign.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F6271424DBB17F00B0F93C /* libMMASign.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -250,8 +249,8 @@
 		C74B7835237557510031DE10 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/PhotosUI.framework; sourceTree = DEVELOPER_DIR; };
 		C765ABDF23262B660066E906 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		C7E0DA1024BEAEB1003D19F4 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = DEVELOPER_DIR; };
-		C7F626F024DA87E800B0F93C /* libMMASign.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMMASign.a; sourceTree = "<group>"; };
-		C7F626F324DA87F000B0F93C /* MMASign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMASign.h; sourceTree = "<group>"; };
+		C7F6271324DBAFB300B0F93C /* MMASign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMASign.h; sourceTree = "<group>"; };
+		C7F6271424DBB17F00B0F93C /* libMMASign.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMMASign.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,7 +264,7 @@
 				2ABFE28218CF1778007BD457 /* UIKit.framework in Frameworks */,
 				2ABFE28018CF176D007BD457 /* AdSupport.framework in Frameworks */,
 				2A632A1C18CEB10B00BE2533 /* Foundation.framework in Frameworks */,
-				C7F626F124DA87E800B0F93C /* libMMASign.a in Frameworks */,
+				C7F6271524DBB17F00B0F93C /* libMMASign.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,7 +289,6 @@
 				2A81721218DAEB3A00E0EFEC /* UIKit.framework in Frameworks */,
 				2A81721318DAEB3A00E0EFEC /* AdSupport.framework in Frameworks */,
 				2A81721518DAEB3A00E0EFEC /* Foundation.framework in Frameworks */,
-				C7F626F224DA87E800B0F93C /* libMMASign.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,8 +379,8 @@
 		2ABFE1F118CED085007BD457 /* EncryptModule */ = {
 			isa = PBXGroup;
 			children = (
-				C7F626F324DA87F000B0F93C /* MMASign.h */,
-				C7F626F024DA87E800B0F93C /* libMMASign.a */,
+				C7F6271424DBB17F00B0F93C /* libMMASign.a */,
+				C7F6271324DBAFB300B0F93C /* MMASign.h */,
 				2A632A3118CEB10B00BE2533 /* MobileTrackingTests */,
 			);
 			path = EncryptModule;
@@ -898,6 +896,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				VALID_ARCHS = "armv7 armv7s arm64 x86_64 i386";
 			};
 			name = Debug;
@@ -923,6 +922,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				VALID_ARCHS = "armv7 armv7s arm64 x86_64 i386";
 			};
 			name = Release;
