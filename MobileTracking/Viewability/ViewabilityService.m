@@ -81,7 +81,15 @@ static const char *view_capture_queue = "adview.capture.queue";
             //可视化监测和进度监测如果有一个没有结束,则继续监测.
         } else if(tempStatus == VAMonitorStatusRuning || tempProgressStatus == VAProgressStatusRuning) {
             dispatch_async(_captureQueue, ^{
-                [obj captureAdStatusAndVerify];
+#if DEBUG
+ 
+                dispatch_async(dispatch_get_main_queue(), ^{
+                      [obj captureAdStatusAndVerify];
+                });
+#else
+          [obj captureAdStatusAndVerify];
+#endif
+              
                 NSLog(@"ID:%@视图捕获状态",obj.adID);
                
             });

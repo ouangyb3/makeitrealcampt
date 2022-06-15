@@ -8,9 +8,11 @@
 
 #import "AppDelegate.h"
 #import "MobileTracking.h"
+ 
 //#import "ViewController.h"
 //#import "TabCoverViewController.h"
 //#import "PageViewController.h"
+#import <AppTrackingTransparency/AppTrackingTransparency.h>
 
 
 @implementation AppDelegate
@@ -18,7 +20,22 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 
-    [[MobileTracking sharedInstance] enableLog:YES];
+    if (@available(iOS 14, *)) {
+               // iOS14及以上版本需要先请求权限
+               [ATTrackingManager requestTrackingAuthorizationWithCompletionHandler:^(ATTrackingManagerAuthorizationStatus status) {
+                   
+                   if (status == ATTrackingManagerAuthorizationStatusAuthorized) {
+                       NSLog(@"同意授权");
+                
+               
+                   }else{
+                       NSLog(@"被拒绝，请在设置-隐私-广告中打开广告跟踪功能");
+                   }
+               }];
+           }
+
+               
+ [[MobileTracking sharedInstance] enableLog:YES];
 
 //    ViewController *vc1 = [[ViewController alloc] init];
 //    UINavigationController *navCtrl1 = [[UINavigationController alloc] initWithRootViewController:vc1];

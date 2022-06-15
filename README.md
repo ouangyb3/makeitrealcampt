@@ -3,7 +3,7 @@
 ### 步骤1：添加 iOS SDK 到工程中
 
 1. 将SDK发布文件中，release目录下的**MobileTracking.h** 、**libMobileTracking.a**、**sdkconfig.xml** 三个文件拷贝到项目工程中，将 **sdkconfig.xml** 上传到 web 服务器，使其可以通过 web 方式访问，假设其地址为 **http://xxxxxx.com/sdkconfig.xml**（其后会用到）。
-2. 在项目工程 App 的 Target Build Settings 中的 **Other Linker Flags** 选项里添加 **-lxml2** **-all_load** 或 **-lxml2** **-force_load** 静态库的绝对路径
+2. 在项目工程 App 的 Target Build Settings 中的 **Other Linker Flags** 选项里添加 **-lxml2** **-all_load** 或 **-lxml2** **-force_load** 静态库的相对路径
 3. 添加SDK需要的Framework
 在需要添加SDK的项目的 Xcode 开发环境中选择 TARGETS-->Build Phases-->Link Binary With Libraries--> + 添加以下framework框架:
 
@@ -14,6 +14,7 @@
 	CoreTelephony.framework
  	SystemConfiguration.framework
     WebKit.framework  
+    AppTrackingTransparency.framework
 ```
  
 
@@ -24,7 +25,7 @@
 使用说明:
 
 #### 1、初始化方法
-在进行监测之前，必须进行初始化，通过以上的代码进行初始化操作
+在进行监测之前，必须进行初始化，通过以下的代码进行初始化操作
 
 ```
 [MobileTracking sharedInstance]
@@ -47,12 +48,18 @@ SDK 会自动下载远程的配置文件，使用最新的配置文件进行参�
  * ad:参数为当前广告视图对象（**广告可见曝光监测为必传字段，普通广告监测默认缺省。**）
  * videoPlayType:参数为当前视频广告的播放类型（**视频广告可见曝光监测为可选字段，1-自动播放，2-手动播放，0-无法识别。**）
  * impressionType:参数为曝光的类型。（**普通广告监测的类型为必选字段，0-Tracked ads，1-曝光**）
+ * succeed:参数为监测成功回调block。（**eventType为对应的曝光类型**）
+ * failed:参数为监测失败回调block。 
 
 3.1 曝光监测
 
 ```
 // impressionType=1 表示这是曝光监测。此时如果传0，表示这是Tracked ads监测
-[[MobileTracking sharedInstance] view:@"http://example.com/xxxxxx” ad:adView impressionType:1]; 
+[[MobileTracking sharedInstance] view:@"http://example.com/xxxxxx” ad:adView impressionType:1 succeed:^(NSString *eventType) {
+       //监测代码发送成功
+} failed:^(NSString *errorMessage) {
+     //监测代码发送失败
+}];
 
 ```
 
@@ -65,7 +72,11 @@ SDK 会自动下载远程的配置文件，使用最新的配置文件进行参�
 3.2 可见性广告监测
 
 ```
-[[MobileTracking sharedInstance] view:@"http://example.com/xxxxxx” ad:adview];
+[[MobileTracking sharedInstance] view:@"http://example.com/xxxxxx” ad:adview succeed:^(NSString *eventType) {
+       //监测代码发送成功
+} failed:^(NSString *errorMessage) {
+     //监测代码发送失败
+}];
 
 ```
 　  备注：对广告进行可见性监测时，广告必须是满足开始渲染（Begin to render，简称BtR）条件的合法曝光，否则SDK不会执行可见监测。在调用可见曝光监测接口时，SDK会查验传入的广告View对象是否已开始渲染，如果是，则SDK会向监测方发出曝光上报，并继续进行可见监测，直到满足可见/不可见条件，再结束可见监测流程；如果不是，则SDK会向监测方发出Tracked Ads上报，并结束可见监测流程。
@@ -73,7 +84,11 @@ SDK 会自动下载远程的配置文件，使用最新的配置文件进行参�
 3.3 视频可见性广告监测
 
 ```
-[[MobileTracking sharedInstance] viewVideo:@"http://example.com/xxxxxx” ad:adview videoPlayType:type];
+[[MobileTracking sharedInstance] viewVideo:@"http://example.com/xxxxxx” ad:adview videoPlayType:type succeed:^(NSString *eventType) {
+       //监测代码发送成功
+} failed:^(NSString *errorMessage) {
+     //监测代码发送失败
+}];
 
 ```
 3.4 可见性广告JS监测

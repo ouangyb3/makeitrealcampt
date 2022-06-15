@@ -74,7 +74,11 @@
       
 //        广告开始播放的情况下调用；网络的广告资源需要等资源加载成功开始播放的情况下调用
             //    可视化视频曝光
-        [[MobileTracking sharedInstance] viewVideo:_viewUrl ad:_avMovieView videoPlayType:_type];
+        [[MobileTracking sharedInstance] viewVideo:_viewUrl ad:_avMovieView videoPlayType:_type succeed:^(NSString *eventType) {
+            NSLog(@"%@",eventType);
+        } failed:^(NSString *errorMessage) {
+             NSLog(@"%@",errorMessage);
+        }];
      
   
     }
@@ -140,12 +144,20 @@
             self.view.tag =1;
            [_player play];
         
-                   [[MobileTracking sharedInstance] viewVideo:_viewUrl ad:_avMovieView videoPlayType:_type];
+                   [[MobileTracking sharedInstance] viewVideo:_viewUrl ad:_avMovieView videoPlayType:_type succeed:^(NSString *eventType) {
+                       NSLog(@"%@",eventType);
+                   } failed:^(NSString *errorMessage) {
+                        NSLog(@"%@",errorMessage);
+                   }];
              
            _remindLabel.text = @"status:前贴片广告播放中...";
     } else {
         //    可视化视频点击
-        [[MobileTracking sharedInstance]click:_clickUrl];
+        [[MobileTracking sharedInstance]click:_clickUrl succeed:^(NSString *eventType) {
+            NSLog(@"%@",eventType);
+        } failed:^(NSString *errorMessage) {
+             NSLog(@"%@",errorMessage);
+        }];
         
         [_player pause];
         SecondViewController *secondVC = [[SecondViewController alloc]init];

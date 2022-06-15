@@ -125,25 +125,46 @@
 
 /** return is super -> */
 - (BOOL)mma_isSuper:(UIView *)view {
-    NSArray *superviews = nil;
-    if (!superviews) {
-        superviews = [self mma_superviews];
-    }
-    if ([superviews indexOfObject:view] == NSNotFound) {
-        return NO;
-    }
-    return YES;
+  
+         NSArray *superviews = nil;
+           if (!superviews) {
+               superviews = [self mma_superviews];
+           }
+ 
+        
+
+           if ([superviews indexOfObject:view] == NSNotFound) {
+               return NO;
+           }
+          
+           return YES;
+    
+   
 }
 
 - (NSArray *)mma_superviews {
-    NSMutableArray *supers = [NSMutableArray array];
-    [supers addObject:self.window];
-    UIView *superview = self.superview;
-    while (superview) {
-        [supers addObject:superview];
-        superview = superview.superview;
+    @try {
+         NSMutableArray *supers = [NSMutableArray array];
+ 
+               if (self.window) {
+                  [supers addObject:self.window];
+               }
+                  UIView *superview = self.superview;
+                  while (superview) {
+                      [supers addObject:superview];
+                      superview = superview.superview;
+                  }
+                  return [supers copy];
+    } @catch (NSException *exception) {
+        
+        return nil;
+        
+    } @finally {
+        
     }
-    return [supers copy];
+        
+   
+   
 }
 
 /** height */
