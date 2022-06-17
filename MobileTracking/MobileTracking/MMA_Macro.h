@@ -44,6 +44,7 @@
 #define TRACKING_KEY_OS         @"OS"
 #define TRACKING_KEY_MAC        @"MAC"
 #define TRACKING_KEY_IDFA       @"IDFA"
+#define TRACKING_KEY_IDFV       @"IDFV"
 
 #define TRACKING_KEY_IDFAMD5    @"IDFAMD5"
 

@@ -114,6 +114,7 @@
 		C765ABE023262B660066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABDF23262B660066E906 /* WebKit.framework */; };
 		C765ABE123262B710066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABDF23262B660066E906 /* WebKit.framework */; };
 		C765ABE223262C040066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABDF23262B660066E906 /* WebKit.framework */; };
+		C780856424F8DFB00056A77B /* libMMASign.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F6271424DBB17F00B0F93C /* libMMASign.a */; };
 		C7E0DA0C24BEAE2B003D19F4 /* MMA_TrackingInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A79BC1E18D2DC2900FC62C1 /* MMA_TrackingInfoService.m */; };
 		C7E0DA2024BEE41F003D19F4 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7E0DA1024BEAEB1003D19F4 /* AppTrackingTransparency.framework */; };
 		C7E0DA2124BEE423003D19F4 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7E0DA1024BEAEB1003D19F4 /* AppTrackingTransparency.framework */; };
@@ -289,6 +290,7 @@
 				2A81721218DAEB3A00E0EFEC /* UIKit.framework in Frameworks */,
 				2A81721318DAEB3A00E0EFEC /* AdSupport.framework in Frameworks */,
 				2A81721518DAEB3A00E0EFEC /* Foundation.framework in Frameworks */,
+				C780856424F8DFB00056A77B /* libMMASign.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

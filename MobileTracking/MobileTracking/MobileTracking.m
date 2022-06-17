@@ -1103,7 +1103,14 @@
             NSDictionary *encrptDic = company.MMASwitch.encrypt;
             [trackURL appendFormat:@"%@%@%@%@", company.separator, queryArgsKey, company.equalizer,[MMA_Helper md5HexDigest:idfa]];
             /************/
-        }  else if ([argument.key isEqualToString:TRACKING_KEY_TS]) {
+        }
+        else if ([argument.key isEqualToString:TRACKING_KEY_IDFV] && IOSV >= IOS6) {
+            NSString *idfv = [[self.trackingInfoService idfv] gtm_stringByEscapingForURLArgument];
+            [trackURL appendFormat:@"%@%@%@%@", company.separator, queryArgsKey, company.equalizer, idfv];
+            
+            /*判断有无idfa_md5字段,2015.7.9新增*/
+        }
+        else if ([argument.key isEqualToString:TRACKING_KEY_TS]) {
             /*增加了根据配置文件选择客户端传输的时间精度为妙或者毫秒*/
             NSDate *date = [NSDate date];
             NSString *timestamp = [NSString stringWithFormat:@"%.0f", [date timeIntervalSince1970] * 1000];
@@ -1180,11 +1187,7 @@
     
  
     
-    // 添加签名加密模块
-    NSString *signString = [MMASign sign:trackURL ts:ts sdkv:MMA_SDK_VERSION];
-    [MMA_Log log:@"signString: %@"  ,signString];
-    [trackURL appendFormat:@"%@%@%@%@", company.separator, company.signature.paramKey, company.equalizer, signString];
-    
+
  
     #pragma mark == ivt ==
      
@@ -1272,6 +1275,10 @@
      
      }
  
+    // 添加签名加密模块
+    NSString *signString = [MMASign sign:trackURL ts:ts sdkv:MMA_SDK_VERSION];
+    [MMA_Log log:@"signString: %@"  ,signString];
+    [trackURL appendFormat:@"%@%@%@%@", company.separator, company.signature.paramKey, company.equalizer, signString];
     
                                                                      
     if (redirecturl !=nil&&![redirecturl isEqualToString:@""]) {

@@ -21,6 +21,28 @@
 -(BOOL)isCharging;
 /**是否模拟器*/
 -(BOOL)isSimulator;
+
+/**设备名称*/
+-(NSString *)deviveName;
+/**hwModel*/
+-(NSString *)hwModel;
+/**运营商信息*/
+-(NSString *)carrier;
+/**硬盘空间*/
+-(NSString *)fileSystemSize;
+/**系统重启时间*/
+-(NSString *)systemBootTime;
+/**系统更新时间*/
+-(NSString *)systemUpdateTime;
+/**首选语言*/
+-(NSString *)language;
+/**国家编码*/
+-(NSString *)countryCode;
+
+
+
+
+
  
 
 -(void)updateSensorInfo:(void(^)())result;

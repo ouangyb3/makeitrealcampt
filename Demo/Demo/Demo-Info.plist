@@ -37,6 +37,8 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>是否允许App通过您的地理位置信息获取您周边的相关数据</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>idfa</string>
 	<key>UILaunchStoryboardName</key>
 	<string>Launch Screen</string>
 	<key>UIMainStoryboardFile</key>
