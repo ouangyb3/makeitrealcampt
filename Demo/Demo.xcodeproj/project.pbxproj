@@ -303,7 +303,7 @@
 				ORGANIZATIONNAME = Admaster;
 				TargetAttributes = {
 					2A0C4E1918D6D18700200F18 = {
-						DevelopmentTeam = 44PQ7EUSW9;
+						DevelopmentTeam = APNDPKY44S;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.AccessWiFi = {
@@ -556,7 +556,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0;
-				DEVELOPMENT_TEAM = 44PQ7EUSW9;
+				DEVELOPMENT_TEAM = APNDPKY44S;
 				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
@@ -576,7 +576,7 @@
 					"-lxml2",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde;
 				PRODUCT_NAME = "MMA测试";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -597,7 +597,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0;
-				DEVELOPMENT_TEAM = 44PQ7EUSW9;
+				DEVELOPMENT_TEAM = APNDPKY44S;
 				ENABLE_BITCODE = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo-Prefix.pch";
@@ -617,7 +617,7 @@
 					"-lxml2",
 					"-all_load",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.abcde;
 				PRODUCT_NAME = "MMA测试";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
