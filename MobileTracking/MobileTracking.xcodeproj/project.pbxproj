@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -114,10 +114,9 @@
 		C765ABE023262B660066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABDF23262B660066E906 /* WebKit.framework */; };
 		C765ABE123262B710066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABDF23262B660066E906 /* WebKit.framework */; };
 		C765ABE223262C040066E906 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C765ABDF23262B660066E906 /* WebKit.framework */; };
+		C7A479D824FF451F00EB56F3 /* libMMASign.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A479D724FF451F00EB56F3 /* libMMASign.xcframework */; };
+		C7A479D924FF451F00EB56F3 /* libMMASign.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7A479D724FF451F00EB56F3 /* libMMASign.xcframework */; };
 		C7E0DA0C24BEAE2B003D19F4 /* MMA_TrackingInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A79BC1E18D2DC2900FC62C1 /* MMA_TrackingInfoService.m */; };
-		C7E0DA2024BEE41F003D19F4 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7E0DA1024BEAEB1003D19F4 /* AppTrackingTransparency.framework */; };
-		C7E0DA2124BEE423003D19F4 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7E0DA1024BEAEB1003D19F4 /* AppTrackingTransparency.framework */; };
-		C7F6271524DBB17F00B0F93C /* libMMASign.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7F6271424DBB17F00B0F93C /* libMMASign.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -248,9 +247,8 @@
 		C74B78322375573A0031DE10 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Photos.framework; sourceTree = DEVELOPER_DIR; };
 		C74B7835237557510031DE10 /* PhotosUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhotosUI.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/PhotosUI.framework; sourceTree = DEVELOPER_DIR; };
 		C765ABDF23262B660066E906 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		C7E0DA1024BEAEB1003D19F4 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.16.sdk/System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = DEVELOPER_DIR; };
-		C7F6271324DBAFB300B0F93C /* MMASign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMASign.h; sourceTree = "<group>"; };
-		C7F6271424DBB17F00B0F93C /* libMMASign.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMMASign.a; sourceTree = "<group>"; };
+		C7A479D324FF434D00EB56F3 /* MMASign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMASign.h; sourceTree = "<group>"; };
+		C7A479D724FF451F00EB56F3 /* libMMASign.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libMMASign.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,13 +256,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7E0DA2024BEE41F003D19F4 /* AppTrackingTransparency.framework in Frameworks */,
 				C765ABE023262B660066E906 /* WebKit.framework in Frameworks */,
 				2ABFE29818CF2B5F007BD457 /* CoreLocation.framework in Frameworks */,
 				2ABFE28218CF1778007BD457 /* UIKit.framework in Frameworks */,
 				2ABFE28018CF176D007BD457 /* AdSupport.framework in Frameworks */,
+				C7A479D824FF451F00EB56F3 /* libMMASign.xcframework in Frameworks */,
 				2A632A1C18CEB10B00BE2533 /* Foundation.framework in Frameworks */,
-				C7F6271524DBB17F00B0F93C /* libMMASign.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,11 +280,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7E0DA2124BEE423003D19F4 /* AppTrackingTransparency.framework in Frameworks */,
 				C765ABE123262B710066E906 /* WebKit.framework in Frameworks */,
 				2A81721118DAEB3A00E0EFEC /* CoreLocation.framework in Frameworks */,
 				2A81721218DAEB3A00E0EFEC /* UIKit.framework in Frameworks */,
 				2A81721318DAEB3A00E0EFEC /* AdSupport.framework in Frameworks */,
+				C7A479D924FF451F00EB56F3 /* libMMASign.xcframework in Frameworks */,
 				2A81721518DAEB3A00E0EFEC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,7 +316,6 @@
 		2A632A1A18CEB10B00BE2533 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C7E0DA1024BEAEB1003D19F4 /* AppTrackingTransparency.framework */,
 				C74B7835237557510031DE10 /* PhotosUI.framework */,
 				C74B78322375573A0031DE10 /* Photos.framework */,
 				C765ABDF23262B660066E906 /* WebKit.framework */,
@@ -379,8 +375,8 @@
 		2ABFE1F118CED085007BD457 /* EncryptModule */ = {
 			isa = PBXGroup;
 			children = (
-				C7F6271424DBB17F00B0F93C /* libMMASign.a */,
-				C7F6271324DBAFB300B0F93C /* MMASign.h */,
+				C7A479D724FF451F00EB56F3 /* libMMASign.xcframework */,
+				C7A479D324FF434D00EB56F3 /* MMASign.h */,
 				2A632A3118CEB10B00BE2533 /* MobileTrackingTests */,
 			);
 			path = EncryptModule;
@@ -895,6 +891,7 @@
 				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				VALID_ARCHS = "armv7 armv7s arm64 x86_64 i386";
@@ -921,6 +918,7 @@
 				OTHER_CFLAGS = "-fembed-bitcode";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				VALID_ARCHS = "armv7 armv7s arm64 x86_64 i386";
@@ -998,6 +996,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = MobileTrackingSimulator;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
@@ -1023,6 +1022,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = MobileTrackingSimulator;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;

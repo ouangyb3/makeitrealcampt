@@ -33,7 +33,7 @@ NSString *const normalViewUrl = @"http://tyfx.m.cn.miaozhen.com/x/k=2122669&p=7P
 NSString *const displayClickUrl = @"http://tyfx.m.cn.miaozhen.com/x/k=2128485&p=7P5QE&dx=__IPDX__&rt=2&ns=__IP__&ni=__IESID__&v=__LOC__&xa=__ADPLATFORM__&tr=__REQUESTID__&mo=__OS__&m0=__OPENUDID__&m0a=__DUID__&m1=__ANDROIDID1__&m1a=__ANDROIDID__&m2=__IMEI__&m4=__AAID__&m5=__IDFA__&m6=__MAC1__&m6a=__MAC__&nd=__DRA__&np=__POS__&nn=__APP__&nc=__VID__&nf=__FLL__&ne=__SLL__&ng=__CTREF__&nx=__TRANSID__&o=";
 
 //可视化曝光url
-NSString *const displayViewUrl = @"http://e.cn.miaozhen.com/r/k=2128485&p=7Q5OK&dx=__IPDX__&rt=2&ns=__IP__&ni=__IESID__&v=__LOC__&xa=__ADPLATFORM__&tr=__REQUESTID__&o=";
+NSString *const displayViewUrl = @"http://tyfx.m.cn.miaozhen.com/x/k=2128485&p=7P5QE&dx=__IPDX__&rt=2&ns=__IP__&ni=__IESID__&v=__LOC__&xa=__ADPLATFORM__&tr=__REQUESTID__&mo=__OS__&m0=__OPENUDID__&m0a=__DUID__&m1=__ANDROIDID1__&m1a=__ANDROIDID__&m2=__IMEI__&m4=__AAID__&m5=__IDFA__&m5a=__IDFV__&m6=__MAC1__&m6a=__MAC__&nd=__DRA__&np=__POS__&nn=__APP__&nc=__VID__&nf=__FLL__&ne=__SLL__&ng=__CTREF__&nx=__TRANSID__&o=";
 
 
 #define AScreenHeight           ([UIScreen mainScreen].bounds.size.height == 480 ?  (kScreenHeight/667/0.83):(kScreenHeight/667))

@@ -9,7 +9,7 @@
 #ifndef MobileTracking_Macro_h
 #define MobileTracking_Macro_h
 
-#define MMA_SDK_VERSION @"V2.2.0"
+#define MMA_SDK_VERSION @"V2.2.1"
 
 #define NOTIFICATION_VB @"viewability_notification"
 #define NOTIFICATION_EXPOSE @"expose_notification"
@@ -44,6 +44,7 @@
 #define TRACKING_KEY_OS         @"OS"
 #define TRACKING_KEY_MAC        @"MAC"
 #define TRACKING_KEY_IDFA       @"IDFA"
+#define TRACKING_KEY_IDFV       @"IDFV"
 
 #define TRACKING_KEY_IDFAMD5    @"IDFAMD5"
 

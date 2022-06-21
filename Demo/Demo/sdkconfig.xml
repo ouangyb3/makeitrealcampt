@@ -484,6 +484,13 @@
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
+                    <!-- iOS IDFV(适用于iOS6及以上) -->
+                    <argument>
+                        <key>IDFV</key>
+                        <value>m5a</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
                     <!-- Android IMEI MD5 值 -->
                     <argument>
                         <key>IMEI</key>
@@ -796,6 +803,62 @@
                     <argument>
                         <key>isAdb</key>
                         <value>l4</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <!-- 设备名称 -->
+                    <argument>
+                        <key>deviveName</key>
+                        <value>e1</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <!-- hw.model -->
+                    <argument>
+                        <key>hwModel</key>
+                        <value>e2</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <!-- 运营商信息 -->
+                    <argument>
+                        <key>carrier</key>
+                        <value>e3</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <!-- 硬盘空间 -->
+                    <argument>
+                        <key>fileSystemSize</key>
+                        <value>e4</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <!-- 系统重启时间 -->
+                    <argument>
+                        <key>systemBootTime</key>
+                        <value>e5</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <!-- 系统更新时间 -->
+                    <argument>
+                        <key>systemUpdateTime</key>
+                        <value>e6</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <!-- 首选语言 -->
+                    <argument>
+                        <key>language</key>
+                        <value>e7</value>
+                        <urlEncode>true</urlEncode>
+                        <isRequired>true</isRequired>
+                    </argument>
+                    <!-- 国家编码 -->
+                    <argument>
+                        <key>countryCode</key>
+                        <value>e8</value>
                         <urlEncode>true</urlEncode>
                         <isRequired>true</isRequired>
                     </argument>
